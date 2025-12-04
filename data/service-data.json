@@ -1,0 +1,50 @@
+[
+    {
+        "id": "hair",
+        "name": "Hair",
+        "image": "hairBG",
+        "services": [
+            {
+                "name": "Hair Services",
+                "description": "Precision cuts, vibrant colors, and nourishing treatments to bring out the best in your hair.",
+                "icon": "<ScissorsSVG className=\"text-(--main-50)\" />"
+            }
+        ]
+    },
+    {
+        "id": "nail",
+        "name": "Nail",
+        "image": "nailsBG",
+        "services": [
+            {
+                "name": "Nail Care",
+                "description": "Manicures, pedicures, and artistic nail designs for perfectly polished hands and feet.",
+                "icon": "<NailSVG className=\"text-(--main-50)\" />"
+            }
+        ]
+    },
+    {
+        "id": "beauty",
+        "name": "Beauty",
+        "image": "beautyBG",
+        "services": [
+            {
+                "name": "Beauty Treatments",
+                "description": "Rejuvenating facials, waxing, and makeup services to enhance your natural beauty.",
+                "icon": "<BeautySVG className=\"text-(--main-50)\" />"
+            }
+        ]
+    },
+    {
+        "id": "products",
+        "name": "Products",
+        "image": "productsBG",
+        "services": [
+            {
+                "name": "Products",
+                "description": "Discover the full range of Davines products, featuring sustainable haircare, crafted with natural ingredients for exceptional results and environmental responsibility.",
+                "icon": "<ProductsSVG className=\"text-(--main-50)\" />"
+            }
+        ]
+    }
+]
