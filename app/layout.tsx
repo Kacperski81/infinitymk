@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Aboreto, Lato, Red_Hat_Text, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
+import AnimatedMenu from "@/components/frame/animated-menu";
+import Frame from "@/components/frame/frame";
 import Logo from "@/components/frame/logo";
+import Footer from "@/components/footer";
 
 const aboreto = Aboreto({
   // sans-serif
@@ -44,14 +47,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-(--main-400)">
+    <html lang="en" className="radial-background">
       <body
         className={`${aboreto.variable} ${lato.variable} ${redHatText.variable} ${cormorantGaramond.variable} antialiased`}
       >
         <div className="min-h-screen flex justify-center">
           <div className="relative w-full max-w-[2000px]">
             <Logo />
+            <Frame />
+            <AnimatedMenu />
             {children}
+            <Footer />
           </div>
         </div>
       </body>

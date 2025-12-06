@@ -10,6 +10,7 @@ export default function PageHeading({ title, mT, }: { title: string, mT?:string 
             px-10 
             text-2xl 
             text-(--main-50)
+            text-center
             uppercase
             tracking-widest`}>
                 {title}

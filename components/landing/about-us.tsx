@@ -5,7 +5,7 @@ export default function AboutUs() {
         <section className="relative grid min-h-screen lg:grid-cols-2">
             {/* Background image & gradient overlay */}
             <img
-                src="/about-us.jpg"
+                src="/landing/about-us.jpg"
                 alt="About Us background"
                 className="absolute inset-0 h-full w-full object-cover xl:object-center"
             />
@@ -23,7 +23,7 @@ export default function AboutUs() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-end"
                         >
-                            <span>See on the map</span>
+                            <span className="mr-2">See on the map</span>
                             <LocationIcon />
                         </a>
                     </p>

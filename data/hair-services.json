@@ -1,0 +1,54 @@
+[
+    {
+        "id": "cut-and-style",
+        "name": "Cut & Style",
+        "items": [
+            { "service": "Ladies' Haircut", "price": "£75" },
+            { "service": "Ladies' Restyle", "price": "£85" },
+            { "service": "Gents Haircut", "price": "£53" },
+            { "service": "Kids Under 10 Years Old", "price": "From £20" },
+            { "service": "Kids 11 to 16 Years Old", "price": "From £30" },
+            { "service": "Blow Dry Short Hair", "price": "£35" },
+            { "service": "Blow Dry Medium Hair", "price": "£40" },
+            { "service": "Blow Dry Long Hair", "price": "From £45" },
+            { "service": "Rough Blow Dry", "price": "£20"},
+            { "service": "Hair Up / Wedding Hair", "price": "From £75" }
+        ]
+    },
+    {
+        "id": "colouring",
+        "name": "Colouring",
+        "items": [
+            { "service": "Full Head Of Highlights or Balayage", "price": "£140" },
+            { "service": "3/4 Head Of Highlights or Balayage", "price": "£120" },
+            { "service": "1/2 Head Of Highlights or Balayage", "price": "£100" },
+            { "service": "Single Foils (t-sections)", "price": "From £50" },
+            { "service": "Full Head Tint", "price": "£70" },
+            { "service": "Re-growth Tint", "price": "£60" },
+            { "service": "Glossing (Semi Permanent)", "price": "£60" },
+            { "service": "Full Head Bleach (Toner included)", "price": "£110" },
+            { "service": "Re-growth Bleach (Toner included)", "price": "£90" },
+            { "service": "Men's Grey Blending", "price": "£25" },
+            { "service": "Toner", "price": "From £25" },
+            { "service": "* Colour services must be accompanied with a blow dry", "price": ""}
+        ]
+    },
+    {
+        "id": "texturing-and-straightening",
+        "name": "Texturing & Straightening",
+        "items": [
+            {
+                "service": "Perm",
+                "short_hair_price": "£80",
+                "medium_hair_price": "£90",
+                "long_hair_price": null
+            },
+            {
+                "service": "Brazilian Blow Dry/Keratin treatment",
+                "short_hair_price": "£120",
+                "medium_hair_price": "£160",
+                "long_hair_price": "£190"
+            }
+        ]
+    }
+]

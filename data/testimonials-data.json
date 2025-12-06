@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "reviewer": "Rebecca Latham",
+        "content": "I couldn’t be happier with the service! The haircut is always perfect, and the colour is exactly the shade I want every single time – truly the best hairdresser in London. Magda is warm, friendly, and pays great attention to detail. I always leave feeling confident and well taken care of. Highly recommend!",
+        "backgroundImage": "/landing/testimonial1.webp",
+        "rating": 5
+    },
+    {
+        "id": 4,
+        "reviewer": "Kate O'Connor",
+        "content": "I have been coming since it opened. Excellent all round - always fit me in, lovely salon and people. I always feel great with the result.",
+        "backgroundImage": "/landing/testimonial4.jpg",
+        "rating": 5
+    },
+    {
+        "id": 3,
+        "reviewer": "Olga Tielly",
+        "content": "Magda’s been looking after my hair for few years now! I love how attentive she is, always listens to what I want, and takes time to achieve my vision! She is very professional,  friendly and treats my hair with lots of care!",
+        "backgroundImage": "/landing/testimonial3.webp",
+        "rating": 5
+    },
+        {
+        "id": 2,
+        "reviewer": "Elaine Robinson",
+        "content": "I highly recommend this wonderful hair salon, a warm and friendly welcome and I’m always delighted with my highlights and haircut. Magda is highly experienced and professional, she always allows plenty of time for advice and discussion and uses quality products. My hair has never been in better condition.",
+        "backgroundImage": "/landing/testimonial2.webp",
+        "rating": 5
+    }
+]

@@ -104,11 +104,11 @@ body {
 
 /* svg icons colors */
 .primary {
-  fill: var(--main-200);
+  fill: var(--main-100);
 }
 
 .secondary {
-  fill: var(--main-200);
+  fill: var(--main-50);
 }
 
 /* index.html */

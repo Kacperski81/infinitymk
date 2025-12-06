@@ -5,10 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { getServiceData } from "@/lib/service-data";
 import PageHeading from "@/components/page-heading";
-import hairBG from "../../public/services-hair.jpg";
-import nailsBG from "../../public/services-nails.jpg";
-import beautyBG from "../../public/services-beauty.jpg";
-import productsBG from "../../public/services-davines.jpg";
+import hairBG from "../../public/landing/services-hair.jpg";
+import nailsBG from "../../public/landing/services-nails.jpg";
+import beautyBG from "../../public/landing/services-beauty.jpg";
+import productsBG from "../../public/landing/services-davines.jpg";
 import ScissorsSVG from "@/components/svgs/scissorsSVG";
 import NailSVG from "@/components/svgs/nailSVG";
 import BeautySVG from "../svgs/beautySVG";
@@ -31,7 +31,7 @@ export default function Services() {
     }
 
     return (
-        <section className="min-h-screen radial-background flex flex-col">
+        <section className="min-h-screen flex flex-col">
             <main className="grow flex flex-col lg:justify-center gap-3 xl:pb-20">
 
 

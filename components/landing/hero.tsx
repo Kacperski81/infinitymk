@@ -1,6 +1,6 @@
 import Image from "next/image";
-import MobileImage from "../../public/hero-background-mobile.jpg";
-import DesktopImage from "../../public/hero-background.jpg";
+import MobileImage from "../../public/landing/hero-background-mobile.jpg";
+import DesktopImage from "../../public/landing/hero-background.jpg";
 
 export default function Hero() {
     return (
