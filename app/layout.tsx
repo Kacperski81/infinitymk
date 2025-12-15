@@ -57,7 +57,7 @@ export default function RootLayout({
             <Frame />
             <AnimatedMenu />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </div>
       </body>

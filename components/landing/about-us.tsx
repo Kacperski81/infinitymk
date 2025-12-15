@@ -2,7 +2,7 @@ import LocationIcon from "../svgs/location-icon";
 
 export default function AboutUs() {
     return (
-        <section className="relative grid min-h-screen lg:grid-cols-2">
+        <section className="isolate relative grid min-h-screen lg:grid-cols-2">
             {/* Background image & gradient overlay */}
             <img
                 src="/landing/about-us.jpg"

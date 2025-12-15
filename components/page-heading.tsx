@@ -1,8 +1,7 @@
 export default function PageHeading({ title, mT, }: { title: string, mT?:string }) {
     return (
         <h2 className={`
-            ${mT ? mT : 'mt-10'}
-            xl:mt-14 
+            ${mT ? mT : 'mt-10 xl:mt-14'}  
             font-(family-name:--font-aboreto) 
             self-center 
             pt-4 

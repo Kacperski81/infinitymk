@@ -50,10 +50,12 @@
   --wrapper-gap: 1rem;
   --service-panel-padding: 0.75rem;
   --service-panel-gap: .75rem;
-  --service-button-small: 2rem;
+  --service-button-small: 0.875rem;
   --service-button-padding: 0.40rem;
-
   --service-button-width: 2.2rem;
+
+  /* service panel */
+  --panel-padding: 0.65rem;
 
   @media (min-width: 788px) {
     --service-button-small: 3rem;
@@ -144,9 +146,6 @@ body {
   flex-basis: calc((var(--service-panel-padding) * 2) + var(--service-button-small));
   flex-grow: 0;
   transition: flex-basis 500ms, flex-grow 500ms;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .service-panel-radius {
@@ -164,19 +163,54 @@ body {
   margin-left: calc(var(--service-button-small) + var(--service-panel-gap));
 }
 
-/* .image-brightness {
-  filter: brightness(0.5);
-  background: linear-gradient(to bottom,
-      var(--main-50) 0%,
-      var(--main-100) 20%,
-      var(--main-200) 40%,
-      var(--main-100) 50%,
-      var(--main-50) 100%);
-  transition: filter 500ms;
+
+/* Services */
+
+/* Price panel */
+.price-panel {
+  background-repeat: no-repeat;
+  position: relative;
+
+  >div>div {
+    background: hsl(from var(--main-100) hsl / 1);
+    backdrop-filter: blur(5px);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    /* background: linear-gradient(var(--main-100), var(--main-200)) border-box; */
+    mask:
+      linear-gradient(black 0 0) border-box,
+      linear-gradient(black 0 0) padding-box;
+    mask-composite: subtract;
+  }
+
 }
 
-.image-brightness-light {
-  filter: brightness(1);
+.price-panel-title {
+  background: linear-gradient(100deg, var(--main-100) 0%, var(--main-200)50%, var(--main-100) 100%);
+  background-clip: text;
+  color: transparent;
+}
 
-  transition: filter 500ms;
-} */
+.border-gradient {
+  border: 1px solid;
+  border-image-source: radial-gradient(circle at top left, var(--main-300), var(--main-400));
+  border-image-slice: 1;
+}
+
+.price-panel-opened {
+  /* flex-basis: calc((var(--panel-padding) * 2) + var(--button-width)); */
+  flex-basis: clamp(15rem, 40vh, 20rem);
+  flex-grow: 1;
+  transition: flex-basis 500ms, flex-grow 500ms;
+}
+
+.price-panel-closed {
+  flex-basis: calc((var(--panel-padding) * 2) + var(--service-button-small));
+  flex-grow: 0;
+  transition: flex-basis 500ms, flex-grow 500ms;
+}

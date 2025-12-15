@@ -41,7 +41,7 @@ export default function Testimonial({ id, reviewer, content, backgroundImage, ra
 
                 {/* Comment */}
                 <blockquote className="mb-4">
-                    <p className="text-[var(--main-50)] text-sm lg:text-base leading-relaxed font-light">&ldquo;{content}&rdquo;</p>
+                    <p className="text-(--main-50) text-sm lg:text-base leading-relaxed font-light">&ldquo;{content}&rdquo;</p>
                 </blockquote>
 
                 {/* Reviewer Name with Accent Line */}
@@ -50,7 +50,8 @@ export default function Testimonial({ id, reviewer, content, backgroundImage, ra
                     <cite className="not-italic text-(--main-50) font-medium text-sm lg:text-base">{reviewer}</cite>
                 </div>
             </div>
-            <div className="rounded-xl -z-1 absolute inset-0 -z-0 bg-gradient-to-b from-(--main-800)/80 to-transparent"></div>
+            <div className="rounded-xl absolute inset-0 z-0 bg-gradient-to-b from-(--main-800)/80 to-transparent"></div>
+
         </div>
     )
 }

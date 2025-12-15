@@ -3,6 +3,9 @@
 import { useState } from "react";
 import type { HairServicesData } from "@/types";
 import { getHairServices } from "@/lib/hair-services";
+import HairServices from "@/components/hair/hair-services";
+import Footer from "@/components/footer";
+import HairTreatment from "@/components/hair/hair-treatments";
 
 export default function HairPage() {
     const hairServicesData: HairServicesData = getHairServices();
@@ -14,7 +17,10 @@ export default function HairPage() {
 
     return (
         <section>
-            <div className="bg-white">
+            <div className="flex flex-col">
+                <HairServices />
+                <HairTreatment />
+                <Footer />
             </div>
         </section>
     );

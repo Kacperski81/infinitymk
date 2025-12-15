@@ -34,3 +34,9 @@ export type HairServiceCategory = {
 };
 
 export type HairServicesData = HairServiceCategory[];
+
+export type TreatmentsData = {
+    name: string;
+    description: string;
+    price: string;
+}
