@@ -1,0 +1,14 @@
+[
+    {
+      "id": 1,
+      "title": "Appointment Discount",
+      "description": "Book your next appointment today and receive $5 off your next hair service.",
+      "icon": "Announcement"
+    },
+    {
+      "id": 2,
+      "title": "Student & Senior Discount",
+      "description": "Students and Seniors receive a generous 20% discount on all haircut services.",
+      "icon": "Discount"
+    }
+]

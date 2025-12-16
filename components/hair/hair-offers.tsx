@@ -1,0 +1,45 @@
+import { getHairOffers } from "@/lib/hair-offers"
+import IconAnnouncement from "@/components/svgs/announcement";
+import IconDiscount from "@/components/svgs/discount";
+import PageHeading from "@/components/page-heading";
+
+
+export default function HairOffers() {
+    const hairOffers = getHairOffers();
+
+    return (
+        <div className="">
+
+            <PageHeading title="Offers" mT="mt-2" />
+
+            <div className="space-y-4 md:space-y-6 lg:space-y-8 max-w-5xl mx-auto">
+
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {hairOffers.map((offer) => {
+                        const IconComponent = offer.icon === "Announcement" ? IconAnnouncement : IconDiscount;
+                        return (
+                            <div key={offer.id}
+                                className="hair-partner-logo
+                                backdrop-blur-[2px]
+                                text-(--main-50) 
+                                rounded-lg p-6 md:p-8 shadow-md hover:shadow-lg transition-shadow">
+
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 rounded-lg shrink">
+                                        <IconComponent />
+                                    </div>
+                                    <div className="flex flex-col *:text-left">
+                                        <h3 className="text-lg md:text-xl font-bold mb-2">{offer.title}</h3>
+                                        <p className="text-sm md:text-base leading-relaxed text-(--main-100)">{offer.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+
+                </div>
+            </div>
+        </div>
+    )
+}

@@ -6,9 +6,9 @@ import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <main className="h-screen flex justify-center items-center px-[7px]">
+    <main className="h-screen flex justify-center items-center">
       <div className="relative w-full max-w-[2000px]">
-        <div className="relative h-screen gap-4 ">
+        <div className="relative h-screen gap-4">
           <Hero />
           <AboutUs />
           <OurServices />

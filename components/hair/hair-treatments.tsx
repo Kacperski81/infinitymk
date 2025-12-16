@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Image from "next/image";
 import { getHairTreatments } from "@/lib/hair-treatments";
 import type { TreatmentsData } from "@/types/";
 import PageHeading from "../page-heading";
+import treatmentsDavines from "../../public/hair/treatments-davines.jpg"
 
 export default function HairTreatment() {
     const hairTreatmentsData: TreatmentsData[] = getHairTreatments();
@@ -11,8 +13,8 @@ export default function HairTreatment() {
         setExpandedPanel(panelId);
     }
     return (
-        <section className="relative min-h-dvh xl:min-h-screen bg-(--main-400)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
-            <div className="pt-10 flex flex-col xl:col-span-6 xl:col-start-2">
+        <section className="relative min-h-dvh xl:min-h-screen bg-(--main-300)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat bg-top-right flex justify-center xl:grid xl:grid-cols-12">
+            <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-2">
                 <PageHeading mT="mt-0" title="Hair Treatments" />
 
                 {/* wrapper */}
@@ -46,7 +48,7 @@ export default function HairTreatment() {
                                                     "" :
                                                     "py-1 md:py-5 cursor-pointer flex justify-center items-center"}`}>
                                             {/* Panel title */}
-                                            <span className="price-panel-title text-base xl:text-lg font-bold font-(family-name:--font-aboreto) uppercase tracking-wide z-10 relative"
+                                            <span className="price-panel-title text-base xl:text-lg font-bold font-(family-name:--font-aboreto) uppercase tracking-wide z-40 relative"
                                             >
                                                 {treatment.name}
                                             </span>
@@ -62,7 +64,7 @@ export default function HairTreatment() {
                                         className={`
                                                 flex
                                                 flex-col 
-                                                -z-1
+                                                z-40
                                                 text-xl  
                                                 ${expandedPanel === treatment.name ? "grow flex flex-col" : ""}`}
                                     >
@@ -87,6 +89,15 @@ export default function HairTreatment() {
 
                                         </div>
                                     </div>
+                                    {/* <Image 
+                                        src={treatmentsDavines}
+                                        alt="Davines hair treatments"
+                                        sizes="100vw"
+                                        fill
+                                        className="z-2 object-cover object-bottom"
+                                    /> */}
+                                    {/* Gradient overlay */}
+                                    {/* <div className="z-20 absolute inset-0 -z-0 bg-gradient-to-b from-(--main-800)/90 to-transparent"></div> */}
                                 </div>
                             )
                         }

@@ -12,7 +12,7 @@ export default function HairServices() {
     }
     return (
         <section className="relative min-h-dvh xl:min-h-screen bg-(--main-400)/90 bg-[url(/hair/hair-services-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
-            <div className="pt-10 flex flex-col xl:col-span-7 xl:col-start-5">
+            <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-6">
                 <PageHeading mT="mt-0" title="Hair Services" />
 
                 {/* wrapper */}

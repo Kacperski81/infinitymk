@@ -40,3 +40,28 @@ export type TreatmentsData = {
     description: string;
     price: string;
 }
+
+export type CarouselItem = {
+    id: string;
+    imageUrl: string;
+    alt: string;
+}
+
+export type LightBoxCarouselProps = {
+    items: CarouselItem[];
+    item: CarouselItem;
+}
+
+
+export type HairPartnersItem = {
+    name: string;
+    altText: string;
+    imagePath: string;
+}
+
+export type HairOffer = {
+    id: number;
+    title: string;
+    description: string;
+    icon: string;
+}

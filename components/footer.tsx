@@ -14,7 +14,7 @@ export default function Footer() {
 
     return (
         // <footer id="footer" className="snap-center sticky top-0 bg-(--main-800) min-h-screen py-2 sm:py-10 flex items-center z-50">
-        <footer id="footer" className="min-h-screen text-center py-2 sm:py-10 flex items-center isolate">
+        <footer id="footer" className={`${pathname === "/hair" ? "mt-5" : "min-h-screen sm:py-10 py-2"} text-center flex items-center isolate`}>
             {/* container */}
             <div className="container mx-auto py-2 px-4 md:py-16 w-full xl:max-w-7xl">
                 <div className="space-y-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3">
@@ -96,13 +96,10 @@ export default function Footer() {
                     </div>
                 </div>
                 {/* Bottom bar */}
-                <div className="mt-2 border-t border-(--main-100) sm:mt-8 sm:pt-8 flex flex-col md:flex-row justify-center items-center gap-4">
+                <div className={`mt-2 border-t border-(--main-100) ${pathname === "/hair" ? "sm:pt-2" : "sm:mt-8 sm:pt-8 "} flex flex-col md:flex-row justify-center items-center gap-4`}>
                     <p className="mt-2 text-sm text-center text-(--main-50)">
                         &copy; 2025 Infinity MK. All rights reserved.
                     </p>
-                    {/* <div className="flex gap-6 text-sm text-stone-400">
-                        <a href="#" className="text-[var(--text-color)] hover:text-[#B8860B]transition-colors">Booking Policy</a>
-                    </div> */}
                 </div>
             </div>
         </footer>

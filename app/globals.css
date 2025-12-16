@@ -110,7 +110,14 @@ body {
 }
 
 .secondary {
-  fill: var(--main-50);
+  /* fill: var(--main-50); */
+  fill: var(--main-900)
+}
+
+.icon-cheveron-left-circle,
+.icon-cheveron-right-circle {
+    width: 2rem;
+    height: 2rem;
 }
 
 /* index.html */
@@ -213,4 +220,107 @@ body {
   flex-basis: calc((var(--panel-padding) * 2) + var(--service-button-small));
   flex-grow: 0;
   transition: flex-basis 500ms, flex-grow 500ms;
+}
+
+.desktop-gallery {
+    --n: 1; /* number of rows*/
+    --m: 5; /* number of columns */
+    --g: 2px; /* control the gap */
+    --f: .8; /* control the scale factor */
+
+    display: grid;
+    gap: var(--g);
+    width: 70vw;
+    height: 70vh;
+    max-width: 100%;
+    /* aspect-ratio: 3/2; */
+    grid-template-columns: repeat(var(--m), auto);
+    img {
+        width: 0;
+        height: 0;
+        min-height: 100%;
+        min-width: 100%;
+        object-fit: cover;
+        object-position: bottom center;
+        cursor: pointer;
+        filter: grayscale(60%);
+        transition: .35s linear;
+
+        &:hover {
+            filter: grayscale(0);
+            width: calc(35vh*var(--f)/var(--n));
+            height: calc(100vw*var(--f)/var(--m));
+        }
+    }
+}
+
+.scroller {
+    position: relative;
+}
+
+.scroller_inner {
+    display: inline-flex;
+    gap: 10px;
+    width: max-content;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(calc(-50% - 5px), 0, 0);
+    }
+}
+
+
+.scroller::before,
+.scroller::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 10;
+
+    @media (min-width: 768px) {
+        width: 100px;
+    } 
+
+    @media (min-width: 1280px) {
+        width: 200px;
+    }
+        
+}
+
+.scroller::before {
+    left: 0;
+    
+}
+
+.scroller::after {
+    right: 0;
+    /* background: linear-gradient(to left, var(--main-400), transparent); */
+
+}
+
+.hair-partner-logo::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(var(--main-100), var(--main-500)) border-box;
+    mask:
+        linear-gradient(black, black) border-box,
+        linear-gradient(black, black) padding-box;
+    mask-composite: subtract;
 }
