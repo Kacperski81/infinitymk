@@ -4,9 +4,10 @@ import DesktopImage from "../../public/products/products-background.jpg";
 
 export default function ProductsHero() {
     return (
-        <section className="px-2 relative min-h-screen inset-0 overflow-hidden flex items-center">
-            
-        <div className="block 2xl:hidden md:absolute inset-0 z-0">
+        <section className="px-2 relative min-h-screen inset-0 overflow-hidden flex flex-col justify-center items-start">
+
+            {/* Background Images */}
+            <div className="block 2xl:hidden md:absolute inset-0 z-0 overflow-hidden">
                 <Image
                     src={MobileImage}
                     alt="Salon background"
@@ -28,14 +29,14 @@ export default function ProductsHero() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/95 via-(--main-450)/80 to-transparent"></div>
             </div>
-            <div className="relative ml-2 lg:ml-28 h-full flex flex-col justify-center z-20">
-                <h1 className="
-                font-(family-name:--font-aboreto) font-semibold 
-                text-6xl sm:text-7xl md:text-8xl lg:text-9xl 
-                leading-tight tracking-wider hero-background-gradient">Feel<br />Good,<br /> Look<br />Amazing.</h1>
-                <p className="font-sans text-base md:text-lg font-light tracking-widest uppercase text-(--main-100)/80 dark:text-gray-300/80 max-w-md">
-                    Step into a world of beauty and relaxation. We're here to make you shine.
+
+            {/* Text */}
+            <div className="relative px-4 lg:ml-20 flex flex-col gap-10 xl:gap-20 text-(--main-50) max-w-6xl leading-tight">
+                <h2 className="text-left font-(family-name:--font-red-hat-text) font-semi text-3xl sm:text-3xl lg:text-4xl xl:text-7xl 2xl:text-8xl">We proudly offer Davines products at our salon.</h2>
+                <p className="text-left text-lg md:text-xl font-(family-name:--font-lato) font-bold tracking-widest text-(--main-10)">
+                    Discover sustainable beauty and professional hair care with the complete Davines collection.
                 </p>
+                <button className="flex mx-auto min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 sm:h-12 sm:px-5 bg-(--main-50) text-sm font-bold leading-normal tracking-[0.015em] sm:text-base sm:font-bold sm:leading-normal sm:tracking-[0.015em] text-(--main-800)">Explore the Range</button>
             </div>
         </section>
     );

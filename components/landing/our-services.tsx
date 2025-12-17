@@ -8,7 +8,7 @@ import PageHeading from "@/components/page-heading";
 import hairBG from "../../public/landing/services-hair.jpg";
 import nailsBG from "../../public/landing/services-nails.jpg";
 import beautyBG from "../../public/landing/services-beauty.jpg";
-import productsBG from "../../public/landing/services-davines.jpg";
+import productsBG from "../../public/landing/services-davines2.jpg";
 import ScissorsSVG from "@/components/svgs/scissorsSVG";
 import NailSVG from "@/components/svgs/nailSVG";
 import BeautySVG from "../svgs/beautySVG";
@@ -81,7 +81,7 @@ export default function Services() {
                                         <p className={`service-panel-margin text-left relative text-white text-sm lg:text-lg max-w-[70ch] ${expandedPanel === service.id ? "opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-0 delay-0"}`}>
                                             {service.services[0].description}
                                             {/* <span className="block text-right w-full">see more</span> */}
-                                            {service.id === "products" ? "" : <span className="block text-right mt-2">
+                                            <span className="block text-right mt-2">
                                                 <Link
                                                     href={`/${service.id}`} // The internal route
                                                     aria-label={`View all ${service.name} services`}
@@ -93,7 +93,7 @@ export default function Services() {
                                                 >
                                                     See More
                                                 </Link>
-                                            </span>}
+                                            </span>
                                         </p>
                                     </div>
                                     <Image

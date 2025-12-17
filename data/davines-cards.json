@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "Sustainable Beauty",
+        "description": "Our commitment to making a positive impact on the planet through high-quality, eco-friendly products.",
+        "icon": "Announcement"
+    },
+    {
+        "id": 2,
+        "title": "Natural Ingredients",
+        "description": "Harnessing the power of nature with ethically sourced ingredients for unparalleled hair health.",
+        "icon": "Announcement"
+    },
+    {
+        "id": 3,
+        "title": "B-Corp Certified",
+        "description": "Proudly part of a global community using business as a force for good, meeting high standards of social and environmental performance.",
+        "icon": "Announcement"
+    }
+]

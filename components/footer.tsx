@@ -96,7 +96,7 @@ export default function Footer() {
                     </div>
                 </div>
                 {/* Bottom bar */}
-                <div className={`mt-2 border-t border-(--main-100) ${pathname === "/hair" ? "sm:pt-2" : "sm:mt-8 sm:pt-8 "} flex flex-col md:flex-row justify-center items-center gap-4`}>
+                <div className={`mt-2 border-t border-(--main-100) ${pathname === "/hair" ? "sm:pt-2 my-5" : "sm:mt-8 sm:pt-8 "} flex flex-col md:flex-row justify-center items-center gap-4`}>
                     <p className="mt-2 text-sm text-center text-(--main-50)">
                         &copy; 2025 Infinity MK. All rights reserved.
                     </p>
