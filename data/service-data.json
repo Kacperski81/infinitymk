@@ -42,7 +42,7 @@
         "services": [
             {
                 "name": "Products",
-                "description": "Discover the full range of Davines products, featuring sustainable haircare, crafted with natural ingredients for exceptional results and environmental responsibility.",
+                "description": "Discover Davines—naturally crafted, sustainable haircare for professional results.",
                 "icon": "<ProductsSVG className=\"text-(--main-50)\" />"
             }
         ]

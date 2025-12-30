@@ -1,6 +1,6 @@
 import Image from "next/image";
 import MobileImage from "../../public/products/products-background.jpg";
-import DesktopImage from "../../public/products/products-background.jpg";
+import DesktopImage from "../../public/products/products-background2.jpg";
 
 export default function ProductsHero() {
     return (
@@ -10,13 +10,14 @@ export default function ProductsHero() {
             <div className="block 2xl:hidden md:absolute inset-0 z-0 overflow-hidden">
                 <Image
                     src={MobileImage}
-                    alt="Salon background"
+                    alt="Products background"
                     priority
                     fill
                     sizes="100vw"
                     className="h-full w-full object-cover object-right"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/95 via-(--main-450)/80 to-transparent"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/95 via-(--main-450)/80 to-transparent"></div> */}
+                <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/60 via-(--main-450)/50 to-(--main-450)/70"></div>
             </div>
             <div className="hidden 2xl:block md:absolute inset-0 z-0">
                 <Image

@@ -65,3 +65,51 @@ export type HairOffer = {
     description: string;
     icon: string;
 }
+
+export type DavinesProduct = {
+    id: string;
+    internal_name: string;
+    display_name: string;
+    description: string;
+    category: string;
+    price: number;
+    price_display: string;
+    vendor: string;
+    image_url: string;
+    product_page_url: string;
+    rating: number;
+    rating_count: number;
+    position: number;
+    set_or_single: string;
+}
+
+export type DavinesProductsData = {
+    products: DavinesProduct[];
+}
+
+export type EssentialHairCareInfo = {
+  active: string;
+  props: string;
+  prod: string;
+  story: string;
+}
+
+export type EssentialHairCareProduct = {
+  name: string;
+  type: string;
+  short_description: string;
+  full_description: string;
+  usage: string;
+  price: string;
+  image: string;
+}
+
+export type EssentialHairCareFamily = {
+  family: string;
+  id: string;
+  image: string;
+  info: EssentialHairCareInfo;
+  products: EssentialHairCareProduct[];
+}
+
+export type EssentialHairCareData = EssentialHairCareFamily[];

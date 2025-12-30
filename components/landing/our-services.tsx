@@ -8,7 +8,7 @@ import PageHeading from "@/components/page-heading";
 import hairBG from "../../public/landing/services-hair.jpg";
 import nailsBG from "../../public/landing/services-nails.jpg";
 import beautyBG from "../../public/landing/services-beauty.jpg";
-import productsBG from "../../public/landing/services-davines2.jpg";
+import productsBG from "../../public/landing/services-davines.jpg";
 import ScissorsSVG from "@/components/svgs/scissorsSVG";
 import NailSVG from "@/components/svgs/nailSVG";
 import BeautySVG from "../svgs/beautySVG";

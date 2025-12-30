@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="radial-background">
+    <html lang="en" className="bg-(--main-450)">
       <body
         className={`${aboreto.variable} ${lato.variable} ${redHatText.variable} ${cormorantGaramond.variable} antialiased`}
       >

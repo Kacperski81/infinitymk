@@ -15,10 +15,7 @@ export default function ProductCards() {
                     const IconComponent = offer.icon === "Announcement" ? IconAnnouncement : IconDiscount;
                     return (
                         <div key={offer.id}
-                            className="hair-partner-logo
-                                backdrop-blur-[2px]
-                                text-(--main-50) 
-                                rounded-lg p-6 md:p-8 shadow-md hover:shadow-lg transition-shadow">
+                            className="hair-partner-logo backdrop-blur-[2px] text-(--main-50) rounded-lg p-6 md:p-8 shadow-md">
 
                             <div className="flex flex-col items-start gap-4">
                                 <div className="p-3 rounded-lg shrink">
