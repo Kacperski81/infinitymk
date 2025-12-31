@@ -77,6 +77,7 @@ export default function Services() {
                                     </h3>
 
                                     {/* Accordion content * Panel 1 content */}
+                                    {/* TODO Add the text slowly to check what is the cause for the card high shifting. This is definitely a this div, when commented out the high stays the same.  */}
                                     <div id={`${service.id}-content`} aria-labelledby={`${service.id}-heading}`} role="region" aria-hidden={service.id !== expandedPanel} className={`relative z-10`}>
                                         <p className={`service-panel-margin text-left relative text-white text-sm lg:text-lg max-w-[70ch] ${expandedPanel === service.id ? "opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-0 delay-0"}`}>
                                             {service.services[0].description}
@@ -97,10 +98,10 @@ export default function Services() {
                                         </p>
                                     </div>
                                     <Image
-                                        src={service.id === "hair" ? hairBG :
+                                        src={service.id === "hair" ? nailsBG :
                                             service.id === "nail" ? nailsBG :
-                                                service.id === "beauty" ? beautyBG :
-                                                    productsBG}
+                                                service.id === "beauty" ? nailsBG :
+                                                    nailsBG}
                                         alt={`${service.name} service image`}
                                         fill
                                         sizes="100vw"

@@ -7,12 +7,13 @@ export default function DavinesProductCard({ name }: { name: string }) {
     return (
 
         <div className="space-y-4 md:space-y-6 lg:space-y-8 mx-auto">
-            <p>{davinesProducts[0].info.active}</p>
-            <p>{davinesProducts[0].info.props}</p>
-            <p>{davinesProducts[0].info.prod}</p>
-            <p>{davinesProducts[0].info.story}</p>
+
+
             <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-6 p-2">
-                {davinesProducts[0].products.slice(0, 1).map((product) => {
+                <div className="">
+
+                
+                {davinesProducts[0].products.map((product) => {
                     return (
                         <div key={product.name} className="rounded-lg">
                             {/* Card */}
@@ -63,6 +64,8 @@ export default function DavinesProductCard({ name }: { name: string }) {
 
                     )
                 })}
+
+                </div>
             </div>
         </div >
     )

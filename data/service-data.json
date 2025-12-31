@@ -6,7 +6,7 @@
         "services": [
             {
                 "name": "Hair Services",
-                "description": "Precision cuts, vibrant colors, and nourishing treatments to bring out the best in your hair.",
+                "description": "Precision cuts, vibrant colors, and nourishing treatments to reveal the best in your hair.",
                 "icon": "<ScissorsSVG className=\"text-(--main-50)\" />"
             }
         ]
