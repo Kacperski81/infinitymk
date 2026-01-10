@@ -3,6 +3,8 @@ import { getCollectionBySlug } from "@/lib/collections";
 import type { CollectionPageProps } from "@/types";
 import BackButton from "@/components/products/back-button";
 
+export const dynamic = 'force-dynamic';
+
 export default async function CollectionPage({ params }: CollectionPageProps) {
     const { slug } = await params;
     const collection = getCollectionBySlug(slug);
