@@ -1,0 +1,96 @@
+[
+  {
+    "family": "OI",
+    "id": "oi_01",
+    "image": "/products/oi/oi-bg.jpg",
+    "info": {
+      "active": "Roucou Oil from Achiote (Annatto) seeds",
+      "props": "Rich in carotenoids, vitamin A, and selenium with protective antioxidant properties. Helps reduce damage from treatments and environmental aggressors. The OI line offers absolute beauty for all hair types through a balance of sensorial experience, versatility, and efficacy.",
+      "prod": "Roucou oil extracted from the seeds of Achiote (Annatto), a plant native to the Amazon. Products manufactured in the Davines Village powered with 100% renewable energy and carbon neutral. Bottles and jars made of post-consumer recycled plastic.",
+      "story": "The OI line was developed by the Davines Research Laboratories to offer absolute beauty for all hair types. Carbon emissions from packaging production are offset through Ethiotrees, a carbon sequestration project for nature reserve regeneration and community protection in the Tembien Highlands, Tigray region, Ethiopia."
+    },
+    "products": [
+      {
+        "name": "OI/shampoo",
+        "type": "All hair types",
+        "short_description": "Gentle shampoo designed to give amazing softness, shine and body to the hair.",
+        "full_description": "Gentle shampoo with Roucou Oil designed to give amazing softness, shine and body to the hair. The high content of carotenoids, vitamin A and selenium provides protective and antioxidant properties, reducing damage from treatments and environmental aggressors.",
+        "usage": "Apply evenly to hair and scalp and gently massage. Rinse and repeat application if necessary. Rinse off thoroughly.",
+        "price": "£0",
+        "image": "/products/oi/oi-shampoo.jpg"
+      },
+      {
+        "name": "OI/liquid luster",
+        "type": "All hair types",
+        "short_description": "Fast-acting liquid rinse-out treatment that smooths hair cuticle for healthy, shiny, silky hair.",
+        "full_description": "Fast-acting liquid rinse-out treatment formulated to smooth the hair cuticle, leaving hair feeling healthy, shiny, and silky. With Roucou Oil, Alpha-hydroxy acid from grape must to close hair cuticles and promote compactness, and Cardoon Oil for shine and manageability. Results: 6x shinier hair, 3.5x silkier hair, extreme softness.",
+        "usage": "After shampooing, apply directly to hair fully saturating from mid-lengths to ends. Rinse out and follow with conditioner or mask. See dose marker amounts on side of bottle. Tip: towel dry thoroughly to remove excess water before applying.",
+        "price": "£0",
+        "image": "/products/oi/oi-liquid-luster.jpg"
+      },
+      {
+        "name": "OI/conditioner",
+        "type": "All hair types",
+        "short_description": "Conditioning cream that gives amazing softness, shine and body while protecting from heat damage.",
+        "full_description": "Conditioning cream with Roucou Oil and a conditioning agent derived from cellulose. Gives amazing softness, shine and body to the hair while protecting the hair structure from damage caused by blow dryers, straighteners, or mechanical stress.",
+        "usage": "Apply evenly to shampooed and towel-dried hair, working section by section. Leave in for 2-3 minutes, then comb through. Rinse off thoroughly.",
+        "price": "£0",
+        "image": "/products/oi/oi-conditioner.jpg"
+      },
+      {
+        "name": "OI/hair butter",
+        "type": "All hair types",
+        "short_description": "Nourishing hair butter with immediate cosmetic effect for shine, softness, and anti-frizz.",
+        "full_description": "Nourishing hair butter for all hair types with Roucou Oil. Provides an immediate cosmetic effect with shine and softness, plus a smoothing anti-frizz effect.",
+        "usage": "Warm product onto palm before applying. For medium to thick hair: apply to towel-dried hair, leave 5-10 minutes, rinse well. For medium to fine hair: apply to dry hair, leave 10 minutes, rinse and shampoo. For extra nourishment: apply both before and after shampooing.",
+        "price": "£0",
+        "image": "/products/oi/oi-butter.jpg"
+      },
+      {
+        "name": "OI/all in one milk",
+        "type": "All hair types",
+        "short_description": "Leave-in multi-function spray treatment offering 10 benefits including shine, softness, and heat protection.",
+        "full_description": "Leave-in multi-function spray treatment with Roucou Oil, Provitamin B5, and Functional Amino Complex. Offers 10 benefits: shine, softness, silkiness, excellent detangling, improved combability for wet and dry hair, frizz control, outstanding conditioning, body without weight, moisturization, great for blow-drying, heat protection up to 230°C/446°F, and extended styling duration.",
+        "usage": "Apply 10-15 sprays to washed, towel-dried hair. Proceed with drying. Adjust sprays based on hair type. For dehydrated hair, apply after OI Conditioner. For very dehydrated hair, apply as a moisturizing finish on dry hair by spraying onto palms and distributing through lengths and ends.",
+        "price": "£0",
+        "image": "/products/oi/oi-milk.jpg"
+      },
+      {
+        "name": "OI/oil",
+        "type": "All hair types",
+        "short_description": "Multi-benefit oil for extraordinary softness, shine, detangling, and anti-frizz action.",
+        "full_description": "Formula with Roucou Oil and a blend of breathable silicone oils designed to give extraordinary softness and shine with effective detangling and anti-frizz action. The film-forming properties protect hair structure without weighing it down and considerably reduce drying time. Features intense antioxidant and anti-free radical action.",
+        "usage": "Styling: apply 2-3 pumps evenly to lengths and ends of towel-dried hair, proceed with drying. Finishing: apply 2-3 pumps to lengths and ends of dry hair. For fine hair use 1 pump; for normal hair start with 2-3 pumps and add more only if necessary.",
+        "price": "£0",
+        "image": "/products/oi/oi-oil.jpg"
+      },
+      {
+        "name": "OI/soufflé",
+        "type": "Fine to medium hair",
+        "short_description": "Weightless silkening and light bodifying foam with heat protection up to 230°C.",
+        "full_description": "Weightless silkening and light bodifying foam ideal for fine to medium hair. Contains Roucou Oil, Chicory Root Extract for detangling and softness, and a Mix of Amino Acids as a plant-based alternative to animal keratin. Gives amazing shine, light body and silkiness while protecting from heat up to 230°C/446°F. Can also provide extra softness, shine and heat protection to medium-thick hair. Results: 2.3x shinier hair.",
+        "usage": "After shampooing, add OI Soufflé to palm of hand, work through and apply to towel-dried lengths and ends, avoiding roots. Use 2 pumps for fine hair, 3-4 pumps for medium-thick hair. Do not rinse. Dry and style as desired.",
+        "price": "£0",
+        "image": "/products/oi/oi-souffle.jpg"
+      },
+      {
+        "name": "OI/body wash",
+        "type": "All skin types",
+        "short_description": "Shower gel that gently cleanses the skin, giving softness and hydration.",
+        "full_description": "Shower gel with Roucou Oil and a blend of gentle surfactants. Gently cleanses the skin while providing softness and hydration. Its creamy foam and luxurious fragrance make the daily beauty ritual an extraordinary pampering experience.",
+        "usage": "Apply the product to wet skin with your hands or using a sponge. Massage and rinse.",
+        "price": "£0",
+        "image": "/products/oi/oi-body-wash.jpg"
+      },
+      {
+        "name": "OI/hand balm",
+        "type": "All skin types",
+        "short_description": "Nourishing beautifying hand cream for long-lasting hydration.",
+        "full_description": "Nourishing beautifying hand cream with Roucou Oil, Glycerin for moisturizing and softening, and Olive Oil for nourishing and restoring. Specially formulated to moisturize the upper layers of the epidermis providing long-lasting hydration. Suitable for all skin types, leaves hands soft and silky.",
+        "usage": "Apply to hands and gently massage until fully absorbed.",
+        "price": "£0",
+        "image": "/products/oi/oi-hand-balm.jpg"
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 export default function Logo() {
     return (
-        <div className="fixed top-0 left-[50%] translate-x-[-50%] bg-transparent z-100">
+        <div className="fixed top-0 xl:top-2 left-[50%] translate-x-[-50%] bg-transparent z-100">
             <h2 className="
             px-4 pt-1
             font-logo tracking-wider 

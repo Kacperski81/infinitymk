@@ -1,0 +1,60 @@
+[
+  {
+    "family": "HEART OF GLASS",
+    "id": "heart_of_glass_01",
+    "image": "/products/heart-of-glass/hog-bg.jpg",
+    "info": {
+      "active": "Biacidic Bond Complex, Jagua Blue Extract, Baobab Extract, Fortifying Botanical Shield",
+      "props": "Biacidic Bond Complex strengthens and repairs hair bonds with maleic and fumaric acids. Jagua Blue Extract balances unwanted tones and illuminates blonde shades. Baobab Extract increases combability by up to +67% while conditioning and nourishing. Fortifying Botanical Shield from Scandinavian spruce provides thermal protection and elasticity.",
+      "prod": "Jagua fruit from Colombia. Baobab seeds sustainably sourced from South Africa. Fortifying Botanical Shield from sustainably sourced Scandinavian spruce.",
+      "story": "Heart of Glass is the illuminating line dedicated to blonde hair. A multi-functional approach for the care of blonde hair, offering up to 96.8% naturality and 96.5% biodegradability. The pack is black and shiny like a patent leather jacket, inspired by Japanese whisky bottles, with a dusty matte blue label featuring ivory flowers reminiscent of a precious feminine kimono."
+    },
+    "products": [
+      {
+        "name": "HEART OF GLASS/silkening shampoo",
+        "type": "Blonde hair",
+        "short_description": "Enhancing shampoo for blondes that gently cleanses and clarifies while providing nourishment.",
+        "full_description": "Enhancing shampoo for blondes with Jagua Blue Extract and Baobab Extract. It gently cleanses and clarifies while providing nourishment. The Jagua fruit extract balances unwanted tones while enhancing and illuminating blonde shades.",
+        "usage": "Apply to scalp and damp hair, massaging gently. Rinse thoroughly and repeat if necessary.",
+        "price": "£0",
+        "image": "/products/heart-of-glass/hog-shampoo.jpg"
+      },
+      {
+        "name": "HEART OF GLASS/instant bonding glow",
+        "type": "Blonde hair",
+        "short_description": "Reinforcing extra shine fast-acting serum that instantly repairs and strengthens the hair fibre.",
+        "full_description": "Reinforcing extra shine fast-acting serum for blondes with Illuminating Amino Concentrate, Biacidic Bond Complex, and Baobab Extract. Instantly repairs and strengthens the hair fibre, promoting extra shine, prolonging blonde colour shine and preserving its intensity. The serum texture provides immediate effectiveness and is highly moisturising without weighing hair down. Results: +37% stronger hair against breakage, 6.4x more luminous hair, luminous colour up to 6 weeks, preserves colour intensity up to 83%.",
+        "usage": "After shampooing, remove excess water, apply the product directly to lengths and ends. Massage to cover hair evenly and comb to distribute to roots. Rinse. If necessary, continue with Rich Conditioner or Intense Treatment. Apply one dose (20ml) for short hair, 2 doses (40ml) for long hair. Add one extra dose for very long or very curly hair.",
+        "price": "£0",
+        "image": "/products/heart-of-glass/hog-bonding-glow.jpg"
+      },
+      {
+        "name": "HEART OF GLASS/intense treatment",
+        "type": "Blonde hair",
+        "short_description": "Reinforcing, brightening treatment that strengthens and repairs the hair fibre.",
+        "full_description": "Intense cosmetic treatment with Biacidic Bond Complex and Baobab Extract. Strengthens and repairs the hair fibre, helping to prevent breakage, for nourished and disciplined hair. Up to +40% resistance to hair breakage when left for 5 minutes, up to +57% when left for 10 minutes.",
+        "usage": "Apply to towel-dried hair along lengths and ends. Leave on for 5-10 minutes, comb and rinse thoroughly. If needed, follow with Rich Conditioner. Use once a week, or more often if hair is very damaged.",
+        "price": "£0",
+        "image": "/products/heart-of-glass/hog-treatment.jpg"
+      },
+      {
+        "name": "HEART OF GLASS/rich conditioner",
+        "type": "Blonde hair",
+        "short_description": "Fortifying, enhancing conditioner that provides intense nourishment while strengthening hair.",
+        "full_description": "Fortifying, enhancing conditioner for blondes with Jagua Blue Extract, Biacidic Bond Complex, and Baobab Extract. Provides intense nourishment while fortifying the hair fibre. The Jagua Blue Extract balances unwanted tones while enhancing and illuminating blonde shades.",
+        "usage": "Apply to towel-dried hair along lengths and ends. Leave on for 5 minutes, then comb and rinse thoroughly. Can also be used after applying the Intense Treatment.",
+        "price": "£0",
+        "image": "/products/heart-of-glass/hog-conditioner.jpg"
+      },
+      {
+        "name": "HEART OF GLASS/sheer glaze",
+        "type": "Blonde hair",
+        "short_description": "Brightening thermal fluid that provides hydration, shine and heat protection.",
+        "full_description": "Brightening thermal fluid for blondes with Fortifying Botanical Shield, UV Filters, and Baobab Extract. Provides hydration, shine, and protects from heat and UV rays. The Fortifying Botanical Shield gives elasticity and vigour to the hair fibre while helping to extend the duration of the blow-dry.",
+        "usage": "Apply evenly 7-15 pumps on towel-dried hair, comb through and proceed with desired styling.",
+        "price": "£0",
+        "image": "/products/heart-of-glass/hog-glaze.jpg"
+      }
+    ]
+  }
+]

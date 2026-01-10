@@ -2,7 +2,7 @@
   {
     "family": "MINU",
     "id": "minu_01",
-    "image": "",
+    "image": "/products/essentials/minu/minu-bg.jpg",
     "info": {
       "active": "Salina Caper Blossom extract (Slow Food Presidium)",
       "props": "Rich in quercetin with a protective effect on hair structure and colour-protecting polyphenols.",
@@ -17,7 +17,7 @@
         "full_description": "Illuminating, protective shampoo for cosmetic colour that delivers long-lasting shine while gently cleansing without dulling the tone.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat application. Continue with MINU/conditioner or MINU/hair mask as needed.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/minu/minu-shampoo.jpg"
       },
       {
         "name": "MINU/conditioner",
@@ -26,7 +26,7 @@
         "full_description": "Illuminating, protective conditioner that boosts shine and softness while helping preserve cosmetic colour.",
         "usage": "Apply to towel-dried hair after MINU/shampoo. Leave on for 5-10 minutes, comb through, then rinse. Proceed with desired styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/minu/minu-conditioner.jpg"
       },
       {
         "name": "MINU/hair mask",
@@ -35,7 +35,7 @@
         "full_description": "Illuminating, restoring mask that provides deep nourishment and extra shine to maintain vibrant cosmetic colour.",
         "usage": "Apply to towel-dried hair after MINU/shampoo. Leave on for 10-15 minutes, comb through, then rinse. Proceed with desired styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/minu/minu-hair-mask.jpg"
       },
       {
         "name": "MINU/hair serum",
@@ -44,14 +44,14 @@
         "full_description": "Illuminating leave-in serum that adds extra shine and helps extend the duration of cosmetic colour without weighing hair down.",
         "usage": "For medium-coarse hair, apply to towel-dried hair after MINU/conditioner. For fine hair, apply directly after MINU/shampoo. Do not rinse. Proceed with desired styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/minu/minu-hair-serum.jpg"
       }
     ]
   },
   {
     "family": "NOUNOU",
     "id": "nounou_02",
-    "image": "",
+    "image": "/products/essentials/nounou/nounou-bg.jpg",
     "info": {
       "active": "Torre Guaceto Fiaschetto Tomato extract (Slow Food Presidium)",
       "props": "Rich in carbohydrates and proteins for strong nourishment, plus antioxidant Vitamin C; extract from tomato pulp delivers invigorating, nourishing care.",
@@ -61,12 +61,12 @@
     "products": [
       {
         "name": "NOUNOU/shampoo",
-        "type": "Dry hair or hair damaged by treatments like highlights, bleaching, perm or straightening",
+        "type": "Dry or damaged hair",
         "short_description": "Nourishing shampoo to give body to the hair.",
         "full_description": "Nourishing shampoo that adds body and replenishes dry or chemically treated hair with Fiaschetto Tomato extract for softness and resilience.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Continue with NOUNOU/conditioner or NOUNOU/hair mask as needed.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/nounou/nounou-shampoo.jpg"
       },
       {
         "name": "NOUNOU/conditioner",
@@ -75,7 +75,7 @@
         "full_description": "Nourishing, detangling conditioner that restores body, softness, and silkiness to dry or damaged hair, helping recover from chemical stresses.",
         "usage": "Apply to towel-dried hair after NOUNOU/shampoo. Leave on for 5-10 minutes, comb through, then rinse. Proceed with desired styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/nounou/nounou-conditioner.jpg"
       },
       {
         "name": "NOUNOU/hair mask",
@@ -84,14 +84,14 @@
         "full_description": "Intensive repairing mask that delivers deep nourishment to restore softness and strength in dry or damaged hair.",
         "usage": "Apply to towel-dried hair after NOUNOU/shampoo. Leave on for 10-15 minutes, comb through, then rinse. Proceed with desired styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/nounou/nounou-hair-mask.jpg"
       }
     ]
   },
   {
     "family": "MOMO",
     "id": "momo_09",
-    "image": "",
+    "image": "/products/essentials/momo/momo-bg.jpg",
     "info": {
       "active": "Paceco Cartucciaru Yellow Melon extract (Slow Food Presidium)",
       "props": "Rich in water, vitamins, and mineral salts, it gives prolonged hydration.",
@@ -106,7 +106,7 @@
         "full_description": "Shampoo that provides deep hydration to replenish moisture and softness in dry or dehydrated hair.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Follow with MOMO/conditioner.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/momo/momo-shampoo.jpg"
       },
       {
         "name": "MOMO/conditioner",
@@ -115,7 +115,7 @@
         "full_description": "Moisturizing, detangling conditioner that delivers softness and silkiness without weight for dry or dehydrated hair.",
         "usage": "Apply to towel-dried hair after MOMO/shampoo. Leave on for 2-5 minutes, comb through, then rinse. Proceed with desired styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/momo/momo-conditioner.jpg"
       },
       {
         "name": "MOMO/hair potion",
@@ -124,7 +124,7 @@
         "full_description": "Universal leave-in moisturizing cream that leaves hair soft and shiny without weighing it down; suitable after any Essential Haircare wash routine.",
         "usage": "Apply to towel-dried hair primarily after MOMO products or any Essential Haircare shampoo and conditioner. Can also be applied to dry hair after styling; its silky, light texture does not wet the hair.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/momo/momo-potion.jpg"
       }
     ]
   },
@@ -180,7 +180,7 @@
   {
     "family": "LOVE SMOOTHING",
     "id": "love_smooth_04",
-    "image": "",
+    "image": "/products/essentials/love-smooth/love-smooth-bg-2.jpg",
     "info": {
       "active": "Even more effective Minuta Olive extract (Slow Food Presidium)",
       "props": "Rich in fatty acids and vitamins; enzymatic water extraction boosts nourishing, elasticizing, and softening power while enhancing resistance to breakage.",
@@ -195,7 +195,7 @@
         "full_description": "Smoothing shampoo that gently cleanses and favours straightening, helping frizzy and unruly hair stay soft, pliable, and more resistant to breakage thanks to Minuta Olive extract.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Follow with LOVE/smoothing conditioner or LOVE/smoothing instant mask.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-shampoo.png"
       },
       {
         "name": "LOVE/smoothing conditioner",
@@ -204,7 +204,7 @@
         "full_description": "Smoothing conditioner that favours straightening while delivering hydration, softness, and elasticity for frizzy and unruly hair.",
         "usage": "After washing with LOVE/smoothing shampoo or LOVE/shampoo bar, remove excess water, apply, leave on 2-5 minutes, comb through, then rinse. Proceed with styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-conditioner.png"
       },
       {
         "name": "LOVE/smoothing instant mask",
@@ -213,7 +213,7 @@
         "full_description": "Fast smoothing mask that delivers immediate anti-frizz softness, reduces unwanted volume, disciplines hair, and makes straightening easier.",
         "usage": "After washing with LOVE/smoothing shampoo or LOVE/shampoo bar, remove excess water, apply, leave on for 30 seconds, comb, then rinse. Proceed with styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-instant-mask.png"
       },
       {
         "name": "LOVE/hair smoother",
@@ -247,7 +247,7 @@
   {
     "family": "LOVE CURL",
     "id": "love_curl_06",
-    "image": "",
+    "image": "/products/essentials/love-curl/love-curl-bg.jpg",
     "info": {
       "active": "Even more effective Noto Almond extract (Slow Food Presidium)",
       "props": "Rich in proteins, B vitamins, vitamin E, unsaturated fats, magnesium, iron, potassium, copper, and phosphorus; enzymatic extraction boosts moisturizing, nourishing, elasticizing, and volumizing action, mimicking natural sebum to counter curl dryness.",
@@ -332,7 +332,7 @@
   {
     "family": "SOLU",
     "id": "solu_07",
-    "image": "",
+    "image": "/products/essentials/solu/solu-bg.jpg",
     "info": {
       "active": "Valnerina Buckwheat extract (Slow Food Presidium) and Trapani Sea salt (Slow Food Presidium)",
       "props": "Buckwheat is rich in iron, zinc, selenium, proteins, and essential amino acids (lysine, threonine, tryptophan, sulphur amino acids) with strong antioxidant content. Trapani sea salt is rich in potassium and magnesium, low in sodium chloride, offering cleansing, exfoliating, and texturizing effects.",
@@ -363,7 +363,7 @@
   {
     "family": "MELU",
     "id": "melu_08",
-    "image": "",
+    "image": "/products/essentials/melu/melu-bg.jpg",
     "info": {
       "active": "Villalba Lentil Seeds extract (Slow Food Presidium)",
       "props": "Rich in serine and glutamic acid, key amino acids in keratin, to nourish and repair; lentils also provide high iron and protein with low phosphorus and potassium.",
@@ -403,7 +403,7 @@
   {
     "family": "VOLU",
     "id": "volu_05",
-    "image": "",
+    "image": "/products/essentials/volu/volu-bg.jpg",
     "info": {
       "active": "Caprauna Turnip extract (Slow Food Presidium)",
       "props": "Rich in phosphorus, iron, calcium, and vitamins A, B, and C to give body and volume.",

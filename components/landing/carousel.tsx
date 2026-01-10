@@ -21,7 +21,7 @@ export default function Carousel() {
         setSelectedIndex(prevIndex => prevIndex + number);
     }
 
-    const getImageSize = useCallback(() => {
+    const getCardSize = useCallback(() => {
         const el = containerRef.current
         if (el) {
             const width = el.offsetWidth;
@@ -63,32 +63,32 @@ export default function Carousel() {
 
     useLayoutEffect(() => {
 
-        getImageSize();
+        getCardSize();
 
         const roTarget = containerRef.current;
         if (!roTarget) return;
 
         const ro = new ResizeObserver(() => {
-            getImageSize();
+            getCardSize();
         });
         ro.observe(roTarget);
 
-        const onOrientation = () => getImageSize();
+        const onOrientation = () => getCardSize();
         window.addEventListener('orientationchange', onOrientation);
 
         return () => {
             ro.disconnect();
             window.removeEventListener('orientationchange', onOrientation);
         }
-    }, [getImageSize]);
+    }, [getCardSize]);
 
     // ensure we re-measure when images load (handles slow network / first paint)
     useEffect(() => {
         const divs = containerRef.current?.querySelectorAll('.testimonial-slide') ?? [];
-        const onLoad = () => getImageSize();
+        const onLoad = () => getCardSize();
         divs.forEach(div => div.addEventListener('load', onLoad));
         return () => divs.forEach(div => div.removeEventListener('load', onLoad));
-    }, [testimonials, getImageSize]);
+    }, [testimonials, getCardSize]);
 
 
     return (
@@ -107,30 +107,8 @@ export default function Carousel() {
                                 backgroundImage: `url(${testimonial.backgroundImage})`,
                                 backgroundPosition: `${testimonial.id === 1 || 4 ? 'top' : 'bottom'}`
                             }}
-                            className="
-                            min-w-full
-                            max-w-[700px]
-                            relative
-                            isolate
-                            bg-cover
-                            bg-no-repeat
-                            flex
-                            p-2
-                            justify-center
-                            items-start
-                            rounded-2xl
-                            overflow-hidden">
-                            <div className="
-                                rounded-md
-                                px-4
-                                py-2
-                                isolate
-                                z-1
-                                text-(--main-50)
-                                w-full
-                                sm:w-3/4
-                                text-center
-                                ">
+                            className="min-w-full max-w-[700px] relative isolate bg-cover bg-no-repeat flex p-2 justify-center items-start rounded-2xl overflow-hidden">
+                            <div className="rounded-md px-4 py-2 isolate z-1 text-(--main-50) w-full sm:w-3/4 text-center">
 
                                 {/* Rating Stars */}
                                 <div className="flex gap-1 mb-2 justify-center">

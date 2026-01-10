@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "essential-hair-care",
+    "name": "Essential Hair Care",
+    "description": "Daily rituals powered by Slow Food Presidia ingredients for every hair type and need.",
+    "image": "/products/collections/essential-hair-care.jpg",
+    "families": ["minu", "nounou", "momo", "dede", "love-smoothing", "love-curl", "solu", "melu", "volu"]
+  },
+  {
+    "slug": "oi",
+    "name": "OI",
+    "description": "Absolute beautifying products for extraordinary softness and shine.",
+    "image": "/products/collections/oi.jpg",
+    "families": ["oi"]
+  },
+  {
+    "slug": "heart-of-glass",
+    "name": "Heart of Glass",
+    "description": "Illuminating care for blonde and chemically treated hair.",
+    "image": "/products/collections/heart-of-glass.jpg",
+    "families": ["heart-of-glass"]
+  }
+]

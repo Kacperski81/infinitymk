@@ -39,7 +39,7 @@ export default function AnimatedMenu() {
           // md:top-2 md:right-2 z-100 md:w-10 md:h-10
 
           /* Desktop */
-          lg:top-1/2 lg:-translate-y-1/2 lg:left-1
+          lg:top-1/2 lg:-translate-y-1/2 lg:left-4
         `}
         aria-label={isOpen ? "Close menu" : "Open menu"}
       >

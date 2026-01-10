@@ -113,3 +113,28 @@ export type EssentialHairCareFamily = {
 }
 
 export type EssentialHairCareData = EssentialHairCareFamily[];
+
+
+// Hair type browser types
+
+export type BrowseMode = "collection" | "hair-type";
+
+// Collections types
+
+export type Collection = {
+  slug: string;
+  name: string;
+  description: string;
+  image: string;
+  families: string[];
+}
+
+export type HairTypeFilter = {
+  label: string;
+  familyId: string;
+  icon?: string;
+}
+
+export type CollectionPageProps = {
+    params: Promise<{ slug: string }>;
+};

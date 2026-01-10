@@ -73,7 +73,7 @@
   --font-logo: var(--font-red-hat-text);
   --muted-foreground: var(--main-800);
   --background: var(--450);
-  --foreground: var(--main-900);
+  --foreground: var(--main-50);
 
 }
 
