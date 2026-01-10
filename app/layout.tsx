@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Aboreto, Lato, Red_Hat_Text, Cormorant_Garamond } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 
 import AnimatedMenu from "@/components/frame/animated-menu";
@@ -55,7 +56,9 @@ export default function RootLayout({
           <div className="relative w-full max-w-[2000px]">
             <Logo />
             <Frame />
-            <AnimatedMenu />
+            <Suspense fallback={null}>
+              <AnimatedMenu />
+            </Suspense>
             {children}
             {/* <Footer /> */}
           </div>
