@@ -1,9 +1,14 @@
 import { notFound } from "next/navigation";
-import { getCollectionBySlug } from "@/lib/collections";
+import { getCollections, getCollectionBySlug } from "@/lib/collections";
 import type { CollectionPageProps } from "@/types";
 import BackButton from "@/components/products/back-button";
 
-export const dynamic = 'force-dynamic';
+export async function generateStaticParams() {
+  const collections = getCollections();
+  return collections.map((collection) => ({
+    slug: collection.slug,
+  }));
+}
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
     const { slug } = await params;
