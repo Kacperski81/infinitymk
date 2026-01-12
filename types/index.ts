@@ -138,3 +138,15 @@ export type HairTypeFilter = {
 export type CollectionPageProps = {
     params: Promise<{ slug: string }>;
 };
+
+export type tag = {
+    id: string;
+    label: string;
+}
+
+export type BrowseTags = {
+    tags: tag[];
+    typeToTagIds: {
+        [key: string]: string[];
+    }
+}

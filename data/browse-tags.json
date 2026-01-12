@@ -1,0 +1,28 @@
+{
+  "tags": [
+    { "id": "hair-all", "label": "All Hair" },
+    { "id": "hair-blonde", "label": "Blonde" },
+    { "id": "hair-colour", "label": "Coloured Hair" },
+    { "id": "hair-dry-damaged", "label": "Dry / Damaged" },
+    { "id": "hair-frizz", "label": "Frizz Control" },
+    { "id": "hair-curl", "label": "Wavy / Curly" },
+    { "id": "hair-fine-volume", "label": "Fine / Volume" },
+    { "id": "skin-all", "label": "Skin & Body" }
+  ],
+  "typeToTagIds": {
+    "All hair types": ["hair-all"],
+    "All hair types (daily use)": ["hair-all"],
+    "Blonde hair": ["hair-blonde"],
+    "Coloured hair": ["hair-colour"],
+    "Dry or damaged hair": ["hair-dry-damaged"],
+    "Dry or dehydrated hair": ["hair-dry-damaged"],
+    "Long or damaged hair": ["hair-dry-damaged"],
+    "Frizzy and unruly hair": ["hair-frizz"],
+    "Coarse or frizzy hair": ["hair-frizz"],
+    "Wavy or curly hair": ["hair-curl"],
+    "Wavy to very curly hair": ["hair-curl"],
+    "Fine or limp hair": ["hair-fine-volume"],
+    "Fine to medium hair": ["hair-fine-volume"],
+    "All skin types": ["skin-all"]
+  }
+}
