@@ -87,14 +87,14 @@ export type DavinesProductsData = {
     products: DavinesProduct[];
 }
 
-export type EssentialHairCareInfo = {
+export type DavinesHairCareInfo = {
   active: string;
   props: string;
   prod: string;
   story: string;
 }
 
-export type EssentialHairCareProduct = {
+export type DavinesHairCareProduct = {
   name: string;
   type: string;
   short_description: string;
@@ -104,22 +104,22 @@ export type EssentialHairCareProduct = {
   image: string;
 }
 
-export type EssentialHairCareFamily = {
+export type DavinesHairCareFamily = {
   family: string;
   id: string;
   image: string;
-  info: EssentialHairCareInfo;
-  products: EssentialHairCareProduct[];
+  info: DavinesHairCareInfo;
+  products: DavinesHairCareProduct[];
 }
 
-export type EssentialHairCareData = EssentialHairCareFamily[];
+export type DavinesHairCareData = DavinesHairCareFamily[];
 
 
-// Hair type browser types
+// Hair type browser types (used by alternate page implementations)
 
 export type BrowseMode = "collection" | "hair-type";
 
-// Collections types
+// Products types
 
 export type Collection = {
   slug: string;
@@ -150,3 +150,9 @@ export type BrowseTags = {
         [key: string]: string[];
     }
 }
+
+export type ProductsPageProps = {
+    searchParams: Promise<{
+        tag?: string;
+    }>;
+};

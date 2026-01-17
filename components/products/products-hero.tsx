@@ -1,10 +1,8 @@
 import Image from "next/image";
-import MobileImage from "../../public/products/products-background.jpg";
 import DesktopImage from "../../public/products/products-background2.jpg";
 import HeroButton from "@/components/products/hero-button";
-import type { BrowseMode } from "@/types";
 
-export default function ProductsHero({ handleBrowseModeChange }: { handleBrowseModeChange: (mode: BrowseMode) => void }) {
+export default function ProductsHero() {
     
     return (
         <section className="px-2 relative min-h-screen inset-0 overflow-hidden flex flex-col justify-center items-start">
@@ -12,12 +10,12 @@ export default function ProductsHero({ handleBrowseModeChange }: { handleBrowseM
             {/* Background Images */}
             <div className="block 2xl:hidden md:absolute inset-0 z-0 overflow-hidden">
                 <Image
-                    src={MobileImage}
+                    src={DesktopImage}
                     alt="Products background"
                     priority
                     fill
                     sizes="100vw"
-                    className="h-full w-full object-cover object-right"
+                    className="h-full w-full object-cover object-center"
                 />
                 {/* <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/95 via-(--main-450)/80 to-transparent"></div> */}
                 <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/60 via-(--main-450)/50 to-(--main-450)/70"></div>
@@ -31,7 +29,8 @@ export default function ProductsHero({ handleBrowseModeChange }: { handleBrowseM
                     sizes="100vw"
                     className="h-full w-full object-cover object-right"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/95 via-(--main-450)/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/80 via-(--main-450)/70 to-transparent"></div>
+                 {/* <div className="absolute inset-0 bg-(--main-450)/50"></div> */}
             </div>
 
             {/* Text */}
@@ -41,8 +40,7 @@ export default function ProductsHero({ handleBrowseModeChange }: { handleBrowseM
                     Discover sustainable beauty and professional hair care with the Davines collection.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <HeroButton label="Explore by Hair Type" handleBrowseModeChange={() => handleBrowseModeChange('hair-type')} />
-                    <HeroButton label="Explore by Collection" handleBrowseModeChange={() => handleBrowseModeChange('collection')} />
+                    <HeroButton label="Explore by Hair Type" href="/products#products-section" />
                 </div>
             </div>
         </section>

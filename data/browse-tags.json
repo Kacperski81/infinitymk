@@ -1,6 +1,7 @@
 {
   "tags": [
-    { "id": "hair-all", "label": "All Hair" },
+    { "id": "all-products", "label": "All Products" },
+    { "id": "hair-all", "label": "All Hair Types" },
     { "id": "hair-blonde", "label": "Blonde" },
     { "id": "hair-colour", "label": "Coloured Hair" },
     { "id": "hair-dry-damaged", "label": "Dry / Damaged" },
@@ -10,8 +11,8 @@
     { "id": "skin-all", "label": "Skin & Body" }
   ],
   "typeToTagIds": {
-    "All hair types": ["hair-all"],
-    "All hair types (daily use)": ["hair-all"],
+    "All hair types": ["all-products"],
+    "All hair types (daily use)": ["all-products"],
     "Blonde hair": ["hair-blonde"],
     "Coloured hair": ["hair-colour"],
     "Dry or damaged hair": ["hair-dry-damaged"],

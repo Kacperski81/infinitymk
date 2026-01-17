@@ -1,14 +1,14 @@
 import Image from "next/image";
-import type { EssentialHairCareFamily, EssentialHairCareProduct } from "@/types";
+import type { DavinesHairCareFamily, DavinesHairCareProduct } from "@/types";
 import DavinesCarousel from "./davines-carousel";
 import FlexibleCarousel from "../ui/flexible-carousel";
 import DavinesProductCard from "./davines-product-card";
 
 type ProductFamilySectionProps = {
-    family: EssentialHairCareFamily;
+    family: DavinesHairCareFamily;
 };
 
-function ProductCard({ product }: { product: EssentialHairCareProduct }) {
+function ProductCard({ product }: { product: DavinesHairCareProduct }) {
     return (
         <div className="rounded-lg bg-(--card) flex flex-col">
             {/* Product Image */}

@@ -190,34 +190,34 @@
     "products": [
       {
         "name": "LOVE/smoothing shampoo",
-        "type": "Frizzy and unruly hair ",
+        "type": "Frizzy and unruly hair",
         "short_description": "Gently cleanses and favours straightening.",
         "full_description": "Smoothing shampoo that gently cleanses and favours straightening, helping frizzy and unruly hair stay soft, pliable, and more resistant to breakage thanks to Minuta Olive extract.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Follow with LOVE/smoothing conditioner or LOVE/smoothing instant mask.",
         "price": "£0",
-        "image": "/products/essentials/love-smooth/love-smooth-shampoo.png"
+        "image": ""
       },
       {
         "name": "LOVE/smoothing conditioner",
-        "type": "Frizzy and unruly hair ",
+        "type": "Frizzy and unruly hair",
         "short_description": "Favours straightening while providing hydration.",
         "full_description": "Smoothing conditioner that favours straightening while delivering hydration, softness, and elasticity for frizzy and unruly hair.",
         "usage": "After washing with LOVE/smoothing shampoo or LOVE/shampoo bar, remove excess water, apply, leave on 2-5 minutes, comb through, then rinse. Proceed with styling.",
         "price": "£0",
-        "image": "/products/essentials/love-smooth/love-smooth-conditioner.png"
+        "image": ""
       },
       {
         "name": "LOVE/smoothing instant mask",
-        "type": "Frizzy and unruly hair ",
+        "type": "Frizzy and unruly hair",
         "short_description": "Fast-acting mask that adds softness and an immediate anti-frizz effect.",
         "full_description": "Fast smoothing mask that delivers immediate anti-frizz softness, reduces unwanted volume, disciplines hair, and makes straightening easier.",
         "usage": "After washing with LOVE/smoothing shampoo or LOVE/shampoo bar, remove excess water, apply, leave on for 30 seconds, comb, then rinse. Proceed with styling.",
         "price": "£0",
-        "image": "/products/essentials/love-smooth/love-smooth-instant-mask.png"
+        "image": ""
       },
       {
         "name": "LOVE/hair smoother",
-        "type": "Frizzy and unruly hair ",
+        "type": "Frizzy and unruly hair",
         "short_description": "Invisible leave-on anti-frizz cream that leaves hair soft and shiny.",
         "full_description": "Invisible leave-on anti-frizz cream with no residue that smooths, softens, and adds shine while helping control humidity-induced frizz.",
         "usage": "Apply to towel-dried hair after LOVE/smoothing conditioner or LOVE/smoothing instant mask. Do not rinse. Proceed with styling.",
@@ -226,7 +226,7 @@
       },
       {
         "name": "LOVE/smoothing perfector",
-        "type": "Frizzy and unruly hair ",
+        "type": "Frizzy and unruly hair",
         "short_description": "Anti-frizz serum providing thermal protection up to 230°C.",
         "full_description": "Smoothing anti-frizz serum that adds shine, control, and thermal protection up to 230°C for easier styling.",
         "usage": "Apply 2-6 pumps evenly to towel-dried hair after LOVE/smoothing conditioner or LOVE/smoothing instant mask. Proceed with styling.",
@@ -235,7 +235,7 @@
       },
       {
         "name": "LOVE/shampoo bar",
-        "type": "Coarse or frizzy hair ",
+        "type": "Coarse or frizzy hair",
         "short_description": "Smoothing solid shampoo providing discipline and softness.",
         "full_description": "Smoothing solid shampoo bar that disciplines coarse or frizzy hair with a rich, creamy lather, leaving it soft and controlled.",
         "usage": "Wet bar, rub on palms to create lather, apply to wet hair and rinse.",

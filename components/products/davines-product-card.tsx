@@ -67,11 +67,11 @@ export default function DavinesProductCard({ name }: { name: string }) {
     return (
 
         // <div className="space-y-4 md:space-y-6 lg:space-y-8 mx-auto">
-        <div ref={containerRef} className="overflow-hidden">
+        <div ref={containerRef} className="overflow-hidden rounded-lg">
 
             {/* <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-6 p-2"> */}
             {/* Carousel Container */}
-            <div className="flex relative">
+            <div className="flex relative overflow-hidden">
 
                 {/* Carousel Slide */}
                 <div className="w-full h-full min-h-full flex" style={getCarouselStyle()}>

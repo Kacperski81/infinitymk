@@ -1,9 +1,9 @@
 import essentialHairCare from "@/data/essential-hair-care.json";
 import oiData from "@/data/oi.json";
 import heartOfGlassData from "@/data/heart-of-glass.json";
-import type { EssentialHairCareData, EssentialHairCareFamily } from "@/types";
+import type { DavinesHairCareData, DavinesHairCareFamily } from "@/types";
 
-export function getEssentialHairCare(name: string): EssentialHairCareData {
+export function getEssentialHairCare(name: string): DavinesHairCareData {
     const data = essentialHairCare;
     const normalizedName = name.toLowerCase().replace(/-/g, ' ');
     
@@ -33,19 +33,19 @@ export function getEssentialHairCare(name: string): EssentialHairCareData {
     }
 }
 
-export function getAllEssentialHairCareFamilies(): EssentialHairCareData {
-    return essentialHairCare as EssentialHairCareData;
+export function getAllEssentialHairCareFamilies(): DavinesHairCareData {
+    return essentialHairCare as DavinesHairCareData;
 }
 
-export function getOiFamilies(): EssentialHairCareData {
-    return oiData as EssentialHairCareData;
+export function getOiFamilies(): DavinesHairCareData {
+    return oiData as DavinesHairCareData;
 }
 
-export function getHeartOfGlassFamilies(): EssentialHairCareData {
-    return heartOfGlassData as EssentialHairCareData;
+export function getHeartOfGlassFamilies(): DavinesHairCareData {
+    return heartOfGlassData as DavinesHairCareData;
 }
 
-export function getCollectionFamilies(collectionSlug: string): EssentialHairCareData {
+export function getCollectionFamilies(collectionSlug: string): DavinesHairCareData {
     switch (collectionSlug) {
         case 'essential-hair-care':
             return getAllEssentialHairCareFamilies();
