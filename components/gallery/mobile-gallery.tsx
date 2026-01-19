@@ -1,6 +1,6 @@
 import PageHeading from "@/components/page-heading";
 import type { CarouselItem } from "@/types";
-import { use, useState } from "react";
+import { useState } from "react";
 import LightBox from "@/components/gallery/light-box";
 
 export default function MobileGallery({ pictures }: { pictures: CarouselItem[] }) {

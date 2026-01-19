@@ -152,10 +152,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* :root {
     --background: var(--main-900);
     --foreground: var(--main-50);
-  }
+  } */
 }
 
 body {
