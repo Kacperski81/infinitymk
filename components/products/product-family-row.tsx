@@ -1,15 +1,16 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import type { DavinesHairCareFamily } from "@/types"
-import ProductCard from "./product-card"
-import ProductCardSmall from "./product-card-small"
+import type { DavinesHairCareFamily, DavinesHairCareProduct } from "@/types"
+import DavinesProductCard from "./davines-product-card"
+import SmallProductCard from "./small-product-card"
 
 type DavinesHairCareFamilyRowProps = {
     family: DavinesHairCareFamily
 }
 
 export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFamilyRowProps) {
+    const [selectedProduct, setSelectedProduct] = useState<DavinesHairCareProduct | null>(null)
     const scrollContainerRef = useRef<HTMLDivElement>(null)
     const [canScrollLeft, setCanScrollLeft] = useState(false)
     const [canScrollRight, setCanScrollRight] = useState(false)
@@ -68,6 +69,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                         aria-label="Scroll left"
                     >
                         {/* <ChevronLeft className="w-5 h-5" /> */}
+                        previous
                     </button>
                 )}
 
@@ -87,7 +89,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                             className="flex-shrink-0 w-[calc(100%-1rem)] sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] lg:w-[calc(25%-0.75rem)]"
                             style={{ minWidth: "260px", maxWidth: "320px" }}
                         >
-                            <ProductCardSmall product={product} familyName={family.family} />
+                            <SmallProductCard product={product} familyName={family.family} onClick={() => setSelectedProduct(product)}/>
                         </div>
                     ))}
                 </div>
@@ -102,17 +104,20 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                         aria-label="Scroll right"
                     >
                         {/* <ChevronRight className="w-5 h-5" /> */}
+                        next
                     </button>
                 )}
 
                 {/* Scroll Indicator (gradient fade) */}
                 {showControls && canScrollRight && (
-                    <div className="absolute right-0 top-0 bottom-4 w-16 bg-gradient-to-l from-(--main-900) to-transparent pointer-events-none" />
+                    <div className="" />
                 )}
                 {showControls && canScrollLeft && (
-                    <div className="absolute left-0 top-0 bottom-4 w-16 bg-gradient-to-r from-(--main-900) to-transparent pointer-events-none" />
+                    <div className="" />
                 )}
             </div>
+
+            {selectedProduct && <DavinesProductCard product={selectedProduct} family={family} onClose={() => setSelectedProduct(null)} />}
         </div>
     )
 }

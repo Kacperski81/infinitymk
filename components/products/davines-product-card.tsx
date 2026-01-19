@@ -1,146 +1,132 @@
-"use client";
+"use client"
 
-import { useState, useRef, useCallback, useLayoutEffect } from "react";
-import { getEssentialHairCare } from "@/lib/essential-hair-care";
-import RightArrow from "@/components/svgs/right-arrow";
-import LeftArrow from "@/components/svgs/left-arrow";
+import { useEffect, useState } from "react"
+import IconCloseCircle from "@/components/svgs/close-circle"
+import type { DavinesHairCareProduct, DavinesHairCareFamily } from "@/types"
 
-export default function DavinesProductCard({ name }: { name: string }) {
-    const davinesProducts = getEssentialHairCare(name);
-    const [selectedIndex, setSelectedIndex] = useState<number>(0);
-    const [containerDimensions, setContainerDimensions] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
-    const [isSliderEnd, setIsSliderEnd] = useState<boolean>(false)
-    const containerRef = useRef<HTMLDivElement>(null);
-    // console.log("Davines products:", davinesProducts);
+type ExpandedProductCardProps = {
+  product: DavinesHairCareProduct
+  family: DavinesHairCareFamily
+  onClose: () => void
+}
 
-    // navigation
-    const navigate = (number: 1 | -1) => {
-        console.log("Navigating:", number);
-        console.log("Selected index before navigation:", selectedIndex);
-        if (selectedIndex <= 0 && number === -1) return;
-        if (selectedIndex >= davinesProducts[0].products.length - 1 && number === 1) return;
-        setSelectedIndex(prevIndex => prevIndex + number);
+export default function DavinesProductCard({ product, family, onClose }: ExpandedProductCardProps) {
+  const [isVisible, setIsVisible] = useState(false)
+
+  // Trigger animation after mount
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      setIsVisible(true)
+    })
+  }, [])
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = "unset"
     }
+  }, [])
 
-    const getCardSize = useCallback(() => {
-        const el = containerRef.current
-        if (el) {
-            const width = el.offsetWidth;
-            const height = el.offsetHeight;
-            setContainerDimensions({ width, height });
-            // console.log({ width, height })
-            return { width, height }
-        }
-        return { width: 0, height: 0 }
-    }, []);
-
-    const getCarouselStyle = () => {
-
-        return {
-            transform: `translateX(-${containerDimensions.width * selectedIndex}px)`,
-            transition: `${isSliderEnd ? 'none' : 'transform 500ms ease-in-out'}`
-        }
+  // Close on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose()
     }
+    window.addEventListener("keydown", handleEscape)
+    return () => window.removeEventListener("keydown", handleEscape)
+  }, [])
 
-    useLayoutEffect(() => {
+  const handleClose = () => {
+    setIsVisible(false)
+    setTimeout(onClose, 300)
+  }
 
-        getCardSize();
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
 
-        const roTarget = containerRef.current;
-        if (!roTarget) return;
+      {/* Modal */}
+      <div
+        className="relative bg-card rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-card-foreground/10 hover:bg-card-foreground/20 transition-colors"
+          aria-label="Close modal"
+        >
+          <IconCloseCircle  />
+        </button>
 
-        const ro = new ResizeObserver(() => {
-            getCardSize();
-        });
-        ro.observe(roTarget);
-
-        const onOrientation = () => getCardSize();
-        window.addEventListener('orientationchange', onOrientation);
-
-        return () => {
-            ro.disconnect();
-            window.removeEventListener('orientationchange', onOrientation);
-        }
-    }, [getCardSize]);
-
-
-    return (
-
-        // <div className="space-y-4 md:space-y-6 lg:space-y-8 mx-auto">
-        <div ref={containerRef} className="overflow-hidden rounded-lg">
-
-            {/* <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-1 gap-6 p-2"> */}
-            {/* Carousel Container */}
-            <div className="flex relative overflow-hidden">
-
-                {/* Carousel Slide */}
-                <div className="w-full h-full min-h-full flex" style={getCarouselStyle()}>
-
-
-                    {davinesProducts[0].products.map((product) => {
-                        return (
-                            <div key={product.name} className="rounded-lg min-w-full bg-white">
-                                {/* Card */}
-                                <div className="mx-auto grid xl:grid-cols-2 rounded-lg bg-(--card)">
-
-                                    {/* Product Image */}
-                                    <div className="w-full h-full p-2">
-                                        <img className="w-full h-full object-cover object-center xl:rounded-l-lg overflow-hidden" src={product.image} />
-                                    </div>
-
-                                    {/* Product Details */}
-                                    <div className="flex flex-col justify-between p-8 lg:p-12">
-                                        <div className="space-y-6">
-                                            <div>
-                                                <p className="text-sm uppercase tracking-wider mb-2 font-medium text--muted-foreground">{product.type}</p>
-                                                <h3 className="text-4xl lg:text-5xl font-light tracking-tight text-foreground">{product.name}</h3>
-                                            </div>
-
-                                            <p className="text-lg leading-relaxed">
-                                                {product.short_description}
-                                            </p>
-
-                                            <div className="pt-6 border-t">
-                                                <p className="text-base leading-relaxed mb-6">
-                                                    {product.full_description}
-                                                </p>
-                                                <div className="space-y-2">
-                                                    <h4 className="text-sm uppercase tracking-wider font-medium">
-                                                        HOW TO USE
-                                                    </h4>
-                                                    <p className="text-sm leading-relaxed">
-                                                        {product.usage}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center justify-between pt-8 mt-8 border-t">
-                                            <div>
-                                                <p className="text-3xl font-light">{product.price}</p>
-                                                <p className="text-xs mt-1">Available in-store</p>
-                                            </div>
-                                            <button className="hidden px-4 py-2 min-w-[140px]">Add To Cart</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        )
-                    })}
-
+        <div className="grid md:grid-cols-2 md:items-center bg-card px-2">
+          {/* Image */}
+          <div className="relative aspect-square bg-muted rounded-lg overflow-hidden">
+            {product.image ? (
+              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-(--main-400)">
+                <div className="text-center p-4">
+                  <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-(--main-600)/50 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-(--main-400)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-xs">Image coming soon</span>
                 </div>
+              </div>
+            )}
+          </div>
 
-                {/* Buttons */}
-                <div className="">
-                    <button className="block absolute top-1/2 transform -translate-y-1/2 bottom-0 cursor-pointer left-0 w-10 h-10 " onClick={() => navigate(-1)}>
-                        <LeftArrow />
-                    </button>
-                    <button className="block absolute top-1/2 transform -translate-y-1/2 bottom-0 cursor-pointer right-0 w-10 h-10 " onClick={() => navigate(1)}>
-                        <RightArrow />
-                    </button>
-                </div>
+          {/* Content */}
+          <div className="p-6 md:p-8 space-y-6">
+            <div>
+              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
+                {family.family} • {product.type}
+              </p>
+              <h2 className="text-2xl md:text-3xl font-light text-card-foreground">{product.name}</h2>
             </div>
-        </div >
-    )
+
+            <p className="text-card-foreground/80 leading-relaxed">{product.full_description}</p>
+
+            <div className="pt-4 border-t border-border space-y-4">
+              <div className="flex items-start gap-3">
+                <div>
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">How to Use</p>
+                  <p className="text-sm text-card-foreground/80 leading-relaxed">{product.usage}</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+
+                <div>
+                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">Key Ingredient</p>
+                  <p className="text-sm text-card-foreground/80 leading-relaxed">{family.info.active}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-6 border-t border-border">
+              <div>
+                <p className="text-xl font-medium text-card-foreground">
+                  {product.price}
+                </p>
+                <p className="text-sm text-muted-foreground">Available in-store</p>
+              </div>
+
+              {/* <button className="px-6 py-3 bg-card-foreground text-card rounded-sm text-sm font-medium tracking-wide hover:bg-card-foreground/90 transition-colors">
+                Add to Cart
+              </button> */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }

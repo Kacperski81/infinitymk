@@ -42,10 +42,36 @@
   --red-200: hsl(0, 65%, 85%);
   --red-300: hsl(0, 80%, 70%);
 
+  /* Semantic tokens */
   --background: var(--main-450);
-  --foreground: var(--main-900);
+  --foreground: var(--main-50);
   --card: var(--main-150);
-  
+  --card-foreground: var(--main-800);
+  --popover: var(--main-50);
+  --popover-foreground: var(--main-800);
+  --primary: var(--main-100);
+  --primary-foreground: var(--main-800);
+  --secondary: var(--main-500);
+  --secondary-foreground: var(--main-50);
+  --muted: var(--main-400);
+  --muted-foreground: var(--main-200);
+  --accent: var(--main-200);
+  --accent-foreground: var(--main-800);
+  --destructive: hsl(0, 65%, 50%);
+  --destructive-foreground: var(--main-50);
+  --border: var(--main-300);
+  --input: var(--main-300);
+  --ring: var(--main-200);
+  --radius: 0.5rem;
+
+  --sidebar: var(--main-150);
+  --sidebar-foreground: var(--main-800);
+  --sidebar-primary: var(--main-500);
+  --sidebar-primary-foreground: var(--main-50);
+  --sidebar-accent: var(--main-100);
+  --sidebar-accent-foreground: var(--main-800);
+  --sidebar-border: var(--main-200);
+  --sidebar-ring: var(--main-300);
 
   /* Frame variables */
   --top-frame-width: 2;
@@ -67,13 +93,61 @@
   }
 }
 
+.dark {
+  --background: var(--main-900);
+  --foreground: var(--main-100);
+  --card: var(--main-800);
+  --card-foreground: var(--main-100);
+  --popover: var(--main-800);
+  --popover-foreground: var(--main-100);
+  --primary: var(--main-300);
+  --primary-foreground: var(--main-900);
+  --secondary: var(--main-700);
+  --secondary-foreground: var(--main-100);
+  --muted: var(--main-700);
+  --muted-foreground: var(--main-300);
+  --accent: var(--main-600);
+  --accent-foreground: var(--main-100);
+  --border: var(--main-600);
+  --input: var(--main-600);
+  --ring: var(--main-400);
+}
+
 @theme inline {
   --font-sans: var(--font-lato);
   --font-serif: var(--font-cormorant-garamond);
   --font-logo: var(--font-red-hat-text);
-  --muted-foreground: var(--main-800);
-  --background: var(--450);
-  --foreground: var(--main-50);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
 }
 
@@ -125,8 +199,8 @@ body {
 
 .icon-cheveron-left-circle,
 .icon-cheveron-right-circle {
-    width: 2rem;
-    height: 2rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 /* index.html */
@@ -233,104 +307,110 @@ body {
 }
 
 .desktop-gallery {
-    --n: 1; /* number of rows*/
-    --m: 5; /* number of columns */
-    --g: 2px; /* control the gap */
-    --f: .8; /* control the scale factor */
+  --n: 1;
+  /* number of rows*/
+  --m: 5;
+  /* number of columns */
+  --g: 2px;
+  /* control the gap */
+  --f: .8;
+  /* control the scale factor */
 
-    display: grid;
-    gap: var(--g);
-    width: 70vw;
-    height: 70vh;
-    max-width: 100%;
-    /* aspect-ratio: 3/2; */
-    grid-template-columns: repeat(var(--m), auto);
-    img {
-        width: 0;
-        height: 0;
-        min-height: 100%;
-        min-width: 100%;
-        object-fit: cover;
-        object-position: bottom center;
-        cursor: pointer;
-        filter: grayscale(60%);
-        transition: .35s linear;
+  display: grid;
+  gap: var(--g);
+  width: 70vw;
+  height: 70vh;
+  max-width: 100%;
+  /* aspect-ratio: 3/2; */
+  grid-template-columns: repeat(var(--m), auto);
 
-        &:hover {
-            filter: grayscale(0);
-            width: calc(35vh*var(--f)/var(--n));
-            height: calc(100vw*var(--f)/var(--m));
-        }
+  img {
+    width: 0;
+    height: 0;
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: bottom center;
+    cursor: pointer;
+    filter: grayscale(60%);
+    transition: .35s linear;
+
+    &:hover {
+      filter: grayscale(0);
+      width: calc(35vh*var(--f)/var(--n));
+      height: calc(100vw*var(--f)/var(--m));
     }
+  }
 }
 
 .scroller {
-    position: relative;
+  position: relative;
 }
 
 .scroller_inner {
-    display: inline-flex;
-    gap: 10px;
-    width: max-content;
-    will-change: transform;
-    backface-visibility: hidden;
+  display: inline-flex;
+  gap: 10px;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .scroller[data-animated="true"] .scroller__inner {
-    animation: scroll 40s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 
 @keyframes scroll {
-    from {
-        transform: translate3d(0, 0, 0);
-    }
-    to {
-        transform: translate3d(calc(-50% - 5px), 0, 0);
-    }
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 5px), 0, 0);
+  }
 }
 
 
 .scroller::before,
 .scroller::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 80px;
-    pointer-events: none;
-    z-index: 10;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 10;
 
-    @media (min-width: 768px) {
-        width: 100px;
-    } 
+  @media (min-width: 768px) {
+    width: 100px;
+  }
 
-    @media (min-width: 1280px) {
-        width: 200px;
-    }
-        
+  @media (min-width: 1280px) {
+    width: 200px;
+  }
+
 }
 
 .scroller::before {
-    left: 0;
-    
+  left: 0;
+
 }
 
 .scroller::after {
-    right: 0;
-    /* background: linear-gradient(to left, var(--main-400), transparent); */
+  right: 0;
+  /* background: linear-gradient(to left, var(--main-400), transparent); */
 
 }
 
 .hair-partner-logo::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    border-radius: inherit;
-    border: 1px solid transparent;
-    background: linear-gradient(var(--main-100), var(--main-500)) border-box;
-    mask:
-        linear-gradient(black, black) border-box,
-        linear-gradient(black, black) padding-box;
-    mask-composite: subtract;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(var(--main-100), var(--main-500)) border-box;
+  mask:
+    linear-gradient(black, black) border-box,
+    linear-gradient(black, black) padding-box;
+  mask-composite: subtract;
 }

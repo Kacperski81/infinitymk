@@ -1,5 +1,5 @@
 import { getBrowseTags } from "@/lib/browse-tabs";
-import { filterProductsByFamily, getAllFamilies, getAllProducts } from "@/lib/davines-products";
+import { filterProductsByFamily, getAllFamilies } from "@/lib/davines-products";
 import type { DavinesHairCareFamily } from "@/types/index";
 import HairTypeFilters from "@/components/products/hair-type-filters";
 import ProductFamilyRow from "@/components/products/product-family-row";
