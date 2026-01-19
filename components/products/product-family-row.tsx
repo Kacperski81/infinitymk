@@ -4,6 +4,8 @@ import { useRef, useState, useEffect } from "react"
 import type { DavinesHairCareFamily, DavinesHairCareProduct } from "@/types"
 import DavinesProductCard from "./davines-product-card"
 import SmallProductCard from "./small-product-card"
+import RightArrow from "../svgs/right-arrow"
+import LeftArrow from "../svgs/left-arrow"
 
 type DavinesHairCareFamilyRowProps = {
     family: DavinesHairCareFamily
@@ -15,6 +17,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
     const [canScrollLeft, setCanScrollLeft] = useState(false)
     const [canScrollRight, setCanScrollRight] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
+    const [totalPages, setTotalPages] = useState(1)
 
     const checkScrollability = () => {
         const container = scrollContainerRef.current
@@ -43,6 +46,22 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
         checkScrollability()
     }
 
+    useEffect(() => {
+        const container = scrollContainerRef.current
+        if (!container || !isHovering) return
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "ArrowLeft" && canScrollLeft) {
+                scroll("left")
+            } else if (e.key === "ArrowRight" && canScrollRight) {
+                scroll("right")
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+        return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [isHovering, canScrollLeft, canScrollRight])
+
     const showControls = family.products.length > 4
 
     return (
@@ -50,8 +69,8 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
             {/* Family Header */}
             <div className="flex items-center justify-between px-2">
                 <div>
-                    <h3 className="text-xl md:text-2xl font-semibold text-(--main-100) tracking-wide">{family.family}</h3>
-                    <p className="text-sm text-(--main-300) mt-1">
+                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-(--main-100) tracking-wide">{family.family}</h3>
+                    <p className="text-xs sm:text-sm text-(--main-300) mt-0.5 sm:mt-1">
                         {family.products.length} product{family.products.length !== 1 ? "s" : ""}
                     </p>
                 </div>
@@ -64,12 +83,13 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                     <button
                         onClick={() => scroll("left")}
                         disabled={!canScrollLeft}
-                        className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-(--main-800)/80 text-(--main-100) backdrop-blur-sm border border-(--main-600) transition-all duration-300 ${canScrollLeft && isHovering ? "opacity-100 -translate-x-2" : "opacity-0 pointer-events-none"
-                            } hover:bg-(--main-700) hover:scale-110`}
+                        className={`hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-(--main-400)/90 text-(--main-100) backdrop-blur-sm border border-(--main-300) transition-all duration-300 ${canScrollLeft && isHovering
+                            ? "opacity-100 -translate-x-3"
+                            : "opacity-0 pointer-events-none"
+                            } hover:bg-(--main-300) hover:scale-110`}
                         aria-label="Scroll left"
                     >
-                        {/* <ChevronLeft className="w-5 h-5" /> */}
-                        previous
+                        <LeftArrow />
                     </button>
                 )}
 
@@ -77,7 +97,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                 <div
                     ref={scrollContainerRef}
                     onScroll={handleScroll}
-                    className="flex gap-4 overflow-x-auto scroll-smooth pb-4 scrollbar-thin scrollbar-thumb-(--main-600) scrollbar-track-transparent hover:scrollbar-thumb-(--main-500)"
+                    className="flex gap-4 overflow-x-auto scroll-smooth pb-4 scrollbar-thin scrollbar-thumb-(--main-400) scrollbar-track-transparent hover:scrollbar-thumb-(--main-400)"
                     style={{
                         scrollbarWidth: "thin",
                         msOverflowStyle: "none",
@@ -89,7 +109,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                             className="flex-shrink-0 w-[calc(100%-1rem)] sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] lg:w-[calc(25%-0.75rem)]"
                             style={{ minWidth: "260px", maxWidth: "320px" }}
                         >
-                            <SmallProductCard product={product} familyName={family.family} onClick={() => setSelectedProduct(product)}/>
+                            <SmallProductCard product={product} familyName={family.family} onClick={() => setSelectedProduct(product)} />
                         </div>
                     ))}
                 </div>
@@ -99,21 +119,14 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                     <button
                         onClick={() => scroll("right")}
                         disabled={!canScrollRight}
-                        className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-(--main-800)/80 text-(--main-100) backdrop-blur-sm border border-(--main-600) transition-all duration-300 ${canScrollRight && isHovering ? "opacity-100 translate-x-2" : "opacity-0 pointer-events-none"
-                            } hover:bg-(--main-700) hover:scale-110`}
+                        className={`hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-(--main-400)/90 text-(--main-100) backdrop-blur-sm border border-(--main-300) transition-all duration-300 ${canScrollRight && isHovering
+                            ? "opacity-100 translate-x-3"
+                            : "opacity-0 pointer-events-none"
+                            } hover:bg-(--main-300) hover:scale-110`}
                         aria-label="Scroll right"
                     >
-                        {/* <ChevronRight className="w-5 h-5" /> */}
-                        next
+                        <RightArrow />
                     </button>
-                )}
-
-                {/* Scroll Indicator (gradient fade) */}
-                {showControls && canScrollRight && (
-                    <div className="" />
-                )}
-                {showControls && canScrollLeft && (
-                    <div className="" />
                 )}
             </div>
 

@@ -32,16 +32,16 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
     const hasActiveFilters = !!selectedTag;
 
     return (
-        <div className="max-w-7xl mx-auto space-y-6">
+        <div className="max-w-7xl mx-auto space-y-4">
             {/* Hair Type Tag Buttons */}
-            <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-2">
+            <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-4">
                 {tags.map((tag, index) => (
                     <div key={tag.id} className="flex items-center">
                         <button
                             onClick={() => handleTagClick(tag.id)}
-                            className={`px-3 py-1.5 text-sm tracking-wide transition-all duration-200 ${selectedTag === tag.id
-                                    ? 'text-(--main-50) font-medium underline underline-offset-4 decoration-2)'
-                                    : 'text-(--main-200) hover:text-(--main-50)'
+                            className={`px-4 py-2 text-xs sm:text-sm rounded-full border transition-all duration-200 whitespace-nowrap ${selectedTag === tag.id
+                                    ? 'bg-(--main-100) text-(--main-800) border-(--main-100) font-medium'
+                                    : 'bg-transparent text-(--main-200) border-(--main-300) hover:border-(--main-200) hover:text-(--main-100)'
                                 }`}
                         >
                             {tag.label}

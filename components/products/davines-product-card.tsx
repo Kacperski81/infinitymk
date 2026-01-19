@@ -49,12 +49,12 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
 
       {/* Modal */}
       <div
-        className="relative bg-card rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+        className="p-1 sm:p-2 relative bg-card rounded-lg max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-card-foreground/10 hover:bg-card-foreground/20 transition-colors"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-1.5 sm:p-2 rounded-full bg-(--card-foreground)/10 hover:bg-(--card-foreground)/20 transition-colors"
           aria-label="Close modal"
         >
           <IconCloseCircle  />
@@ -85,39 +85,39 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
           </div>
 
           {/* Content */}
-          <div className="p-6 md:p-8 space-y-6">
+          <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
             <div>
-              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
+              <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1 sm:mb-2">
                 {family.family} • {product.type}
               </p>
-              <h2 className="text-2xl md:text-3xl font-light text-card-foreground">{product.name}</h2>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-card-foreground">{product.name}</h2>
             </div>
 
-            <p className="text-card-foreground/80 leading-relaxed">{product.full_description}</p>
+            <p className="text-sm sm:text-base text-card-foreground/80 leading-relaxed">{product.full_description}</p>
 
-            <div className="pt-4 border-t border-border space-y-4">
+            <div className="pt-3 sm:pt-4 border-t border-border space-y-3 sm:space-y-4">
               <div className="flex items-start gap-3">
                 <div>
-                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">How to Use</p>
-                  <p className="text-sm text-card-foreground/80 leading-relaxed">{product.usage}</p>
+                  <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">How to Use</p>
+                  <p className="text-xs sm:text-sm text-card-foreground/80 leading-relaxed">{product.usage}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
 
                 <div>
-                  <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">Key Ingredient</p>
-                  <p className="text-sm text-card-foreground/80 leading-relaxed">{family.info.active}</p>
+                  <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">Key Ingredient</p>
+                  <p className="text-xs sm:text-sm text-card-foreground/80 leading-relaxed">{family.info.active}</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-6 border-t border-border">
+            <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-border">
               <div>
-                <p className="text-xl font-medium text-card-foreground">
+                <p className="text-lg sm:text-xl font-medium text-card-foreground">
                   {product.price}
                 </p>
-                <p className="text-sm text-muted-foreground">Available in-store</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Available in-store</p>
               </div>
 
               {/* <button className="px-6 py-3 bg-card-foreground text-card rounded-sm text-sm font-medium tracking-wide hover:bg-card-foreground/90 transition-colors">

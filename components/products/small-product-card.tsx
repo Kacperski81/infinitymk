@@ -10,7 +10,7 @@ export default function SmallProductCard({ product, familyName, onClick }: Produ
     return (
         <div className="group text-left w-full cursor-pointer" onClick={onClick}>
             {/* Product Image */}
-            <div className="relative aspect-[3/4] mb-3 overflow-hidden rounded-lg bg-(--main-400)/50">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] mb-2 sm:mb-3 overflow-hidden rounded-lg bg-(--main-400)/50">
                 {product.image ? (
                     <>
                         <img
@@ -33,21 +33,21 @@ export default function SmallProductCard({ product, familyName, onClick }: Produ
                                     />
                                 </svg>
                             </div>
-                            <span className="text-xs">Image coming soon</span>
+                            <span className="text-[10px] sm:text-xs">Image coming soon</span>
                         </div>
                     </div>
                 )}
             </div>
 
             {/* Product Details */}
-            <div className="space-y-1">
-                <p className="text-[10px] tracking-[0.15em] uppercase text-(--main-200)">
+            <div className="space-y-0.5 sm:space-y-1">
+                <p className="text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.15em] uppercase text-(--main-200)">
                     {product.type}
                 </p>
-                <h4 className="text-sm font-medium text-(--main-50) group-hover:text-primary transition-colors leading-tight">
+                <h4 className="text-xs sm:text-sm font-medium text-(--main-50) group-hover:text-(--main-100) transition-colors leading-tight">
                     {product.name}
                 </h4>
-                <p className="text-xs text-(--main-200) leading-relaxed line-clamp-2">
+                <p className="text-[10px] sm:text-xs text-(--main-200) leading-relaxed line-clamp-2">
                     {product.short_description}
                 </p>
             </div>
