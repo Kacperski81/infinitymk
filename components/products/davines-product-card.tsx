@@ -49,7 +49,7 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
 
       {/* Modal */}
       <div
-        className="p-1 sm:p-2 relative bg-card rounded-lg max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
+        className="p-1 sm:p-2 relative bg-card rounded-lg w-full max-w-6xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
