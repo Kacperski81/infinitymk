@@ -98,10 +98,10 @@ export default function Services() {
                                         </p>
                                     </div>
                                     <Image
-                                        src={service.id === "hair" ? nailsBG :
+                                        src={service.id === "hair" ? hairBG :
                                             service.id === "nail" ? nailsBG :
-                                                service.id === "beauty" ? nailsBG :
-                                                    nailsBG}
+                                                service.id === "beauty" ? beautyBG :
+                                                    productsBG}
                                         alt={`${service.name} service image`}
                                         fill
                                         sizes="100vw"
