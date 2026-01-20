@@ -6,6 +6,7 @@ import DavinesProductCard from "./davines-product-card"
 import SmallProductCard from "./small-product-card"
 import RightArrow from "../svgs/right-arrow"
 import LeftArrow from "../svgs/left-arrow"
+import IconInformation from "../svgs/icon-information"
 
 type DavinesHairCareFamilyRowProps = {
     family: DavinesHairCareFamily
@@ -17,7 +18,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
     const [canScrollLeft, setCanScrollLeft] = useState(false)
     const [canScrollRight, setCanScrollRight] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
-    const [totalPages, setTotalPages] = useState(1)
+    const [expandedFamily, setExpandedFamily] = useState<string | null>(null)
 
     const checkScrollability = () => {
         const container = scrollContainerRef.current
@@ -67,12 +68,34 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
     return (
         <div className="space-y-4" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
             {/* Family Header */}
-            <div className="flex items-center justify-between px-2">
-                <div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-(--main-100) tracking-wide">{family.family}</h3>
-                    <p className="text-xs sm:text-sm text-(--main-300) mt-0.5 sm:mt-1">
-                        {family.products.length} product{family.products.length !== 1 ? "s" : ""}
-                    </p>
+            <div className="border-b border-border/50">
+                <div className="flex items-center justify-between px-2 space-y-4">
+                    <div className="space-y-1 sm:space-y-2">
+                        <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-(--main-100) tracking-wide">{family.family}</h3>
+                        <p className="text-xs sm:text-sm text-(--main-300) mt-0.5 sm:mt-1">
+                            {family.products.length} product{family.products.length !== 1 ? "s" : ""}
+                        </p>
+                    </div>
+                    <button onClick={() => setExpandedFamily(expandedFamily === family.id ? null : family.id)} className="flex flex-row items-center gap-2 text-xs sm:text-sm text-primary hover:text-accent transition-colors">
+                        <span className="w-5 h-5">
+                            <IconInformation />
+                        </span>
+                        <span className="whitespace-nowrap">{expandedFamily === family.id ? "Hide Details" : "Learn More"}</span>
+                    </button>
+                </div>
+                <div
+                    className="grid transition-all duration-300 ease-in-out"
+                    style={{
+                        gridTemplateRows: expandedFamily === family.id ? "1fr" : "0fr",
+                    }}
+                >
+                    <div className="overflow-hidden">
+                        <div className="space-y-4 px-2 pb-4">
+                            <p className="text-muted-foreground text-xs sm:text-sm"><span className="text-sm font-medium text-foreground mb-2 uppercase tracking-wide">Key Ingredient:</span> {family.info.active}</p>
+                            <p className="text-muted-foreground text-xs sm:text-sm"><span className="text-sm font-medium text-foreground mb-2 uppercase tracking-wide">Benefits:</span> {family.info.props}</p>
+                            <p className="text-muted-foreground text-xs sm:text-sm"><span className="text-sm font-medium text-foreground mb-2 uppercase tracking-wide">Story:</span> {family.info.story}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -84,7 +107,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                         onClick={() => scroll("left")}
                         disabled={!canScrollLeft}
                         className={`hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-(--main-400)/90 text-(--main-100) backdrop-blur-sm border border-(--main-300) transition-all duration-300 ${canScrollLeft && isHovering
-                            ? "opacity-100 -translate-x-3"
+                            ? "opacity-100 -translaate-x-3"
                             : "opacity-0 pointer-events-none"
                             } hover:bg-(--main-300) hover:scale-110`}
                         aria-label="Scroll left"
