@@ -81,9 +81,10 @@
   --wrapper-gap: 1rem;
   --service-panel-padding: 0.75rem;
   --service-panel-gap: .75rem;
-  --service-button-small: 0.875rem;
+  --service-button-small: 2rem;
   --service-button-padding: 0.40rem;
   --service-button-width: 2.2rem;
+  --service-button-bg: hsl(from var(--main-800) h s l / 0.5);
 
   /* service panel */
   --panel-padding: 0.65rem;

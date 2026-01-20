@@ -63,16 +63,13 @@ export default function Services() {
                                             className="bg-transparent border-0 flex items-center flex-row-reverse gap-(--service-panel-gap)">
 
                                             {/* Panel title */}
-                                            <span className="text-white text-lg lg:text-xl xl:text-2xl font-(family-name:--font-aboreto) relative isolate grid items-center service-button-bg">{service.name}</span>
+                                            <span className="text-white text-lg lg:text-xl xl:text-2xl font-(family-name:--font-aboreto) relative isolate grid items-center">{service.name}</span>
                                             {/* Accordion icon */}
                                             {/* <div className="bg-(--accordion-button) w-(--button-small) lg:w-(--button-size) p-1 rounded-full aspect-square">{service.services[0].icon}</div> */}
-                                            <div className="
-                                            bg-(--main-800)/80 
-                                            w-(--service-button-small) h-(--service-button-small) aspect-square p-(--service-button-padding) 
-                                            rounded-full  
-                                            flex justify-center"
+                                            <div className="bg-(--service-button-bg) w-(--service-button-small) h-(--service-button-small) p-(--service-button-padding) aspect-square rounded-full flex justify-center"
                                             >
-                                                <IconComponent /></div>
+                                                <IconComponent />
+                                            </div>
                                         </button>
                                     </h3>
 
