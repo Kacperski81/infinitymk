@@ -62,6 +62,7 @@ export default function HairTreatment() {
                                         role="region"
                                         aria-hidden={treatment.name !== expandedPanel}
                                         className={`
+                                                px-2
                                                 flex
                                                 flex-col 
                                                 z-40

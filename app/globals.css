@@ -85,6 +85,7 @@
   --service-button-padding: 0.40rem;
   --service-button-width: 2.2rem;
   --service-button-bg: hsl(from var(--main-800) h s l / 0.5);
+  --service-button-price-panel: 0.85rem;
 
   /* service panel */
   --panel-padding: 0.65rem;
@@ -302,7 +303,7 @@ body {
 }
 
 .price-panel-closed {
-  flex-basis: calc((var(--panel-padding) * 2) + var(--service-button-small));
+  flex-basis: calc((var(--panel-padding) * 2) + var(--service-button-price-panel));
   flex-grow: 0;
   transition: flex-basis 500ms, flex-grow 500ms;
 }

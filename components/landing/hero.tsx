@@ -13,7 +13,7 @@ export default function Hero() {
                     sizes="100vw"
                     className="h-full w-full object-cover object-center lg:p-2"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/60 via-(--main-450)/50 to-(--main-450)/70 lg:m-2"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/60 via-(--main-450)/50 to-(--main-450)/70 lg:m-2"></div> */}
             </div>
             <div className="relative p-2 h-full z-20 flex flex-col gap-5 lg:gap-20 md:w-full sm:text-center">
                 <h1 className="
