@@ -1,0 +1,59 @@
+[
+    {
+        "id": 0,
+        "name": "Facial Treatments",
+        "treatments": [
+            {
+                "treatment": "AQUAMETIQ Hydra Prime (Jadeite hydrogen acid cleansing)",
+                "items": [
+                    { "name": "Hydrogen cleansing basic", "price": "£65" },
+                    { "name": "Hydrogen cleansing for teenagers", "price": "£65" },
+                    { "name": "Hydrogen cleansing for sensitive skin", "price": "£85" },
+                    { "name": "Hydrogen cleansing full treatment", "price": "£95" },
+                    { "name": "Anti-aging cleansing", "price": "£95" }
+                ]
+            },
+            {
+                "treatment": "Microcurrent therapy for skin rejuvenation and Lymphatic drainage procedures",
+                "items": [
+                    { "name": "Face", "price": "£70" },
+                    { "name": "Face & neck", "price": "£80" },
+                    { "name": "Face & neck & neckline", "price": "£100" }
+                ]
+            },
+            { "treatment": "Lifting thermal massage: face & neck & neckline", "price": "£70" },
+            { "treatment": "Ultra hydration treatment", "price": "£60" },
+            {
+                "treatment": "Infinite RF - fractional microneedle system machine for face and body (recommended consultation)",
+                "price": "From £150"
+            },
+            { "treatment": "Acid therapy", "price": "£45" }
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Eyelashes",
+        "treatments": [
+            { "treatment": "Lift lash & tinting", "price": "£50" },
+            { "treatment": "Classic eyelash extensions", "price": "£75", "infill": "£50" },
+            { "treatment": "Volume eyelash extension", "price": "£85", "infill": "£55" }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Eyebrows",
+        "treatments": [
+            { "treatment": "Eyebrow lamination", "price": "£49" },
+            { "treatment": "Eyebrow shaping & tinting", "price": "From £15" },
+            { "treatment": "Eyebrow shaping & tinting & eyelashes tinting", "price": "£30" }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Aesthetic Medicine Treatments",
+        "treatments": [
+            { "treatment": "Skin boosters", "availability": "Available in the salon" },
+            { "treatment": "Filters", "availability": "Available in the salon" }
+        ]
+    }
+]

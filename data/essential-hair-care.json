@@ -195,7 +195,7 @@
         "full_description": "Smoothing shampoo that gently cleanses and favours straightening, helping frizzy and unruly hair stay soft, pliable, and more resistant to breakage thanks to Minuta Olive extract.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Follow with LOVE/smoothing conditioner or LOVE/smoothing instant mask.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-shampoo.jpg"
       },
       {
         "name": "LOVE/smoothing conditioner",
@@ -204,7 +204,7 @@
         "full_description": "Smoothing conditioner that favours straightening while delivering hydration, softness, and elasticity for frizzy and unruly hair.",
         "usage": "After washing with LOVE/smoothing shampoo or LOVE/shampoo bar, remove excess water, apply, leave on 2-5 minutes, comb through, then rinse. Proceed with styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smoothing-conditioner.jpg"
       },
       {
         "name": "LOVE/smoothing instant mask",
@@ -213,7 +213,7 @@
         "full_description": "Fast smoothing mask that delivers immediate anti-frizz softness, reduces unwanted volume, disciplines hair, and makes straightening easier.",
         "usage": "After washing with LOVE/smoothing shampoo or LOVE/shampoo bar, remove excess water, apply, leave on for 30 seconds, comb, then rinse. Proceed with styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-mask.jpg"
       },
       {
         "name": "LOVE/hair smoother",
@@ -222,7 +222,7 @@
         "full_description": "Invisible leave-on anti-frizz cream with no residue that smooths, softens, and adds shine while helping control humidity-induced frizz.",
         "usage": "Apply to towel-dried hair after LOVE/smoothing conditioner or LOVE/smoothing instant mask. Do not rinse. Proceed with styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-smoother.jpg"
       },
       {
         "name": "LOVE/smoothing perfector",
@@ -231,7 +231,7 @@
         "full_description": "Smoothing anti-frizz serum that adds shine, control, and thermal protection up to 230°C for easier styling.",
         "usage": "Apply 2-6 pumps evenly to towel-dried hair after LOVE/smoothing conditioner or LOVE/smoothing instant mask. Proceed with styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-perfector.jpg"
       },
       {
         "name": "LOVE/shampoo bar",
@@ -240,7 +240,7 @@
         "full_description": "Smoothing solid shampoo bar that disciplines coarse or frizzy hair with a rich, creamy lather, leaving it soft and controlled.",
         "usage": "Wet bar, rub on palms to create lather, apply to wet hair and rinse.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-smooth/love-smooth-shampoo-bar.jpg"
       }
     ]
   },
@@ -262,7 +262,7 @@
         "full_description": "Curl-conditioning taming cleansing cream that cleanses while adding softness and control for wavy to very curly hair; deeply moisturizes to counteract typical curl dryness.",
         "usage": "Apply a generous amount to damp hair and scalp, massage gently, leave for 5 minutes, then rinse. Conditioner is not needed. Alternate every third shampoo with LOVE/curl shampoo and conditioner or hair mask.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-cleansing.jpg"
       },
       {
         "name": "LOVE/curl shampoo",
@@ -271,7 +271,7 @@
         "full_description": "Curl-enhancing, taming shampoo that boosts volume while keeping curls soft, light, and defined, enriched with moisturizing Noto Almond extract.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Follow with LOVE/curl conditioner or LOVE/curl hair mask.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-shampoo.jpg"
       },
       {
         "name": "LOVE/curl conditioner",
@@ -280,7 +280,7 @@
         "full_description": "Curl-enhancing, taming conditioner that restores elasticity, volume, and softness to wavy or curly hair while helping define the curl pattern.",
         "usage": "Apply to towel-dried hair after LOVE/curl shampoo. Leave on for 2-5 minutes, comb through, then rinse. Proceed with drying.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-conditioner.jpg"
       },
       {
         "name": "LOVE/curl hair mask",
@@ -289,7 +289,7 @@
         "full_description": "Taming, nourishing mask that delivers softness and hydration for workable wavy to curly hair, improving manageability and curl definition.",
         "usage": "Apply to damp hair after LOVE/curl shampoo. Leave on for 10-15 minutes, comb through, and rinse. Proceed with drying.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-hair-mask.jpg"
       },
       {
         "name": "LOVE/curl primer",
@@ -298,7 +298,7 @@
         "full_description": "Hydrating prep milk that detangles, adds definition, and offers heat protection with anti-humidity control to prep wavy or curly hair for styling.",
         "usage": "Spray 15-20 pumps on wet or towel-dried hair from roots to lengths and ends.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-primer.jpg"
       },
       {
         "name": "LOVE/curl cream",
@@ -307,7 +307,7 @@
         "full_description": "Leave-in curl-enhancing serum that tames and defines curls without residue, keeping hair soft, shiny, and elastic.",
         "usage": "Apply to towel-dried hair after LOVE/curl conditioner or LOVE/curl hair mask. Style with a diffuser to maximize definition.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-cream.jpg"
       },
       {
         "name": "LOVE/curl controller",
@@ -316,7 +316,7 @@
         "full_description": "Taming cream for wavy to very curly hair that controls volume, reduces frizz, and improves manageability without weighing curls down.",
         "usage": "Apply to damp hair after LOVE/curl conditioner or LOVE/curl hair mask. Do not rinse. Proceed with drying.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-controller.jpg"
       },
       {
         "name": "LOVE/curl revitalizer",
@@ -325,7 +325,7 @@
         "full_description": "Elasticizing spray treatment that refreshes and revives wavy or curly hair between shampoos, enhancing vitality, elasticity, and frizz control.",
         "usage": "Apply to dry hair from 10-20 cm away. Do not rinse.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/love-curl/love-curl-revitalizer.jpg"
       }
     ]
   },
@@ -347,7 +347,7 @@
         "full_description": "Sea salt scrub cleansing paste that deeply refreshes the scalp, removes impurities, build-up, and pollution particles, adding texture and longer-lasting cleanliness and buoyancy.",
         "usage": "Apply a dollop to wet hair. Gently massage on scalp to build a rich lather, adding water if needed. Rinse thoroughly, then follow with a nourishing mask or conditioner. Use every second or third wash.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/solu/solu-scrub.jpg"
       },
       {
         "name": "SOLU/shampoo",
@@ -356,7 +356,7 @@
         "full_description": "Active refreshing shampoo that performs a deep cleanse, removing residue from styling products and preparing hair for perm or straightening treatments while leaving it light and clean.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat if needed. Continue with the most suitable conditioner if necessary.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/solu/solu-shampoo.jpg"
       }
     ]
   },
@@ -378,7 +378,7 @@
         "full_description": "Breakage-preventing shampoo that cleanses gently while adding shine, silkiness, and lightness to long or damaged hair, supporting strength with lentil seed extract.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Continue with MELU/conditioner.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/melu/melu-shampoo.jpg"
       },
       {
         "name": "MELU/conditioner",
@@ -387,7 +387,7 @@
         "full_description": "Conditioner that helps prevent breakage, adds shine, body, and volume while keeping long or damaged hair soft, light, and easy to detangle.",
         "usage": "Apply to towel-dried hair after MELU/shampoo. Leave on for 2-5 minutes, comb, then rinse. Proceed with desired styling.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/melu/melu-conditioner.jpg"
       },
       {
         "name": "MELU/hair shield",
@@ -396,7 +396,7 @@
         "full_description": "Heat-protection spray that shields hair from thermal stress caused by straighteners and blow dryers, helping reduce breakage and maintain softness.",
         "usage": "Evenly apply strand by strand to dry or damp hair before using straightener or blow dryer.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/melu/melu-shield.jpg"
       }
     ]
   },
@@ -418,7 +418,7 @@
         "full_description": "Volumizing shampoo that gently cleanses while adding body and lightness to fine or limp hair, leveraging Caprauna Turnip extract for airy volume.",
         "usage": "Apply to wet hair, massage gently, rinse and repeat. Continue with VOLU/hair mist if desired.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/volu/volu-shampoo.jpg"
       },
       {
         "name": "VOLU/hair mist",
@@ -427,7 +427,7 @@
         "full_description": "Leave-on volumizing spray that lifts hair from the root, adding shine and softness without weight while supporting airy volume.",
         "usage": "Apply to towel-dried hair after VOLU/shampoo. Do not rinse. Spray at roots, then comb to distribute a small amount to lengths and ends to boost volume; proceed with drying.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/volu/volu-hair-mist.jpg"
       },
       {
         "name": "VOLU/shampoo bar",
@@ -436,7 +436,7 @@
         "full_description": "Solid volumizing shampoo bar that creates a rich lather to add body and lightness to fine or limp hair without weighing it down.",
         "usage": "Wet bar, rub on palms to create lather, apply to wet hair and rinse.",
         "price": "£0",
-        "image": ""
+        "image": "/products/essentials/volu/volu-shampoo-bar.jpg"
       }
     ]
   }

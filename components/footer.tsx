@@ -46,6 +46,9 @@ export default function Footer() {
                             <li>
                                 <Link href="/beauty" className={`transition-colors duration-300 ${isFooterLinkActive("/beauty") ? "text-(--main-100) font-semibold" : "hover:text-(--main-50)"} ${isFooterLinkActive("/beauty") ? "text-(--main-50)" : "text-(--main-100)"}`}>Beauty Treatments</Link>
                             </li>
+                            <li>
+                                <Link href="/products" className={`transition-colors duration-300 ${isFooterLinkActive("/products") ? "text-(--main-100) font-semibold" : "hover:text-(--main-50)"} ${isFooterLinkActive("/products") ? "text-(--main-50)" : "text-(--main-100)"}`}>Products</Link>
+                            </li>
                         </ul>
                     </div>
 

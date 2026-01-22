@@ -1,0 +1,84 @@
+[
+    {
+        "id": 0,
+        "name": "Manicure",
+        "items": [
+            {
+                "service": "Hard Gel Extensions",
+                "price": "£46"
+            },
+            {
+                "service": "Infill (Gel or Protein Base)",
+                "price": "£38"
+            },
+            {
+                "service": "Nail Art (per finger)",
+                "price": "£2"
+            },
+            {
+                "service": "Broken Nail Repair (Extensions - Hands or Feet)",
+                "price": "£5"
+            },
+            {
+                "service": "Full Manicure (Protein Base, Shellac Color, Cuticle & Skin Treatment)",
+                "price": "£46"
+            },
+            {
+                "service": "Full Manicure (Shellac Color, Cuticle & Skin Treatment)",
+                "price": "£40"
+            },
+            {
+                "service": "Full Manicure (Normal Varnish, Cuticle & Skin Treatment)",
+                "price": "£28"
+            },
+            {
+                "service": "Manicure Tidy Up (Protein Base & Shellac Color)",
+                "price": "£38"
+            },
+            {
+                "service": "Manicure Tidy Up (Shellac Color Only)",
+                "price": "£30"
+            },
+            {
+                "service": "Manicure Tidy Up (Normal Varnish Color Only)",
+                "price": "£15"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Pedicure",
+        "items": [
+            {
+                "service": "Full Pedicure (Shellac Color, Hard Skin Removal, Treatment)",
+                "price": "£46"
+            },
+            {
+                "service": "Full Pedicure (Normal Varnish Color, Hard Skin Removal Treatment)",
+                "price": "£32"
+            },
+            {
+                "service": "Pedicure Tidy Up (Shellac Color)",
+                "price": "£32"
+            },
+            {
+                "service": "Pedicure Tidy Up (Normal Varnish)",
+                "price": "£15"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Additional Services",
+        "items": [
+            {
+                "service": "Shellac Removal",
+                "price": "£10"
+            },
+            {
+                "service": "Paraffin Treatment",
+                "price": "£5"
+            }
+        ]
+    }
+]

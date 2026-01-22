@@ -156,3 +156,42 @@ export type ProductsPageProps = {
         tag?: string;
     }>;
 };
+
+export type NailsServices = {
+    id: number;
+    name: string;
+    items: {
+        service: string;
+        price: string;
+    }[];
+}
+
+export type GalleryImage = {
+    id: string;
+    imageUrl: string;
+    alt: string;
+}
+
+type PriceItem = {
+    name: string;
+    price: string;
+};
+
+// Define the type for a treatment entry
+type Treatment = {
+    treatment: string;
+    price?: string;
+    infill?: string;
+    availability?: string;
+    items?: PriceItem[];
+};
+
+// Define the type for a main section category
+type Category = {
+    id: number;
+    name: string;
+    treatments: Treatment[];
+};
+
+// Define the type for the entire price list object
+export type BeautyPriceList = Category[];

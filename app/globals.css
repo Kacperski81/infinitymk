@@ -92,6 +92,7 @@
 
   @media (min-width: 788px) {
     --service-button-small: 3rem;
+    --service-button-price-panel: 3rem;
   }
 }
 

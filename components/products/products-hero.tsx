@@ -17,7 +17,10 @@ export default function ProductsHero() {
                     sizes="100vw"
                     className="h-full w-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/80 via-(--main-450)/60 to-(--main-450)/40 md:from-(--main-450)/70) md:via-(--main-450)/50 md:to-transparent"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/80 via-(--main-450)/60 to-(--main-450)/40 md:from-(--main-450)/70) md:via-(--main-450)/50 md:to-transparent"></div> */}
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-(--main-800)/70 via-(--main-700)/40 to-(--main-800)/60"/>
+                <div className="absolute inset-0 bg-radial-[at_30%_40%] from-transparent via-transparent to-(--main-900)/50" />
             </div>
 
             {/* Text */}

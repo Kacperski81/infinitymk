@@ -1,3 +1,5 @@
+"use client";
+
 import PageHeading from "@/components/page-heading";
 import type { CarouselItem } from "@/types";
 import { useState } from "react";

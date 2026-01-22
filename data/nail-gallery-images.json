@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "imageUrl": "./nail/nail-gallery/zd1.jpg",
+        "alt": "Nail Image 1"
+    },
+    {
+        "id": "2",
+        "imageUrl": "./nail/nail-gallery/zd2.jpg",
+        "alt": "Nail Image 2"
+    },
+    {
+        "id": "3",
+        "imageUrl": "./nail/nail-gallery/zd3.jpg",
+        "alt": "Nail Image 3"
+    },
+    {
+        "id": "4",
+        "imageUrl": "./nail/nail-gallery/zd4.jpg",
+        "alt": "Nail Image 4"
+    },
+    {
+        "id": "5",
+        "imageUrl": "./nail/nail-gallery/zd5.jpg",
+        "alt": "Nail Image 5"
+    },
+    {
+        "id": "6",
+        "imageUrl": "./nail/nail-gallery/zd6.jpg",
+        "alt": "Nail Image 6"
+    }
+]

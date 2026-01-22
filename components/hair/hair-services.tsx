@@ -12,7 +12,6 @@ export default function HairServices() {
     }
     return (
         <section className="isolate relative min-h-dvh xl:min-h-screen bg-(--main-400)/80 bg-[url(/hair/hair-services-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
-                            {/* <div className="absolute inset-0 bg-gradient-to-l from-(--main-450)/95 via-(--main-450)/80 to-transparent"></div> */}
             <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-6 z-10">
                 <PageHeading mT="mt-0" title="Hair Services" />
 
@@ -30,8 +29,7 @@ export default function HairServices() {
                                 <div
                                     key={service.id}
                                     onClick={() => togglePanel(service.id)}
-                                    className={`flex flex-col border-gradient isolate relative overflow-hidden ${expandedPanel === service.id ? "shadow-xl price-panel-opened" : "shadow-xl price-panel-closed cursor-pointer"}`}
-                                    
+                                    className={`flex flex-col border-gradient isolate relative overflow-hidden ${expandedPanel === service.id ? "shadow-xl price-panel-opened" : "shadow-xl price-panel-closed cursor-pointer"}`}   
                                 >
 
                                     {/* Accordion heading */}

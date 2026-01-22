@@ -114,7 +114,7 @@ export default function AnimatedMenu() {
                 <Link
                   href="/products"
                   onClick={handleLinkClick}
-                  className={`block text-2xl font-playfair transition-colors duration-300 ${isLinkActive("/beauty") ? "text-(--main-10) font-semibold" : "text-(--main-200) hover:text-(--main-100)"
+                  className={`block text-2xl font-playfair transition-colors duration-300 ${isLinkActive("/products") ? "text-(--main-10) font-semibold" : "text-(--main-200) hover:text-(--main-100)"
                     }`}
                 >
                   Products
