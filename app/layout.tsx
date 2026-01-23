@@ -7,6 +7,7 @@ import AnimatedMenu from "@/components/frame/animated-menu";
 import Frame from "@/components/frame/frame";
 import Logo from "@/components/frame/logo";
 import Footer from "@/components/footer";
+import BookNowFab from "@/components/fab/book-now-fab";
 
 const aboreto = Aboreto({
   // sans-serif
@@ -63,6 +64,7 @@ export default function RootLayout({
             {/* <Footer /> */}
           </div>
         </div>
+        <BookNowFab />
       </body>
     </html>
   );

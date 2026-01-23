@@ -48,7 +48,7 @@ export default function BeautyServices() {
                                     </h3>
 
                                     {/* Accordion content */}
-                                    <div id={`${service.name}-content}`} aria-labelledby={`${service.name}-heading`} role="region" aria-hidden={service.id !== expandedPanel} className={`flex flex-col -z-1 text-xl ${expandedPanel === service.id ? "grow flex flex-col" : ""}`}>
+                                    <div id={`${service.name}-content`} aria-labelledby={`${service.name}-heading`} role="region" aria-hidden={service.id !== expandedPanel} className={`flex flex-col -z-1 text-xl ${expandedPanel === service.id ? "grow flex flex-col" : ""}`}>
                                         <div className={`p-1 lg:px-6 text-left relative opacity-0 overflow-y-auto ${expandedPanel === service.id ? "min-h-[30vh] max-h-[55vh] landscape:max-h[20vh] opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-200 delay-100"}`} style={{ scrollbarWidth: 'thin', scrollbarColor: 'var(--main-300) var(--main-300)' }}>
                                             <ul>
                                                 {service.treatments.map((treatment) => {

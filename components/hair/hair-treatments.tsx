@@ -57,7 +57,7 @@ export default function HairTreatment() {
 
                                     {/* Accordion content */}
                                     <div
-                                        id={`${treatment.name}-content}`}
+                                        id={`${treatment.name}-content`}
                                         aria-labelledby={`${treatment.name}-heading`}
                                         role="region"
                                         aria-hidden={treatment.name !== expandedPanel}

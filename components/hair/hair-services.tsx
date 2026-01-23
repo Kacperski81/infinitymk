@@ -54,7 +54,7 @@ export default function HairServices() {
 
                                     {/* Accordion content */}
                                     <div
-                                        id={`${service.name}-content}`}
+                                        id={`${service.name}-content`}
                                         aria-labelledby={`${service.name}-heading`}
                                         role="region"
                                         aria-hidden={service.id !== expandedPanel}
