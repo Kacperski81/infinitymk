@@ -121,7 +121,7 @@ export default function Carousel() {
 
                                 {/* Comment */}
                                 <blockquote className="mb-4">
-                                    <p className="text-[var(--main-50)] text-sm lg:text-base leading-relaxed font-light">&ldquo;{testimonial.content}abc&rdquo;</p>
+                                    <p className="text-[var(--main-50)] text-sm lg:text-base leading-relaxed font-light">&ldquo;{testimonial.content}&rdquo;</p>
                                 </blockquote>
 
                                 {/* Reviewer Name with Accent Line */}
