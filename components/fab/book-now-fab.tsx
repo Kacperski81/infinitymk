@@ -159,13 +159,6 @@ export default function BookNowFab() {
                             </li>
                         ))}
                     </ul>
-
-                    {/* Footer note */}
-                    <div className="px-4 pb-4 pt-1">
-                        <p className="text-xs text-[var(--main-600)] text-center">
-                            Tap to call and schedule your appointment
-                        </p>
-                    </div>
                 </div>
             </div>
 

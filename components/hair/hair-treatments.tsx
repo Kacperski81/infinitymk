@@ -66,7 +66,8 @@ export default function HairTreatment() {
                                                 flex
                                                 flex-col 
                                                 z-40
-                                                text-xl  
+                                                text-xl
+                                                min-h-0  
                                                 ${expandedPanel === treatment.name ? "grow flex flex-col" : ""}`}
                                     >
 
@@ -77,7 +78,8 @@ export default function HairTreatment() {
                                                     relative
                                                     opacity-0
                                                     overflow-y-auto
-                                                    ${expandedPanel === treatment.name ? "min-h-[30vh] max-h-[55vh] landscape:max-h[20vh] opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-200 delay-100"}`}
+                                                    min-h-0
+                                                    ${expandedPanel === treatment.name ? "opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-200 delay-100"}`}
                                             style={{ scrollbarWidth: 'thin', scrollbarColor: 'var(--main-300) var(--main-300)' }}
                                         >
                                             <div className="space-y-4">

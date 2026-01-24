@@ -18,14 +18,11 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-radial-[at_30%_40%] from-transparent via-transparent to-(--main-900)/50" />
             </div>
             <div className="relative p-2 h-full z-20 flex flex-col gap-5 lg:gap-20 md:w-full sm:text-center">
-                <h1 className="
-                font-(family-name:--font-aboreto) font-semibold 
-                text-6xl sm:text-7xl md:text-8xl lg:text-9xl 
-                leading-tight tracking-wider hero-background-gradient">
+                <h1 className="font-(family-name:--font-aboreto) font-semibold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight tracking-wider hero-background-gradient drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
                     {/* Feel<br />Good,<br /> Look<br />Amazing. */}
                     Feel Good,<br />Look Amazing.
                 </h1>
-                <p className="font-sans text-base md:text-lg font-light tracking-widest uppercase text-(--main-100)/80 dark:text-gray-300/80">
+                <p className="font-sans text-base md:text-lg font-light tracking-widest uppercase text-(--main-50) drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] dark:text-gray-200">
                     Step into a world of beauty and relaxation. We're here to make you shine.
                 </p>
             </div>

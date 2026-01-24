@@ -62,7 +62,7 @@ export default function HairServices() {
                                                 flex
                                                 flex-col 
                                                 -z-1
-                                                text-xl  
+                                                text-xl min-h-0  
                                                 ${expandedPanel === service.id ? "grow flex flex-col" : ""}`}
                                     >
 
@@ -73,7 +73,8 @@ export default function HairServices() {
                                                     relative
                                                     opacity-0
                                                     overflow-y-auto
-                                                    ${expandedPanel === service.id ? "min-h-[30vh] max-h-[55vh] landscape:max-h[20vh] opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-200 delay-100"}`}
+                                                    min-h-0
+                                                    ${expandedPanel === service.id ? "opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-200 delay-100"}`}
                                             style={{ scrollbarWidth: 'thin',scrollbarColor: 'var(--main-300) var(--main-300)'}}
                                         >
 

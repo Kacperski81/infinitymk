@@ -90,7 +90,7 @@
   /* service panel */
   --panel-padding: 0.65rem;
 
-  @media (min-width: 788px) {
+  @media (min-width: 768px) {
     --service-button-small: 3rem;
     --service-button-price-panel: 3rem;
   }
@@ -218,13 +218,16 @@ body {
 
 /* index.html */
 .hero-background-gradient {
-  background: linear-gradient(to bottom,
-      var(--main-50) 0%,
-      var(--main-100) 20%,
-      var(--main-200) 40%,
-      var(--main-100) 50%,
-      var(--main-50) 100%);
+  background: linear-gradient(
+    to bottom,
+    hsl(45, 90%, 97%) 0%,
+    hsl(45, 85%, 88%) 25%,
+    hsl(40, 75%, 78%) 50%,
+    hsl(45, 85%, 88%) 75%,
+    hsl(45, 90%, 97%) 100%
+  );
   background-clip: text;
+  --webkit-background-clip: text;
   color: transparent;
 }
 
@@ -241,7 +244,7 @@ body {
 /* Main Services */
 
 .service-panel-opened {
-  flex-basis: clamp(15rem, 40vh, 20rem);
+  flex-basis: clamp(15rem, 40svh, 20rem);
   flex-grow: 1;
   transition: flex-basis 500ms, flex-grow 500ms;
 }
