@@ -13,7 +13,7 @@ export default function HairTreatment() {
         setExpandedPanel(panelId);
     }
     return (
-        <section className="relative min-h-dvh xl:min-h-screen bg-(--main-300)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat bg-top-right flex justify-center xl:grid xl:grid-cols-12">
+        <section className="relative min-h-svh xl:min-h-screen bg-(--main-300)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat bg-top-right flex justify-center xl:grid xl:grid-cols-12">
             <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-2">
                 <PageHeading mT="mt-0" title="Hair Treatments" />
 

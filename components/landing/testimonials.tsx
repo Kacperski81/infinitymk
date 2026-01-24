@@ -7,7 +7,7 @@ export default function Testimonials() {
     const testimonials = getTestimonialsData();
 
     return (
-        <section className="min-h-screen">
+        <section className="min-h-svh xl:min-h-screen">
 
             <main className="md:grow w-full flex flex-col py-2 xl:py-4 gap-2 md:gap-4">
 

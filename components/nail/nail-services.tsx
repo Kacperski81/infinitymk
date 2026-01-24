@@ -13,7 +13,7 @@ export default function NailServices() {
         setExpandedPanel(panelIndex);
     }
     return (
-        <section className="isolate relative min-h-dvh xl:min-h-screen bg-(--main-400)/80 bg-[url(/nail/nails-bg-flowers.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
+        <section className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/nail/nails-bg-flowers.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
             <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-6 z-10">
                 <PageHeading mT="mt-0" title="Nail Services" />
 
