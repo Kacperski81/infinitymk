@@ -12,7 +12,7 @@
             { "service": "Blow Dry Medium Hair", "price": "£40" },
             { "service": "Blow Dry Long Hair", "price": "From £45" },
             { "service": "Rough Blow Dry", "price": "£20"},
-            { "service": "Hair Up / Wedding Hair", "price": "From £75" }
+            { "service": "Hair Up / Wedding Hair test", "price": "From £75" }
         ]
     },
     {
