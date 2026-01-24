@@ -311,7 +311,7 @@ body {
 
 .price-panel-opened {
   /* flex-basis: calc((var(--panel-padding) * 2) + var(--button-width)); */
-  flex-basis: clamp(15rem, 40vh, 20rem);
+  flex-basis: clamp(15rem, 40svh, 20rem);
   flex-grow: 1;
   transition: flex-basis 500ms, flex-grow 500ms;
 }
