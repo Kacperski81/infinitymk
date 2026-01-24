@@ -94,7 +94,7 @@ export default function Carousel() {
     return (
 
         // Carousel Container
-        <div ref={containerRef} className="grow flex relative overflow-hidden max-h-[75dvh] min-h-[70dvh]">
+        <div ref={containerRef} className="grow flex relative overflow-hidden min-h-[70svh] max-h-[75svh]">
 
             {/* Carousel Slide */}
             <div className="w-full h-full min-h-full flex" style={getCarouselStyle()} onTransitionEnd={handleTransitionEnd}>
@@ -121,7 +121,7 @@ export default function Carousel() {
 
                                 {/* Comment */}
                                 <blockquote className="mb-4">
-                                    <p className="text-[var(--main-50)] text-sm lg:text-base leading-relaxed font-light">&ldquo;{testimonial.content}&rdquo;</p>
+                                    <p className="text-[var(--main-50)] text-sm lg:text-base leading-relaxed font-light">&ldquo;{testimonial.content}abc&rdquo;</p>
                                 </blockquote>
 
                                 {/* Reviewer Name with Accent Line */}
