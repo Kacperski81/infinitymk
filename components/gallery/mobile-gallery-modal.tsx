@@ -172,7 +172,7 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
         // Add edge resistance at boundaries
         const isAtStart = currentIndex === 0 && diff > 0
         const isAtEnd = currentIndex === pictures.length - 1 && diff < 0
-        
+
         if (isAtStart || isAtEnd) {
             // Apply resistance (reduce drag distance at edges)
             setDragOffset(diff * 0.3)
@@ -237,19 +237,19 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
         <>
             {/* Backdrop overlay */}
             <div
-                className={`fixed inset-0 bg-main-900/60 backdrop-blur-sm z-40 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+                className={`fixed inset-0 bg-main-900/60 backdrop-blur-sm z-[60] transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
                     }`}
                 onClick={handleOverlayClick}
                 aria-hidden="true"
             />
-            <div ref={modalRef} role="dialog" aria-modal="true" aria-label="Image gallery viewer" className={`fixed inset-y-15 inset-x-2 z-50 flex flex-col rounded-2xl shadow-2xl transition-all duration-300 ease-out bg-main-50/80 backdrop-blur-[10px] border border-main-100/60 
+            <div ref={modalRef} role="dialog" aria-modal="true" aria-label="Image gallery viewer" className={`fixed inset-2 z-[70] flex flex-col rounded-2xl shadow-2xl transition-all duration-300 ease-out bg-main-50/80 backdrop-blur-[10px] border border-main-100/60 
                 ${isOpen
                     ? "opacity-100 translate-y-0 scale-100"
                     : "opacity-0 translate-y-4 scale-95 pointer-events-none"
                 }`}
             >
                 {/* Header with close button */}
-                <div className="flex items-center justify-between p-4 ">
+                <div className="flex items-center justify-between px-4 py-2">
                     <span className="text-sm font-medium text-main-600">
                         {currentIndex + 1} / {pictures.length}
                     </span>
@@ -319,6 +319,30 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
                             )}
                         </>
                     )}
+                </div>
+                {/* Thumbnail strip - instant selection without transition */}
+                <div className="px-4 py-2">
+                    <div className="flex items-center justify-center gap-2 overflow-x-auto scrollbar-hide">
+                        {pictures.map((picture, index) => (
+                            <button
+                                key={picture.id}
+                                onClick={() => navigateTo(index, true)}
+                                className={`min-w-[44px] min-h-[44px] w-11 h-11 rounded-lg overflow-hidden border-2 ${index === currentIndex
+                                        ? "border-main-700 scale-110 shadow-md"
+                                        : "border-transparent opacity-60 hover:opacity-100"
+                                    } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400`}
+                                aria-label={`View image ${index + 1}`}
+                                aria-current={index === currentIndex ? "true" : "false"}
+                            >
+                                <img
+                                    src={picture.imageUrl}
+                                    alt=""
+                                    draggable={false}
+                                    className="w-full h-full object-cover"
+                                />
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </>
