@@ -1,43 +1,32 @@
 [
     {
         "id": "1",
-        "imageUrl": "/hair/gallery/zd6.jpg",
-        "alt": "Gallery image 5"
-    },
-    {
-        "id": "2",
         "imageUrl": "/hair/gallery/zd1.jpg",
         "alt": "Gallery image 1"
     },
     {
-        "id": "3",
+        "id": "2",
         "imageUrl": "/hair/gallery/zd2.jpg",
         "alt": "Gallery image 2"
     },
     {
-        "id": "4",
+        "id": "3",
         "imageUrl": "/hair/gallery/zd3.jpg",
         "alt": "Gallery image 3"
     },
     {
-        "id": "5",
+        "id": "4",
         "imageUrl": "/hair/gallery/zd4.jpg",
         "alt": "Gallery image 4"
     },
     {
-        "id": "6",
+        "id": "5",
         "imageUrl": "/hair/gallery/zd5.jpg",
         "alt": "Gallery image 5"
     },
     {
-        "id": "7",
+        "id": "6",
         "imageUrl": "/hair/gallery/zd6.jpg",
         "alt": "Gallery image 6"
-    },
-    {
-        "id": "8",
-        "imageUrl": "/hair/gallery/zd1.jpg",
-        "alt": "Gallery image 1"
     }
-
 ]

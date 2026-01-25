@@ -1,63 +1,43 @@
 "use client";
 
-import PageHeading from "@/components/page-heading";
-import type { CarouselItem } from "@/types";
 import { useState } from "react";
-import LightBox from "@/components/gallery/light-box";
+import PageHeading from "@/components/page-heading";
+import MobileGalleryModal from "@/components/gallery/mobile-gallery-modal";
+import type { CarouselItem } from "@/types";    
 
-export default function MobileGallery({ pictures }: { pictures: CarouselItem[] }) {
-    // pictures are for the lightbox functionality
-    // images are for gallery display only
-    const [visibleCount, setVisibleCount] = useState<number>(6);
-    const images = pictures.slice(1, visibleCount + 1);
+export default function MobileGallery({pictures} : {pictures: CarouselItem[] }) {
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [selectedItem, setSelectedItem] = useState<CarouselItem | null>(null);
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-    const handleImageClick = (picture: CarouselItem) => {
-
-        // const index = pictures.findIndex((img) => img.id === picture.id);
-        setSelectedItem(picture);
+    const handleImageClick = (index: number) => {
+        console.log(index);
+        setSelectedIndex(index);
         setShowModal(true);
-    };
+    }
 
     const handleCloseModal = () => {
         setShowModal(false);
-        setSelectedItem(null);
-    };
-
-    const handleOverlayClick = (e: React.MouseEvent) => {
-        if (e.target === e.currentTarget) {
-            handleCloseModal();
-        }
-    };
+    }
 
     return (
-        <div className="min-h-dvh xl:min-h-screen">
+        <div className="min-h-svh">
             <div className="px-3 py-2">
-
                 <PageHeading title="GALLERY" />
 
-                <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:px-9">
-                    {images.map((picture) => {
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4">
+                    {pictures.map((picture, index) => {
                         return (
-                            <img key={picture.id} alt={picture.alt} src={picture.imageUrl}
-                                className="w-full h-auto"
-                                onClick={() => handleImageClick(picture)}
-                            />
+                            <button key={picture.id} onClick={() => handleImageClick(index)} className="group relative aspect-[16/21] overflow-hidden rounded-xl bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                                <img alt={picture.alt} src={picture.imageUrl} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 group-active:scale-100" />
+                                <div className="absolute inset-0 bg-main-900/0 group-hover:bg-main-900/10 transition-colors duration-300" />
+                            </button>
                         )
                     })}
-                    {/* <button className="col-start-2 flex justify-end pr-4 py-1 font-(family-name:--font-aboreto) text-(--main-100)" onClick={() => setVisibleCount(visibleCount + 4)}>
-                        See more ...
-                    </button> */}
                 </div>
-
-                {showModal && (
-                    <div className="">
-                        {/* All you need to do is to find the clicked item from the images in the pictures it has 2 more items so maybe - 2 */}
-                        <LightBox key={selectedItem?.id} open={showModal} onClose={handleCloseModal} item={selectedItem} items={pictures} handleOverlayClick={handleOverlayClick} />
-                    </div>
-                )}
             </div>
+
+            {/* Modal */}
+            <MobileGalleryModal isOpen={showModal} onClose={handleCloseModal} selectedIndex={selectedIndex} pictures={pictures} />
         </div>
     );
 }

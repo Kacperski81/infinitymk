@@ -195,3 +195,10 @@ type Category = {
 
 // Define the type for the entire price list object
 export type BeautyPriceList = Category[];
+
+export type MobileGalleryModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    selectedIndex: number;
+    pictures: CarouselItem[];
+}

@@ -8,7 +8,7 @@ export default function HairOffers() {
     const hairOffers = getHairOffers();
 
     return (
-        <div className="">
+        <div className="px-2">
 
             <PageHeading title="Offers" mT="mt-2" />
 
