@@ -8,6 +8,7 @@
     { "id": "hair-frizz", "label": "Frizz Control" },
     { "id": "hair-curl", "label": "Wavy / Curly" },
     { "id": "hair-fine-volume", "label": "Fine / Volume" },
+    { "id": "hair-fragile-loss", "label": "Fragile / Hair Loss" },
     { "id": "skin-all", "label": "Skin & Body" }
   ],
   "typeToTagIds": {
@@ -24,6 +25,7 @@
     "Wavy to very curly hair": ["hair-curl"],
     "Fine or limp hair": ["hair-fine-volume"],
     "Fine to medium hair": ["hair-fine-volume"],
+    "Fragile scalp and hair": ["hair-fragile-loss"],
     "All skin types": ["skin-all"]
   }
 }

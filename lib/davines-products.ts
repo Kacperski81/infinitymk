@@ -1,6 +1,7 @@
 import essentialHairCare from "@/data/essential-hair-care.json";
 import oiData from "@/data/oi.json";
 import heartOfGlassData from "@/data/heart-of-glass.json";
+import naturalTechData from "@/data/natural-tech.json";
 import browseTags from "@/data/browse-tags.json";
 import type { DavinesHairCareData, DavinesHairCareFamily, DavinesHairCareProduct, BrowseTags } from "@/types";
 
@@ -23,6 +24,7 @@ export function getAllFamilies(): DavinesHairCareData {
         ...(essentialHairCare as DavinesHairCareData),
         ...(oiData as DavinesHairCareData),
         ...(heartOfGlassData as DavinesHairCareData),
+        ...(naturalTechData as DavinesHairCareData),
     ];
 }
 
@@ -171,6 +173,7 @@ export function filterProductsByFamily(family: DavinesHairCareFamily, tag: strin
         "hair-frizz": ["Frizzy and unruly hair", "Coarse or frizzy hair"],
         "hair-dry-damaged": ["Dry or damaged hair", "Dry or dehydrated hair", "Long or damaged hair"],
         "hair-fine-volume": ["Fine or limp hair", "Fine to medium hair"],
+        "hair-fragile-loss": ["Fragile scalp and hair"],
         "skin-all": ["All skin types"],
     }
 

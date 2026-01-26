@@ -1,0 +1,145 @@
+[
+  {
+    "family": "NATURAL TECH/ENERGIZING",
+    "id": "energizing_01",
+    "image": "",
+    "info": {
+      "active": "Hair Energy Complex, Caffeine Phytoceuticals, Microbiotic Booster",
+      "props": "Hair Energy Complex helps in presence of inflammation and free radicals, for a good scalp balance. Caffeine Phytoceuticals are known to stimulate the cellular metabolism of the scalp and promote tissue oxygenation. Microbiotic Booster is known for its effectiveness in maintaining the integrity of the skin barrier, for a balanced scalp ecosystem.",
+      "prod": "Mung Bean and Crimson Clover Extract (Vigna Radiata-Trifolium Pratense) rich in flavonoids. Agastache Mexicana Extract rich in flavonoids capable of neutralizing physical stress linked with scalp inflammation.",
+      "story": "Energizing is the system dedicated to fragile scalp and hair prone to falling out and for the preventive treatment of various forms of alopecia. With balsamic top notes of Eucalyptus and Peppermint on a spicy base of Pepper and Ginger, featuring heart notes of Cinnamon leaves and peel."
+    },
+    "products": [
+      {
+        "name": "ENERGIZING/shampoo",
+        "type": "Fragile scalp and hair",
+        "short_description": "Mild shampoo that gently cleanses the hair, giving a sensation of energy, vigour and wellbeing to the scalp.",
+        "full_description": "Mild shampoo with Hair Energy Complex and Phytoceuticals that gently cleanses the hair, giving a sensation of energy, vigour and wellbeing to the scalp. Leaves the hair clean and light without weighing it down. 100% of testers declare that the product strengthens the hair and improves scalp comfort.",
+        "usage": "Apply on wet scalp and hair, massaging in gently. Leave for a few minutes then rinse thoroughly. Repeat if necessary. Intense treatment: every other day for 1 month. Maintenance treatment: twice a week for 2 months. Alternate with Renewing Shampoo.",
+        "price": "£0",
+        "image": "/products/natural-tech/energizing/energizing-shampoo.jpg"
+      },
+      {
+        "name": "ENERGIZING/superactive",
+        "type": "Fragile scalp and hair",
+        "short_description": "Stimulating serum to counteract hair loss associated to androgenetic factors.",
+        "full_description": "Stimulating serum with Hair Energy Complex, Microbiotic Booster, and Mung Bean and Crimson Clover Extract to counteract hair loss associated to androgenetic factors. Reduces hair loss, hyper-production of sebum and improves hair density. Hair grows stronger and the scalp is more toned with improved comfort. The pool of active ingredients encourage communication between cells, regulating cell functions. Rich in flavonoids, they inhibit the 5-α-reductase which converts testosterone into dihydrotestosterone: blocking this enzyme counteracts androgenetic alopecia. Results: -25% hair loss after 56 days, -27% after 84 days.",
+        "usage": "Apply on scalp after hair has been shampooed and towel dried. Massage until completely absorbed. Do not rinse. Intensive treatment: every other day for 1 month. Maintenance treatment: twice a week for 2 months. After a brief break, resume treatment if necessary.",
+        "price": "£0",
+        "image": "/products/natural-tech/energizing/energizing-superactive.jpg"
+      },
+      {
+        "name": "ENERGIZING/seasonal superactive",
+        "type": "Fragile scalp and hair",
+        "short_description": "Regenerating lotion to counteract hair loss caused by stress and seasonal factors.",
+        "full_description": "Regenerating lotion with Hair Energy Complex, Microbiotic Booster, and Agastache Mexicana Extract to counteract hair loss caused by stress and seasonal factors. Strengthens the hair leaving it clean and light, improving its density and body. Provides comfort to the scalp and acts as a preventive treatment for those prone to hair loss. Agastache Mexicana Extract is rich in flavonoids, capable of neutralizing physical stress linked with scalp inflammation. Results: -27% hair loss after 56 days, -34% after 84 days. Hair density improves in 40% of volunteers after 56 days and 60% after 84 days.",
+        "usage": "Apply on scalp after hair has been shampooed and towel dried. Massage until completely absorbed. Do not rinse. Intense treatment: every other day for 1 month. Maintenance treatment: twice a week for 2 months.",
+        "price": "£0",
+        "image": "/products/natural-tech/energizing/energizing-sesonal-superactive.jpg"
+      },
+      {
+        "name": "ENERGIZING/gel",
+        "type": "Fragile scalp and hair",
+        "short_description": "Treatment for fragile scalp and hair prone to falling out, stimulating scalp microcirculation.",
+        "full_description": "Treatment with Hair Energy Complex and Caffeine Phytoceuticals for fragile scalp and hair prone to falling out, stimulating scalp microcirculation. Applied to the scalp and roots, it tones and sets hair slightly, creating a light hold effect. With a preventive action in case of seasonal hair loss, it provides strength and body to fine and stressed hair.",
+        "usage": "After shampooing, distribute all over the scalp, massaging gently. Do not rinse. Preventive treatment or maintenance: twice a week for 3 months.",
+        "price": "£0",
+        "image": "/products/natural-tech/energizing/energizing-gel.jpg"
+      },
+      {
+        "name": "ENERGIZING/thickening tonic",
+        "type": "Fragile scalp and hair",
+        "short_description": "Thickening tonic for fragile scalp and hair prone to falling out.",
+        "full_description": "Thickening tonic with Hair Energy Complex and Caffeine Phytoceuticals for fragile scalp and hair prone to falling out. Increases the diameter of the hair fibre by 10%, expanding it from the very first application. Leaves hair glossy and full-bodied without weighing it down. 100% of testers are satisfied by the immediate action on hair fullness.",
+        "usage": "After shampooing, apply the product to towel-dried scalp and hair. Massage gently and comb through the length of the hair for even distribution. Do not rinse. Use as needed, as well as after every wash.",
+        "price": "£0",
+        "image": "/products/natural-tech/energizing/energizing-tonic.jpg"
+      }
+    ]
+  },
+  {
+    "family": "NATURAL TECH/NOURISHING",
+    "id": "nourishing_02",
+    "image": "",
+    "info": {
+      "active": "Biacidic Bond Complex, Vegetal Keratin",
+      "props": "Biacidic Bond Complex is a patented blend combining the strengthening power of maleic acid with strong antioxidant power of the liposol maleate molecule. It protects from external oxidative damage and reconnects weakened internal bonds at risk of breaking. Vegetal Keratin is a combination of rice protein and amino acids that interact with the hair fibre at different levels, promoting 360 degrees protection and reparation.",
+      "prod": "Vegetal Keratin derived from rice protein and a mix of amino acids with different molecular sizes. Royal Jelly rich in vitamins and essential amino acids.",
+      "story": "Nourishing is the reconstructing treatment capable of repairing the hair fibre and preventing breakage by giving new life to dry or damaged hair. The ideal solution for hair that needs a restructuring boost both in salon and at home. With aromatic top notes of Rosemary, Sage, Basil, and Thyme, heart notes of Coriander and Cedar leaves, and a Musk base. Achieves +72% anti-breakage effect after only one treatment."
+    },
+    "products": [
+      {
+        "name": "NOURISHING/shampoo",
+        "type": "Dry or damaged hair",
+        "short_description": "Gentle cleanser suitable for dehydrated scalp and brittle hair.",
+        "full_description": "Gentle cleanser with Biacidic Bond Complex and Vegetal Keratin suitable for dehydrated scalp and brittle hair. The rich foam gently cleanses the hair while preparing it for the following treatment steps. It hydrates and easily detangles the hair.",
+        "usage": "Apply to damp scalp and hair, massaging in gently. Rinse thoroughly and repeat if necessary. Use any time according to scalp and hair needs.",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-shampoo.jpg"
+      },
+      {
+        "name": "NOURISHING/hair building pak",
+        "type": "Dry or damaged hair",
+        "short_description": "Restructuring treatment for dry and damaged hair.",
+        "full_description": "Restructuring treatment with Biacidic Bond Complex and Vegetal Keratin for dry and damaged hair. Ideal maintenance at home of the professional treatment. Repairs and rebuilds the hair structure from within.",
+        "usage": "Apply on towel dried hair after shampooing with Nourishing Shampoo. Select damaged parts of hair, lengths and ends, and distribute the product evenly strand by strand. Leave in for 10-15 minutes then rinse thoroughly. Follow with the application of Vegetarian Miracle Conditioner or Vegetarian Miracle Mask according to the hair texture. Use every 2-3 shampoos.",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-building-pak.jpg"
+      },
+      {
+        "name": "NOURISHING/vegetarian miracle conditioner",
+        "type": "Dry or damaged hair",
+        "short_description": "Replenishing conditioner for dry and brittle hair.",
+        "full_description": "Replenishing conditioner with Biacidic Bond Complex and Vegetal Keratin for dry and brittle hair. Recommended for fine to medium hair. Ideal for use both in salon and at home to prolong the effects of the previous steps in the Nourishing regimen.",
+        "usage": "Apply to clean and damp lengths and ends. Leave on for 5 minutes, then comb and rinse thoroughly. Use any time according to hair needs.",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-conditioner.jpg"
+      },
+      {
+        "name": "NOURISHING/vegetarian miracle mask",
+        "type": "Dry or damaged hair",
+        "short_description": "Deep moisturizing mask for dry and brittle hair.",
+        "full_description": "Deep moisturizing mask with Biacidic Bond Complex and Vegetal Keratin for dry and brittle hair. Recommended for thick or coarse hair. Ideal for use both in salon and at home to prolong the effects of the previous steps in the Nourishing regimen.",
+        "usage": "Apply to clean and damp lengths and ends. Leave on for 5 minutes, then comb and rinse thoroughly. Use any time according to hair needs.",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-vegetarian-mask.jpg"
+      },
+      {
+        "name": "NOURISHING/keratin sealer",
+        "type": "Dry or damaged hair",
+        "short_description": "Cuticle sealing leave-in fluid for dry and damaged hair.",
+        "full_description": "Cuticle sealing leave-in fluid with Vegetal Keratin for dry and damaged hair. Seals the cuticles to increase brightness and softness, strengthens the hair fiber and prevents split ends. The lightweight formula locks in the benefits of the previous Nourishing products as a final step in the routine, ensuring long-lasting results.",
+        "usage": "Apply evenly on towel dried hair to conclude the Nourishing routine, distribute the product with a comb and follow with the usual styling routine. Use any time according to hair needs, especially to conclude a Nourishing Treatment.",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-keratin-sealer.jpg"
+      },
+      {
+        "name": "NOURISHING/hair royal jelly superactive",
+        "type": "Dry or damaged hair",
+        "short_description": "Multi-active complex for the scalp, rich in minerals and vitamins from royal jelly.",
+        "full_description": "Multi-active complex with Royal Jelly rich in vitamins and essential amino acids with nourishing, moisturizing and soothing properties, providing enormous benefits to the scalp. Mineralizing vitamin complex for dry, dehydrated, hyper-sensitive scalp.",
+        "usage": "Turn the cap in the direction of the arrow until the protective ring snaps, then screw right down. Shake well, unscrew the cap and using the special applicator, spread the product over the scalp massaging in gently. Do not rinse off. Use any time according to scalp and hair needs.",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-jelly.jpg"
+      },
+      {
+        "name": "NOURISHING/keratin wonder superactive",
+        "type": "Dry or damaged hair",
+        "short_description": "Professional restructuring treatment for severely damaged hair.",
+        "full_description": "Professional restructuring treatment with Biacidic Bond Complex and Vegetal Keratin. Provides intensive repair and reconstruction for damaged, bleached, porous hair. Exclusive in-salon treatment that delivers remarkable anti-breakage results.",
+        "usage": "Apply on towel dried hair after shampooing with Nourishing Shampoo. Select damaged parts of hair, lengths and ends, and distribute the product evenly strand by strand using a brush. Process for 10 minutes with heat source or for 15 minutes without heat source. Rinse thoroughly. Follow with the application of Vegetarian Miracle Conditioner or Vegetarian Miracle Mask. Frequency: Dry hair - 1 complete treatment every month. Damaged hair - 1 complete treatment every 2 weeks. Extra damaged hair - 1 treatment enriched with Keratin Booster every week.",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-keratin-superactive.jpg"
+      },
+      {
+        "name": "NOURISHING/keratin booster superactive",
+        "type": "Dry or damaged hair",
+        "short_description": "Repairing additive for severely damaged hair.",
+        "full_description": "Repairing additive with Biacidic Bond Complex and Vegetal Keratin designed to be mixed with Nourishing Keratin Wonder Superactive to enhance the repairing and nourishing actions. Exclusive in-salon treatment for severely damaged hair.",
+        "usage": "Add Keratin Booster Superactive to Keratin Wonder Superactive. Mix well and apply on towel dried hair, section-by-section. Leave on for 10 minutes with heat source or for 15 minutes without heat source, then rinse thoroughly. Follow with the application of Vegetarian Miracle Conditioner or Vegetarian Miracle Mask. Mix ratio 1:5 with Keratin Wonder Superactive (for a standard application mix 3 pipettes of Keratin Booster in 30g of Keratin Wonder).",
+        "price": "£0",
+        "image": "/products/natural-tech/nourishing/nourishing-keratin-superactive.jpg"
+      }
+    ]
+  }
+]
