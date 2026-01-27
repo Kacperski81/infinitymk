@@ -2,6 +2,9 @@ import essentialHairCare from "@/data/essential-hair-care.json";
 import oiData from "@/data/oi.json";
 import heartOfGlassData from "@/data/heart-of-glass.json";
 import naturalTechData from "@/data/natural-tech.json";
+import circleChroniclesData from "@/data/circle-chronicles.json";
+import moreInsideData from "@/data/more-inside.json";
+import liquidSpellData from "@/data/liquid-spell.json";
 import browseTags from "@/data/browse-tags.json";
 import type { DavinesHairCareData, DavinesHairCareFamily, DavinesHairCareProduct, BrowseTags } from "@/types";
 
@@ -25,6 +28,9 @@ export function getAllFamilies(): DavinesHairCareData {
         ...(oiData as DavinesHairCareData),
         ...(heartOfGlassData as DavinesHairCareData),
         ...(naturalTechData as DavinesHairCareData),
+        ...(circleChroniclesData as DavinesHairCareData),
+        ...(moreInsideData as DavinesHairCareData),
+        ...(liquidSpellData as DavinesHairCareData),
     ];
 }
 
@@ -166,13 +172,13 @@ export function filterProductsByFamily(family: DavinesHairCareFamily, tag: strin
     }
 
     const tagMappings: Record<string, string[]> = {
-        "hair-all": ["All hair types", "All hair types (daily use)"],
+        "hair-all": ["All hair types", "All hair types (daily use)", "Stressed or dull hair", "Hair and scalp needing a break", "Active lifestyle hair"],
         "hair-blonde": ["Blonde hair"],
         "hair-colour": ["Coloured hair"],
         "hair-curl": ["Wavy or curly hair", "Wavy to very curly hair"],
         "hair-frizz": ["Frizzy and unruly hair", "Coarse or frizzy hair"],
-        "hair-dry-damaged": ["Dry or damaged hair", "Dry or dehydrated hair", "Long or damaged hair"],
-        "hair-fine-volume": ["Fine or limp hair", "Fine to medium hair"],
+        "hair-dry-damaged": ["Dry or damaged hair", "Dry or dehydrated hair", "Long or damaged hair", "Very damaged hair", "Stressed or dull hair", "Active lifestyle hair"],
+        "hair-fine-volume": ["Fine or limp hair", "Fine to medium hair", "Fine or sensitized hair"],
         "hair-fragile-loss": ["Fragile scalp and hair"],
         "skin-all": ["All skin types"],
     }

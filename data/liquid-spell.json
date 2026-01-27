@@ -1,0 +1,24 @@
+[
+  {
+    "family": "LIQUID SPELL",
+    "id": "liquid_spell_01",
+    "image": "/products/liquid-spell/liquid-spell-fluid.jpg",
+    "info": {
+      "active": "Biacidic Bond Complex, Baobab Extract, Fortifying Botanical Shield",
+      "props": "Biacidic Bond Complex strengthens and repairs hair bonds with maleic and fumaric acids. Baobab Extract increases combability while conditioning and nourishing. Fortifying Botanical Shield from Scandinavian spruce provides thermal protection and elasticity. The transformative liquid-to-foam texture provides an instant boost for sensitized or fine hair.",
+      "prod": "Baobab seeds sustainably sourced from South Africa. Fortifying Botanical Shield from sustainably sourced Scandinavian spruce. Made in the Davines Village powered with 100% renewable energy and carbon neutral. Bottles made using post-consumer recycled plastic.",
+      "story": "Liquid Spell is a transformative liquid-to-foam elixir dedicated to sensitized and fine hair. The combination of highly effective ingredients and a transformative texture means an instant boost for your hair. It repairs mildly damaged and lackluster hair, providing instant softness and vitality. The formula strengthens and compacts the hair structure giving vitality and body to hair that looks healthier, silky and naturally shiny."
+    },
+    "products": [
+      {
+        "name": "LIQUID SPELL/reinforcing bodifying fluid",
+        "type": "Fine or sensitized hair",
+        "short_description": "Bodifying fortifying fluid that strengthens and compacts hair structure for vitality and body.",
+        "full_description": "Leave-on treatment for sensitized or fine hair. A transformative liquid-to-foam elixir that repairs mildly damaged and lackluster hair, providing instant softness and vitality. It strengthens and compacts the hair structure giving vitality and body to the hair that looks healthier, silky and naturally shiny. Contains Biacidic Bond Complex to strengthen and repair hair bonds, Baobab Extract for conditioning and nourishment, and Fortifying Botanical Shield for thermal protection and elasticity.",
+        "usage": "Apply to towel-dried hair, distributing evenly from roots to ends. Do not rinse. Proceed with desired styling. The liquid transforms into a lightweight foam for easy application and even distribution.",
+        "price": "£44.65",
+        "image": "/products/liquid-spell/liquid-spell-fluid.jpg"
+      }
+    ]
+  }
+]

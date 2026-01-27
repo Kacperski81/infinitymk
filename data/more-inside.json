@@ -1,0 +1,258 @@
+[
+  {
+    "family": "MORE INSIDE",
+    "id": "more_inside_01",
+    "image": "/products/more-inside/more-inside-bg.jpg",
+    "info": {
+      "active": "Extra Moisturizing Factor, Extreme Bounce Factor, Anti-Flaking Factor, Texture Factor, Plasticizing Factor, Distribution Factor",
+      "props": "Extra Moisturizing Factor: a synergy of ingredients with high moisturizing power that facilitates water molecule deposit on the hair shaft with gradual release. Extreme Bounce Factor: latest generation raw materials including a three-dimensional resin for defined, bouncy structure. Anti-Flaking Factor: carefully calibrated formulas to minimize resin content and reduce flaking. Texture Factor: formulas that give body, texture and shape without adding resins. Plasticizing Factor: improves elasticity of resins for a natural look without compromising hold. Distribution Factor: increases strength and amount of resins while assuring uniform distribution.",
+      "prod": "Each formula is the result of scientific know-how from the Davines laboratories in Parma, Italy. All bottles are made using plastic from renewable sources. Wrapping paper is FSC Recycled Certified. Emissions from packaging lifecycle are neutralized through Ethiotrees.",
+      "story": "More Inside products have chosen to speak. They whisper things about life and deep thoughts, telling us about themselves through what they do. Each one has a hidden being that exists on another level, just as we all do. More Inside lets us discover it, layer after layer, until we reach the depth of its being. Its heart is the formula and the ingredients it contains. More Inside is the celebration of humankind in all its complexity, of its diverse being so rich with messages."
+    },
+    "products": [
+      {
+        "name": "MORE INSIDE/blow dry primer",
+        "type": "All hair types",
+        "short_description": "Anti-humidity, bodifying primer that supports all types of styling and extends blow-dry life.",
+        "full_description": "Ideal to support all types of styling, allowing them to last longer. Provides bodifying effect, anti-humidity protection, heat protection, extends the life-length of a blow-dry, decreases blow-dry time, and delivers natural shine.",
+        "usage": "Spray 5-20 pumps on wet or towel-dried hair from roots to ends. Proceed to style.",
+        "price": "0",
+        "image": "/products/more-inside/blow-dry-primer.jpg"
+      },
+      {
+        "name": "MORE INSIDE/shine wax",
+        "type": "All hair types",
+        "short_description": "Lightweight wax for a polished finish, ideal for glossy and sleek effects.",
+        "full_description": "Ideal for glossy and sleek effects. Lightweight wax formula that is easily reworkable and supports flexible looks. Wearable day and night, adds texture without being greasy. Used with hot tools gives body to the hair making it soft and polished.",
+        "usage": "Distribute the product in your hands and apply to dry hair. Used with hot tools gives body to the hair making it soft and polished.",
+        "price": "0",
+        "image": "/products/more-inside/shine-wax.jpg"
+      },
+      {
+        "name": "MORE INSIDE/relaxing moisturizing fluid",
+        "type": "Frizzy and unruly hair",
+        "short_description": "Straightening and moisturizing fluid for smooth, sleek looks and soft moisturized curls.",
+        "full_description": "Ideal for a smooth, sleek look and for soft moisturized curls. Straightening and moisturizing for all hair types, softens and moisturizes curly hair, protects the structure of the hair, provides anti-humidity protection, and is ideal for use with hot tools.",
+        "usage": "Distribute between palms, apply to damp hair. Use it to finish long hair, it adds moisture and separation to the strands.",
+        "price": "0",
+        "image": "/products/more-inside/relaxing-moisturizing-fluid.jpg"
+      },
+      {
+        "name": "MORE INSIDE/shimmering mist",
+        "type": "All hair types",
+        "short_description": "Shine mist for extraordinary high shine looks with a non-oily finish.",
+        "full_description": "Ideal for high shine looks. Provides a shiny yet non-oily finish with anti-frizz and anti-static effect. Makes hair silky smooth and easy to brush.",
+        "usage": "Shake before use. Apply to lengths and ends from approx. 30 cm / 12 inches away. If the hair is extremely porous, spray on a small amount before blow drying.",
+        "price": "0",
+        "image": "/products/more-inside/shimmering-mist.jpg"
+      },
+      {
+        "name": "MORE INSIDE/texturizing dust",
+        "type": "Fine or limp hair",
+        "short_description": "Instant volume creation powder for structural texture with a traceless mat finish.",
+        "full_description": "Ideal for instant volume creation and structural texture. Provides immediate volume generation, hair texture expansion, gripping capability for updos, adjustable structural support, and a traceless mat finish.",
+        "usage": "Sprinkle directly onto the root area where volume is desired. For a 'hair expansion' effect sprinkle the texturizing dust on a flat brush and pass it on the hair lengths and ends.",
+        "price": "0",
+        "image": "/products/more-inside/texturizing-dust.jpg"
+      },
+      {
+        "name": "MORE INSIDE/sea salt spray",
+        "type": "All hair types",
+        "short_description": "Full-bodied, beachy spray for a tousled look with mat finish.",
+        "full_description": "Ideal for a tousled, beachy, full-bodied look with a mat finish. Gives texture and volume while leaving hair neither greasy nor sticky.",
+        "usage": "Shake well before use. Spray on wet or dry hair to obtain the desired effect.",
+        "price": "0",
+        "image": "/products/more-inside/sea-salt-spray.jpg"
+      },
+      {
+        "name": "MORE INSIDE/dry texturizer",
+        "type": "All hair types",
+        "short_description": "Instant full-bodied dry spray for an airy and sensual silhouette with natural effect.",
+        "full_description": "Ideal for an airy and sensual silhouette with a natural effect. Provides full texture with a tousled effect, quickly restyle without washing hair, doesn't weigh hair down and is not sticky.",
+        "usage": "Shake well. Apply to dry hair from approximately 25 cm / 10 inches.",
+        "price": "0",
+        "image": "/products/more-inside/dry-texturizer.jpg"
+      },
+      {
+        "name": "MORE INSIDE/volume boosting mousse",
+        "type": "Fine or limp hair",
+        "short_description": "Long lasting mousse for buoyant textures with body and volume and natural glossy finish.",
+        "full_description": "Ideal for creating shapes with body and volume with a natural glossy finish. Provides a detangling effect for easier styling.",
+        "usage": "Shake before use. Distribute evenly on damp hair.",
+        "price": "0",
+        "image": "/products/more-inside/volume-boosting-mousse.jpg"
+      },
+      {
+        "name": "MORE INSIDE/invisible dry shampoo",
+        "type": "All hair types",
+        "short_description": "Cleansing and volumizing dry shampoo without any white residue.",
+        "full_description": "Ideal for refreshing second day hair adding volume and softness. Absorbs excess oil and sebum, boosts volume from roots to ends, doesn't leave white residues, and instantly refreshes hair with a soft and natural effect.",
+        "usage": "Shake well. Hold can 20cm/8in from head and spray at the scalp and roots in sections. Massage into scalp or brush through to thoroughly distribute product through hair.",
+        "price": "0",
+        "image": "/products/more-inside/invisible-dry-shampoo.jpg"
+      },
+      {
+        "name": "MORE INSIDE/curl building serum",
+        "type": "Wavy or curly hair",
+        "short_description": "Flexible serum for defined, bouncy curls with anti-frizz and humidity resistance.",
+        "full_description": "Ideal for a look with defined, bouncy curls. Enhances curls in wavy hair, gives elasticity to curls, defines without weighing down, provides anti-frizz effect and is humidity resistant.",
+        "usage": "Distribute evenly on damp hair. Proceed to style.",
+        "price": "0",
+        "image": "/products/more-inside/curl-building-serum.jpg"
+      },
+      {
+        "name": "MORE INSIDE/curl gel oil",
+        "type": "Wavy to very curly hair",
+        "short_description": "Defining gel-oil for extra-curly hair with well-defined and springy curls.",
+        "full_description": "Ideal for well-defined and springy/bouncy curls. Defines the hair strand, provides hydrating properties adding moisture to the hair, anti-frizz effect, and leaves hair feeling natural, soft, and shiny.",
+        "usage": "Distribute between the palms and smooth through damp curls. Comb through and style as desired. Can be diffused or air-dried.",
+        "price": "0",
+        "image": "/products/more-inside/curl-gel-oil.jpg"
+      },
+      {
+        "name": "MORE INSIDE/curl moisturizing mousse",
+        "type": "Wavy or curly hair",
+        "short_description": "Mousse for defined, bouncy curls with a natural glossy finish.",
+        "full_description": "Ideal for a look with full-bodied, bouncy curls with a natural glossy finish. Provides defined, bouncy curls, detangling effect, and does not weigh hair down.",
+        "usage": "Shake before use. Distribute evenly on damp hair.",
+        "price": "0",
+        "image": "/products/more-inside/curl-moisturizing-mousse.jpg"
+      },
+      {
+        "name": "MORE INSIDE/strong hold moulding clay",
+        "type": "All hair types",
+        "short_description": "Strong hold clay for a firm, mat, textured look with casual strand separation.",
+        "full_description": "Ideal for a mat, textured look. Provides humidity resistance and casual separation of the strands of hair.",
+        "usage": "Distribute a small quantity between the palms, apply to dry hair and style.",
+        "price": "0",
+        "image": "/products/more-inside/strong-hold-moulding-clay.jpg"
+      },
+      {
+        "name": "MORE INSIDE/strong dry wax",
+        "type": "All hair types",
+        "short_description": "Strong wax for defined mat textures with a creative, untamed look.",
+        "full_description": "Ideal for a creative and untamed look with a mat and dry effect. Provides hold and separation of the strands of hair, leaves hair neither greasy nor sticky.",
+        "usage": "Distribute a small quantity between the palms, apply on dry hair and style.",
+        "price": "0",
+        "image": "/products/more-inside/strong-dry-wax.jpg"
+      },
+      {
+        "name": "MORE INSIDE/strong hold cream gel",
+        "type": "All hair types",
+        "short_description": "Firm cream gel for polished looks, ideal for creating wet looks on short hair.",
+        "full_description": "Ideal for creating wet looks on short hair. Provides bounce-back effect, extreme control, quick drying with no residue, and re-workable styling.",
+        "usage": "Apply a small quantity on the hair, proceed to style.",
+        "price": "0",
+        "image": "/products/more-inside/strong-hold-cream-gel.jpg"
+      },
+      {
+        "name": "MORE INSIDE/strong hairspray",
+        "type": "All hair types",
+        "short_description": "Long lasting hairspray for firm hold with humidity resistance and quick drying.",
+        "full_description": "Ideal for long-lasting, high-hold looks. For re-workable styles, humidity resistant, quick drying with fine mist application, and easy to brush out. Ideal for looks that require strong and durable support with a glossy finish.",
+        "usage": "Shake before use. Apply to styled hair from approx. 30 cm / 12 inches away. To tame down rebellious strands, spray a little strong hairspray directly onto a flat brush and pass it immediately onto hair.",
+        "price": "0",
+        "image": "/products/more-inside/strong-hairspray.jpg"
+      },
+      {
+        "name": "MORE INSIDE/extra strong hairspray",
+        "type": "All hair types",
+        "short_description": "Maximum hold hairspray for fail-proof buns, braids and blow-drying.",
+        "full_description": "Ideal for fail-proof buns, braids and blow-drying. Humidity resistant and fast-drying, can be brushed out, hair stays in shape all day long with a natural finish.",
+        "usage": "Shake well before use. Apply to styled hair from approx. 30 cm away for long lasting control and to capture the blow-dry tousled movement.",
+        "price": "0",
+        "image": "/products/more-inside/extra-strong-hairspray.jpg"
+      },
+      {
+        "name": "MORE INSIDE/invisible serum",
+        "type": "All hair types",
+        "short_description": "Satiny serum for tousled, slept-in looks with flexible hold and anti-frizz effect.",
+        "full_description": "Ideal for a slept-in, tousled look. Provides flexible hold, slight separation of the strands of hair, anti-frizz effect, and a satiny finish.",
+        "usage": "Distribute evenly a small quantity to damp or dry hair. Proceed to style.",
+        "price": "0",
+        "image": "/products/more-inside/invisible-serum.jpg"
+      },
+      {
+        "name": "MORE INSIDE/forming pomade",
+        "type": "All hair types",
+        "short_description": "Textured pomade for reworkable looks with exceptional pliability and memory.",
+        "full_description": "Ideal for support and flexibility. Provides exceptional pliability and memory, invisible on hair, not sticky, and ideal even for fine hair.",
+        "usage": "Distribute a small quantity between palms, work on dry hair, style.",
+        "price": "0",
+        "image": "/products/more-inside/forming-pomade.jpg"
+      },
+      {
+        "name": "MORE INSIDE/medium hold finishing gum",
+        "type": "All hair types",
+        "short_description": "Finishing gum for mat, elastic textures with a defined and re-workable look.",
+        "full_description": "Ideal for a defined and re-workable look with a mat finish. Provides moldable, textured effect with a mat and dry effect, leaves hair neither greasy nor sticky.",
+        "usage": "Distribute a small quantity between the hands, work on dry hair and style. Using a small quantity, apply lock by lock working with the curling iron to create polished defined curls with great flexibility.",
+        "price": "0",
+        "image": "/products/more-inside/medium-hold-finishing-gum.jpg"
+      },
+      {
+        "name": "MORE INSIDE/medium hold pliable paste",
+        "type": "All hair types",
+        "short_description": "Pliable paste for thick, invisible effects with controlled styling and natural finish.",
+        "full_description": "Ideal for a controlled look with a natural finish. Provides textured effect and controlled styling. On extremely frizzy hair helps smoothen hair with a shiny finish.",
+        "usage": "Distribute a quantity between the hands, apply to dry hair. Alternatively, apply to damp hair and proceed with styling.",
+        "price": "0",
+        "image": "/products/more-inside/medium-hold-pliable-paste.jpg"
+      },
+      {
+        "name": "MORE INSIDE/texturizing serum",
+        "type": "All hair types",
+        "short_description": "Soft, light serum for workable looks that gives body and texture to smooth and curly hair.",
+        "full_description": "Ideal to give body and texture and create soft effects on smooth and curly hair. Provides texture, moisturising action, does not weigh the hair down, and offers extreme hair workability.",
+        "usage": "Apply the product evenly to towel-dried or dry hair. A small amount of product is enough to add volume and texture to hair.",
+        "price": "0",
+        "image": "/products/more-inside/texturizing-serum.jpg"
+      },
+      {
+        "name": "MORE INSIDE/medium hold modeling gel",
+        "type": "All hair types",
+        "short_description": "Modeling gel for full bodied, wet looks with glossy, bouncy, re-workable styling.",
+        "full_description": "Ideal for glossy, bouncy, re-workable looks. Provides definition and flexibility, bounce-back effect, quick drying with no residue, and supports curls.",
+        "usage": "Distribute evenly on damp or dry hair. Use more for a wet look. Proceed to style.",
+        "price": "0",
+        "image": "/products/more-inside/medium-hold-modeling-gel.jpg"
+      },
+      {
+        "name": "MORE INSIDE/oil non oil",
+        "type": "All hair types",
+        "short_description": "Natural taming oil for conditioned looks with moisturizing action and anti-frizz effect.",
+        "full_description": "Ideal for a naturally conditioned look. Provides moisturizing action, anti-frizz effect, and a natural look.",
+        "usage": "Distribute evenly on damp or dry hair. Use more for a wet look. Proceed to style.",
+        "price": "0",
+        "image": "/products/more-inside/oil-non-oil.jpg"
+      },
+      {
+        "name": "MORE INSIDE/invisible eco hairspray",
+        "type": "All hair types",
+        "short_description": "No gas spray for shape forming, brushable looks with natural hold.",
+        "full_description": "Ideal for finishing with a natural hold. Ideal for use with hot tools, quick drying, humidity resistant, not sticky, and does not weigh hair down. For fine hair, boosts root volume.",
+        "usage": "Shake before use. Apply to damp or dry hair from approx. 30 cm / 12 inches away. For fine hair use invisible eco hairspray to boost root volume by spraying it on the base of the hair; then work the hair with a round brush to enhance both volume and control.",
+        "price": "0",
+        "image": "/products/more-inside/invisible-eco-hairspray.jpg"
+      },
+      {
+        "name": "MORE INSIDE/medium hairspray",
+        "type": "All hair types",
+        "short_description": "Workable hairspray for shiny looks with a soft, glossy effect and humidity resistance.",
+        "full_description": "Ideal for a soft, shiny look. Provides glossy effect, for re-workable styles, humidity resistant, quick drying with fine mist application, and easy to brush out. Fabulous to be used with hot tools, guarantees great hold without making hair look or feel stiff.",
+        "usage": "Shake before use. Apply to styled hair from approx. 30 cm / 12 inches away.",
+        "price": "0",
+        "image": "/products/more-inside/medium-hairspray.jpg"
+      },
+      {
+        "name": "MORE INSIDE/dry wax finishing spray",
+        "type": "All hair types",
+        "short_description": "Finishing spray for natural, defined looks with instant undone texture and satin-matte finish.",
+        "full_description": "Ideal to style short as well as longer looks, promotes instant undone texture, natural definition and dimension, with a satin-matte finish. Provides instant undone texture, creates natural definition and shape, adds volume and dimension, is easily reworkable with a satin-matte finish.",
+        "usage": "Shake well. On dry hair, hold can 10cm/4in from head and spray directly at the root area for increased texture and volume. Apply the product also at lengths and ends to add definition and movement.",
+        "price": "0",
+        "image": "/products/more-inside/dry-wax-finishing-spray.jpg"
+      }
+    ]
+  }
+]
