@@ -139,13 +139,17 @@ export type CollectionPageProps = {
     params: Promise<{ slug: string }>;
 };
 
-export type tag = {
+export type Tag = {
     id: string;
     label: string;
 }
 
+export type HairTypeFiltersProps = {
+    tags: Tag[];
+};
+
 export type BrowseTags = {
-    tags: tag[];
+    tags: Tag[];
     typeToTagIds: {
         [key: string]: string[];
     }

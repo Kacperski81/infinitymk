@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import type { tag } from "@/types";
+import type { Tag } from "@/types";
 
 type HairTypeFiltersProps = {
-    tags: tag[];
+    tags: Tag[];
 };
 
 export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
