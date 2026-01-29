@@ -1,6 +1,6 @@
 import tags from '@/data/browse-tags.json';
-import type { tag } from '@/types/index';
+import type { Tag } from '@/types/index';
 
-export function getBrowseTags(): tag[] {
+export function getBrowseTags(): Tag[] {
     return tags.tags;
 }
