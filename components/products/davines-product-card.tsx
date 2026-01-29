@@ -60,7 +60,7 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
           <IconCloseCircle  />
         </button>
 
-        <div className="grid md:grid-cols-2 md:items-center bg-card px-2">
+        <div className="grid md:grid-cols-2 md:items-center bg-card p-2">
           {/* Image */}
           <div className="relative aspect-square bg-muted rounded-lg overflow-hidden">
             {product.image ? (

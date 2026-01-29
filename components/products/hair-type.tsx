@@ -32,10 +32,12 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
             </div>
 
             {/* Filter buttons */}
-            <HairTypeFilters tags={tags} />
+            <div id="filter-section" className="pt-8 pb-2 sm:py-6 lg:py-8 backdrop-blur-sm sticky top-0 z-20">
+                <HairTypeFilters tags={tags} />
+            </div>
 
             {/* Results count */}
-            <div className="text-center">
+            <div id="products-results" className="text-center">
                 <p className="text-center text-xs sm:text-sm text-(--main-200)">
                     {totalProducts} product{totalProducts !== 1 ? "s" : ""} found across {filteredFamilies.length}{" "}
                     {filteredFamilies.length !== 1 ? "families" : "family"}

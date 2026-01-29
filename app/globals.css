@@ -216,6 +216,20 @@ body {
   height: 1.5rem;
 }
 
+.icon-tune {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-cheveron-down {
+  width: 1.5rem;
+  height: 1.5rem;
+} 
+
+.icon-cheveron-down-primary {
+  fill: var(--muted-foreground);
+}
+
 /* index.html */
 .hero-background-gradient {
   background: linear-gradient(
