@@ -114,9 +114,10 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
 
             <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-border">
               <div>
-                <p className="text-lg sm:text-xl font-medium text-card-foreground">
+                {/* price */}
+                {/* <p className="text-lg sm:text-xl font-medium text-card-foreground">
                   {product.price}
-                </p>
+                </p> */}
                 <p className="text-xs sm:text-sm text-muted-foreground">Available in-store</p>
               </div>
 

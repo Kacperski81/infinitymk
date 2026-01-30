@@ -127,9 +127,9 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                             const isSelected = selectedTag === tag.id;
                             return (
                                 <div key={tag.id} className="flex items-center gap-2">
-                                    <button onClick={() => handleTagClick(tag.id)} className={`px-4 py-2 text-xs sm:text-sm rounded-full border transition-all duration-200 whitespace-nowrap ${selectedTag === tag.id
-                                        ? 'bg-(--main-100) text-(--main-800) border-(--main-100) font-medium'
-                                        : 'bg-transparent text-(--main-200) border-(--main-300) hover:border-(--main-200) hover:text-(--main-100)'
+                                    <button onClick={() => handleTagClick(tag.id)} className={`px-4 py-2 text-xs sm:text-sm rounded-full border transition-all duration-200 whitespace-nowrap shadow-md ${selectedTag === tag.id
+                                        ? 'bg-(--main-100) text-(--main-800) border-(--main-100) font-medium shadow-lg'
+                                        : 'bg-(--main-450) text-(--main-200) border-(--main-300) hover:border-(--main-200) hover:text-(--main-100)'
                                         }`}>
                                         {tag.label}
                                     </button>

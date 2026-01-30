@@ -1,5 +1,5 @@
 import { getBrowseTags } from "@/lib/browse-tabs";
-import { filterProductsByFamily, getAllFamilies } from "@/lib/davines-products";
+import { filterProductsByHairType, getAllFamilies } from "@/lib/davines-products";
 import type { DavinesHairCareFamily } from "@/types/index";
 import HairTypeFilters from "@/components/products/hair-type-filters2";
 import ProductFamilyRow from "@/components/products/product-family-row";
@@ -16,7 +16,7 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
 
     const filteredFamilies: DavinesHairCareFamily[] = families.map((family) => ({
         ...family,
-        products: filterProductsByFamily(family, effectiveTag)
+        products: filterProductsByHairType(family, effectiveTag)
     })).filter((family) => family.products.length > 0);
 
     const totalProducts = filteredFamilies.reduce((sum, family) => sum + family.products.length, 0);
@@ -39,8 +39,7 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
             {/* Results count */}
             <div id="products-results" className="text-center">
                 <p className="text-center text-xs sm:text-sm text-(--main-200)">
-                    {totalProducts} product{totalProducts !== 1 ? "s" : ""} found across {filteredFamilies.length}{" "}
-                    {filteredFamilies.length !== 1 ? "families" : "family"}
+                    {totalProducts} product{totalProducts !== 1 ? "s" : ""} found.
                 </p>
             </div>
 

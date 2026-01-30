@@ -1,6 +1,6 @@
 export default function Frame() {
   return (
-    <div className="z-1 hidden lg:block fixed inset-0 pointer-events-none max-w-[2000px] mx-auto">
+    <div className="z-30 hidden lg:block fixed inset-0 pointer-events-none max-w-[2000px] mx-auto">
 
       <svg className="w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
 

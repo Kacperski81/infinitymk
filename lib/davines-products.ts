@@ -166,7 +166,7 @@ export function getUniqueFamilyNames(): string[] {
     return families.map((f) => f.family).sort();
 }
 
-export function filterProductsByFamily(family: DavinesHairCareFamily, tag: string): DavinesHairCareProduct[] {
+export function filterProductsByHairType(family: DavinesHairCareFamily, tag: string): DavinesHairCareProduct[] {
     if (tag === "all-products" || !tag) {
         return family.products;
     }
