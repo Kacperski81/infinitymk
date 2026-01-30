@@ -32,7 +32,7 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
             </div>
 
             {/* Filter buttons */}
-            <div id="filter-section" className="pt-8 pb-2 sm:py-6 lg:py-8 backdrop-blur-sm sticky top-0 z-20">
+            <div id="filter-section" className="pb-2 backdrop-blur-xl sticky top-0 z-20">
                 <HairTypeFilters tags={tags} />
             </div>
 
