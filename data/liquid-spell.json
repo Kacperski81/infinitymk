@@ -17,7 +17,8 @@
         "full_description": "Leave-on treatment for sensitized or fine hair. A transformative liquid-to-foam elixir that repairs mildly damaged and lackluster hair, providing instant softness and vitality. It strengthens and compacts the hair structure giving vitality and body to the hair that looks healthier, silky and naturally shiny. Contains Biacidic Bond Complex to strengthen and repair hair bonds, Baobab Extract for conditioning and nourishment, and Fortifying Botanical Shield for thermal protection and elasticity.",
         "usage": "Apply to towel-dried hair, distributing evenly from roots to ends. Do not rinse. Proceed with desired styling. The liquid transforms into a lightweight foam for easy application and even distribution.",
         "price": "£44.65",
-        "image": "/products/liquid-spell/liquid-spell-fluid.jpg"
+        "image": "/products/liquid-spell/liquid-spell-fluid.jpg",
+        "display": true
       }
     ]
   }

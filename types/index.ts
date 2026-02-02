@@ -102,6 +102,7 @@ export type DavinesHairCareProduct = {
   usage: string;
   price: string;
   image: string;
+  display: boolean;
 }
 
 export type DavinesHairCareFamily = {

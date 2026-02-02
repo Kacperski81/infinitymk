@@ -16,9 +16,9 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
 
     const filteredFamilies: DavinesHairCareFamily[] = families.map((family) => ({
         ...family,
-        products: filterProductsByHairType(family, effectiveTag)
+        products: filterProductsByHairType(family, effectiveTag).filter(product => product.display !== false)
     })).filter((family) => family.products.length > 0);
-
+    
     const totalProducts = filteredFamilies.reduce((sum, family) => sum + family.products.length, 0);
     return (
         <section id="products-section" className="space-y-2 sm:space-y-4 px-2 sm:px-4 py-2">

@@ -19,6 +19,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
     const [canScrollRight, setCanScrollRight] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
     const [expandedFamily, setExpandedFamily] = useState<string | null>(null)
+    const displayProducts = family.products.filter((product) => product.display)
 
     const checkScrollability = () => {
         const container = scrollContainerRef.current
@@ -73,7 +74,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                     <div className="space-y-1 sm:space-y-2">
                         <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-(--main-100) tracking-wide">{family.family}</h3>
                         <p className="text-xs sm:text-sm text-(--main-300) mt-0.5 sm:mt-1">
-                            {family.products.length} product{family.products.length !== 1 ? "s" : ""}
+                            {displayProducts.length} product{displayProducts.length !== 1 ? "s" : ""}
                         </p>
                     </div>
                     <button onClick={() => setExpandedFamily(expandedFamily === family.id ? null : family.id)} className="flex flex-row items-center gap-2 text-xs sm:text-sm text-primary hover:text-accent transition-colors">
@@ -126,7 +127,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                         msOverflowStyle: "none",
                     }}
                 >
-                    {family.products.map((product, index) => (
+                    {displayProducts.map((product, index) => (
                         <div
                             key={`${family.id}-${product.name}-${index}`}
                             className="flex-shrink-0 w-[calc(100%-1rem)] sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] lg:w-[calc(25%-0.75rem)]"

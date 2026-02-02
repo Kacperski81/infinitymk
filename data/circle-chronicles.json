@@ -17,7 +17,8 @@
         "full_description": "Revitalizing, detoxifying and anti-oxidant mask for scalp and hair stressed by environmental factors. It eliminates impurities caused by pollution, dust, and heavy metals for a purifying routine. Get free from pollution residues with this deep cleansing treatment.",
         "usage": "Apply to damp hair and scalp after shampooing. Leave on for 5-10 minutes, then rinse thoroughly. Use once a week or as needed for hair exposed to urban environments.",
         "price": "0",
-        "image": "/products/circle-chronicles/purity-circle.jpg"
+        "image": "/products/circle-chronicles/purity-circle.jpg",
+        "display": true
       },
       {
         "name": "THE CIRCLE CHRONICLES/the spotlight circle",
@@ -26,7 +27,8 @@
         "full_description": "Mask for extra shine. It gives the hair a boost of shine and enhances colour and cut without weighing the hair down. Perfect for all hair types, in particular for dull looking ones. Achieve unforgettable shine with this illuminating treatment.",
         "usage": "Apply to damp hair after shampooing. Leave on for 5-10 minutes, then rinse thoroughly. Use weekly for best results.",
         "price": "0",
-        "image": "/products/circle-chronicles/spotlight-circle.jpg"
+        "image": "/products/circle-chronicles/spotlight-circle.jpg",
+        "display": true
       },
       {
         "name": "THE CIRCLE CHRONICLES/the quick fix circle",
@@ -35,7 +37,8 @@
         "full_description": "Regenerating hair mask with immediate action. In just 3 minutes it moisturizes and untangles the hair making it soft, silky and workable. Perfect for all hair types, when in a hurry. An effective hair mask with short processing time for wonderful hair.",
         "usage": "Apply to damp hair after shampooing. Leave on for just 3 minutes, then rinse thoroughly. Ideal for busy days when time is limited.",
         "price": "0",
-        "image": "/products/circle-chronicles/quick-fix-circle.jpg"
+        "image": "/products/circle-chronicles/quick-fix-circle.jpg",
+        "display": true
       },
       {
         "name": "THE CIRCLE CHRONICLES/the wake-up circle",
@@ -44,7 +47,8 @@
         "full_description": "Invigorating mask that gives energy and volume to dull hair and restores tone and hydration to the scalp. Ideal recovery treatment after stressful situations or exposure to extreme atmospheric conditions. Revitalize scalp and hair with this energizing treatment.",
         "usage": "Apply to damp hair and scalp after shampooing. Leave on for 5-10 minutes, then rinse thoroughly. Use when hair needs an energy boost.",
         "price": "0",
-        "image": "/products/circle-chronicles/wake-up-circle.jpg"
+        "image": "/products/circle-chronicles/wake-up-circle.jpg",
+        "display": true
       },
       {
         "name": "THE CIRCLE CHRONICLES/the renaissance circle",
@@ -53,7 +57,8 @@
         "full_description": "Repairing mask that gives new life to very damaged hair. It restores a healthy look to the hair giving it shine, nourishment and softness. Perfect for people who use hot tools. Deep nourishment for deeply damaged hair that needs intensive care.",
         "usage": "Apply to damp hair after shampooing. Leave on for 10-15 minutes for deep repair, then rinse thoroughly. Use weekly or as needed for damaged hair.",
         "price": "0",
-        "image": "/products/circle-chronicles/renaissance-circle.jpg"
+        "image": "/products/circle-chronicles/renaissance-circle.jpg",
+        "display": true
       },
       {
         "name": "THE CIRCLE CHRONICLES/the let it go circle",
@@ -62,7 +67,8 @@
         "full_description": "Relaxing scalp and hair mask. A true wellbeing experience: softness, hydration and comfort for hair and scalp needing a break. The relaxing fragrance creates a soothing atmosphere for relaxing moments. Unwind and let go with this de-stressing treatment.",
         "usage": "Apply to damp hair and scalp after shampooing. Leave on for 5-10 minutes while enjoying the relaxing fragrance, then rinse thoroughly. Perfect for self-care moments.",
         "price": "0",
-        "image": "/products/circle-chronicles/let-it-go-circle.jpg"
+        "image": "/products/circle-chronicles/let-it-go-circle.jpg",
+        "display": true
       },
       {
         "name": "THE CIRCLE CHRONICLES/the restless circle",
@@ -71,7 +77,8 @@
         "full_description": "Invisible mask for those who want to take care of their hair whilst carrying out other activities. It gives body and elasticity protecting the hair from mechanical breakage, such as friction with hair clips and elastics. With Chia Seeds that create a biomimetic film on the cuticle of the hair, increasing its strength and elasticity. Perfect for stressed hair like the ones that are often tied up. 50ml size – gym bag approved!",
         "usage": "Apply to dry hair as a pre-shampoo treatment. Leave on while doing everyday activities, exercising or relaxing. Rinse and shampoo as normal. Can be worn invisibly without rinsing for on-the-go care.",
         "price": "0",
-        "image": "/products/circle-chronicles/restless-circle.jpg"
+        "image": "/products/circle-chronicles/restless-circle.jpg",
+        "display": true
       }
     ]
   }
