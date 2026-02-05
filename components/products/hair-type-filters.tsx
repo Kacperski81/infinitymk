@@ -18,27 +18,47 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
         const filterSection = document.getElementById('filter-section');
         if (!filterSection) return;
 
-        const checkSticky = () => {
-            const rect = filterSection.getBoundingClientRect();
-            // When top is 0 (or very close), the element is in sticky position
-            const sticky = rect.top <= 0;
-            setIsSticky(sticky);
+        let sentinel = document.getElementById('sticky-sentinel');
+        if (!sentinel) {
+            sentinel = document.createElement('div');
+            sentinel.id = 'sticky-sentinel';
+            sentinel.style.height = '1px';
+            sentinel.style.width = '100%';
+            sentinel.style.pointerEvents = 'none';
+            sentinel.setAttribute('aria-hidden', 'true');
+            filterSection.parentElement?.insertBefore(sentinel, filterSection);
+        }
 
-            // Apply padding to the parent filter-section when sticky (mobile/tablet only)
-            if (window.innerWidth < 1024) { // lg breakpoint
-                filterSection.style.paddingTop = sticky ? '3rem' : '';
-            } else {
-                filterSection.style.paddingTop = sticky ? '3rem' : '';
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                // When the sentinel is NOT intersecting the viewport,
+                // the filter bar has reached the top and is stuck.
+                const stuck = !entry.isIntersecting;
+                setIsSticky(stuck);
+
+                // Toggle a CSS class instead of mutating paddingTop directly.
+                // Class toggling is a paint-only operation -- it doesn't force
+                // synchronous reflow the way setting style.paddingTop does.
+                // The actual spacing is handled by a CSS-defined spacer inside
+                // #filter-section (see hair-type.tsx).
+                if (stuck) {
+                    filterSection.classList.add('is-stuck');
+                } else {
+                    filterSection.classList.remove('is-stuck');
+                }
+            },
+            {
+                // rootMargin of -1px at the top means the sentinel is considered
+                // "not intersecting" as soon as its top edge touches the viewport top.
+                rootMargin: '-1px 0px 0px 0px',
+                threshold: 0,
             }
-        };
+        );
 
-        window.addEventListener('scroll', checkSticky, { passive: true });
-        window.addEventListener('resize', checkSticky, { passive: true });
-        checkSticky(); // Check initial state
+        observer.observe(sentinel);
 
         return () => {
-            window.removeEventListener('scroll', checkSticky);
-            window.removeEventListener('resize', checkSticky);
+            observer.disconnect();
         };
     }, []);
 

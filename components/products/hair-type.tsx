@@ -1,7 +1,7 @@
 import { getBrowseTags } from "@/lib/browse-tabs";
 import { filterProductsByHairType, getAllFamilies } from "@/lib/davines-products";
 import type { DavinesHairCareFamily } from "@/types/index";
-import HairTypeFilters from "@/components/products/hair-type-filters2";
+import HairTypeFilters from "@/components/products/hair-type-filters";
 import ProductFamilyRow from "@/components/products/product-family-row";
 
 type HairTypeProps = {
@@ -18,10 +18,10 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
         ...family,
         products: filterProductsByHairType(family, effectiveTag).filter(product => product.display !== false)
     })).filter((family) => family.products.length > 0);
-    
+
     const totalProducts = filteredFamilies.reduce((sum, family) => sum + family.products.length, 0);
     return (
-        <section id="products-section" className="space-y-2 sm:space-y-4 px-2 sm:px-4 py-2">
+        <section id="products-section" className="space-y-2 sm:space-y-4 sm:px-4 py-2">
             <div className="text-center mb-2 sm:mb-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-(--main-100) mb-2 sm:mb-3 lg:mb-4 text-balance">
                     Find your perfect match
@@ -32,7 +32,12 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
             </div>
 
             {/* Filter buttons */}
-            <div id="filter-section" className="pb-2 backdrop-blur-xl sticky top-0 z-20">
+            <div id="filter-section" className="pb-2 bg-[--main-500]/95 sticky top-0 z-20">
+                {/* CSS-controlled spacer: height transitions smoothly when .is-stuck is applied */}
+                <div
+                    className="filter-sticky-spacer"
+                    aria-hidden="true"
+                />
                 <HairTypeFilters tags={tags} />
             </div>
 
@@ -44,7 +49,7 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
             </div>
 
             {/* Product Family Rows */}
-            <div className="space-y-8 sm:space-y-10 lg:space-y-12 max-w-7xl mx-auto">
+            <div className="space-y-8 sm:space-y-10 lg:space-y-12 max-w-7xl mx-auto px-2">
                 {filteredFamilies.map((family) => (
                     <ProductFamilyRow key={family.id} family={family} />
                 ))}

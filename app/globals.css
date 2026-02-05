@@ -224,7 +224,7 @@ body {
 .icon-cheveron-down {
   width: 1.5rem;
   height: 1.5rem;
-} 
+}
 
 .icon-cheveron-down-primary {
   fill: var(--muted-foreground);
@@ -232,14 +232,12 @@ body {
 
 /* index.html */
 .hero-background-gradient {
-  background: linear-gradient(
-    to bottom,
-    hsl(45, 90%, 97%) 0%,
-    hsl(45, 85%, 88%) 25%,
-    hsl(40, 75%, 78%) 50%,
-    hsl(45, 85%, 88%) 75%,
-    hsl(45, 90%, 97%) 100%
-  );
+  background: linear-gradient(to bottom,
+      hsl(45, 90%, 97%) 0%,
+      hsl(45, 85%, 88%) 25%,
+      hsl(40, 75%, 78%) 50%,
+      hsl(45, 85%, 88%) 75%,
+      hsl(45, 90%, 97%) 100%);
   background-clip: text;
   --webkit-background-clip: text;
   color: transparent;
@@ -443,4 +441,32 @@ body {
     linear-gradient(black, black) border-box,
     linear-gradient(black, black) padding-box;
   mask-composite: subtract;
+}
+
+.filter-sticky-spacer {
+  height: 0;
+  overflow: hidden;
+  transition: height 400ms ease-out;
+  will-change: height;
+}
+#filter-section.is-stuck .filter-sticky-spacer::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  backdrop-filter: blur(5px);
+}
+
+/* When the filter section is stuck to the top of the viewport */
+#filter-section.is-stuck .filter-sticky-spacer {
+  height: 3rem;
+  /* 48px — matches the old mobile/tablet paddingTop value */
+}
+
+/* On desktop (lg+), use a slightly taller spacer */
+@media (min-width: 1024px) {
+  #filter-section.is-stuck .filter-sticky-spacer {
+    height: 3.5rem;
+    /* 56px — matches the old desktop paddingTop value */
+  }
 }
