@@ -3,8 +3,15 @@
 import { useState } from "react";
 import { getNailServices } from "@/lib/nail-services";
 import PageHeading from "../page-heading";
+import { useParallax } from "@/hooks/use-parallax";
 
-export default function NailServices() {
+export default function NailServices({ scrollY }: { scrollY: number }) {
+    const { ref, bgParallax, contentParallax, opacity } = useParallax(
+        scrollY,
+        0.20,   // background speed
+        0.06,   // content speed
+        900     // fade distance in px
+    );
     const [expandedPanel, setExpandedPanel] = useState<number>(0);
 
     const nailsServicesData = getNailServices();
@@ -13,7 +20,7 @@ export default function NailServices() {
         setExpandedPanel(panelIndex);
     }
     return (
-        <section className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/nail/nails-bg-flowers-mobile.jpg)] lg:bg-[url(/nail/nails-bg-flowers.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
+        <section ref={ref as React.RefObject<HTMLElement>} className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/nail/nails-bg-flowers-mobile.jpg)] lg:bg-[url(/nail/nails-bg-flowers.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12" style={{ backgroundPosition: `center ${bgParallax}px` }}>
             <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-6 z-10">
                 <PageHeading mT="mt-0" title="Nail Services" />
 
@@ -21,7 +28,7 @@ export default function NailServices() {
                 <div className="price-panel z-2 relative grow flex justify-center p-4 xl:pb-10">
 
                     {/* Accordion */}
-                    <div className="grow flex flex-col gap-4 px-2 lg:px-10 md:min-w-[700px] max-w-[500px] md:max-w-[700px] xl:w-[800px] xl:max-w-[1000px] mx-auto">
+                    <div className="grow flex flex-col gap-4 px-2 lg:px-10 md:min-w-[700px] max-w-[500px] md:max-w-[700px] xl:w-[800px] xl:max-w-[1000px] mx-auto" style={{ opacity, transform: `translate3d(0, ${contentParallax}px, 0)` }}>
 
                         {nailsServicesData.map((service) => {
                             return (

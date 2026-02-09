@@ -9,34 +9,40 @@ import { getHairGalleryImages } from "@/lib/hair-gallery-images";
 import DesktopGallery from "@/components/gallery/desktop-gallery";
 import HairPartners from "@/components/hair/hair-partners";
 import HairOffers from "@/components/hair/hair-offers";
+import { ScrollIndicator } from "@/components/frame/scroll-indicator";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 export default function HairPage() {
     const hairImages: CarouselItem[] = getHairGalleryImages();
+    const { contentRef, scrollState } = useSmoothScroll(0.075);
 
     return (
         <main>
+            <ScrollIndicator progress={scrollState.progress} />
             <div className="flex flex-col">
-                <HairServices />
-                <HairTreatment />
+                <div ref={contentRef} className="smooth-scroll-wrapper">
+                    <HairServices  scrollY={scrollState.current} />
+                    <HairTreatment scrollY={scrollState.current} />
 
-                {/* Mobile gallery */}
-                <section className="xl:hidden">
-                    <MobileGallery pictures={hairImages} />
-                </section>
+                    {/* Mobile gallery */}
+                    <section className="xl:hidden">
+                        <MobileGallery pictures={hairImages} />
+                    </section>
 
-                {/* Desktop gallery */}
-                <section className="hidden xl:block">
-                    <DesktopGallery pictures={hairImages} />
-                </section>
+                    {/* Desktop gallery */}
+                    <section className="hidden xl:block">
+                        <DesktopGallery pictures={hairImages} />
+                    </section>
 
-                <section
-                    className="flex flex-col gap-4">
-                    <HairPartners />
-                    <HairOffers />
+                    <section
+                        className="flex flex-col gap-4">
+                        <HairPartners />
+                        <HairOffers />
 
-                </section>
+                    </section>
 
-                <Footer />
+                    <Footer />
+                </div>
             </div>
         </main>
     );

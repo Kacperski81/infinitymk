@@ -1,11 +1,18 @@
 import { useState } from "react";
-import Image from "next/image";
 import { getHairTreatments } from "@/lib/hair-treatments";
 import type { TreatmentsData } from "@/types/";
 import PageHeading from "../page-heading";
-import treatmentsDavines from "../../public/hair/treatments-davines.jpg"
+import { useParallax } from "@/hooks/use-parallax";
 
-export default function HairTreatment() {
+export default function HairTreatment({ scrollY }: { scrollY: number }) {
+    const { ref, bgParallax, contentParallax } = useParallax(
+        scrollY,
+        0.15,   // background speed
+        0.06,   // content speed
+        0,      // fadeStart  (unused since fadeDistance is 0)
+        0       // fadeDistance — 0 means no fade
+    );
+
     const hairTreatmentsData: TreatmentsData[] = getHairTreatments();
     const [expandedPanel, setExpandedPanel] = useState<string>("Davines");
 
@@ -13,8 +20,15 @@ export default function HairTreatment() {
         setExpandedPanel(panelId);
     }
     return (
-        <section className="relative min-h-svh xl:min-h-screen bg-(--main-300)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat bg-top-right flex justify-center xl:grid xl:grid-cols-12">
-            <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-2">
+        <section
+            ref={ref as React.RefObject<HTMLElement>}
+            className="relative min-h-svh xl:min-h-screen bg-(--main-300)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat bg-top-right flex justify-center xl:grid xl:grid-cols-12 overflow-hidden"
+            style={{ backgroundPosition: `right top ${bgParallax}px` }}
+        >
+            <div
+                className="pt-10 flex flex-col xl:col-span-5 xl:col-start-2"
+                style={{ transform: `translate3d(0, ${contentParallax}px, 0)` }}
+            >
                 <PageHeading mT="mt-0" title="Hair Treatments" />
 
                 {/* wrapper */}
@@ -22,7 +36,7 @@ export default function HairTreatment() {
 
 
                     {/* Accordion */}
-                    <div className="grow flex flex-col gap-4 px-2 lg:px-10 md:min-w-[700px] max-w-[500px] md:max-w-[700px] xl:w-[800px] xl:max-w-[1000px] mx-auto">
+                    <div className="grow flex flex-col gap-4 px-2 lg:px-10 md:min-w-[700px] max-w-[500px] md:max-w-[700px] xl:w-[800px] xl:max-w-[1000px] mx-auto" style={{transform: `translate3d(0, ${contentParallax}px, 0)`}}>
 
                         {hairTreatmentsData.map((treatment) => {
                             return (

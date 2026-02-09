@@ -88,29 +88,29 @@ export type DavinesProductsData = {
 }
 
 export type DavinesHairCareInfo = {
-  active: string;
-  props: string;
-  prod: string;
-  story: string;
+    active: string;
+    props: string;
+    prod: string;
+    story: string;
 }
 
 export type DavinesHairCareProduct = {
-  name: string;
-  type: string;
-  short_description: string;
-  full_description: string;
-  usage: string;
-  price: string;
-  image: string;
-  display: boolean;
+    name: string;
+    type: string;
+    short_description: string;
+    full_description: string;
+    usage: string;
+    price: string;
+    image: string;
+    display: boolean;
 }
 
 export type DavinesHairCareFamily = {
-  family: string;
-  id: string;
-  image: string;
-  info: DavinesHairCareInfo;
-  products: DavinesHairCareProduct[];
+    family: string;
+    id: string;
+    image: string;
+    info: DavinesHairCareInfo;
+    products: DavinesHairCareProduct[];
 }
 
 export type DavinesHairCareData = DavinesHairCareFamily[];
@@ -123,17 +123,17 @@ export type BrowseMode = "collection" | "hair-type";
 // Products types
 
 export type Collection = {
-  slug: string;
-  name: string;
-  description: string;
-  image: string;
-  families: string[];
+    slug: string;
+    name: string;
+    description: string;
+    image: string;
+    families: string[];
 }
 
 export type HairTypeFilter = {
-  label: string;
-  familyId: string;
-  icon?: string;
+    label: string;
+    familyId: string;
+    icon?: string;
 }
 
 export type CollectionPageProps = {
@@ -214,4 +214,21 @@ export type BookingOption = {
     serviceName: string;
     providerName: string;
     phoneNumber: string;
+}
+
+// Scroll 
+// indicator types
+export type ScrollIndicatorProps = {
+    progress: number;
+}
+
+export type ScrollState = {
+    current: number;
+    target: number;
+    progress: number;
+    limit: number;
+}
+
+export type OverlayTransitionProps = {
+    children: React.ReactNode;
 }

@@ -14,9 +14,9 @@ export default function Footer() {
 
     return (
         // <footer id="footer" className="snap-center sticky top-0 bg-(--main-800) min-h-screen py-2 sm:py-10 flex items-center z-50">
-        <footer id="footer" className={`${pathname === "/hair" ? "mt-5" : "min-h-screen sm:py-10 py-2"} text-center flex items-center isolate`}>
+        <footer id="footer" className={`${pathname === "/hair" ? "mt-5" : "min-h-screen sm:py-10 md:py-2"} text-center flex items-center isolate xl:mt-8`}>
             {/* container */}
-            <div className="container mx-auto py-2 px-4 md:py-16 w-full xl:max-w-7xl">
+            <div className="container mx-auto py-2 px-4 w-full xl:max-w-7xl">
                 <div className="space-y-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3">
                     {/* Brand and contact */}
                     <div className="space-y-1 sm:col-span-2 xl:px-4 xl:col-span-1">

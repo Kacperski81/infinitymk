@@ -2,8 +2,17 @@ import { useState } from "react";
 import { getHairServices } from "@/lib/hair-services";
 import type { HairServicesData } from "@/types/";
 import PageHeading from "../page-heading";
+import { useParallax } from "@/hooks/use-parallax";
 
-export default function HairServices() {
+export default function HairServices({ scrollY }: { scrollY: number }) {
+    const { ref, bgParallax, contentParallax, opacity } = useParallax(
+        scrollY,
+        0.55,   // background speed
+        0.06,   // content speed
+        0,    // fadeStart — px of scroll before fading begins
+        0     // fadeDistance — px over which opacity goes 1→0
+    );
+
     const hairServicesData: HairServicesData = getHairServices();
     const [expandedPanel, setExpandedPanel] = useState<string>("cut-and-style");
 
@@ -11,7 +20,11 @@ export default function HairServices() {
         setExpandedPanel(panelId);
     }
     return (
-        <section className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/hair/hair-services-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
+        <section
+            ref={ref as React.RefObject<HTMLElement>}
+            className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/hair/hair-services-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12 overflow-hidden"
+            style={{ backgroundPosition: `center ${bgParallax}px` }}
+        >
             <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-6 z-10">
                 <PageHeading mT="mt-0" title="Hair Services" />
 
@@ -20,7 +33,11 @@ export default function HairServices() {
 
 
                     {/* Accordion */}
-                    <div className="grow flex flex-col gap-4 px-2 lg:px-10 md:min-w-[700px] max-w-[500px] md:max-w-[700px] xl:w-[800px] xl:max-w-[1000px] mx-auto">
+                    <div className="grow flex flex-col gap-4 px-2 lg:px-10 md:min-w-[700px] max-w-[500px] md:max-w-[700px] xl:w-[800px] xl:max-w-[1000px] mx-auto"
+                        style={{
+                            opacity,
+                            transform: `translate3d(0, ${contentParallax}px, 0)`,
+                        }}>
 
                         {hairServicesData.map((service) => {
                             return (
@@ -29,7 +46,7 @@ export default function HairServices() {
                                 <div
                                     key={service.id}
                                     onClick={() => togglePanel(service.id)}
-                                    className={`flex flex-col border-gradient isolate relative overflow-hidden ${expandedPanel === service.id ? "shadow-xl price-panel-opened" : "shadow-xl price-panel-closed cursor-pointer"}`}   
+                                    className={`flex flex-col border-gradient isolate relative overflow-hidden ${expandedPanel === service.id ? "shadow-xl price-panel-opened" : "shadow-xl price-panel-closed cursor-pointer"}`}
                                 >
 
                                     {/* Accordion heading */}
@@ -75,7 +92,7 @@ export default function HairServices() {
                                                     overflow-y-auto
                                                     min-h-0
                                                     ${expandedPanel === service.id ? "opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-200 delay-100"}`}
-                                            style={{ scrollbarWidth: 'thin',scrollbarColor: 'var(--main-300) var(--main-300)'}}
+                                            style={{ scrollbarWidth: 'thin', scrollbarColor: 'var(--main-300) var(--main-300)' }}
                                         >
 
                                             <ul className="">

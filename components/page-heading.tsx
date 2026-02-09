@@ -1,4 +1,4 @@
-export default function PageHeading({ title, mT, }: { title: string, mT?:string }) {
+export default function PageHeading({ title, mT }: { title: string, mT?:string }) {
     return (
         <h2 className={`
             ${mT ? mT : 'mt-10 xl:mt-14'}  

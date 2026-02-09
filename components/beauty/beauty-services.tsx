@@ -3,8 +3,15 @@
 import { useState } from "react";
 import { getBeautyServices } from "@/lib/beauty-services";
 import PageHeading from "../page-heading";
+import { useParallax } from "@/hooks/use-parallax";
 
-export default function BeautyServices() {
+export default function BeautyServices({scrollY}: {scrollY: number}) {
+        const { ref, bgParallax, contentParallax, opacity } = useParallax(
+            scrollY,
+            0.70,   // background speed
+            0.06,   // content speed
+            900     // fade distance in px
+        );
     const beautyServicesData = getBeautyServices();
     const [expandedPanel, setExpandedPanel] = useState<number>(0);
 
@@ -13,7 +20,7 @@ export default function BeautyServices() {
     }
 
     return (
-        <section className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/beauty/beauty-services-bg.jpg)] bg-blend-multiply bg-bottom-left bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12">
+        <section ref={ref as React.RefObject<HTMLElement>} className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/beauty/beauty-services-bg.jpg)] bg-blend-multiply bg-bottom-left bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12" style={{backgroundPosition: `center ${bgParallax}px`}}>
             <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-6 z-10">
                 <PageHeading mT="mt-0" title="Beauty Services" />
 

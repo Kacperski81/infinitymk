@@ -1,10 +1,16 @@
 import Image from "next/image";
 import DesktopImage from "../../public/landing/hero-background.jpg";
 
-export default function Hero() {
+export default function Hero({ scrollY }: { scrollY: number }) {
+    const s = Number.isFinite(scrollY) ? scrollY : 0;;
+    const parallax = s * 0.35;
+
+    // Fade hero t0 0 over the first 700px of scroll
+    const opacity = Math.max(0, Math.min(1, 1 - s / 700));
+
     return (
         <section className="px-2 relative min-h-screen inset-0 overflow-hidden flex items-center">
-            <div className="md:absolute inset-0 z-0">
+            <div className="md:absolute inset-0 z-0 will-change-transform" style={{ transform: `translate3d(0, ${parallax}px, 0)` }}>
                 <Image
                     src={DesktopImage}
                     alt="Salon background"
@@ -14,10 +20,12 @@ export default function Hero() {
                     className="h-full w-full object-cover object-center lg:p-2 saturate-[1.2] contrast-[1.05]"
                 />
                 {/* Overlay */}
-                <div className="lg:p-2 absolute inset-0 bg-gradient-to-r from-(--main-800)/70 via-(--main-700)/40 to-(--main-800)/60"/>
+                <div className="lg:p-2 absolute inset-0 bg-gradient-to-r from-(--main-800)/70 via-(--main-700)/40 to-(--main-800)/60" />
                 <div className="lg:p-2 absolute inset-0 bg-radial-[at_30%_40%] from-transparent via-transparent to-(--main-900)/50" />
             </div>
-            <div className="relative p-2 h-full z-20 flex flex-col gap-5 lg:gap-20 md:w-full sm:text-center">
+
+            {/* Hero Content */}
+            <div className="relative p-2 h-full z-20 flex flex-col gap-5 lg:gap-20 md:w-full sm:text-center" style={{ opacity, transform: `translate3d(0, ${parallax * 0.4}px, 0)` }}>
                 <h1 className="font-(family-name:--font-aboreto) font-semibold text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight tracking-wider hero-background-gradient drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
                     {/* Feel<br />Good,<br /> Look<br />Amazing. */}
                     Feel Good,<br />Look Amazing.
