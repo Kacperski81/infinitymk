@@ -10,7 +10,7 @@ export default function Hero({ scrollY }: { scrollY: number }) {
 
     return (
         <section className="px-2 relative min-h-screen inset-0 overflow-hidden flex items-center">
-            <div className="md:absolute inset-0 z-0 will-change-transform" style={{ transform: `translate3d(0, ${parallax}px, 0)` }}>
+            <div className="absolute inset-0 z-0 will-change-transform" style={{ transform: `translate3d(0, ${parallax}px, 0)` }}>
                 <Image
                     src={DesktopImage}
                     alt="Salon background"
