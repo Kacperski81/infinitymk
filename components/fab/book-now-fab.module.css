@@ -125,7 +125,8 @@
 
 /* Dark variant for active state - maintains glass aesthetic */
 .glassFabDark {
-  position: relative;
+  /* position: relative; */
+  display: none;
   background-repeat: no-repeat;
   isolation: isolate;
   overflow: hidden;

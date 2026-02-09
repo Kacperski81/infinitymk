@@ -5,36 +5,10 @@ import IconCalendar from "../svgs/icon-calendar";
 import IconPhone from "../svgs/icon-phone";
 import IconCloseCircle from "../svgs/close-circle";
 import styles from "./book-now-fab.module.css";
-
-export type BookingOption = {
-    id: string;
-    serviceName: string;
-    providerName: string;
-    phoneNumber: string;
-}
-
-const bookingOptions: BookingOption[] = [
-    {
-        id: "hair",
-        serviceName: "Hair Services",
-        providerName: "Magda",
-        phoneNumber: "+44 20 1234 5678",
-    },
-    {
-        id: "nails",
-        serviceName: "Nail Services",
-        providerName: "Ela",
-        phoneNumber: "+44 20 1234 5679",
-    },
-    {
-        id: "beauty",
-        serviceName: "Beauty Treatments",
-        providerName: "Anna",
-        phoneNumber: "+44 20 1234 5680",
-    },
-];
+import { getBookingOptions } from "@/lib/booking-options";
 
 export default function BookNowFab() {
+    const bookingOptions = getBookingOptions();
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -82,7 +56,7 @@ export default function BookNowFab() {
         <>
             {/* Backdrop overlay */}
             <div
-                className={`fixed inset-0 bg-[var(--main-900)]/40 backdrop-blur-sm z-40 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+                className={`fixed inset-0 bg-[var(--main-900)]/40 backdrop-blur-sm z-20 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
                     }`}
                 aria-hidden="true"
             />
@@ -93,13 +67,10 @@ export default function BookNowFab() {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="booking-modal-title"
-                className={`fixed z-50 rounded-2xl shadow-2xl transition-all duration-300 ease-out
-          bottom-24 right-4 sm:right-6 
-          w-[calc(100vw-2rem)] max-w-sm
-          bg-[var(--main-50)]/70 backdrop-blur-[12px] border border-[var(--main-100)]/60
+                className={`fixed z-50 rounded-2xl shadow-2xl transition-all duration-300 ease-out bottom-4 lg:bottom-6 right-4 sm:right-6 lg:right-7 w-[calc(100vw-2rem)] max-w-sm bg-[var(--main-50)]/70 backdrop-blur-[12px] border border-[var(--main-100)]/60
           ${isOpen
                         ? "opacity-100 translate-y-0 scale-100"
-                        : "opacity-0 translate-y-4 scale-95 pointer-events-none"
+                        : "opacity-0 translate-y-0 scale-95 pointer-events-none"
                     }`}
             >
                 <div className={styles.glassModalInner}>
@@ -166,8 +137,7 @@ export default function BookNowFab() {
             <button
                 ref={buttonRef}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`fixed bottom-6 right-4 sm:right-6 lg:right-8 lg:bottom-8 z-50 flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-300 ease-out
-          backdrop-blur-[14px] border
+                className={`fixed bottom-6 right-4 sm:right-6 lg:right-8 lg:bottom-8 z-50 flex items-center gap-2 px-5 py-3.5 rounded-full shadow-lg transition-all duration-300 ease-out backdrop-blur-[14px] border
           ${isOpen
                         ? styles.glassFabDark
                         : styles.glassFab

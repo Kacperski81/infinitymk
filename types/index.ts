@@ -207,3 +207,11 @@ export type MobileGalleryModalProps = {
     selectedIndex: number;
     pictures: CarouselItem[];
 }
+
+// Book Now FAB types
+export type BookingOption = {
+    id: string;
+    serviceName: string;
+    providerName: string;
+    phoneNumber: string;
+}

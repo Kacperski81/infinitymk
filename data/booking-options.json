@@ -1,0 +1,20 @@
+[
+    {
+        "id": "hair",
+        "serviceName": "Hair Services",
+        "providerName": "Magda",
+        "phoneNumber": "+44 20 1234 5678"
+    },
+    {
+        "id": "nails",
+        "serviceName": "Nail Services",
+        "providerName": "Ela",
+        "phoneNumber": "+44 20 1234 5679"
+    },
+    {
+        "id": "beauty",
+        "serviceName": "Beauty Treatments",
+        "providerName": "Anna",
+        "phoneNumber": "+44 20 1234 5680"
+    }
+]
