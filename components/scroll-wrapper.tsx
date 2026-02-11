@@ -15,6 +15,7 @@ import Logo from "./frame/logo";
 export default function ScrollWrapper() {
     const [introDone, setIntroDone] = useState(false);
     const [heroImageLoaded, setHeroImageLoaded] = useState(false);
+    const [isExiting, setIsExiting] = useState(false);
     const { contentRef, scrollState } = useSmoothScroll(0.075);
 
     const handleHeroImageLoad = useCallback(() => {
@@ -24,14 +25,19 @@ export default function ScrollWrapper() {
     const handleIntroComplete = useCallback(() => {
         setIntroDone(true);
     }, []);
+
+    const handleExitStart = useCallback(() => {
+        setIsExiting(true);
+    }, []);
+
     const isOverlayVisible = !introDone
     return (
         <main>
             {/* <LoadingOverlay isContentReady={false} onComplete={() => {}} /> */}
-            <Logo isOverlayVisible={isOverlayVisible}/>
+            <Logo isOverlayVisible={isOverlayVisible} isAnimatingOut={isExiting}/>
             {/* Loading counter overlay */}
             {!introDone && (
-                <LoadingOverlay isContentReady={heroImageLoaded} onComplete={handleIntroComplete} />
+                <LoadingOverlay isContentReady={heroImageLoaded} onComplete={handleIntroComplete} onExitStart={handleExitStart} />
             )}
             <section className="h-screen flex justify-center items-center">
                 <div className="relative w-full max-w-[2000px]">

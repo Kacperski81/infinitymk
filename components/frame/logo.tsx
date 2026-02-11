@@ -1,45 +1,58 @@
-export default function Logo({ isOverlayVisible = false }: { isOverlayVisible?: boolean }) {
+interface LogoProps {
+    isOverlayVisible?: boolean;
+    isAnimatingOut?: boolean;
+}
 
-    if (isOverlayVisible) {
-        const topValue = isOverlayVisible ? "50%" : "0px";
-        const yTranslate = isOverlayVisible ? "calc(-50% - 2.5rem)" : "0px";
-        return (
-            <div
-                className="fixed left-1/2 z-[70]"
-                style={{
-                    top: topValue,
-                    transform: `translateX(-50%) translateY(${yTranslate})`,
-                    transition: isOverlayVisible
-                        ? "none"
-                        : "top 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1)",
-                }}
-            >
-                <h2
-                    className="px-4 pt-1 font-logo tracking-wider logo-gradient"
-                    style={{
-                        fontSize: isOverlayVisible ? "clamp(1.5rem, 4vw, 2.25rem)" : "",
-                        transition:
-                            "font-size 1s cubic-bezier(0.22, 1, 0.36, 1)",
-                    }}
-                >
-                    {"inf"}
-                    <span className="logo-background" style={{ color: "var(--main-50)" }}>
-                        {"in"}
-                    </span>
-                    {"ity mk"}
-                </h2>
-            </div>
-        )
-    }
+function isMobile() {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth < 768;
+}
+
+export default function Logo({ isOverlayVisible = false, isAnimatingOut = false }: LogoProps) {
+    // Animation timing - should match LoadingOverlay split animation
+    const exitDuration = isMobile() ? 0.7 : 1;
+    const contentFadeDelay = 0.3; // Content fades first, then split + logo animate together
+    
+    // Calculate position and size based on animation state
+    const isInCenter = isOverlayVisible && !isAnimatingOut;
+    const shouldAnimate = isAnimatingOut;
+    
+    // Center position: 50% with offset for visual centering above progress bar
+    // Final position: top of screen
+    const topValue = isInCenter ? "50%" : "4px";
+    const yTranslate = isInCenter ? "calc(-50% - 2.5rem)" : "0px";
+    
+    // Font size: larger in center, smaller at top
+    const fontSize = isInCenter 
+        ? "clamp(1.5rem, 4vw, 2.25rem)" 
+        : "clamp(1.125rem, 2vw, 1.5rem)";
 
     return (
-        <div className="fixed top-0 xl:top-2 left-[50%] translate-x-[-50%] bg-transparent z-100">
-            <h2 className="
-            px-4 pt-1
-            font-logo tracking-wider 
-            text-lg sm:text-2xl xl:text-2xl logo-gradient">
-                inf<span className="logo-background text-(--main-50)">in</span>ity mk
+        <div
+            className="fixed left-1/2 z-[70]"
+            style={{
+                top: topValue,
+                transform: `translateX(-50%) translateY(${yTranslate})`,
+                transition: shouldAnimate
+                    ? `top ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${contentFadeDelay}s, transform ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${contentFadeDelay}s`
+                    : "none",
+            }}
+        >
+            <h2
+                className="px-4 pt-1 font-logo tracking-wider logo-gradient"
+                style={{
+                    fontSize: fontSize,
+                    transition: shouldAnimate
+                        ? `font-size ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${contentFadeDelay}s`
+                        : "none",
+                }}
+            >
+                {"inf"}
+                <span className="logo-background" style={{ color: "var(--main-50)" }}>
+                    {"in"}
+                </span>
+                {"ity mk"}
             </h2>
         </div>
-    )
+    );
 }

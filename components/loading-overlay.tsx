@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 interface LoadingOverlayProps {
   isContentReady: boolean;
   onComplete: () => void;
+  onExitStart?: () => void;
 }
 
 function isMobile() {
@@ -35,6 +36,7 @@ function markSeen() {
 export function LoadingOverlay({
   isContentReady,
   onComplete,
+  onExitStart,
 }: LoadingOverlayProps) {
   const [shouldSkip] = useState(
     () => prefersReducedMotion() || hasSeenThisSession()
@@ -106,13 +108,14 @@ export function LoadingOverlay({
         rafRef.current = requestAnimationFrame(tick);
       } else {
         setPhase("exiting");
+        onExitStart?.();
       }
     };
 
     rafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase]);
+  }, [phase, onExitStart]);
 
   // Exit transition end
   const handleTransitionEnd = useCallback(() => {
@@ -129,8 +132,9 @@ export function LoadingOverlay({
       cancelAnimationFrame(rafRef.current);
       setCount(100);
       setPhase("exiting");
+      onExitStart?.();
     }
-  }, [phase]);
+  }, [phase, onExitStart]);
 
   if (phase === "done") return null;
 
@@ -152,12 +156,13 @@ export function LoadingOverlay({
     >
       {/* Top half - moves up on exit */}
       <div
-        className="absolute inset-y-0 left-0 w-1/2"
+        className="absolute inset-x-0 top-0 h-1/2"
         style={{
           backgroundColor: "var(--main-900)",
-          transform: isExiting ? "translateX(-100%)" : "translateX(0)",
+          transform: isExiting ? "translateY(-100%)" : "translateY(0)",
+          opacity: isExiting ? 0 : 1,
           transition: isExiting
-            ? `transform ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${splitDelay}s`
+            ? `transform ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${splitDelay}s, opacity ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${splitDelay}s`
             : "none",
         }}
       >
@@ -173,12 +178,13 @@ export function LoadingOverlay({
 
       {/* Bottom half - moves down on exit */}
       <div
-        className="absolute inset-y-0 right-0 w-1/2"
+        className="absolute inset-x-0 bottom-0 h-1/2"
         style={{
           backgroundColor: "var(--main-900)",
-          transform: isExiting ? "translateX(100%)" : "translateX(0)",
+          transform: isExiting ? "translateY(100%)" : "translateY(0)",
+          opacity: isExiting ? 0 : 1,
           transition: isExiting
-            ? `transform ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${splitDelay}s`
+            ? `transform ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${splitDelay}s, opacity ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${splitDelay}s`
             : "none",
         }}
         onTransitionEnd={handleTransitionEnd}
@@ -266,17 +272,33 @@ export function LoadingOverlay({
             Tap to skip
           </p>
         </div>
-
-        {/* Corner accents matching frame style -- desktop only */}
-        <div
-          className="absolute left-8 top-6 hidden h-6 w-6 border-l border-t md:block"
-          style={{ borderColor: "var(--main-600)" }}
-        />
-        <div
-          className="absolute bottom-6 right-8 hidden h-6 w-6 border-b border-r md:block"
-          style={{ borderColor: "var(--main-600)" }}
-        />
       </div>
+
+      {/* Corner accents -- move and fade independently */}
+      {/* Top-left corner - moves up while fading */}
+      <div
+        className="absolute left-8 top-6 hidden h-6 w-6 border-l border-t md:block"
+        style={{
+          borderColor: "var(--main-600)",
+          opacity: isExiting ? 0 : 1,
+          transform: isExiting ? "translateY(-20px)" : "translateY(0)",
+          transition: isExiting
+            ? `opacity ${contentFadeDuration}s cubic-bezier(0.32, 0.72, 0, 1), transform ${contentFadeDuration}s cubic-bezier(0.32, 0.72, 0, 1)`
+            : "none",
+        }}
+      />
+      {/* Bottom-right corner - moves down while fading */}
+      <div
+        className="absolute bottom-6 right-8 hidden h-6 w-6 border-b border-r md:block"
+        style={{
+          borderColor: "var(--main-600)",
+          opacity: isExiting ? 0 : 1,
+          transform: isExiting ? "translateY(20px)" : "translateY(0)",
+          transition: isExiting
+            ? `opacity ${contentFadeDuration}s cubic-bezier(0.32, 0.72, 0, 1), transform ${contentFadeDuration}s cubic-bezier(0.32, 0.72, 0, 1)`
+            : "none",
+        }}
+      />
     </div>
   );
 }
