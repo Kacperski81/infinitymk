@@ -19,7 +19,7 @@ export default function Logo({ isOverlayVisible = false, isAnimatingOut = false 
     
     // Center position: 50% with offset for visual centering above progress bar
     // Final position: top of screen
-    const topValue = isInCenter ? "50%" : "4px";
+    const topValue = isInCenter ? "50%" : "0px";
     const yTranslate = isInCenter ? "calc(-50% - 2.5rem)" : "0px";
     
     // Font size: larger in center, smaller at top
@@ -29,10 +29,10 @@ export default function Logo({ isOverlayVisible = false, isAnimatingOut = false 
 
     return (
         <div
-            className="fixed left-1/2 z-[70]"
+            className="fixed left-0 right-0 z-[70] flex justify-center"
             style={{
                 top: topValue,
-                transform: `translateX(-50%) translateY(${yTranslate})`,
+                transform: `translateY(${yTranslate})`,
                 transition: shouldAnimate
                     ? `top ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${contentFadeDelay}s, transform ${exitDuration}s cubic-bezier(0.76, 0, 0.24, 1) ${contentFadeDelay}s`
                     : "none",
