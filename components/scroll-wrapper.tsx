@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import AboutUs from "@/components/landing/about-us";
+import AboutTheOwner from "@/components/landing/about-the-owner";
 import Hero from "@/components/landing/hero";
 import OverlayTransition from "@/components/overlay-transition";
 import OurServices from "@/components/landing/our-services";
@@ -34,7 +35,7 @@ export default function ScrollWrapper() {
     return (
         <main>
             {/* <LoadingOverlay isContentReady={false} onComplete={() => {}} /> */}
-            <Logo isOverlayVisible={isOverlayVisible} isAnimatingOut={isExiting}/>
+            <Logo isOverlayVisible={isOverlayVisible} isAnimatingOut={isExiting} />
             {/* Loading counter overlay */}
             {!introDone && (
                 <LoadingOverlay isContentReady={heroImageLoaded} onComplete={handleIntroComplete} onExitStart={handleExitStart} />
@@ -47,7 +48,8 @@ export default function ScrollWrapper() {
                             <Hero scrollY={scrollState.current} onImageLoad={handleHeroImageLoad} />
                             <OverlayTransition>
 
-                                <AboutUs />
+                                <AboutUs scrollY={scrollState.current} />
+                                <AboutTheOwner scrollY={scrollState.current} />
                                 <OurServices />
                                 <Testimonials />
                                 <Footer />
