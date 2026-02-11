@@ -55,7 +55,7 @@ export default function RootLayout({
       >
         <div className="min-h-screen flex justify-center">
           <div className="relative w-full max-w-[2000px]">
-            <Logo />
+            {/* <Logo /> */}
             <Frame />
             <Suspense fallback={null}>
               <AnimatedMenu />

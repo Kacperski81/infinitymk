@@ -1,7 +1,7 @@
 import Image from "next/image";
 import DesktopImage from "../../public/landing/hero-background.jpg";
 
-export default function Hero({ scrollY }: { scrollY: number }) {
+export default function Hero({ scrollY, onImageLoad }: { scrollY: number, onImageLoad?: () => void }) {
     const s = Number.isFinite(scrollY) ? scrollY : 0;;
     const parallax = s * 0.35;
 
@@ -18,6 +18,7 @@ export default function Hero({ scrollY }: { scrollY: number }) {
                     fill
                     sizes="100vw"
                     className="h-full w-full object-cover object-center lg:p-2 saturate-[1.2] contrast-[1.05]"
+                    onLoad={onImageLoad}
                 />
                 {/* Overlay */}
                 <div className="lg:p-2 absolute inset-0 bg-gradient-to-r from-(--main-800)/70 via-(--main-700)/40 to-(--main-800)/60" />
