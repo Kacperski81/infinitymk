@@ -29,7 +29,7 @@ export default function Logo({ isOverlayVisible = false, isAnimatingOut = false 
 
     return (
         <div
-            className="fixed left-0 right-0 z-[70] flex justify-center"
+            className="fixed left-0 right-0 z-[70] flex justify-center pointer-events-none"
             style={{
                 top: topValue,
                 transform: `translateY(${yTranslate})`,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect, useLayoutEffect } from "react";
+import { createPortal } from "react-dom";
 import type { MobileGalleryModalProps } from "@/types";
 import IconCloseCircle from "../svgs/close-circle";
 import LeftArrow from "../svgs/left-arrow";
@@ -233,7 +234,7 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
     }
     if (!isOpen || pictures.length === 0) return null;
 
-    return (
+    const modalContent = (
         <>
             {/* Backdrop overlay */}
             <div
@@ -347,4 +348,6 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
             </div>
         </>
     );
+
+    return createPortal(modalContent, document.body)
 }
