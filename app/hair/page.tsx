@@ -11,6 +11,7 @@ import HairPartners from "@/components/hair/hair-partners";
 import HairOffers from "@/components/hair/hair-offers";
 import { ScrollIndicator } from "@/components/frame/scroll-indicator";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import Logo from "@/components/frame/logo";
 
 export default function HairPage() {
     const hairImages: CarouselItem[] = getHairGalleryImages();
@@ -18,6 +19,7 @@ export default function HairPage() {
 
     return (
         <main>
+            <Logo />
             <ScrollIndicator progress={scrollState.progress} />
             <div className="flex flex-col">
                 <div ref={contentRef} className="smooth-scroll-wrapper">

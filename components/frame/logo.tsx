@@ -19,7 +19,7 @@ export default function Logo({ isOverlayVisible = false, isAnimatingOut = false 
     
     // Center position: 50% with offset for visual centering above progress bar
     // Final position: top of screen
-    const topValue = isInCenter ? "50%" : "0px";
+    const topValue = isInCenter ? "50%" : "5px";
     const yTranslate = isInCenter ? "calc(-50% - 2.5rem)" : "0px";
     
     // Font size: larger in center, smaller at top
