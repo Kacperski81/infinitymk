@@ -68,7 +68,7 @@ export default function AboutTheOwner({ scrollY }: { scrollY: number }) {
         <img
           src="/landing/hero-background.jpg"
           alt=""
-          className="absolute inset-0 w-full object-cover object-center saturate-[0.8] contrast-[1.05]"
+          className="absolute inset-0 w-full h-full object-cover object-center saturate-[0.8] contrast-[1.05]"
           aria-hidden="true"
         />
 
