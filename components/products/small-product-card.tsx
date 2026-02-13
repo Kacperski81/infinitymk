@@ -8,9 +8,9 @@ type ProductCardProps = {
 
 export default function SmallProductCard({ product, familyName, onClick }: ProductCardProps) {
     return (
-        <div className="group text-left w-full cursor-pointer" onClick={onClick}>
+        <div className="group text-left w-full cursor-pointer rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300" onClick={onClick}>
             {/* Product Image */}
-            <div className="relative aspect-[4/5] sm:aspect-[3/4] mb-2 sm:mb-3 overflow-hidden rounded-lg bg-(--main-400)/50">
+            <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden">
                 {product.image ? (
                     <>
                         <img
@@ -18,7 +18,7 @@ export default function SmallProductCard({ product, familyName, onClick }: Produ
                             alt={product.name}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-(--main-50)/0 group-hover:bg-(--main-50)/5 transition-colors duration-500" />
+                        <div className="absolute inset-0 bg-(--main-50)/0 group-hover:bg-(--main-50)/5 transition-colors duration-300" />
                     </>
                 ) : (
                     <div className="w-full h-full flex items-center justify-center text-(--main-400)">
@@ -40,14 +40,14 @@ export default function SmallProductCard({ product, familyName, onClick }: Produ
             </div>
 
             {/* Product Details */}
-            <div className="space-y-0.5 sm:space-y-1">
-                <p className="text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.15em] uppercase text-(--main-200)">
+            <div className="p-3 space-y-1">
+                <p className="text-sm sm:text-base tracking-[0.12em] sm:tracking-[0.15em] uppercase text-(--main-300) font-medium group-hover:text-(--main-200) transition-colors">
                     {product.type}
                 </p>
-                <h4 className="text-xs sm:text-sm font-medium text-(--main-50) group-hover:text-(--main-100) transition-colors leading-tight">
+                <h4 className="text-base sm:text-lg font-semibold text-(--main-50) group-hover:text-white transition-colors leading-tight">
                     {product.name}
                 </h4>
-                <p className="text-[10px] sm:text-xs text-(--main-200) leading-relaxed line-clamp-2">
+                <p className="text-sm sm:text-base text-(--main-200) leading-relaxed line-clamp-2 group-hover:text-(--main-100) transition-colors">
                     {product.short_description}
                 </p>
             </div>
