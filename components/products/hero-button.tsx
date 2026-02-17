@@ -4,7 +4,7 @@ export default function HeroButton({ label, href } : { label: string, href: stri
     return (
         <Link 
             href={href}
-            className="group flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-(--main-150) text-(--main-800) rounded-sm text-xs sm:text-sm lg:text-base xl:text-lg font-bold tracking-wide shadow-lg hover:shadow-2xl hover:bg-(--main-150)/90 transition-all duration-300"
+            className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--main-100)] text-[var(--main-800)] rounded-[var(--radius)] text-sm font-semibold tracking-wide shadow-md hover:shadow-lg hover:bg-[var(--main-200)] transition-all duration-200 border border-[var(--main-300)]"
             >
             {label}
         </Link>

@@ -9,12 +9,9 @@ export default function ProductsHero() {
 
             {/* Background Images */}
             <div className="absolute inset-0 z-0">
-                <Image
-                    src={ProductsBackgroundImage}
+                <img
+                    src="/products/products-background2.jpg"
                     alt="Products background"
-                    priority
-                    fill
-                    sizes="100vw"
                     className="h-full w-full object-cover object-center"
                 />
                 {/* <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/80 via-(--main-450)/60 to-(--main-450)/40 md:from-(--main-450)/70) md:via-(--main-450)/50 md:to-transparent"></div> */}
