@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { getHairPartners } from "@/lib/hair-partners";
 import PageHeading from "@/components/page-heading";
 
@@ -58,7 +59,8 @@ export default function HairPartners() {
                             <li key={logo.name} className="hair-partner-logo
                             backdrop-blur-[2px]
                             rounded-md p-2 md:p-4 shadow-md hover:shadow-lg transition-shadow w-[150px] md:w-[200px] lg:w-[250px] flex items-center justify-center">
-                                <img src={logo.imagePath} alt={logo.altText} className="w-full h-auto object-contain" />
+                                {/* <img src={logo.imagePath} alt={logo.altText} className="w-full h-auto object-contain" /> */}
+                                <Image src={logo.imagePath} alt={logo.altText} width={250} height={100} quality={75} className="w-full h-auto object-contain" />
                             </li>
                         )
                     })}

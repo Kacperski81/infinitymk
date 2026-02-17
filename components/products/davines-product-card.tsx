@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import IconCloseCircle from "@/components/svgs/close-circle"
-import type { DavinesHairCareProduct, DavinesHairCareFamily } from "@/types"
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import IconCloseCircle from "@/components/svgs/close-circle";
+import type { DavinesHairCareProduct, DavinesHairCareFamily } from "@/types";
 
 type ExpandedProductCardProps = {
   product: DavinesHairCareProduct
@@ -39,37 +40,106 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
 
   const handleClose = () => {
     setIsVisible(false)
-    setTimeout(onClose, 300)
+    // Use 250ms exit duration (shorter than entrance for better UX)
+    setTimeout(onClose, 250)
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+      onClick={handleClose}
+    >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      <div
+        className={`
+          absolute inset-0
+          bg-[var(--main-500)]/90
+          dark:bg-[var(--main-900)]/95
+          transition-opacity duration-200 ease-out
+          motion-reduce:transition-none
+          ${isVisible ? 'opacity-100' : 'opacity-0'}
+        `}
+        style={{
+          WebkitBackdropFilter: 'blur(8px)',
+          backdropFilter: 'blur(8px)',
+        }}
+      />
 
       {/* Modal */}
       <div
-        className="p-1 sm:p-2 relative bg-card rounded-lg w-full max-w-6xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
+        className={`
+          relative w-full max-w-6xl max-h-[90vh] overflow-y-auto
+          rounded-2xl shadow-2xl
+          bg-[var(--main-150)]
+          dark:bg-[var(--main-800)]
+          transition-all duration-250 ease-out
+          motion-reduce:transition-none
+          ${isVisible
+            ? 'opacity-100 scale-100 translate-y-0'
+            : 'opacity-0 scale-95 translate-y-4'
+          }
+        `}
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          onClick={onClose}
-          className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 p-1.5 sm:p-2 rounded-full bg-(--card-foreground)/10 hover:bg-(--card-foreground)/20 transition-colors"
+          onClick={handleClose}
+          className="
+            absolute top-4 right-4 sm:top-6 sm:right-6 z-10 
+            p-2 rounded-full
+            bg-[var(--main-800)]/10 
+            hover:bg-[var(--main-800)]/20
+            dark:bg-[var(--main-100)]/10
+            dark:hover:bg-[var(--main-100)]/20
+            transform transition-all duration-200 ease-out
+            hover:scale-110 active:scale-[0.97]
+            motion-safe:hover:rotate-90
+            motion-reduce:transition-none
+            motion-reduce:hover:transform-none
+            motion-reduce:active:transform-none
+            focus:outline-none focus:ring-2 focus:ring-[var(--main-500)]
+            dark:focus:ring-[var(--main-300)]
+          "
+          style={{ WebkitTransform: 'translateZ(0)', willChange: 'transform' }}
           aria-label="Close modal"
         >
-          <IconCloseCircle  />
+          <IconCloseCircle />
         </button>
 
-        <div className="grid md:grid-cols-2 md:items-center bg-card p-2">
+        <div className="grid md:grid-cols-2 md:items-start gap-8 md:gap-12 p-6 sm:p-10">
           {/* Image */}
-          <div className="relative aspect-square bg-muted rounded-lg overflow-hidden">
+          <div className="
+            relative aspect-square rounded-xl overflow-hidden
+            bg-[var(--main-300)]/20
+            dark:bg-[var(--main-700)]/30
+            border border-[var(--main-300)]/50
+            dark:border-[var(--main-600)]/50
+            md:sticky md:top-6
+          ">
             {product.image ? (
-              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+              // <img 
+              //   src={product.image} 
+              //   alt={product.name} 
+              //   className="w-full h-full object-cover" 
+              // />
+              <Image src={product.image} alt={product.name} fill sizes="500px" quality={75} className="object-cover" />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-(--main-400)">
-                <div className="text-center p-4">
-                  <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-(--main-600)/50 flex items-center justify-center">
-                    <svg className="w-8 h-8 text-(--main-400)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="
+                w-full h-full flex items-center justify-center
+                text-[var(--main-400)]
+                dark:text-[var(--main-500)]
+              ">
+                <div className="text-center p-6">
+                  <div className="
+                    w-20 h-20 mx-auto mb-4 rounded-full 
+                    bg-[var(--main-400)]/20
+                    dark:bg-[var(--main-500)]/20
+                    flex items-center justify-center
+                  ">
+                    <svg className="
+                      w-10 h-10 
+                      text-[var(--main-400)]
+                      dark:text-[var(--main-500)]
+                    " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -78,52 +148,96 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
                       />
                     </svg>
                   </div>
-                  <span className="text-xs">Image coming soon</span>
+                  <span className="
+                    text-sm 
+                    text-[var(--main-400)]
+                    dark:text-[var(--main-500)]
+                  ">Image coming soon</span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Content */}
-          <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
+          <div className="space-y-8">
+            {/* Header */}
             <div>
-              <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1 sm:mb-2">
+              {/* Product Type & Family - De-emphasized */}
+              <p className="
+                text-xs tracking-wider uppercase mb-3 
+                font-medium
+                text-[var(--main-500)]
+                dark:text-[var(--main-400)]
+              ">
                 {family.family} • {product.type}
               </p>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-card-foreground">{product.name}</h2>
+
+              {/* Product Name - Primary emphasis */}
+              <h2 className="
+                text-4xl md:text-5xl font-bold 
+                text-[var(--main-900)]
+                dark:text-[var(--main-100)]
+                leading-tight mb-4
+              ">{product.name}</h2>
             </div>
 
-            <p className="text-sm sm:text-base text-card-foreground/80 leading-relaxed">{product.full_description}</p>
+            {/* Description - Secondary emphasis */}
+            <p className="
+              text-base md:text-lg leading-relaxed
+              text-[var(--main-800)]
+              dark:text-[var(--main-200)]
+            " style={{ lineHeight: '1.7' }}>{product.full_description}</p>
 
-            <div className="pt-3 sm:pt-4 border-t border-border space-y-3 sm:space-y-4">
-              <div className="flex items-start gap-3">
-                <div>
-                  <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">How to Use</p>
-                  <p className="text-xs sm:text-sm text-card-foreground/80 leading-relaxed">{product.usage}</p>
-                </div>
+            {/* Details */}
+            <div className="space-y-6">
+              <div className="
+                pt-6
+                border-t border-[var(--main-300)]
+                dark:border-[var(--main-600)]
+              ">
+                <p className="
+                  text-xs tracking-wider uppercase mb-2 
+                  font-semibold
+                  text-[var(--main-500)]
+                  dark:text-[var(--main-400)]
+                ">How to Use</p>
+                <p className="
+                  text-sm md:text-base leading-relaxed
+                  text-[var(--main-700)]
+                  dark:text-[var(--main-300)]
+                " style={{ lineHeight: '1.65' }}>{product.usage}</p>
               </div>
 
-              <div className="flex items-start gap-3">
-
-                <div>
-                  <p className="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-muted-foreground mb-1">Key Ingredient</p>
-                  <p className="text-xs sm:text-sm text-card-foreground/80 leading-relaxed">{family.info.active}</p>
-                </div>
+              <div className="
+                pt-6
+                border-t border-[var(--main-300)]
+                dark:border-[var(--main-600)]
+              ">
+                <p className="
+                  text-xs tracking-wider uppercase mb-2 
+                  font-semibold
+                  text-[var(--main-500)]
+                  dark:text-[var(--main-400)]
+                ">Key Ingredient</p>
+                <p className="
+                  text-sm md:text-base leading-relaxed
+                  text-[var(--main-700)]
+                  dark:text-[var(--main-300)]
+                " style={{ lineHeight: '1.65' }}>{family.info.active}</p>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-border">
-              <div>
-                {/* price */}
-                {/* <p className="text-lg sm:text-xl font-medium text-card-foreground">
-                  {product.price}
-                </p> */}
-                <p className="text-xs sm:text-sm text-muted-foreground">Available in-store</p>
-              </div>
-
-              {/* <button className="px-6 py-3 bg-card-foreground text-card rounded-sm text-sm font-medium tracking-wide hover:bg-card-foreground/90 transition-colors">
-                Add to Cart
-              </button> */}
+            {/* Footer */}
+            <div className="
+              pt-6
+              border-t border-[var(--main-300)]
+              dark:border-[var(--main-600)]
+            ">
+              <p className="
+                text-sm font-medium
+                text-[var(--main-600)]
+                dark:text-[var(--main-400)]
+              ">Available in-store</p>
             </div>
           </div>
         </div>

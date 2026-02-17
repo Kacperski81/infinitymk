@@ -9,10 +9,14 @@ export default function ProductsHero() {
 
             {/* Background Images */}
             <div className="absolute inset-0 z-0">
-                <img
+                <Image
                     src="/products/products-background2.jpg"
                     alt="Products background"
-                    className="h-full w-full object-cover object-center"
+                    fill
+                    sizes="100vw"
+                    quality={75}
+                    priority
+                    className="object-cover object-center"
                 />
                 {/* <div className="absolute inset-0 bg-gradient-to-r from-(--main-450)/80 via-(--main-450)/60 to-(--main-450)/40 md:from-(--main-450)/70) md:via-(--main-450)/50 md:to-transparent"></div> */}
                 {/* Overlay */}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Aboreto, Lato, Red_Hat_Text, Cormorant_Garamond } from "next/font/google";
+import { Aboreto, Lato, Red_Hat_Text } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
 
@@ -13,14 +13,16 @@ const aboreto = Aboreto({
   // sans-serif
   variable: "--font-aboreto",
   subsets: ['latin'],
-  weight: '400'
+  weight: '400',
+  display: 'swap',
 })
 
 const lato = Lato({
   // sans-serif
   variable: "--font-lato",
   subsets: ['latin'],
-  weight: '300'
+  weight: '300',
+  display: 'swap',
 })
 
 const redHatText = Red_Hat_Text({
@@ -28,15 +30,8 @@ const redHatText = Red_Hat_Text({
   variable: "--font-red-hat-text",
   subsets: ['latin'],
   weight: '400',
+  display: 'swap',
 })
-
-const cormorantGaramond = Cormorant_Garamond({
-  // serif
-  variable: "--font-cormorant-garamond",
-  subsets: ['latin'],
-  weight: '400',
-})
-
 
 export const metadata: Metadata = {
   title: "InfinityMK Hair, Nails & Beauty Salon | Putney & Wandsworth, London",
@@ -51,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-(--main-450)">
       <body
-        className={`${aboreto.variable} ${lato.variable} ${redHatText.variable} ${cormorantGaramond.variable} antialiased`}
+        className={`${aboreto.variable} ${lato.variable} ${redHatText.variable} antialiased`}
       >
         <div className="min-h-screen flex justify-center">
           <div className="relative w-full max-w-[2000px]">

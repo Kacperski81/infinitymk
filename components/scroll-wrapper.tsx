@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState, useCallback } from "react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import AboutUs from "@/components/landing/about-us";

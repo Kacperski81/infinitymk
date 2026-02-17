@@ -27,7 +27,6 @@ export default function Carousel() {
             const width = el.offsetWidth;
             const height = el.offsetHeight;
             setContainerDimensions({ width, height });
-            console.log({ width, height })
             return { width, height }
         }
         return { width: 0, height: 0 }
@@ -50,7 +49,6 @@ export default function Carousel() {
     }
 
     const handleTransitionEnd = () => {
-        console.log('transition end')
         if (selectedIndex === 0) {
             toggleTransition();
             setSelectedIndex(testimonials.length - 2)

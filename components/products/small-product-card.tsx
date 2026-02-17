@@ -1,4 +1,5 @@
-import type { DavinesHairCareProduct } from "@/types"
+import Image from "next/image";
+import type { DavinesHairCareProduct } from "@/types";
 
 type ProductCardProps = {
     product: DavinesHairCareProduct
@@ -13,10 +14,14 @@ export default function SmallProductCard({ product, familyName, onClick }: Produ
             <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden">
                 {product.image ? (
                     <>
-                        <img
+                        <Image
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            fill
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            quality={75}
+                            loading="lazy"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105 w-full h-full"
                         />
                         <div className="absolute inset-0 bg-(--main-50)/0 group-hover:bg-(--main-50)/5 transition-colors duration-300" />
                     </>

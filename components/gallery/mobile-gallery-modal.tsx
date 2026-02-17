@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect, useLayoutEffect } from "react";
+import Image from "next/image";
 import { createPortal } from "react-dom";
 import type { MobileGalleryModalProps } from "@/types";
 import IconCloseCircle from "../svgs/close-circle";
@@ -292,6 +293,17 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
                                     className={` object-contain rounded-lg select-none transition-opacity duration-300 ${loadedImages.has(index) ? "opacity-100" : "opacity-0"
                                         }`}
                                 />
+                                {/* <Image
+                                    src={picture.imageUrl || "/placeholder.svg"}
+                                    alt={picture.alt}
+                                    fill
+                                    sizes="(max-width: 640px) 90vw, 400px"
+                                    quality={75}
+                                    onLoad={() => handleImageLoad(index)}
+                                    draggable={false}
+                                    className={` object-contain rounded-lg select-none transition-opacity duration-300 ${loadedImages.has(index) ? "opacity-100" : "opacity-0"
+                                        }`}
+                                /> */}
                             </div>
                         ))}
                     </div>
@@ -324,13 +336,13 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
                 {/* Thumbnail strip - instant selection without transition */}
                 <div className="px-4 py-2">
                     <div className="flex items-center justify-center gap-2 overflow-x-auto scrollbar-hide">
-                        {pictures.map((picture, index) => (
+                        {/* {pictures.map((picture, index) => (
                             <button
                                 key={picture.id}
                                 onClick={() => navigateTo(index, true)}
                                 className={`min-w-[44px] min-h-[44px] w-11 h-11 rounded-lg overflow-hidden border-2 ${index === currentIndex
-                                        ? "border-main-700 scale-110 shadow-md"
-                                        : "border-transparent opacity-60 hover:opacity-100"
+                                    ? "border-main-700 scale-110 shadow-md"
+                                    : "border-transparent opacity-60 hover:opacity-100"
                                     } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400`}
                                 aria-label={`View image ${index + 1}`}
                                 aria-current={index === currentIndex ? "true" : "false"}
@@ -342,7 +354,7 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
                                     className="w-full h-full object-cover"
                                 />
                             </button>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </div>

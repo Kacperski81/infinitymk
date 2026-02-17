@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import LocationIcon from "../svgs/location-icon";
 
 export default function AboutUs({ scrollY }: { scrollY: number }) {
@@ -53,10 +54,13 @@ export default function AboutUs({ scrollY }: { scrollY: number }) {
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Image */}
           <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
-            <img
+            <Image
               src="/landing/about-image.jpg"
               alt="Interior of Infinity MK salon showing styling chairs, plants, and elegant decor"
-              className="object-cover w-full h-full"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={75}
+              className="object-cover"
             />
           </div>
 

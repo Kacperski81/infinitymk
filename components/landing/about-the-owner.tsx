@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useEffect, useState, useCallback } from "react";
 
 /**
@@ -65,10 +66,14 @@ export default function AboutTheOwner({ scrollY }: { scrollY: number }) {
                     transform: `translate3d(0, ${parallaxOffset}px, 0)`,
                 }}
             >
-                <img
+                <Image
                     src="/landing/hero-background.jpg"
                     alt=""
-                    className="absolute inset-0 w-full h-full object-cover object-center saturate-[0.8] contrast-[1.05]"
+                    fill
+                    sizes="100vw"
+                    quality={75}
+                    priority
+                    className="absolute inset-0 object-cover object-center saturate-[0.8] contrast-[1.05]"
                     aria-hidden="true"
                 />
 
@@ -130,9 +135,12 @@ export default function AboutTheOwner({ scrollY }: { scrollY: number }) {
 
                         {/* Portrait image */}
                         <div className="relative aspect-[3/4] max-w-[400px] overflow-hidden rounded-lg shadow-xl md:order-1">
-                            <img
+                            <Image
                                 src="/landing/magda.jpg"
                                 alt="Portrait of the owner of Infinity MK salon"
+                                width={400}
+                                height={533}
+                                quality={75}
                                 className="object-cover w-full h-full"
                             />
                             {/* Subtle vignette on the portrait */}

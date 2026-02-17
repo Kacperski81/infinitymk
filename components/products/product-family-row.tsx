@@ -1,13 +1,15 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { useRef, useState, useEffect } from "react"
 import type { DavinesHairCareFamily, DavinesHairCareProduct } from "@/types"
-import DavinesProductCard from "./davines-product-card"
+// import DavinesProductCard from "./davines-product-card"
 import SmallProductCard from "./small-product-card"
 import RightArrow from "../svgs/right-arrow"
 import LeftArrow from "../svgs/left-arrow"
-import IconInformation from "../svgs/icon-information"
 import FamilyInformation from "./family-information"
+
+const DavinesProductCard = dynamic(() => import("./davines-product-card"), { ssr: false })
 
 type DavinesHairCareFamilyRowProps = {
     family: DavinesHairCareFamily
