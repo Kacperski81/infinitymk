@@ -513,7 +513,31 @@ body {
   transition: height 0.2 ease-out;
 }
 
-/* Hero text fade-in on first load */
+/* ── Section reveal animations ──────────────────────────────────────────── */
+
+/**
+ * Base hidden state — applied before IntersectionObserver fires.
+ * Each child gets its own delay via --reveal-delay.
+ */
+.reveal-child {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0) scale(0.97);
+  filter: blur(3px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/** Applied by JS once isVisible = true */
+.reveal-child.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0px);
+}
+
+/* ── Hero text fade-in on first load */
 @keyframes hero-fade-in {
   from {
     opacity: 0;

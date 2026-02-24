@@ -5,9 +5,8 @@ import LocationIcon from "../svgs/location-icon";
 import { useScrollFade } from "@/hooks/use-scroll-fade";
 
 export default function AboutUs({ scrollY }: { scrollY: number }) {
-  const { sectionRef, contentStyle } = useScrollFade(scrollY, {
-    fadeInStart: 0.0,
-    fadeInEnd: 0.18,
+  const { sectionRef, isVisible, fadeOutStyle } = useScrollFade(scrollY, {
+    inThreshold: 0.12,
     fadeOutStart: 0.68,
     fadeOutEnd: 0.95,
     translateRange: 38,
@@ -19,34 +18,55 @@ export default function AboutUs({ scrollY }: { scrollY: number }) {
       className="py-16 md:p-24 px-6 md:px-12 lg:px-20 xl:min-h-screen xl:min-w-full xl:flex xl:items-center"
     >
       <div
-        className="max-w-6xl xl:min-w-[1400px] mx-auto"
-        style={contentStyle}
+        className="max-w-6xl xl:min-w-[1400px] mx-auto w-full"
+        style={fadeOutStyle}
       >
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          {/* Image */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
-            <Image
-              src="/landing/about-image.jpg"
-              alt="Interior of Infinity MK salon showing styling chairs, plants, and elegant decor"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              quality={75}
-              className="object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
-            />
+
+          {/* Image — reveals first */}
+          <div
+            className={`reveal-child${isVisible ? " is-visible" : ""}`}
+            style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
+          >
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
+              <Image
+                src="/landing/about-image.jpg"
+                alt="Interior of Infinity MK salon showing styling chairs, plants, and elegant decor"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={75}
+                className="object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
+              />
+            </div>
           </div>
 
-          {/* Content */}
+          {/* Content — staggered after image */}
           <div className="flex flex-col gap-6">
+            {/* Heading */}
             <span
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold hero-background-gradient text-balance"
-              style={{ fontFamily: "var(--font-aboreto)" }}
+              className={`reveal-child${isVisible ? " is-visible" : ""} text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold hero-background-gradient text-balance`}
+              style={{
+                fontFamily: "var(--font-aboreto)",
+                "--reveal-delay": "120ms",
+              } as React.CSSProperties}
             >
               About Us
             </span>
 
-            <div className="w-16 h-px" style={{ background: "var(--main-200)" }} />
+            {/* Divider */}
+            <div
+              className={`reveal-child${isVisible ? " is-visible" : ""} w-16 h-px`}
+              style={{
+                background: "var(--main-200)",
+                "--reveal-delay": "200ms",
+              } as React.CSSProperties}
+            />
 
-            <div>
+            {/* Body text + link */}
+            <div
+              className={`reveal-child${isVisible ? " is-visible" : ""}`}
+              style={{ "--reveal-delay": "300ms" } as React.CSSProperties}
+            >
               <p
                 className="xl:max-w-xl text-lg md:text-xl leading-relaxed font-light text-pretty"
                 style={{ fontFamily: "var(--font-lato)", color: "var(--main-100)" }}

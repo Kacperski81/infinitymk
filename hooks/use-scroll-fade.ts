@@ -3,15 +3,16 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 
 export interface ScrollFadeOptions {
-  /** Fraction of section height before fade-in begins (default 0 — starts immediately on entry). */
-  fadeInStart?: number;
-  /** Fraction of section height where fade-in completes (default 0.25). */
-  fadeInEnd?: number;
-  /** Fraction of section height where fade-out begins (default 0.6). */
+  /**
+   * IntersectionObserver threshold that triggers the fade-IN.
+   * 0.15 = element is 15 % visible before entrance fires (default).
+   */
+  inThreshold?: number;
+  /** Fraction of section height where fade-out begins (default 0.65). */
   fadeOutStart?: number;
   /** Fraction of section height where fade-out completes (default 0.95). */
   fadeOutEnd?: number;
-  /** Max translateY offset applied during fade-out in px (default 40). */
+  /** Max translateY offset applied during fade-out in px (default 36). */
   translateRange?: number;
   /** Parallax multiplier for a background layer (default 0 = disabled). */
   parallaxFactor?: number;
@@ -19,27 +20,27 @@ export interface ScrollFadeOptions {
 
 export interface ScrollFadeResult {
   sectionRef: React.RefObject<HTMLDivElement | null>;
-  contentStyle: React.CSSProperties;
+  /** True once the section has crossed the IntersectionObserver threshold. */
+  isVisible: boolean;
+  /** Fade-out + translate style driven by scroll position. */
+  fadeOutStyle: React.CSSProperties;
+  /** Parallax translateY style for a background layer. */
   parallaxStyle: React.CSSProperties;
 }
 
 /**
- * Unified scroll-fade + optional parallax hook.
+ * Scroll-fade + optional parallax hook — v2.
  *
- * - Fades content IN as the section enters the viewport.
- * - Fades content OUT as the section scrolls past.
- * - Optionally moves a background layer at a different rate (parallax).
- *
- * Uses a ResizeObserver so measurements are always fresh without
- * re-running on every scroll tick.
+ * Entry detection uses IntersectionObserver (accurate, no scroll-math drift).
+ * Exit/fade-out uses scroll position math so it feels intentional.
+ * Parallax is clamped so backgrounds never over-travel.
  */
 export function useScrollFade(
   scrollY: number,
   options: ScrollFadeOptions = {}
 ): ScrollFadeResult {
   const {
-    fadeInStart = 0,
-    fadeInEnd = 0.2,
+    inThreshold = 0.15,
     fadeOutStart = 0.65,
     fadeOutEnd = 0.95,
     translateRange = 36,
@@ -47,60 +48,68 @@ export function useScrollFade(
   } = options;
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [sectionTop, setSectionTop] = useState(0);
-  const [sectionHeight, setSectionHeight] = useState(0);
-  const [measured, setMeasured] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Measure once and re-measure on resize via ResizeObserver.
+  // Stable refs for layout measurements — updated by ResizeObserver, never
+  // by scroll, so they don't recreate callbacks on every tick.
+  const sectionTopRef = useRef(0);
+  const sectionHeightRef = useRef(0);
+
   const measure = useCallback(() => {
     if (!sectionRef.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    setSectionTop(rect.top + scrollY);
-    setSectionHeight(rect.height);
-    setMeasured(true);
-  }, [scrollY]);
+    const el = sectionRef.current;
+    sectionTopRef.current = el.getBoundingClientRect().top + window.scrollY;
+    sectionHeightRef.current = el.offsetHeight;
+  }, []); // stable — no scrollY dep
 
   useEffect(() => {
     measure();
-    const observer = new ResizeObserver(measure);
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, [measure]);
 
-  // ── Calculations ──────────────────────────────────────────────────────────
-  const rel = scrollY - sectionTop;
-  let opacity = measured ? 0 : 1;
+    const ro = new ResizeObserver(measure);
+    if (sectionRef.current) ro.observe(sectionRef.current);
+
+    // IntersectionObserver handles fade-IN trigger
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          io.disconnect(); // fire once
+        }
+      },
+      { threshold: inThreshold }
+    );
+    if (sectionRef.current) io.observe(sectionRef.current);
+
+    return () => {
+      ro.disconnect();
+      io.disconnect();
+    };
+  }, [measure, inThreshold]);
+
+  // ── Fade-OUT driven by scroll math ───────────────────────────────────────
+  const rel = scrollY - sectionTopRef.current;
+  const h = sectionHeightRef.current;
+
+  let fadeOutOpacity = 1;
   let translateY = 0;
 
-  if (measured && sectionHeight > 0) {
-    // Fade IN
-    const inStart = sectionHeight * fadeInStart;
-    const inEnd = sectionHeight * fadeInEnd;
-    if (rel <= inStart) {
-      opacity = 0;
-    } else if (rel <= inEnd) {
-      opacity = (rel - inStart) / (inEnd - inStart);
-    } else {
-      opacity = 1;
-    }
-
-    // Fade OUT (overrides fade-in progress once past fadeOutStart)
-    const outStart = sectionHeight * fadeOutStart;
-    const outEnd = sectionHeight * fadeOutEnd;
+  if (h > 0) {
+    const outStart = h * fadeOutStart;
+    const outEnd = h * fadeOutEnd;
     if (rel > outStart) {
       const progress = Math.min((rel - outStart) / (outEnd - outStart), 1);
-      opacity = Math.max(0, 1 - progress);
+      fadeOutOpacity = Math.max(0, 1 - progress);
       translateY = -(progress * translateRange);
     }
   }
 
-  // Parallax offset (clamped so image never over-travels)
+  // ── Parallax (clamped) ────────────────────────────────────────────────────
+  const maxParallax = h * 0.15;
   const rawParallax = rel * parallaxFactor;
-  const maxParallax = sectionHeight * 0.15;
   const clampedParallax = Math.min(Math.max(rawParallax, -maxParallax), maxParallax);
 
-  const contentStyle: React.CSSProperties = {
-    opacity,
+  const fadeOutStyle: React.CSSProperties = {
+    opacity: isVisible ? fadeOutOpacity : 0,
     transform: `translate3d(0, ${translateY}px, 0)`,
     willChange: "opacity, transform",
   };
@@ -113,5 +122,5 @@ export function useScrollFade(
         }
       : {};
 
-  return { sectionRef, contentStyle, parallaxStyle };
+  return { sectionRef, isVisible, fadeOutStyle, parallaxStyle };
 }
