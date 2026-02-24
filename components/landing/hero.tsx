@@ -1,37 +1,54 @@
 import Image from "next/image";
 import DesktopImage from "../../public/landing/hero-background.jpg";
 
-export default function Hero({ scrollY, onImageLoad }: { scrollY: number, onImageLoad?: () => void }) {
-    const s = Number.isFinite(scrollY) ? scrollY : 0;;
-    const parallax = s * 0.35;
+export default function Hero({ scrollY, onImageLoad }: { scrollY: number; onImageLoad?: () => void }) {
+    const s = Number.isFinite(scrollY) ? scrollY : 0;
 
-    // Fade hero t0 0 over the first 700px of scroll
-    const opacity = Math.max(0, Math.min(1, 1 - s / 700));
+    // Background moves at 0.30× — slower than scroll, creates depth.
+    const bgParallax = s * 0.30;
 
+    // Content moves at 0.12× — visibly slower than background → foreground floats forward.
+    const contentParallax = s * 0.12;
+
+    // Fade hero content to 0 over the first 600 px of scroll.
+    const opacity = Math.max(0, Math.min(1, 1 - s / 600));
+
+    // Subtle fade-in for the text on first load (CSS-driven, no scroll dependency).
     return (
         <section className="px-2 relative min-h-screen inset-0 overflow-hidden flex items-center">
-            <div className="absolute inset-0 z-0 will-change-transform" style={{ transform: `translate3d(0, ${parallax}px, 0)` }}>
+            {/* Background layer — moves slowest */}
+            <div
+                className="absolute inset-0 z-0 will-change-transform"
+                style={{ transform: `translate3d(0, ${bgParallax}px, 0)` }}
+            >
                 <Image
                     src={DesktopImage}
-                    alt="Salon background"
+                    alt="Infinity MK salon interior"
                     priority
                     fill
                     sizes="100vw"
-                    className="h-full w-full object-cover object-center lg:p-2 saturate-[1.2] contrast-[1.05]"
+                    className="h-full w-full object-cover object-center lg:p-2 saturate-[1.15] contrast-[1.05]"
                     onLoad={onImageLoad}
                 />
-                {/* Overlay */}
-                <div className="lg:p-2 absolute inset-0 bg-gradient-to-r from-(--main-800)/70 via-(--main-700)/40 to-(--main-800)/60" />
-                <div className="lg:p-2 absolute inset-0 bg-radial-[at_30%_40%] from-transparent via-transparent to-(--main-900)/50" />
+                {/* Directional overlay — deeper shadow on scroll-entry edges */}
+                <div className="lg:p-2 absolute inset-0 bg-gradient-to-r from-(--main-800)/75 via-(--main-700)/35 to-(--main-800)/65" />
+                <div className="lg:p-2 absolute inset-0 bg-radial-[at_30%_40%] from-transparent via-transparent to-(--main-900)/55" />
+                {/* Bottom fade to blend into next section */}
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-(--main-450)/80 to-transparent" />
             </div>
 
-            {/* Hero Content */}
-            <div className="relative p-2 h-full z-20 flex flex-col gap-5 lg:gap-20 md:w-full sm:text-center" style={{ opacity, transform: `translate3d(0, ${parallax * 0.4}px, 0)` }}>
-                <h1 className="font-(family-name:--font-aboreto) font-semibold text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight tracking-wider hero-background-gradient drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
-                    {/* Feel<br />Good,<br /> Look<br />Amazing. */}
+            {/* Foreground content layer — moves at intermediate rate */}
+            <div
+                className="relative p-2 h-full z-20 flex flex-col gap-5 lg:gap-20 md:w-full sm:text-center animate-hero-in"
+                style={{
+                    opacity,
+                    transform: `translate3d(0, ${contentParallax}px, 0)`,
+                }}
+            >
+                <h1 className="font-(family-name:--font-aboreto) font-semibold text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight tracking-wider hero-background-gradient drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] text-balance">
                     Feel Good,<br />Look Amazing.
                 </h1>
-                <p className="font-sans text-base md:text-lg font-light tracking-widest uppercase text-(--main-50) drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] dark:text-gray-200 text-pretty">
+                <p className="font-sans text-base md:text-lg font-light tracking-widest uppercase text-(--main-50) drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] text-pretty">
                     Step into a world of beauty and relaxation. We're here to make you shine.
                 </p>
             </div>
