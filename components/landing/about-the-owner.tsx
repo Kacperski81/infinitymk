@@ -79,7 +79,7 @@ export default function AboutTheOwner({ scrollY }: { scrollY: number }) {
                   alt="Portrait of the owner of Infinity MK salon"
                   width={400}
                   height={533}
-                  quality={80}
+                  quality={75}
                   className="object-cover w-full h-full transition-transform duration-700 ease-out hover:scale-[1.03]"
                 />
                 <div
