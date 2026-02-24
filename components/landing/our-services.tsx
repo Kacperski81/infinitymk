@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { getServiceData } from "@/lib/service-data";
+import ServiceButton from "@/components/landing/service-button";
 import PageHeading from "@/components/page-heading";
 import hairBG from "../../public/landing/services-hair.jpg";
 import nailsBG from "../../public/landing/services-nails.jpg";
@@ -80,17 +80,12 @@ export default function Services() {
                                             {service.services[0].description}
                                             {/* <span className="block text-right w-full">see more</span> */}
                                             <span className="block text-right mt-2">
-                                                <Link
-                                                    href={`/${service.id}`} // The internal route
-                                                    aria-label={`View all ${service.name} services`}
-                                                    className={`w-fit border border-white text-white px-5 py-2 rounded-full uppercase text-xs font-medium tracking-widest transition-all duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/50
-                                                ${expandedPanel === service.id
-                                                            ? "opacity-100 translate-y-0 transition-all duration-500 delay-700"
-                                                            : "opacity-0 translate-y-2 transition-all duration-300"
-                                                        }`}
-                                                >
-                                                    See More
-                                                </Link>
+                                                <ServiceButton
+                                                    href={`/${service.id}`}
+                                                    label="See More"
+                                                    serviceName={service.name}
+                                                    visible={expandedPanel === service.id}
+                                                />
                                             </span>
                                         </p>
                                     </div>
