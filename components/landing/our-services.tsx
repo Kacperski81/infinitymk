@@ -5,17 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { getServiceData } from "@/lib/service-data";
 import PageHeading from "@/components/page-heading";
-import hairBG from "../../public/landing/services-hair.jpg";
-import nailsBG from "../../public/landing/services-nails.jpg";
-import beautyBG from "../../public/landing/services-beauty.jpg";
-import productsBG from "../../public/landing/services-davines.jpg";
+import hairBG from "../../public/landing/services-hair2.jpg";
+import nailsBG from "../../public/landing/services-nails2.jpg";
+import beautyBG from "../../public/landing/services-beauty2.jpg";
+import productsBG from "../../public/landing/services-davines2.jpg";
 import ScissorsSVG from "@/components/svgs/scissorsSVG";
 import NailSVG from "@/components/svgs/nailSVG";
 import BeautySVG from "../svgs/beautySVG";
 import ProductSVG from "../svgs/productSVG"
+import ServiceButton from "@/components/landing/service-button";
+import { useScrollFade } from "@/hooks/use-scroll-fade";
+import { useTopEdgeFade } from "@/hooks/use-top-edge-fade";
 
-export default function Services() {
+export default function Services({ scrollY }: { scrollY: number }) {
     const [expandedPanel, setExpandedPanel] = useState<string>("hair");
+    const { sectionRef, isVisible, fadeOutStyle } = useScrollFade(scrollY, {
+        inThreshold: 0.10,
+        fadeOutStart: 0.70,
+        fadeOutEnd: 0.95,
+        translateRange: 30,
+    });
+    const topFade = useTopEdgeFade(scrollY, {fadeStart: 10, fadeEnd: -900, translateMax: 12});
 
     const togglePanel = (panelId: string) => {
         setExpandedPanel(panelId);
@@ -31,17 +41,19 @@ export default function Services() {
     }
 
     return (
-        <section className="min-h-screen flex flex-col">
-            <main className="grow flex flex-col lg:justify-center gap-3 xl:pb-20">
+        <section ref={sectionRef} className="min-h-screen flex flex-col">
+            <main className="grow flex flex-col lg:justify-center gap-3 xl:pb-20" style={fadeOutStyle}>
 
 
-                <PageHeading title="OUR SERVICES" />
-                <p className="leading-relaxed text-base sm:text-lg md:text-xl text-(--main-100) text-center">
+                <div ref={topFade.ref("heading")} style={topFade.style("heading")}>
+                    <PageHeading title="OUR SERVICES" />
+                </div>
+                <p ref={topFade.ref("subtitle")} className="leading-relaxed text-base sm:text-lg md:text-xl text-(--main-100) text-center" style={topFade.style("subtitle")}>
                     {`From a simple cut to a full makeover, we've got you covered.`}
                 </p>
 
                 {/* Wrapper */}
-                <div className="grow p-2 flex justify-center">
+                <div ref={topFade.ref("accordion")} className="grow p-2 flex justify-center" style={topFade.style("accordion")}>
 
                     {/* Accordion */}
                     <div className="grow flex flex-col lg:justify-center lg:flex-row gap-(--wrapper-gap) lg:max-w-6xl">
@@ -78,19 +90,8 @@ export default function Services() {
                                     <div id={`${service.id}-content`} aria-labelledby={`${service.id}-heading}`} role="region" aria-hidden={service.id !== expandedPanel} className={`relative z-10`}>
                                         <p className={`service-panel-margin text-left relative text-white text-sm lg:text-lg max-w-[70ch] ${expandedPanel === service.id ? "opacity-100 transition-opacity duration-500 delay-500" : "opacity-0 transition-opacity duration-0 delay-0"}`}>
                                             {service.services[0].description}
-                                            {/* <span className="block text-right w-full">see more</span> */}
                                             <span className="block text-right mt-2">
-                                                <Link
-                                                    href={`/${service.id}`} // The internal route
-                                                    aria-label={`View all ${service.name} services`}
-                                                    className={`w-fit border border-white text-white px-5 py-2 rounded-full uppercase text-xs font-medium tracking-widest transition-all duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white/50
-                                                ${expandedPanel === service.id
-                                                            ? "opacity-100 translate-y-0 transition-all duration-500 delay-700"
-                                                            : "opacity-0 translate-y-2 transition-all duration-300"
-                                                        }`}
-                                                >
-                                                    See More
-                                                </Link>
+                                                <ServiceButton href={`/${service.id}`} label="See More" serviceName={service.name} visible={expandedPanel === service.id} />
                                             </span>
                                         </p>
                                     </div>
@@ -101,7 +102,7 @@ export default function Services() {
                                                     productsBG}
                                         alt={`${service.name} service image`}
                                         fill
-                                        sizes="100vw"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                                         className={`
                                             -z-1 
                                             object-cover 
@@ -110,7 +111,7 @@ export default function Services() {
                                                 : "image-brightness-light"}`}
                                     />
                                     {/* Gradient overlay */}
-                                    <div className="-z-1 absolute inset-0 -z-0 bg-gradient-to-b from-(--main-800)/80 to-transparent"></div>
+                                    <div className="absolute inset-0 -z-1 bg-linear-to-b from-(--main-800)/80 to-transparent"></div>
                                 </div>
                             )
                         })}

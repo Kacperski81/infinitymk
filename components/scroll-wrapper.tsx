@@ -51,8 +51,8 @@ export default function ScrollWrapper() {
 
                                 <AboutUs scrollY={scrollState.current} />
                                 <AboutTheOwner scrollY={scrollState.current} />
-                                <OurServices />
-                                <Testimonials />
+                                <OurServices scrollY={scrollState.current} />
+                                <Testimonials scrollY={scrollState.current} />
                                 <Footer />
                             </OverlayTransition>
                         </div>
