@@ -16,7 +16,7 @@ export default function HairType({ selectedTag = '', scrollY }: HairTypeProps) {
     const tags = getBrowseTags();
     const families = getAllFamilies();
 
-    const { sectionRef, isVisible } = useScrollFade(scrollY, {
+    const { sectionRef, isVisible, fadeOutStyle } = useScrollFade(scrollY, {
         inThreshold: 0.08,
         fadeOutStart: 0.85,
         fadeOutEnd: 0.98,
@@ -37,6 +37,7 @@ export default function HairType({ selectedTag = '', scrollY }: HairTypeProps) {
             ref={sectionRef} 
             id="products-section" 
             className="space-y-2 sm:space-y-4 sm:px-4 py-2"
+            style={fadeOutStyle}
         >
             <div className="text-center mb-2 sm:mb-4">
                 <h2 

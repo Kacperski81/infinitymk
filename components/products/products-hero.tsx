@@ -10,43 +10,52 @@ interface ProductsHeroProps {
 export default function ProductsHero({ scrollY }: ProductsHeroProps) {
     const s = Number.isFinite(scrollY) ? scrollY : 0;
 
-    // Background moves at 0.30x - slower than scroll, creates depth
+    // Background drifts upward at 0.30× — needs extra height so the bottom
+    // edge never shows. We shift it by -20% of viewport height and size it
+    // to 140% so the parallax travel (max ~300px) stays within bounds.
     const bgParallax = s * 0.30;
 
-    // Content moves at 0.12x - visibly slower than background, foreground floats forward
+    // Content drifts upward at 0.12× — floats forward relative to the bg.
     const contentParallax = s * 0.12;
 
-    // Fade hero content to 0 over the first 600px of scroll
+    // Fade hero content out over the first 600 px of scroll.
     const opacity = Math.max(0, Math.min(1, 1 - s / 600));
 
     return (
-        <section className="px-2 relative min-h-screen inset-0 overflow-hidden flex flex-col justify-center items-start">
-
-            {/* Background layer - moves slowest */}
+        <section
+            className="relative min-h-screen flex flex-col justify-center items-start overflow-hidden"
+            aria-label="Products hero"
+        >
+            {/* Background layer — oversized so parallax travel never exposes edges */}
             <div
-                className="absolute inset-0 z-0 will-change-transform"
-                style={{ transform: `translate3d(0, ${bgParallax}px, 0)` }}
+                className="absolute inset-x-0 z-0 will-change-transform"
+                style={{
+                    top: "-20%",
+                    height: "140%",
+                    transform: `translate3d(0, ${bgParallax}px, 0)`,
+                }}
             >
                 <Image
                     src="/products/products-background2.jpg"
-                    alt="Products background"
+                    alt=""
                     fill
                     sizes="100vw"
                     quality={75}
                     priority
                     className="object-cover object-center"
                 />
-                {/* Overlay gradients */}
-                <div className="absolute inset-0 bg-gradient-to-r from-(--main-800)/70 via-(--main-700)/40 to-(--main-800)/60"/>
+                {/* Directional overlay — dark left edge keeps text legible */}
+                <div className="absolute inset-0 bg-gradient-to-r from-(--main-800)/70 via-(--main-700)/40 to-(--main-800)/60" />
                 <div className="absolute inset-0 bg-radial-[at_30%_40%] from-transparent via-transparent to-(--main-900)/50" />
             </div>
 
-            {/* Foreground content layer - moves at intermediate rate */}
+            {/* Foreground content layer */}
             <div
-                className="relative px-4 sm:px-6 lg:ml-12 xl:ml-20 flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 text-(--main-50) max-w-6xl leading-tight animate-hero-in"
+                className="relative z-10 px-4 sm:px-6 lg:ml-12 xl:ml-20 flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 text-(--main-50) max-w-6xl leading-tight animate-hero-in"
                 style={{
                     opacity,
                     transform: `translate3d(0, ${contentParallax}px, 0)`,
+                    willChange: "opacity, transform",
                 }}
             >
                 <h2 className="text-left font-(family-name:--font-red-hat-text) font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-balance">
