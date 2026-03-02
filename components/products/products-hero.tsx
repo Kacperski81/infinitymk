@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import HeroButton from "@/components/products/hero-button";
-import { useTopEdgeFade } from "@/hooks/use-top-edge-fade";
 
 interface ProductsHeroProps {
     scrollY?: number;
@@ -10,7 +9,6 @@ interface ProductsHeroProps {
 
 export default function ProductsHero({ scrollY = 0 }: ProductsHeroProps) {
     const s = Number.isFinite(scrollY) ? scrollY : 0;
-    const topFade = useTopEdgeFade(s, { fadeStart: 80, fadeEnd: -200, translateMax: 8 });
 
     // Background moves at 0.30× — slower than scroll, creates depth.
     const bgParallax = s * 0.30;
@@ -45,31 +43,19 @@ export default function ProductsHero({ scrollY = 0 }: ProductsHeroProps) {
 
             {/* Foreground content layer — moves at intermediate rate */}
             <div
-                className="relative px-4 sm:px-6 lg:ml-12 xl:ml-20 flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 text-(--main-50) max-w-6xl leading-tight animate-hero-in"
+                className="relative px-4 sm:px-6 lg:ml-12 xl:ml-20 flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 text-(--main-50) max-w-6xl leading-tight animate-hero-in will-change-transform"
                 style={{
                     opacity,
                     transform: `translate3d(0, ${contentParallax}px, 0)`,
                 }}
             >
-                <h2
-                    ref={topFade.ref("heading")}
-                    className="text-left font-(family-name:--font-red-hat-text) font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-balance"
-                    style={topFade.style("heading")}
-                >
+                <h2 className="text-left font-(family-name:--font-red-hat-text) font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl text-balance">
                     We proudly offer Davines products at our salon.
                 </h2>
-                <p
-                    ref={topFade.ref("subtitle")}
-                    className="text-left text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold tracking-wide sm:tracking-wider md:tracking-widest text-(--main-10) max-w-2xl"
-                    style={topFade.style("subtitle")}
-                >
+                <p className="text-left text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold tracking-wide sm:tracking-wider md:tracking-widest text-(--main-10) max-w-2xl">
                     Discover sustainable beauty and professional hair care with the Davines collection.
                 </p>
-                <div
-                    ref={topFade.ref("cta")}
-                    className="flex flex-col sm:flex-row gap-4"
-                    style={topFade.style("cta")}
-                >
+                <div className="flex flex-col sm:flex-row gap-4">
                     <HeroButton label="Explore by Hair Type" href="#products-section" />
                 </div>
             </div>

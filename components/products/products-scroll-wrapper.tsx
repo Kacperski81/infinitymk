@@ -18,16 +18,16 @@ export default function ProductsScrollWrapper() {
     return (
         <section className="h-screen flex justify-center items-center">
             <div className="relative w-full max-w-[2000px]">
-                <div className="relative h-screen">
+                <div className="relative h-screen gap-4">
                     <ScrollIndicator progress={scrollState.progress} />
                     <div ref={contentRef} className="smooth-scroll-wrapper">
                         <ProductsHero scrollY={scrollState.current} />
                         <OverlayTransition>
-                            <section id="products-section" className="py-16">
+                            <div className="py-16">
                                 <Suspense fallback={<div className="text-center text-(--main-200)">Loading products...</div>}>
-                                    <ProductsContent scrollY={scrollState.current} />
+                                    <ProductsContent />
                                 </Suspense>
-                            </section>
+                            </div>
                             <Footer />
                         </OverlayTransition>
                     </div>
