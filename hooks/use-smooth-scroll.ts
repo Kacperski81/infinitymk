@@ -20,12 +20,18 @@ export function useSmoothScroll(lerp = 0.08) {
   const lerpRef = useRef(lerp);
   useEffect(() => { lerpRef.current = lerp; }, [lerp]);
 
-  const [scrollState, setScrollState] = useState<ScrollState>({
+  // scrollStateRef holds the latest values — the RAF loop writes here without
+  // causing any React re-renders. The useState below is only updated when
+  // the rounded progress value actually changes (~100 discrete steps), which
+  // keeps re-renders to a minimum and eliminates the infinite-update cycle.
+  const scrollStateRef = useRef<ScrollState>({
     current: 0,
     target: 0,
     progress: 0,
     limit: 0,
   });
+
+  const [scrollState, setScrollState] = useState<ScrollState>(scrollStateRef.current);
 
   const clamp = useCallback(
     (v: number, min: number, max: number) => Math.min(Math.max(v, min), max),
@@ -39,9 +45,9 @@ export function useSmoothScroll(lerp = 0.08) {
     limitRef.current = Math.max(0, h - vp);
   }, []);
 
-  // animate is defined once with an empty dep array — it reads everything
-  // through stable refs so it never needs to be recreated, which prevents
-  // the useEffect below from tearing down and re-starting the RAF loop.
+  // animate is defined once with an empty dep array — it reads and writes
+  // only through stable refs, so its identity never changes and the useEffect
+  // that starts the RAF loop never needs to re-run.
   const animate = useCallback(() => {
     const t = targetRef.current;
     const c = currentRef.current;
@@ -54,22 +60,35 @@ export function useSmoothScroll(lerp = 0.08) {
     }
 
     const limit = limitRef.current;
-    const progress = limit > 0 ? Math.min(Math.max(currentRef.current / limit, 0), 1) : 0;
+    const rawProgress = limit > 0 ? currentRef.current / limit : 0;
+    const progress = Number.isFinite(rawProgress) ? Math.min(Math.max(rawProgress, 0), 1) : 0;
 
+    // Write the DOM transform — no React state involved, zero re-renders.
     if (contentRef.current) {
       contentRef.current.style.transform = `translate3d(0, ${-currentRef.current}px, 0)`;
     }
 
-    setScrollState({
-      current: currentRef.current,
-      target: t,
-      progress: Number.isFinite(progress) ? progress : 0,
-      limit,
-    });
+    // Only schedule a React state update when progress has shifted by at least
+    // 0.005 (half a percent) — this gives components like ScrollIndicator
+    // smooth enough updates without triggering 60fps re-renders.
+    const prev = scrollStateRef.current;
+    if (
+      Math.abs(progress - prev.progress) >= 0.005 ||
+      Math.abs(currentRef.current - prev.current) >= 1
+    ) {
+      const next: ScrollState = {
+        current: currentRef.current,
+        target: t,
+        progress,
+        limit,
+      };
+      scrollStateRef.current = next;
+      setScrollState(next);
+    }
 
     rafRef.current = requestAnimationFrame(animate);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // intentionally empty — all values are read via refs
+  }, []); // intentionally empty — all values are read via stable refs
 
   /**
    * Walk up from the event target to find a scrollable ancestor
