@@ -12,10 +12,11 @@ import FamilyInformation from "./family-information"
 const DavinesProductCard = dynamic(() => import("./davines-product-card"), { ssr: false })
 
 type DavinesHairCareFamilyRowProps = {
-    family: DavinesHairCareFamily
+    family: DavinesHairCareFamily;
+    scrollY?: number;
 }
 
-export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFamilyRowProps) {
+export default function DavinesHairCareFamilyRow({ family, scrollY = 0 }: DavinesHairCareFamilyRowProps) {
     const [selectedProduct, setSelectedProduct] = useState<DavinesHairCareProduct | null>(null)
     const scrollContainerRef = useRef<HTMLDivElement>(null)
     const [canScrollLeft, setCanScrollLeft] = useState(false)

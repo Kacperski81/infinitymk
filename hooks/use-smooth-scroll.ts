@@ -4,17 +4,62 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { ScrollState } from "@/types";
 
 /**
- * Custom smooth-scroll engine.
- * Hijacks native scroll, translates a fixed wrapper via lerped translate3d.
- * Returns current virtual scroll position for child components.
+ * Optimized smooth-scroll engine with frame-rate independent interpolation.
+ * 
+ * Key optimizations:
+ * 1. Delta-time based lerp for consistent motion across refresh rates
+ * 2. Exponential decay threshold elimination to prevent snap jumps
+ * 3. Debounced ResizeObserver to prevent mid-scroll limit changes
+ * 4. Momentum-based touch handling for natural mobile feel
+ * 5. Throttled state updates to reduce React reconciliation overhead
+ * 
+ * @param lerp - Interpolation factor (0.06-0.12 recommended). Higher = faster catch-up
+ * @param options - Additional configuration options
  */
-export function useSmoothScroll(lerp = 0.08) {
+export interface SmoothScrollOptions {
+  /** Minimum threshold before snap to target (default: 0.05) */
+  snapThreshold?: number;
+  /** State update interval in ms (default: 16 for ~60fps) */
+  stateUpdateInterval?: number;
+  /** Touch velocity multiplier (default: 1.5) */
+  touchMultiplier?: number;
+  /** Enable momentum scrolling on touch (default: true) */
+  enableMomentum?: boolean;
+  /** Momentum decay factor (default: 0.95) */
+  momentumDecay?: number;
+}
+
+export function useSmoothScroll(
+  lerp = 0.08,
+  options: SmoothScrollOptions = {}
+) {
+  const {
+    snapThreshold = 0.05,
+    stateUpdateInterval = 16,
+    touchMultiplier = 1.5,
+    enableMomentum = true,
+    momentumDecay = 0.95,
+  } = options;
+
   const contentRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
 
   const targetRef = useRef(0);
   const currentRef = useRef(0);
   const limitRef = useRef(0);
+  
+  // Frame-rate independence
+  const lastTimeRef = useRef(performance.now());
+  const lastStateUpdateRef = useRef(0);
+  
+  // Momentum tracking for touch
+  const velocityRef = useRef(0);
+  const lastTouchTimeRef = useRef(0);
+  const isTouchActiveRef = useRef(false);
+  
+  // Debounced limit update
+  const limitUpdateTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const pendingLimitRef = useRef(0);
 
   const [scrollState, setScrollState] = useState<ScrollState>({
     current: 0,
@@ -23,46 +68,113 @@ export function useSmoothScroll(lerp = 0.08) {
     limit: 0,
   });
 
+  // Expose refs for high-frequency consumers (avoids React re-renders)
+  const scrollYRef = useRef(0);
+
   const clamp = useCallback(
     (v: number, min: number, max: number) => Math.min(Math.max(v, min), max),
     []
   );
 
+  // Debounced limit update to prevent jumps during dynamic content changes
   const updateLimit = useCallback(() => {
     if (!contentRef.current) return;
     const h = contentRef.current.scrollHeight;
     const vp = window.innerHeight;
-    limitRef.current = Math.max(0, h - vp);
+    const newLimit = Math.max(0, h - vp);
+    
+    // If limit changed significantly during scroll, interpolate smoothly
+    const currentLimit = limitRef.current;
+    const limitDiff = Math.abs(newLimit - currentLimit);
+    
+    if (limitDiff > 100 && currentRef.current > 0) {
+      // Large change during active scroll - debounce and interpolate
+      pendingLimitRef.current = newLimit;
+      
+      if (limitUpdateTimeoutRef.current) {
+        clearTimeout(limitUpdateTimeoutRef.current);
+      }
+      
+      limitUpdateTimeoutRef.current = setTimeout(() => {
+        // Smoothly interpolate to new limit over several frames
+        const interpolateLimit = () => {
+          const diff = pendingLimitRef.current - limitRef.current;
+          if (Math.abs(diff) > 1) {
+            limitRef.current += diff * 0.15;
+            requestAnimationFrame(interpolateLimit);
+          } else {
+            limitRef.current = pendingLimitRef.current;
+          }
+        };
+        interpolateLimit();
+      }, 50);
+    } else {
+      // Small change or not scrolling - update immediately
+      limitRef.current = newLimit;
+    }
   }, []);
 
-  const animate = useCallback(() => {
+  const animate = useCallback((timestamp: number) => {
+    // Calculate delta time for frame-rate independence
+    const deltaTime = timestamp - lastTimeRef.current;
+    lastTimeRef.current = timestamp;
+    
+    // Normalized lerp factor: consistent across 60Hz, 120Hz, 144Hz displays
+    // Formula: 1 - (1 - lerp)^(deltaTime / 16.67)
+    const normalizedLerp = 1 - Math.pow(1 - lerp, deltaTime / 16.67);
+    
+    // Apply momentum decay when touch is not active
+    if (enableMomentum && !isTouchActiveRef.current && Math.abs(velocityRef.current) > 0.5) {
+      velocityRef.current *= momentumDecay;
+      targetRef.current = clamp(
+        targetRef.current + velocityRef.current,
+        0,
+        limitRef.current
+      );
+      
+      // Stop momentum when velocity is negligible
+      if (Math.abs(velocityRef.current) < 0.5) {
+        velocityRef.current = 0;
+      }
+    }
+    
     const t = targetRef.current;
     const c = currentRef.current;
     const diff = t - c;
 
-    if (Math.abs(diff) > 0.5) {
-      currentRef.current = c + diff * lerp;
-    } else {
-      currentRef.current = t;
+    // Exponential decay without hard snap threshold
+    // This eliminates the visible "jump" at the end of scroll
+    if (Math.abs(diff) > snapThreshold) {
+      currentRef.current = c + diff * normalizedLerp;
     }
+    // No else clause - let it naturally converge without snapping
 
     const limit = limitRef.current;
-    const progress =
-      limit > 0 ? clamp(currentRef.current / limit, 0, 1) : 0;
+    const progress = limit > 0 ? clamp(currentRef.current / limit, 0, 1) : 0;
 
+    // Update ref for high-frequency consumers
+    scrollYRef.current = currentRef.current;
+
+    // Apply transform using translate3d for GPU acceleration
     if (contentRef.current) {
+      // Use will-change sparingly - it's already in CSS
       contentRef.current.style.transform = `translate3d(0, ${-currentRef.current}px, 0)`;
     }
 
-    setScrollState({
-      current: currentRef.current,
-      target: t,
-      progress: Number.isFinite(progress) ? progress : 0,
-      limit,
-    });
+    // Throttled state updates to reduce React reconciliation
+    const now = performance.now();
+    if (now - lastStateUpdateRef.current >= stateUpdateInterval) {
+      setScrollState({
+        current: currentRef.current,
+        target: t,
+        progress: Number.isFinite(progress) ? progress : 0,
+        limit,
+      });
+      lastStateUpdateRef.current = now;
+    }
 
     rafRef.current = requestAnimationFrame(animate);
-  }, [lerp, clamp]);
+  }, [lerp, clamp, snapThreshold, stateUpdateInterval, enableMomentum, momentumDecay]);
 
   /**
    * Walk up from the event target to find a scrollable ancestor
@@ -153,9 +265,15 @@ export function useSmoothScroll(lerp = 0.08) {
   );
 
   const touchYRef = useRef(0);
+  
   const onTouchStart = useCallback((e: TouchEvent) => {
     touchYRef.current = e.touches[0].clientY;
+    lastTouchTimeRef.current = performance.now();
+    isTouchActiveRef.current = true;
+    // Reset velocity on new touch to prevent momentum from previous gesture
+    velocityRef.current = 0;
   }, []);
+  
   const onTouchMove = useCallback(
     (e: TouchEvent) => {
       if (lerp <= 0) {
@@ -163,8 +281,16 @@ export function useSmoothScroll(lerp = 0.08) {
         return; // scroll locked during intro
       }
 
+      const now = performance.now();
+      const timeDelta = Math.max(now - lastTouchTimeRef.current, 8); // Prevent division by tiny values
       const delta = touchYRef.current - e.touches[0].clientY;
+      
+      // Calculate velocity for momentum scrolling
+      // Velocity = pixels per 16.67ms (normalized to 60fps frame)
+      velocityRef.current = (delta / timeDelta) * 16.67 * touchMultiplier;
+      
       touchYRef.current = e.touches[0].clientY;
+      lastTouchTimeRef.current = now;
 
       // Check if the event is inside a natively scrollable child
       const scrollable = findScrollableAncestor(e.target);
@@ -178,14 +304,20 @@ export function useSmoothScroll(lerp = 0.08) {
       }
 
       e.preventDefault();
+      // Use velocity-based update for smoother touch feel
       targetRef.current = clamp(
-        targetRef.current + delta * 2,
+        targetRef.current + velocityRef.current,
         0,
         limitRef.current
       );
     },
-    [clamp, lerp, findScrollableAncestor]
+    [clamp, lerp, findScrollableAncestor, touchMultiplier]
   );
+  
+  const onTouchEnd = useCallback(() => {
+    isTouchActiveRef.current = false;
+    // Velocity is preserved for momentum - it will be applied in animate()
+  }, []);
 
   useEffect(() => {
     updateLimit();
@@ -194,6 +326,7 @@ export function useSmoothScroll(lerp = 0.08) {
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
     window.addEventListener("resize", updateLimit);
 
     rafRef.current = requestAnimationFrame(animate);
@@ -207,10 +340,17 @@ export function useSmoothScroll(lerp = 0.08) {
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("resize", updateLimit);
       ro.disconnect();
+      
+      // Clean up debounce timeout
+      if (limitUpdateTimeoutRef.current) {
+        clearTimeout(limitUpdateTimeoutRef.current);
+      }
     };
-  }, [animate, onWheel, onKeyDown, onTouchStart, onTouchMove, updateLimit]);
+  }, [animate, onWheel, onKeyDown, onTouchStart, onTouchMove, onTouchEnd, updateLimit]);
 
-  return { contentRef, scrollState };
+  // Return scrollYRef for high-frequency consumers that need immediate values
+  return { contentRef, scrollState, scrollYRef };
 }

@@ -1,11 +1,34 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { HairTypeFiltersProps } from "@/types";
 import IconTune from "@/components/svgs/icon-tune";
 import IconCheveronDown from "@/components/svgs/icon-cheveron-down";
 
+/**
+ * HairTypeFilters - Persistent Filter UI Component
+ * 
+ * Provides responsive filter UI that remains accessible on all screen sizes:
+ * 
+ * Mobile (<768px):
+ * - Compact button showing current selection
+ * - Expands to full dropdown on tap
+ * - Smooth height transition animation
+ * - Touch-friendly tap targets (min 44px)
+ * 
+ * Tablet (768px-1024px):
+ * - Horizontal scrollable pill buttons
+ * - Native horizontal scroll for overflow
+ * - Visual feedback on selection
+ * 
+ * Desktop (>1024px):
+ * - Centered layout with all options visible
+ * - Dot separators between options
+ * - Hover states for interactivity
+ * 
+ * All variants use sticky positioning to remain visible during scroll.
+ */
 export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -13,7 +36,7 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
 
-    // Detect when the filter becomes sticky
+    // Detect when the filter becomes sticky using IntersectionObserver
     useEffect(() => {
         const filterSection = document.getElementById('filter-section');
         if (!filterSection) return;
@@ -46,7 +69,22 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
         return () => observer.disconnect();
     }, []);
 
-    const handleTagClick = (tagId: string) => {
+    // Close mobile menu when clicking outside
+    useEffect(() => {
+        if (!isMobileMenuOpen) return;
+        
+        const handleClickOutside = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            if (!target.closest('[data-filter-menu]')) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        
+        document.addEventListener('click', handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside);
+    }, [isMobileMenuOpen]);
+
+    const handleTagClick = useCallback((tagId: string) => {
         if (tagId === 'all-products') {
             router.push('/products', { scroll: false });
         } else {
@@ -54,6 +92,7 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
         }
         setIsMobileMenuOpen(false);
 
+        // Smooth scroll to results after filter change
         setTimeout(() => {
             const productsResults = document.getElementById('products-results');
             const filterSection = document.getElementById('filter-section');
@@ -63,19 +102,20 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                 window.scrollTo({ top: targetPosition, behavior: 'smooth' });
             }
         }, 100);
-    };
+    }, [router]);
 
     const selectedTagLabel = tags.find((tag) => tag.id === selectedTag)?.label || "All Products";
 
     return (
         <div className="w-full pt-3">
-            {/* Mobile view */}
-            <div className="md:hidden px-4">
+            {/* Mobile view - persistent dropdown filter */}
+            <div className="md:hidden px-4" data-filter-menu>
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="w-full flex items-center justify-between px-4 py-3 bg-(--main-450) border border-(--main-300) rounded-lg text-(--main-100) font-medium text-sm shadow-sm hover:bg-(--main-400) active:scale-95 transition-all"
+                    className="w-full flex items-center justify-between px-4 py-3 bg-(--main-450) border border-(--main-300) rounded-lg text-(--main-100) font-medium text-sm shadow-sm hover:bg-(--main-400) active:scale-[0.98] transition-all min-h-[44px]"
                     aria-expanded={isMobileMenuOpen}
                     aria-haspopup="listbox"
+                    aria-label={`Filter by hair type. Currently: ${selectedTagLabel}`}
                 >
                     <div className="flex items-center gap-3">
                         <IconTune />
