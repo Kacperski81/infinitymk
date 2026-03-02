@@ -1,7 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useEffect, useCallback } from "react"
 import type { DavinesHairCareFamily, DavinesHairCareProduct } from "@/types"
 // import DavinesProductCard from "./davines-product-card"
 import SmallProductCard from "./small-product-card"
@@ -24,19 +24,26 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
     const [expandedFamily, setExpandedFamily] = useState<string | null>(null)
     const displayProducts = family.products.filter((product) => product.display)
 
-    const checkScrollability = () => {
+    const checkScrollability = useCallback(() => {
         const container = scrollContainerRef.current
         if (container) {
-            setCanScrollLeft(container.scrollLeft > 0)
-            setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 1)
+            const newCanScrollLeft = container.scrollLeft > 0
+            const newCanScrollRight = container.scrollLeft < container.scrollWidth - container.clientWidth - 1
+            // Only update state if values actually changed
+            setCanScrollLeft(prev => prev !== newCanScrollLeft ? newCanScrollLeft : prev)
+            setCanScrollRight(prev => prev !== newCanScrollRight ? newCanScrollRight : prev)
         }
-    }
+    }, [])
 
     useEffect(() => {
-        checkScrollability()
+        // Use requestAnimationFrame to batch with paint
+        const rafId = requestAnimationFrame(checkScrollability)
         window.addEventListener("resize", checkScrollability)
-        return () => window.removeEventListener("resize", checkScrollability)
-    }, [family.products])
+        return () => {
+            cancelAnimationFrame(rafId)
+            window.removeEventListener("resize", checkScrollability)
+        }
+    }, [checkScrollability])
 
     const scroll = (direction: "left" | "right") => {
         const container = scrollContainerRef.current

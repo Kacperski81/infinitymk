@@ -35,6 +35,9 @@ export function useSmoothScroll(lerp = 0.08) {
     limitRef.current = Math.max(0, h - vp);
   }, []);
 
+  // Track previous state to avoid unnecessary re-renders
+  const prevStateRef = useRef({ current: 0, target: 0, progress: 0, limit: 0 });
+
   const animate = useCallback(() => {
     const t = targetRef.current;
     const c = currentRef.current;
@@ -54,12 +57,28 @@ export function useSmoothScroll(lerp = 0.08) {
       contentRef.current.style.transform = `translate3d(0, ${-currentRef.current}px, 0)`;
     }
 
-    setScrollState({
-      current: currentRef.current,
-      target: t,
-      progress: Number.isFinite(progress) ? progress : 0,
-      limit,
-    });
+    // Only update React state when values actually change (with threshold to reduce updates)
+    const prev = prevStateRef.current;
+    const newProgress = Number.isFinite(progress) ? progress : 0;
+    const currentRounded = Math.round(currentRef.current);
+    const targetRounded = Math.round(t);
+    const progressRounded = Math.round(newProgress * 1000) / 1000; // 3 decimal precision
+
+    if (
+      Math.round(prev.current) !== currentRounded ||
+      Math.round(prev.target) !== targetRounded ||
+      Math.round(prev.progress * 1000) / 1000 !== progressRounded ||
+      prev.limit !== limit
+    ) {
+      const newState = {
+        current: currentRef.current,
+        target: t,
+        progress: newProgress,
+        limit,
+      };
+      prevStateRef.current = newState;
+      setScrollState(newState);
+    }
 
     rafRef.current = requestAnimationFrame(animate);
   }, [lerp, clamp]);
