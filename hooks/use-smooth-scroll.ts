@@ -15,6 +15,10 @@ export function useSmoothScroll(lerp = 0.08) {
   const targetRef = useRef(0);
   const currentRef = useRef(0);
   const limitRef = useRef(0);
+  // Keep a stable ref to the current lerp value so the RAF loop never
+  // needs to close over it (avoids re-creating the callback on every render).
+  const lerpRef = useRef(lerp);
+  useEffect(() => { lerpRef.current = lerp; }, [lerp]);
 
   const [scrollState, setScrollState] = useState<ScrollState>({
     current: 0,
@@ -35,20 +39,22 @@ export function useSmoothScroll(lerp = 0.08) {
     limitRef.current = Math.max(0, h - vp);
   }, []);
 
+  // animate is defined once with an empty dep array — it reads everything
+  // through stable refs so it never needs to be recreated, which prevents
+  // the useEffect below from tearing down and re-starting the RAF loop.
   const animate = useCallback(() => {
     const t = targetRef.current;
     const c = currentRef.current;
     const diff = t - c;
 
     if (Math.abs(diff) > 0.5) {
-      currentRef.current = c + diff * lerp;
+      currentRef.current = c + diff * lerpRef.current;
     } else {
       currentRef.current = t;
     }
 
     const limit = limitRef.current;
-    const progress =
-      limit > 0 ? clamp(currentRef.current / limit, 0, 1) : 0;
+    const progress = limit > 0 ? Math.min(Math.max(currentRef.current / limit, 0), 1) : 0;
 
     if (contentRef.current) {
       contentRef.current.style.transform = `translate3d(0, ${-currentRef.current}px, 0)`;
@@ -62,7 +68,8 @@ export function useSmoothScroll(lerp = 0.08) {
     });
 
     rafRef.current = requestAnimationFrame(animate);
-  }, [lerp, clamp]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // intentionally empty — all values are read via refs
 
   /**
    * Walk up from the event target to find a scrollable ancestor
@@ -89,7 +96,7 @@ export function useSmoothScroll(lerp = 0.08) {
 
   const onWheel = useCallback(
     (e: WheelEvent) => {
-      if (lerp <= 0) {
+      if (lerpRef.current <= 0) {
         e.preventDefault();
         return; // scroll locked during intro
       }
@@ -113,12 +120,12 @@ export function useSmoothScroll(lerp = 0.08) {
         limitRef.current
       );
     },
-    [clamp, lerp, findScrollableAncestor]
+    [clamp, findScrollableAncestor]
   );
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (lerp <= 0) return; // scroll locked during intro
+      if (lerpRef.current <= 0) return; // scroll locked during intro
       const step = window.innerHeight * 0.3;
       switch (e.key) {
         case "ArrowDown":
@@ -149,7 +156,7 @@ export function useSmoothScroll(lerp = 0.08) {
           break;
       }
     },
-    [clamp, lerp]
+    [clamp]
   );
 
   const touchYRef = useRef(0);
@@ -158,7 +165,7 @@ export function useSmoothScroll(lerp = 0.08) {
   }, []);
   const onTouchMove = useCallback(
     (e: TouchEvent) => {
-      if (lerp <= 0) {
+      if (lerpRef.current <= 0) {
         e.preventDefault();
         return; // scroll locked during intro
       }
@@ -184,7 +191,7 @@ export function useSmoothScroll(lerp = 0.08) {
         limitRef.current
       );
     },
-    [clamp, lerp, findScrollableAncestor]
+    [clamp, findScrollableAncestor]
   );
 
   useEffect(() => {
