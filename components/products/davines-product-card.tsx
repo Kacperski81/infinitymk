@@ -113,7 +113,6 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
             dark:bg-[var(--main-700)]/30
             border border-[var(--main-300)]/50
             dark:border-[var(--main-600)]/50
-            md:sticky md:top-6
           ">
             {product.image ? (
               // <img 
