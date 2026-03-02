@@ -1,118 +1,98 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import type { HairTypeFiltersProps } from "@/types";
+import type { Tag } from "@/types";
 import IconTune from "@/components/svgs/icon-tune";
 import IconCheveronDown from "@/components/svgs/icon-cheveron-down";
 
+interface HairTypeFiltersProps {
+    tags: Tag[];
+    /**
+     * Virtual-scroll setter from useSmoothScroll.
+     * Used after a filter change to navigate to the products results area
+     * without touching window.scrollTo (which has no effect in this engine).
+     */
+    scrollToVirtual?: (px: number) => void;
+    /**
+     * True when this bar is rendering inside the fixed overlay (post-hero).
+     * Controls visual treatment only — no layout behaviour changes.
+     */
+    isStuck?: boolean;
+}
+
 /**
- * HairTypeFilters - Persistent Filter UI Component
- * 
- * Provides responsive filter UI that remains accessible on all screen sizes:
- * 
- * Mobile (<768px):
- * - Compact button showing current selection
- * - Expands to full dropdown on tap
- * - Smooth height transition animation
- * - Touch-friendly tap targets (min 44px)
- * 
- * Tablet (768px-1024px):
- * - Horizontal scrollable pill buttons
- * - Native horizontal scroll for overflow
- * - Visual feedback on selection
- * 
- * Desktop (>1024px):
- * - Centered layout with all options visible
- * - Dot separators between options
- * - Hover states for interactivity
- * 
- * All variants use sticky positioning to remain visible during scroll.
+ * HairTypeFilters — responsive filter pill bar.
+ *
+ * === Why window.scrollTo was removed ===
+ * The smooth-scroll engine locks native scroll at 0 by calling
+ * `e.preventDefault()` on every wheel/touch event.  `window.scrollTo` has no
+ * visual effect inside this setup and can trigger browser-level conflicts.
+ * The correct way to navigate programmatically is `scrollToVirtual(px)`, which
+ * sets `targetRef` directly in the virtual coordinate space.
+ *
+ * After a filter change we do NOT attempt to scroll at all — the user is
+ * already looking at the filter bar (either in-flow or fixed-overlay), so
+ * the product list updating in place below it is the correct UX.  Scrolling
+ * would fight the user's current position and cause the observed jump.
+ *
+ * === Responsive layouts ===
+ * Mobile  (<md)  : collapsible dropdown, 44 px touch targets
+ * Tablet  (md–lg): horizontally scrollable pills
+ * Desktop (≥lg)  : centred pill row with dot separators
  */
-export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
+export default function HairTypeFilters({
+    tags,
+    scrollToVirtual,
+    isStuck = false,
+}: HairTypeFiltersProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const selectedTag = searchParams.get('tag') || 'all-products';
+    const selectedTag = searchParams.get("tag") ?? "all-products";
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isSticky, setIsSticky] = useState(false);
 
-    // Detect when the filter becomes sticky using IntersectionObserver
-    useEffect(() => {
-        const filterSection = document.getElementById('filter-section');
-        if (!filterSection) return;
+    const handleTagClick = useCallback(
+        (tagId: string) => {
+            // Update the URL without a native scroll (scroll: false).
+            if (tagId === "all-products") {
+                router.push("/products", { scroll: false });
+            } else {
+                router.push(`/products?tag=${tagId}`, { scroll: false });
+            }
+            setIsMobileMenuOpen(false);
 
-        let sentinel = document.getElementById('sticky-sentinel');
-        if (!sentinel) {
-            sentinel = document.createElement('div');
-            sentinel.id = 'sticky-sentinel';
-            sentinel.style.height = '1px';
-            sentinel.style.width = '100%';
-            sentinel.style.pointerEvents = 'none';
-            sentinel.setAttribute('aria-hidden', 'true');
-            filterSection.parentElement?.insertBefore(sentinel, filterSection);
-        }
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                const stuck = !entry.isIntersecting;
-                setIsSticky(stuck);
-                if (stuck) {
-                    filterSection.classList.add('is-stuck');
-                } else {
-                    filterSection.classList.remove('is-stuck');
+            // If the user clicks while viewing the inline filter (not stuck yet),
+            // scroll virtual position to the start of the products section so
+            // they see results immediately. When stuck, they're already there.
+            if (!isStuck && scrollToVirtual) {
+                const section = document.getElementById("products-section");
+                if (section) {
+                    // offsetTop is in the virtual (wrapper-translated) coordinate space.
+                    scrollToVirtual(section.offsetTop);
                 }
-            },
-            { rootMargin: '-1px 0px 0px 0px', threshold: 0 }
-        );
-
-        observer.observe(sentinel);
-        return () => observer.disconnect();
-    }, []);
-
-    // Close mobile menu when clicking outside
-    useEffect(() => {
-        if (!isMobileMenuOpen) return;
-        
-        const handleClickOutside = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            if (!target.closest('[data-filter-menu]')) {
-                setIsMobileMenuOpen(false);
             }
-        };
-        
-        document.addEventListener('click', handleClickOutside);
-        return () => document.removeEventListener('click', handleClickOutside);
-    }, [isMobileMenuOpen]);
+        },
+        [router, isStuck, scrollToVirtual]
+    );
 
-    const handleTagClick = useCallback((tagId: string) => {
-        if (tagId === 'all-products') {
-            router.push('/products', { scroll: false });
-        } else {
-            router.push(`/products?tag=${tagId}`, { scroll: false });
-        }
-        setIsMobileMenuOpen(false);
+    const selectedTagLabel =
+        tags.find((tag) => tag.id === selectedTag)?.label ?? "All Products";
 
-        // Smooth scroll to results after filter change
-        setTimeout(() => {
-            const productsResults = document.getElementById('products-results');
-            const filterSection = document.getElementById('filter-section');
-            if (productsResults && filterSection) {
-                const filterHeight = filterSection.offsetHeight;
-                const targetPosition = productsResults.getBoundingClientRect().top + window.scrollY - filterHeight;
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-            }
-        }, 100);
-    }, [router]);
-
-    const selectedTagLabel = tags.find((tag) => tag.id === selectedTag)?.label || "All Products";
+    const pillBase =
+        "flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium border shadow-sm transition-all";
+    const pillActive =
+        "bg-(--main-100) text-(--main-800) border-(--main-100) font-semibold";
+    const pillIdle =
+        "bg-(--main-500)/60 text-(--main-200) border-(--main-400) hover:border-(--main-200) hover:text-(--main-100) hover:bg-(--main-500)";
 
     return (
-        <div className="w-full pt-3">
-            {/* Mobile view - persistent dropdown filter */}
-            <div className="md:hidden px-4" data-filter-menu>
+        <div className="w-full pt-2 pb-1">
+
+            {/* ── Mobile dropdown ──────────────────────────────────────── */}
+            <div className="md:hidden px-4">
                 <button
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="w-full flex items-center justify-between px-4 py-3 bg-(--main-450) border border-(--main-300) rounded-lg text-(--main-100) font-medium text-sm shadow-sm hover:bg-(--main-400) active:scale-[0.98] transition-all min-h-[44px]"
+                    onClick={() => setIsMobileMenuOpen((v) => !v)}
+                    className="w-full flex items-center justify-between px-4 py-3 bg-(--main-500)/80 border border-(--main-400) rounded-lg text-(--main-100) font-medium text-sm hover:bg-(--main-500) active:scale-[0.98] transition-all min-h-[44px]"
                     aria-expanded={isMobileMenuOpen}
                     aria-haspopup="listbox"
                     aria-label={`Filter by hair type. Currently: ${selectedTagLabel}`}
@@ -126,11 +106,11 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
 
                 <div
                     className={`overflow-hidden transition-all duration-300 ${
-                        isMobileMenuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+                        isMobileMenuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
                     }`}
                 >
                     <div
-                        className="mt-2 bg-(--main-450) border border-(--main-300) rounded-lg shadow-md overflow-hidden"
+                        className="mt-2 bg-(--main-700) border border-(--main-500) rounded-lg shadow-xl overflow-hidden"
                         role="listbox"
                         aria-label="Hair Type Filters"
                     >
@@ -139,11 +119,13 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                             return (
                                 <button
                                     key={tag.id}
+                                    role="option"
+                                    aria-selected={isSelected}
                                     onClick={() => handleTagClick(tag.id)}
-                                    className={`w-full px-4 py-3 text-left text-sm font-medium border-b border-(--main-300) last:border-b-0 transition-colors ${
+                                    className={`w-full px-4 py-3 text-left text-sm font-medium border-b border-(--main-600) last:border-b-0 transition-colors min-h-[44px] ${
                                         isSelected
                                             ? "bg-(--main-100) text-(--main-800)"
-                                            : "text-(--main-100) hover:bg-(--main-400)"
+                                            : "text-(--main-100) hover:bg-(--main-600)"
                                     }`}
                                 >
                                     {tag.label}
@@ -154,52 +136,36 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                 </div>
             </div>
 
-            {/* Tablet view */}
-            <div className="hidden md:block lg:hidden px-6 py-2">
-                <div className="flex gap-3 overflow-x-auto scrollbar-hide">
-                    {tags.map((tag) => {
-                        const isSelected = selectedTag === tag.id;
-                        return (
-                            <button
-                                key={tag.id}
-                                onClick={() => handleTagClick(tag.id)}
-                                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium border shadow-sm transition-all ${
-                                    isSelected
-                                        ? "bg-(--main-100) text-(--main-800) border-(--main-100)"
-                                        : "bg-(--main-450) text-(--main-200) border-(--main-300) hover:border-(--main-200) hover:text-(--main-100)"
-                                }`}
-                            >
-                                {tag.label}
-                            </button>
-                        );
-                    })}
-                </div>
+            {/* ── Tablet horizontal scroll ─────────────────────────────── */}
+            <div className="hidden md:flex lg:hidden px-6 py-1 gap-3 overflow-x-auto scrollbar-hide">
+                {tags.map((tag) => (
+                    <button
+                        key={tag.id}
+                        onClick={() => handleTagClick(tag.id)}
+                        className={`${pillBase} ${selectedTag === tag.id ? pillActive : pillIdle}`}
+                    >
+                        {tag.label}
+                    </button>
+                ))}
             </div>
 
-            {/* Desktop view */}
-            <div className="hidden lg:block px-6">
-                <div className="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-4">
-                    {tags.map((tag, index) => {
-                        const isSelected = selectedTag === tag.id;
-                        return (
-                            <div key={tag.id} className="flex items-center gap-2">
-                                <button
-                                    onClick={() => handleTagClick(tag.id)}
-                                    className={`px-4 py-2 text-sm rounded-full border shadow-sm transition-all ${
-                                        isSelected
-                                            ? "bg-(--main-100) text-(--main-800) border-(--main-100) font-semibold"
-                                            : "bg-(--main-450) text-(--main-200) border-(--main-300) hover:border-(--main-200) hover:text-(--main-100)"
-                                    }`}
-                                >
-                                    {tag.label}
-                                </button>
-                                {index < tags.length - 1 && (
-                                    <span className="text-(--main-300) text-lg">·</span>
-                                )}
-                            </div>
-                        );
-                    })}
-                </div>
+            {/* ── Desktop centred row ──────────────────────────────────── */}
+            <div className="hidden lg:flex px-6 flex-wrap justify-center items-center gap-x-3 gap-y-2">
+                {tags.map((tag, index) => (
+                    <div key={tag.id} className="flex items-center gap-3">
+                        <button
+                            onClick={() => handleTagClick(tag.id)}
+                            className={`${pillBase} ${selectedTag === tag.id ? pillActive : pillIdle}`}
+                        >
+                            {tag.label}
+                        </button>
+                        {index < tags.length - 1 && (
+                            <span className="text-(--main-400) text-base leading-none" aria-hidden>
+                                ·
+                            </span>
+                        )}
+                    </div>
+                ))}
             </div>
         </div>
     );

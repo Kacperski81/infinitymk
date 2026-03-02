@@ -7,35 +7,73 @@ import ProductFamilyRow from "@/components/products/product-family-row";
 type HairTypeProps = {
     selectedTag?: string;
     scrollY?: number;
+    /** Programmatic virtual-scroll setter forwarded from useSmoothScroll. */
+    scrollToVirtual?: (px: number) => void;
+    /**
+     * When true, only the filter bar is rendered — used by the fixed overlay
+     * in products/page.tsx so the filter is visible while scrolled past hero.
+     */
+    filtersOnly?: boolean;
+    /** True once scrollState.current has passed the hero height. */
+    isStuck?: boolean;
 };
 
 /**
- * HairType Component with Persistent Filter UI
- * 
- * Filter UI Behavior:
- * - Mobile: Collapsible dropdown that stays accessible at top of viewport
- * - Tablet: Horizontal scrollable pills
- * - Desktop: Centered pill layout with separators
- * 
- * All variants use sticky positioning to remain visible during scroll,
- * with smooth background transition when stuck to top.
+ * HairType — product listing with an inline filter bar.
+ *
+ * `filtersOnly` mode:
+ * Renders just the <HairTypeFilters> bar.  The page mounts this inside a
+ * `position: fixed` overlay (outside the translated wrapper) so it appears
+ * to stay at the top of the viewport after the hero scrolls away.
+ *
+ * Normal mode:
+ * Renders the full section — header, filter bar, result count, product rows.
+ * The in-flow filter bar is hidden (`invisible`) when the fixed overlay is
+ * showing (`isStuck`) to avoid double rendering while preserving layout space
+ * so product rows don't shift upward.
  */
-export default function HairType({ selectedTag = '', scrollY = 0 }: HairTypeProps) {
+export default function HairType({
+    selectedTag = "",
+    scrollY = 0,
+    scrollToVirtual,
+    filtersOnly = false,
+    isStuck = false,
+}: HairTypeProps) {
     const tags = getBrowseTags();
+
+    // filtersOnly — used by the fixed sticky overlay
+    if (filtersOnly) {
+        return (
+            <div className="w-full py-1">
+                <HairTypeFilters
+                    tags={tags}
+                    scrollToVirtual={scrollToVirtual}
+                    isStuck
+                />
+            </div>
+        );
+    }
+
     const families = getAllFamilies();
+    const effectiveTag = selectedTag || "all-products";
 
-    const effectiveTag = selectedTag || 'all-products';
+    const filteredFamilies: DavinesHairCareFamily[] = families
+        .map((family) => ({
+            ...family,
+            products: filterProductsByHairType(family, effectiveTag).filter(
+                (product) => product.display !== false
+            ),
+        }))
+        .filter((family) => family.products.length > 0);
 
-    const filteredFamilies: DavinesHairCareFamily[] = families.map((family) => ({
-        ...family,
-        products: filterProductsByHairType(family, effectiveTag).filter(product => product.display !== false)
-    })).filter((family) => family.products.length > 0);
+    const totalProducts = filteredFamilies.reduce(
+        (sum, family) => sum + family.products.length,
+        0
+    );
 
-    const totalProducts = filteredFamilies.reduce((sum, family) => sum + family.products.length, 0);
-    
     return (
         <section id="products-section" className="space-y-2 sm:space-y-4 sm:px-4 py-2">
-            {/* Header */}
+            {/* Section header */}
             <div className="text-center mb-2 sm:mb-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-(--main-100) mb-2 sm:mb-3 lg:mb-4 text-balance">
                     Find your perfect match
@@ -45,33 +83,30 @@ export default function HairType({ selectedTag = '', scrollY = 0 }: HairTypeProp
                 </p>
             </div>
 
-            {/* 
-              Persistent Filter UI
-              - Uses sticky positioning to stay visible during scroll
-              - Background becomes semi-transparent with blur when stuck
-              - Smooth height transition when becoming sticky
-              - Accessible on all screen sizes with appropriate layouts
+            {/*
+              In-flow filter bar.
+              Hidden (but still occupying layout space) when the fixed overlay
+              is active so the product rows don't jump upward.
             */}
-            <div 
-                id="filter-section" 
-                className="pb-2 sticky top-0 z-20 bg-(--main-500)/95 backdrop-blur-sm transition-all duration-300"
+            <div
+                id="products-filter-inline"
+                className={`pb-2 transition-opacity duration-150 ${isStuck ? "invisible" : "visible"}`}
             >
-                {/* CSS-controlled spacer: height transitions smoothly when .is-stuck is applied */}
-                <div
-                    className="filter-sticky-spacer"
-                    aria-hidden="true"
+                <HairTypeFilters
+                    tags={tags}
+                    scrollToVirtual={scrollToVirtual}
+                    isStuck={false}
                 />
-                <HairTypeFilters tags={tags} />
             </div>
 
-            {/* Results count with fade transition */}
-            <div id="products-results" className="text-center transition-opacity duration-200">
-                <p className="text-center text-xs sm:text-sm text-(--main-200)">
+            {/* Results count */}
+            <div id="products-results" className="text-center">
+                <p className="text-xs sm:text-sm text-(--main-200)">
                     {totalProducts} product{totalProducts !== 1 ? "s" : ""} found.
                 </p>
             </div>
 
-            {/* Product Family Rows */}
+            {/* Product rows */}
             <div className="space-y-8 sm:space-y-10 lg:space-y-12 max-w-7xl mx-auto px-2">
                 {filteredFamilies.map((family) => (
                     <ProductFamilyRow key={family.id} family={family} scrollY={scrollY} />
