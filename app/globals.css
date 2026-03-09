@@ -546,3 +546,36 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+/* Product row horizontal scroll — hide native scrollbar */
+.product-row-scroll-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.product-row-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom horizontal scroll indicator track */
+.product-row-scroll-track {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  margin-top: 0.75rem;
+  background: hsl(0 0% 30%);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Scroll indicator thumb — position based on scroll progress */
+.product-row-scroll-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background: hsl(40 10% 72%);
+  border-radius: 1px;
+  will-change: transform;
+  transition: transform 0.06s linear;
+}

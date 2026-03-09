@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import IconCloseCircle from "@/components/svgs/close-circle";
 import type { DavinesHairCareProduct, DavinesHairCareFamily } from "@/types";
 
 type ExpandedProductCardProps = {
@@ -85,24 +84,25 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
           onClick={handleClose}
           className="
             absolute top-4 right-4 sm:top-6 sm:right-6 z-10 
-            p-2 rounded-full
-            bg-[var(--main-800)]/10 
-            hover:bg-[var(--main-800)]/20
-            dark:bg-[var(--main-100)]/10
-            dark:hover:bg-[var(--main-100)]/20
-            transform transition-all duration-200 ease-out
-            hover:scale-110 active:scale-[0.97]
-            motion-safe:hover:rotate-90
+            w-10 h-10 sm:w-11 sm:h-11
+            flex items-center justify-center
+            rounded-full
+            bg-(--main-400)/80 
+            text-(--main-100)
+            backdrop-blur-sm 
+            border border-(--main-300)/50
+            transition-all duration-200 ease-out
+            active:scale-95
             motion-reduce:transition-none
-            motion-reduce:hover:transform-none
-            motion-reduce:active:transform-none
-            focus:outline-none focus:ring-2 focus:ring-[var(--main-500)]
-            dark:focus:ring-[var(--main-300)]
+            focus:outline-none cursor-pointer
           "
-          style={{ WebkitTransform: 'translateZ(0)', willChange: 'transform' }}
+          style={{ transform: "translate(0, 0)" }}
           aria-label="Close modal"
         >
-          <IconCloseCircle />
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
         </button>
 
         <div className="grid md:grid-cols-2 md:items-start gap-8 md:gap-12 p-6 sm:p-10">
@@ -116,11 +116,6 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
             md:sticky md:top-6
           ">
             {product.image ? (
-              // <img 
-              //   src={product.image} 
-              //   alt={product.name} 
-              //   className="w-full h-full object-cover" 
-              // />
               <Image src={product.image} alt={product.name} fill sizes="500px" quality={75} className="object-cover" />
             ) : (
               <div className="
@@ -159,7 +154,7 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
           </div>
 
           {/* Content */}
-          <div className="space-y-8">
+          <div className="space-y-4 xl:space-y-8">
             {/* Header */}
             <div>
               {/* Product Type & Family - De-emphasized */}
@@ -174,7 +169,7 @@ export default function DavinesProductCard({ product, family, onClose }: Expande
 
               {/* Product Name - Primary emphasis */}
               <h2 className="
-                text-4xl md:text-5xl font-bold 
+                text-xl md:text-2xl lg:text-3xl font-bold 
                 text-[var(--main-900)]
                 dark:text-[var(--main-100)]
                 leading-tight mb-4

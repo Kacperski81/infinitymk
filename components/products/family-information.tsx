@@ -21,12 +21,23 @@ export default function FamilyInformation({family, displayProducts, expandedFami
                 </button>
             </div>
             <div
-                className="grid transition-[grid-template-rows] duration-500 ease-out"
+                className="grid"
                 style={{
                     gridTemplateRows: expandedFamily === family.id ? "1fr" : "0fr",
+                    transition: expandedFamily === family.id
+                        ? "grid-template-rows 500ms ease-out"
+                        : "grid-template-rows 700ms ease-out",
                 }}
             >
-                <div className={`overflow-hidden transition-opacity duration-500 ease-out ${expandedFamily === family.id ? 'opacity-100' : 'opacity-0'}`}>
+                <div
+                    className="overflow-hidden"
+                    style={{
+                        opacity: expandedFamily === family.id ? 1 : 0,
+                        transition: expandedFamily === family.id
+                            ? "opacity 300ms ease-out 75ms"
+                            : "opacity 500ms ease-out",
+                    }}
+                >
                     <div className="space-y-6 pt-6">
                         <div>
                             <h4 className="text-sm font-semibold text-(--main-200)/90 uppercase tracking-wide mb-2">Key Ingredient</h4>

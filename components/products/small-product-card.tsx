@@ -9,7 +9,7 @@ type ProductCardProps = {
 
 export default function SmallProductCard({ product, familyName, onClick }: ProductCardProps) {
     return (
-        <div className="group text-left w-full cursor-pointer rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300" onClick={onClick}>
+        <div className="group text-left w-full h-full flex flex-col cursor-pointer rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-300" onClick={onClick}>
             {/* Product Image */}
             <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden">
                 {product.image ? (
@@ -45,7 +45,7 @@ export default function SmallProductCard({ product, familyName, onClick }: Produ
             </div>
 
             {/* Product Details */}
-            <div className="p-3 space-y-1">
+            <div className="p-3 space-y-1 flex-1">
                 <p className="text-sm sm:text-base tracking-[0.12em] sm:tracking-[0.15em] uppercase text-(--main-300) font-medium group-hover:text-(--main-200) transition-colors">
                     {product.type}
                 </p>

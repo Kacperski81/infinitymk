@@ -1,12 +1,10 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useEffect, useCallback } from "react"
+import { createPortal } from "react-dom"
 import type { DavinesHairCareFamily, DavinesHairCareProduct } from "@/types"
-// import DavinesProductCard from "./davines-product-card"
 import SmallProductCard from "./small-product-card"
-import RightArrow from "../svgs/right-arrow"
-import LeftArrow from "../svgs/left-arrow"
 import FamilyInformation from "./family-information"
 
 const DavinesProductCard = dynamic(() => import("./davines-product-card"), { ssr: false })
@@ -20,41 +18,63 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
     const scrollContainerRef = useRef<HTMLDivElement>(null)
     const [canScrollLeft, setCanScrollLeft] = useState(false)
     const [canScrollRight, setCanScrollRight] = useState(false)
-    const [isHovering, setIsHovering] = useState(false)
+    const [scrollProgress, setScrollProgress] = useState(0)
+    const [isScrollable, setIsScrollable] = useState(false)
     const [expandedFamily, setExpandedFamily] = useState<string | null>(null)
+    const pendingRef = useRef(false)
+    const rafRef = useRef(0)
     const displayProducts = family.products.filter((product) => product.display)
 
-    const checkScrollability = () => {
+    const checkScrollability = useCallback(() => {
         const container = scrollContainerRef.current
-        if (container) {
-            setCanScrollLeft(container.scrollLeft > 0)
-            setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 1)
+        if (!container) return
+        const maxScroll = container.scrollWidth - container.clientWidth
+        setCanScrollLeft(container.scrollLeft > 0)
+        setCanScrollRight(container.scrollLeft < maxScroll - 1)
+        setIsScrollable(maxScroll > 0)
+        setScrollProgress(maxScroll > 0 ? container.scrollLeft / maxScroll : 0)
+        pendingRef.current = false
+    }, [])
+
+    const scheduleScrollabilityCheck = useCallback(() => {
+        if (!pendingRef.current) {
+            pendingRef.current = true
+            rafRef.current = requestAnimationFrame(checkScrollability)
         }
-    }
+    }, [checkScrollability])
 
     useEffect(() => {
         checkScrollability()
         window.addEventListener("resize", checkScrollability)
-        return () => window.removeEventListener("resize", checkScrollability)
-    }, [family.products])
-
-    const scroll = (direction: "left" | "right") => {
+        
+        // Watch scroll container for size changes (e.g., images loading)
         const container = scrollContainerRef.current
         if (container) {
-            const cardWidth = 280 // Card width + gap
+            const ro = new ResizeObserver(() => checkScrollability())
+            ro.observe(container)
+            return () => {
+                cancelAnimationFrame(rafRef.current)
+                ro.disconnect()
+                window.removeEventListener("resize", checkScrollability)
+            }
+        }
+        
+        return () => {
+            cancelAnimationFrame(rafRef.current)
+            window.removeEventListener("resize", checkScrollability)
+        }
+    }, [checkScrollability])
+
+    const scroll = useCallback((direction: "left" | "right") => {
+        const container = scrollContainerRef.current
+        if (container) {
+            const cardWidth = 280
             const scrollAmount = direction === "left" ? -cardWidth : cardWidth
             container.scrollBy({ left: scrollAmount, behavior: "smooth" })
         }
-    }
-
-    const handleScroll = () => {
-        checkScrollability()
-    }
+    }, [])
 
     useEffect(() => {
-        const container = scrollContainerRef.current
-        if (!container || !isHovering) return
-
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "ArrowLeft" && canScrollLeft) {
                 scroll("left")
@@ -65,41 +85,36 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
 
         window.addEventListener("keydown", handleKeyDown)
         return () => window.removeEventListener("keydown", handleKeyDown)
-    }, [isHovering, canScrollLeft, canScrollRight])
-
-    const showControls = family.products.length > 4
+    }, [canScrollLeft, canScrollRight, scroll])
 
     return (
-        <div className="space-y-4 product-row-reveal" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+        <div className="space-y-4 product-row-reveal">
             {/* Family Header */}
             <FamilyInformation family={family} displayProducts={displayProducts} expandedFamily={expandedFamily} setExpandedFamily={setExpandedFamily} />
 
             {/* Scrollable Products Container */}
-            <div className="relative">
+            <div className="relative group/row">
                 {/* Left Arrow */}
-                {showControls && (
+                {isScrollable && (
                     <button
                         onClick={() => scroll("left")}
-                        disabled={!canScrollLeft}
-                        className={`hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-(--main-400)/90 text-(--main-100) backdrop-blur-sm border border-(--main-300) transition-all duration-300 ${canScrollLeft && isHovering
-                            ? "opacity-100 -translaate-x-3"
-                            : "opacity-0 pointer-events-none"
-                            } hover:bg-(--main-300) hover:scale-110`}
+                        className={`absolute left-1 top-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-(--main-400)/80 text-(--main-100) backdrop-blur-sm border border-(--main-300)/50 transition-opacity duration-200 active:scale-95 ${
+                            canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
+                        style={{ transform: "translateY(-50%)" }}
                         aria-label="Scroll left"
                     >
-                        <LeftArrow />
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
                     </button>
                 )}
 
                 {/* Products Scroll Container */}
                 <div
                     ref={scrollContainerRef}
-                    onScroll={handleScroll}
-                    className="flex gap-4 overflow-x-auto scroll-smooth pb-4 scrollbar-thin scrollbar-thumb-(--main-400) scrollbar-track-transparent hover:scrollbar-thumb-(--main-400)"
-                    style={{
-                        scrollbarWidth: "thin",
-                        msOverflowStyle: "none",
-                    }}
+                    onScroll={scheduleScrollabilityCheck}
+                    className="flex gap-4 overflow-x-auto scroll-smooth pb-2 product-row-scroll-container"
                 >
                     {displayProducts.map((product, index) => (
                         <div
@@ -113,22 +128,36 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                 </div>
 
                 {/* Right Arrow */}
-                {showControls && (
+                {isScrollable && (
                     <button
                         onClick={() => scroll("right")}
-                        disabled={!canScrollRight}
-                        className={`hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-(--main-400)/90 text-(--main-100) backdrop-blur-sm border border-(--main-300) transition-all duration-300 ${canScrollRight && isHovering
-                            ? "opacity-100 translate-x-3"
-                            : "opacity-0 pointer-events-none"
-                            } hover:bg-(--main-300) hover:scale-110`}
+                        className={`absolute right-1 top-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-(--main-400)/80 text-(--main-100) backdrop-blur-sm border border-(--main-300)/50 transition-opacity duration-200 active:scale-95 ${
+                            canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
+                        }`}
+                        style={{ transform: "translateY(-50%)" }}
                         aria-label="Scroll right"
                     >
-                        <RightArrow />
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
                     </button>
                 )}
             </div>
 
-            {selectedProduct && <DavinesProductCard product={selectedProduct} family={family} onClose={() => setSelectedProduct(null)} />}
+            {/* Horizontal scroll indicator */}
+            {isScrollable && (
+                <div className="product-row-scroll-track">
+                    <div
+                        className="product-row-scroll-thumb"
+                        style={{ transform: `translateX(${scrollProgress * (70 / 30) * 100}%)` }}
+                    />
+                </div>
+            )}
+
+            {selectedProduct && createPortal(
+                <DavinesProductCard product={selectedProduct} family={family} onClose={() => setSelectedProduct(null)} />,
+                document.body
+            )}
         </div>
     )
 }
