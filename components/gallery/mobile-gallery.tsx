@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import Image from "next/image";
 import PageHeading from "@/components/page-heading";
-// import MobileGalleryModal from "@/components/gallery/mobile-gallery-modal";
 import type { CarouselItem } from "@/types";
 
 const MobileGalleryModal = dynamic(() => import("@/components/gallery/mobile-gallery-modal"), { ssr: false });    

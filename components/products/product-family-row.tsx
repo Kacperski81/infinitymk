@@ -70,7 +70,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
     const showControls = family.products.length > 4
 
     return (
-        <div className="space-y-4" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+        <div className="space-y-4 product-row-reveal" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
             {/* Family Header */}
             <FamilyInformation family={family} displayProducts={displayProducts} expandedFamily={expandedFamily} setExpandedFamily={setExpandedFamily} />
 
