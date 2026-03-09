@@ -90,7 +90,7 @@ export default function OurServices({ scrollY, viewportHeight }: OurServicesProp
                     flex flex-col
                     ${expandedPanel === service.id ? "service-panel-opened" : "service-panel-closed"}`}
                   style={{
-                    transitionDelay: `${panelDelay}s`,
+                    // transitionDelay: `${panelDelay}s`,
                   }}
                 >
                   {/* Accordion heading */}
