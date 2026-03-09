@@ -19,8 +19,10 @@ export type ViewportAnimationOptions = {
   fadeOutEnd?: number;
   /** Enable scale effect for images (default: false) */
   imageScaleEnabled?: boolean;
-  /** Minimum scale for images at viewport edges (default: 0.85) */
+  /** Minimum scale for images when entering from below (default: 0.85) */
   imageScaleMin?: number;
+  /** Maximum scale for images when exiting toward top (default: 1.15) */
+  imageScaleMax?: number;
   /** Minimum opacity for images at viewport edges (default: 0.3) */
   imageOpacityMin?: number;
 }
@@ -71,21 +73,50 @@ export function useViewportAnimation(
     fadeOutEnd = 0.85,
     imageScaleEnabled = false,
     imageScaleMin = 0.85,
+    imageScaleMax = 1.15,
     imageOpacityMin = 0.3,
   } = options;
 
   const ref = useRef<HTMLElement>(null);
   const [sectionTop, setSectionTop] = useState(0);
   const [sectionHeight, setSectionHeight] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
+  // Keep a ref to the latest scrollY so measure() can read it at call-time
+  // without being captured in a stale closure.
+  // Bug this fixes: measure() had scrollY in its deps, so it was recreated
+  // every RAF frame. The useEffect re-ran, tearing down and re-adding the
+  // resize listener 60×/s. Worse, between setScrollState() and the effect
+  // running, another RAF frame fired — so getBoundingClientRect() reflected
+  // the new transform while the closure held the old scrollY, making
+  // sectionTop too small and triggering the fade-out while content was
+  // still centered in the viewport (content appeared invisible).
+  const scrollYRef = useRef(scrollY);
+  // No dep array — syncs every render, always reflects the latest committed value.
+  useEffect(() => {
+    scrollYRef.current = scrollY;
+  });
+
+  // measure is now stable: using scrollYRef.current instead of the closure.
+  // The resize/orientationchange listener is registered exactly once.
   const measure = useCallback(() => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const top = rect.top + scrollY;
+    const top = rect.top + scrollYRef.current;
     setSectionTop(top);
     setSectionHeight(rect.height);
-  }, [scrollY]);
+  }, []); // stable — no scrollY dep
 
+  // Detect and respond to prefers-reduced-motion.
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  // Register resize listener once; measure also on mount.
   useEffect(() => {
     measure();
     window.addEventListener("resize", measure);
@@ -104,6 +135,20 @@ export function useViewportAnimation(
         imageOpacity: 1,
         viewportProgress: 0,
         isInViewport: false,
+      };
+    }
+
+    // Return neutral values when the user prefers no motion.
+    if (prefersReducedMotion) {
+      return {
+        ref,
+        contentOpacity: 1,
+        contentTranslateY: 0,
+        bgParallax: 0,
+        imageScale: 1,
+        imageOpacity: 1,
+        viewportProgress: 0,
+        isInViewport: true,
       };
     }
 
@@ -172,12 +217,17 @@ export function useViewportAnimation(
     let imageOpacity = 1;
     
     if (imageScaleEnabled && isInViewport) {
-      // Absolute distance from center (0 at center, 1 at edges)
-      const absProgress = Math.abs(viewportProgress);
-      // Scale: imageScaleMin at edges, 1.0 at center
-      imageScale = imageScaleMin + (1 - absProgress) * (1 - imageScaleMin);
-      // Opacity: imageOpacityMin at edges, 1.0 at center
-      imageOpacity = imageOpacityMin + (1 - absProgress) * (1 - imageOpacityMin);
+      if (viewportProgress <= 0) {
+        // Entering from below: scale from imageScaleMax → 1.0 (comes in big, shrinks to normal), fade in
+        const enterProgress = Math.abs(viewportProgress); // 1 at bottom edge, 0 at center
+        imageScale = 1 + enterProgress * (imageScaleMax - 1);
+        imageOpacity = imageOpacityMin + (1 - enterProgress) * (1 - imageOpacityMin);
+      } else {
+        // Exiting toward top: scale from 1.0 → imageScaleMin (gets smaller), fade out
+        const exitProgress = viewportProgress; // 0 at center, 1 at top edge
+        imageScale = imageScaleMin + (1 - exitProgress) * (1 - imageScaleMin);
+        imageOpacity = Math.max(0, imageOpacityMin + (1 - exitProgress) * (1 - imageOpacityMin));
+      }
     }
 
     return {
@@ -204,6 +254,8 @@ export function useViewportAnimation(
     fadeOutEnd,
     imageScaleEnabled,
     imageScaleMin,
+    imageScaleMax,
     imageOpacityMin,
+    prefersReducedMotion,
   ]);
 }

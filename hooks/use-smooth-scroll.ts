@@ -35,16 +35,17 @@ export function useSmoothScroll(lerp = 0.08) {
     limitRef.current = Math.max(0, h - vp);
   }, []);
 
+  // true while scroll is converging; used to fire one final state update
+  // after settling so child components sync to the exact resting position.
+  const wasMovingRef = useRef(false);
+
   const animate = useCallback(() => {
     const t = targetRef.current;
     const c = currentRef.current;
     const diff = t - c;
+    const moving = Math.abs(diff) > 0.5;
 
-    if (Math.abs(diff) > 0.5) {
-      currentRef.current = c + diff * lerp;
-    } else {
-      currentRef.current = t;
-    }
+    currentRef.current = moving ? c + diff * lerp : t;
 
     const limit = limitRef.current;
     const progress =
@@ -54,13 +55,21 @@ export function useSmoothScroll(lerp = 0.08) {
       contentRef.current.style.transform = `translate3d(0, ${-currentRef.current}px, 0)`;
     }
 
-    setScrollState({
-      current: currentRef.current,
-      target: t,
-      progress: Number.isFinite(progress) ? progress : 0,
-      limit,
-    });
+    // Push state into React only while scrolling, plus one final frame when
+    // scroll settles. Idle frames keep the RAF alive but produce zero React
+    // re-renders, eliminating the 60fps section-tree thrash while at rest.
+    // Scroll stays fully functional: the RAF loop never stops, so new input
+    // is picked up immediately on the very next frame.
+    if (moving || wasMovingRef.current) {
+      setScrollState({
+        current: currentRef.current,
+        target: t,
+        progress: Number.isFinite(progress) ? progress : 0,
+        limit,
+      });
+    }
 
+    wasMovingRef.current = moving;
     rafRef.current = requestAnimationFrame(animate);
   }, [lerp, clamp]);
 

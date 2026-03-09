@@ -12,7 +12,16 @@ export default function Carousel() {
     const [isSliderEnd, setIsSliderEnd] = useState<boolean>(false)
     const [selectedIndex, setSelectedIndex] = useState<number>(1);
     const [containerDimensions, setContainerDimensions] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setPrefersReducedMotion(mq.matches);
+        const onChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+        mq.addEventListener("change", onChange);
+        return () => mq.removeEventListener("change", onChange);
+    }, []);
 
     // navigation
     const navigate = (number: 1 | -1) => {
@@ -33,10 +42,10 @@ export default function Carousel() {
     }, []);
 
     const getCarouselStyle = () => {
-
+        const duration = prefersReducedMotion ? '0ms' : '500ms';
         return {
             transform: `translateX(-${containerDimensions.width * selectedIndex}px)`,
-            transition: `${isSliderEnd ? 'none' : 'transform 500ms ease-in-out'}`
+            transition: isSliderEnd ? 'none' : `transform ${duration} ease-in-out`,
         }
     }
 
