@@ -95,7 +95,7 @@ export default function BookNowFab() {
                     <ul className="p-3 space-y-2">
                         {bookingOptions.map((option) => (
                             <li key={option.id}>
-                                <div className="flex items-center gap-4 p-3 rounded-xl hover:bg-[var(--main-100)]/30 transition-colors group">
+                                <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-[var(--main-100)]/30 transition-colors group">
                                     {/* Avatar placeholder with enhanced border for glass clarity */}
                                     <div className={`${styles.glassAvatar} w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden`}>
                                         <span className="text-[var(--main-700)] text-sm font-semibold">

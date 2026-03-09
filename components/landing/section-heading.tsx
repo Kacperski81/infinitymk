@@ -47,7 +47,8 @@ export default function SectionHeading({
             pb-2
             px-10
             text-2xl
-            text-[--main-50]
+            font-semibold
+            text-[--main-10]
             uppercase
             tracking-widest
           `}
@@ -55,7 +56,7 @@ export default function SectionHeading({
           {title}
         </h2>
         {subtitle && (
-          <p className="leading-relaxed text-base sm:text-lg md:text-xl text-[--main-100] px-4">
+          <p className="leading-relaxed text-sm sm:text-base md:text-lg text-[--main-200] px-4">
             {subtitle}
           </p>
         )}

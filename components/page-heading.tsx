@@ -7,8 +7,9 @@ export default function PageHeading({ title, mT }: { title: string, mT?:string }
             pt-4 
             pb-2 
             px-10 
-            text-2xl 
-            text-(--main-50)
+            text-2xl
+            font-semibold 
+            text-(--main-10)
             text-center
             uppercase
             tracking-widest`}>

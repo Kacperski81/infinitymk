@@ -281,7 +281,7 @@ export default function MobileGalleryModal({ isOpen, onClose, selectedIndex, pic
                             >
                                 {/* Loading skeleton */}
                                 {!loadedImages.has(index) && (
-                                    <div className="absolute inset-4 bg-main-200/50 rounded-xl animate-pulse" />
+                                    <div className="absolute inset-4 bg-main-200/50 rounded-lg animate-pulse" />
                                 )}
 
                                 {/* High-resolution image */}
