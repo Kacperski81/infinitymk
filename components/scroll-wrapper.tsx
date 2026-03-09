@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import AboutUs from "@/components/landing/about-us";
 import AboutTheOwner from "@/components/landing/about-the-owner";
@@ -18,7 +18,18 @@ export default function ScrollWrapper() {
     const [introDone, setIntroDone] = useState(false);
     const [heroImageLoaded, setHeroImageLoaded] = useState(false);
     const [isExiting, setIsExiting] = useState(false);
+    const [viewportHeight, setViewportHeight] = useState(0);
     const { contentRef, scrollState } = useSmoothScroll(0.075);
+
+    // Track viewport height for scroll animations
+    useEffect(() => {
+        const updateViewportHeight = () => {
+            setViewportHeight(window.innerHeight);
+        };
+        updateViewportHeight();
+        window.addEventListener("resize", updateViewportHeight);
+        return () => window.removeEventListener("resize", updateViewportHeight);
+    }, []);
 
     const handleHeroImageLoad = useCallback(() => {
         setHeroImageLoaded(true);
@@ -49,10 +60,10 @@ export default function ScrollWrapper() {
                             <Hero scrollY={scrollState.current} onImageLoad={handleHeroImageLoad} />
                             <OverlayTransition>
 
-                                <AboutUs scrollY={scrollState.current} />
-                                <AboutTheOwner scrollY={scrollState.current} />
-                                <OurServices />
-                                <Testimonials />
+                                <AboutUs scrollY={scrollState.current} viewportHeight={viewportHeight} />
+                                <AboutTheOwner scrollY={scrollState.current} viewportHeight={viewportHeight} />
+                                <OurServices scrollY={scrollState.current} viewportHeight={viewportHeight} />
+                                <Testimonials scrollY={scrollState.current} viewportHeight={viewportHeight} />
                                 <Footer />
                             </OverlayTransition>
                         </div>

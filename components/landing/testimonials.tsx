@@ -3,7 +3,7 @@ import Testimonial from "@/components//landing/testimonial"
 import { getTestimonialsData } from "@/lib/testimonials-data"
 import Carousel from "@/components/landing/carousel";
 
-export default function Testimonials() { 
+export default function Testimonials({scrollY, viewportHeight} : {scrollY: number, viewportHeight: number}) { 
     const testimonials = getTestimonialsData();
 
     return (

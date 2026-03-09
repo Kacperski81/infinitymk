@@ -1,47 +1,37 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import LocationIcon from "../svgs/location-icon";
+import SectionHeading from "../landing/section-heading";
+import { useViewportAnimation } from "@/hooks/use-viewport-animation";
 
-export default function AboutUs({ scrollY }: { scrollY: number }) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [sectionTop, setSectionTop] = useState(0);
-  const [sectionHeight, setSectionHeight] = useState(0);
+interface AboutUsProps {
+  scrollY: number;
+  viewportHeight: number;
+}
 
-  const measure = useCallback(() => {
-    if (!sectionRef.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    const top = rect.top + scrollY;
-    setSectionTop(top);
-    setSectionHeight(rect.height);
-  }, [scrollY]);
-
-  useEffect(() => {
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [measure]);
-
-  const relativeScroll = scrollY - sectionTop;
-  const fadeStart = sectionHeight * 0.15;
-  const fadeEnd = sectionHeight * 0.85;
-
-  let contentOpacity = 1;
-  let contentTranslateY = 0;
-
-  if (relativeScroll > fadeStart && sectionHeight > 0) {
-    const progress = Math.min(
-      (relativeScroll - fadeStart) / (fadeEnd - fadeStart),
-      1
-    );
-    contentOpacity = Math.max(0, 1 - progress);
-    contentTranslateY = progress * -40;
-  }
+export default function AboutUs({ scrollY, viewportHeight }: AboutUsProps) {
+  const {
+    ref,
+    contentOpacity,
+    contentTranslateY,
+    imageScale,
+    imageOpacity,
+    isInViewport,
+  } = useViewportAnimation(scrollY, viewportHeight, {
+    fadeInEnabled: true,
+    fadeOutEnabled: true,
+    fadeInDistance: 250,
+    fadeOutStart: 0.15,
+    fadeOutEnd: 0.85,
+    imageScaleEnabled: true,
+    imageScaleMin: 0.88,
+    imageOpacityMin: 0.4,
+  });
 
   return (
     <section
-      ref={sectionRef}
+      ref={ref as React.RefObject<HTMLElement>}
       className="py-16 md:p-24 px-6 md:px-12 lg:px-20 xl:min-h-screen xl:min-w-full xl:flex xl:items-center"
     >
       <div
@@ -52,8 +42,15 @@ export default function AboutUs({ scrollY }: { scrollY: number }) {
         }}
       >
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          {/* Image */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl">
+          {/* Image with focus effect */}
+          <div
+            className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-xl will-change-transform"
+            style={{
+              opacity: imageOpacity,
+              transform: `scale(${imageScale})`,
+              transition: isInViewport ? "none" : "opacity 0.3s, transform 0.3s",
+            }}
+          >
             <Image
               src="/landing/about-image.jpg"
               alt="Interior of Infinity MK salon showing styling chairs, plants, and elegant decor"
@@ -66,14 +63,8 @@ export default function AboutUs({ scrollY }: { scrollY: number }) {
 
           {/* Content */}
           <div className="flex flex-col gap-6">
-            <span
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold hero-background-gradient"
-              style={{ fontFamily: "var(--font-aboreto)" }}
-            >
-              About Us
-            </span>
+            <SectionHeading title="About Us" variant="gradient" align="left" />
 
-            <div className="w-16 h-px" style={{ background: "var(--main-200)" }} />
             <div>
               <p
                 className="xl:max-w-xl text-lg md:text-xl leading-relaxed font-light"
