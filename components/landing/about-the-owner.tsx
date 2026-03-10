@@ -42,7 +42,7 @@ export default function AboutTheOwner({ scrollY, viewportHeight }: AboutTheOwner
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="relative min-h-screen overflow-hidden flex items-center"
+      className="photo-section relative min-h-screen overflow-hidden flex items-center"
     >
       {/* Parallax background image */}
       <div

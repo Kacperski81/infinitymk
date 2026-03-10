@@ -38,18 +38,26 @@ export function LoadingOverlay({
   onComplete,
   onExitStart,
 }: LoadingOverlayProps) {
-  const [shouldSkip] = useState(
-    () => prefersReducedMotion() || hasSeenThisSession()
-  );
+  // Always initialise to server-safe defaults (false / "counting" / 2400)
+  // so the first render matches the SSR output. After mount, a useEffect
+  // checks client-only APIs and updates state, avoiding hydration mismatch.
+  const [shouldSkip, setShouldSkip] = useState(false);
 
   const [count, setCount] = useState(0);
   const [phase, setPhase] = useState<
     "counting" | "completing" | "exiting" | "done"
-  >(shouldSkip ? "done" : "counting");
+  >("counting");
   const rafRef = useRef<number>(0);
   const startRef = useRef(0);
 
-  const [minDuration] = useState(() => (isMobile() ? 1200 : 2400));
+  const [minDuration, setMinDuration] = useState(2400);
+
+  // Client-only check — runs after hydration, no SSR/CSR mismatch
+  useEffect(() => {
+    const skip = prefersReducedMotion() || hasSeenThisSession();
+    setShouldSkip(skip);
+    if (!skip) setMinDuration(isMobile() ? 1200 : 2400);
+  }, []);
 
   // If skipping, fire onComplete immediately
   useEffect(() => {

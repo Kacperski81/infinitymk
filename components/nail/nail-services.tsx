@@ -20,7 +20,7 @@ export default function NailServices({ scrollY }: { scrollY: number }) {
         setExpandedPanel(panelIndex);
     }
     return (
-        <section ref={ref as React.RefObject<HTMLElement>} className="isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/nail/nails-bg-flowers-mobile.jpg)] lg:bg-[url(/nail/nails-bg-flowers.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12" style={{ backgroundPosition: `center ${bgParallax}px` }}>
+        <section ref={ref as React.RefObject<HTMLElement>} className="photo-section isolate relative min-h-svh xl:min-h-screen bg-(--main-400)/80 bg-[url(/nail/nails-bg-flowers-mobile.jpg)] lg:bg-[url(/nail/nails-bg-flowers.jpg)] bg-blend-multiply bg-cover bg-no-repeat flex justify-center xl:grid xl:grid-cols-12" style={{ backgroundPosition: `center ${bgParallax}px` }}>
             <div className="pt-10 flex flex-col xl:col-span-5 xl:col-start-6 z-10">
                 <SectionHeading variant="page" marginTop="mt-0" title="Nail Services" />
 

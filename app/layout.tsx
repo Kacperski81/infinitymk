@@ -8,6 +8,7 @@ import Frame from "@/components/frame/frame";
 import Logo from "@/components/frame/logo";
 import Footer from "@/components/footer";
 import BookNowFab from "@/components/fab/book-now-fab";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 
 const aboreto = Aboreto({
   // sans-serif
@@ -38,28 +39,45 @@ export const metadata: Metadata = {
   description: "InfinityMK is your premier hair, nail, and beauty salon in Putney and Wandsworth. We offer a full range of services, including expert haircuts, colouring, manicures, pedicures, and professional beauty treatments. Book your appointment today near Putney High Street.",
 };
 
+// Runs before hydration to restore a saved theme without FOUC.
+// Amber is the default — no localStorage entry means no class is added,
+// so the :root CSS variables (amber) apply automatically.
+const themeInitScript = `
+(function(){
+  try{
+    var t=localStorage.getItem('theme');
+    if(t==='dark'){document.documentElement.classList.add(t);}
+  }catch(e){}
+})();
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-(--main-900)">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${aboreto.variable} ${lato.variable} ${redHatText.variable} antialiased`}
       >
-        <div className="min-h-screen flex justify-center">
-          <div className="relative w-full max-w-[2000px]">
-            {/* <Logo /> */}
-            <Frame />
-            <Suspense fallback={null}>
-              <AnimatedMenu />
-            </Suspense>
-            {children}
-            {/* <Footer /> */}
+        <ThemeProvider>
+          <div className="min-h-screen flex justify-center">
+            <div className="relative w-full max-w-[2000px]">
+              {/* <Logo /> */}
+              <Frame />
+              <Suspense fallback={null}>
+                <AnimatedMenu />
+              </Suspense>
+              {children}
+              {/* <Footer /> */}
+            </div>
           </div>
-        </div>
-        <BookNowFab />
+          <BookNowFab />
+        </ThemeProvider>
       </body>
     </html>
   );

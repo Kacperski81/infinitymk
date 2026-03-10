@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 
 export default function AnimatedMenu() {
@@ -120,6 +121,12 @@ export default function AnimatedMenu() {
                   Products
                 </Link>
               </nav>
+
+              {/* Theme toggle */}
+              <div className="mt-8 flex items-center gap-3">
+                <span className="text-xs text-(--main-400) uppercase tracking-widest">Theme</span>
+                <ThemeToggle />
+              </div>
 
               <div className="mt-12 pt-8 border-t border-[#B8860B] border-opacity-30">
                 <div className="space-y-4 text-(--main-100)">

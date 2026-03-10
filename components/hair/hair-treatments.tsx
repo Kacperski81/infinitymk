@@ -22,7 +22,7 @@ export default function HairTreatment({ scrollY }: { scrollY: number }) {
     return (
         <section
             ref={ref as React.RefObject<HTMLElement>}
-            className="relative min-h-svh xl:min-h-screen bg-(--main-300)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat bg-top-right flex justify-center xl:grid xl:grid-cols-12 overflow-hidden"
+            className="photo-section relative min-h-svh xl:min-h-screen bg-(--main-300)/90 bg-[url(/hair/treatments-bg.jpg)] bg-blend-multiply bg-cover bg-no-repeat bg-top-right flex justify-center xl:grid xl:grid-cols-12 overflow-hidden"
             style={{ backgroundPosition: `right top ${bgParallax}px` }}
         >
             <div

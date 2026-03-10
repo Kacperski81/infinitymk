@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
 
   /* Main */
@@ -53,7 +55,7 @@
   --primary-foreground: var(--main-800);
   --secondary: var(--main-500);
   --secondary-foreground: var(--main-50);
-  --muted: var(--main-400);
+  --muted: var(--main-300);
   --muted-foreground: var(--main-200);
   --accent: var(--main-200);
   --accent-foreground: var(--main-800);
@@ -96,6 +98,7 @@
   }
 }
 
+/* ─── Dark mode ─────────────────────────────────────────────── */
 .dark {
   --background: var(--main-900);
   --foreground: var(--main-100);
@@ -111,9 +114,19 @@
   --muted-foreground: var(--main-300);
   --accent: var(--main-600);
   --accent-foreground: var(--main-100);
+  --destructive: hsl(0, 60%, 45%);
+  --destructive-foreground: var(--main-50);
   --border: var(--main-600);
   --input: var(--main-600);
   --ring: var(--main-400);
+  --sidebar: var(--main-800);
+  --sidebar-foreground: var(--main-100);
+  --sidebar-primary: var(--main-300);
+  --sidebar-primary-foreground: var(--main-900);
+  --sidebar-accent: var(--main-700);
+  --sidebar-accent-foreground: var(--main-100);
+  --sidebar-border: var(--main-600);
+  --sidebar-ring: var(--main-500);
 }
 
 @theme inline {
@@ -154,12 +167,9 @@
 
 }
 
-@media (prefers-color-scheme: dark) {
-  /* :root {
-    --background: var(--main-900);
-    --foreground: var(--main-50);
-  } */
-}
+/* Amber is the brand default (:root). Theme switching is handled
+   entirely by JS (ThemeProvider) which adds .dark to <html>.
+   No prefers-color-scheme override — amber is always the first-visit default. */
 
 /* Collapse all durations for users who prefer reduced motion.
    The JS hooks also return neutral values, but this CSS layer

@@ -85,7 +85,7 @@ export default function OurServices({ scrollY, viewportHeight }: OurServicesProp
                 <div
                   key={service.id}
                   onClick={() => togglePanel(service.id)}
-                  className={`relative isolate p-(--service-panel-padding) overflow-hidden 
+                  className={`photo-section relative isolate p-(--service-panel-padding) overflow-hidden 
                     service-panel-radius 
                     flex flex-col
                     ${expandedPanel === service.id ? "service-panel-opened" : "service-panel-closed"}`}
