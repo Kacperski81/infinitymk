@@ -1,7 +1,7 @@
 import { getHairOffers } from "@/lib/hair-offers"
 import IconAnnouncement from "@/components/svgs/announcement";
 import IconDiscount from "@/components/svgs/discount";
-import PageHeading from "@/components/page-heading";
+import SectionHeading from "@/components/landing/section-heading";
 
 
 export default function HairOffers() {
@@ -10,7 +10,7 @@ export default function HairOffers() {
     return (
         <div className="px-2">
 
-            <PageHeading title="Offers" mT="mt-2" />
+            <SectionHeading variant="page" title="Offers" marginTop="mt-2" />
 
             <div className="space-y-4 md:space-y-6 lg:space-y-8 max-w-5xl mx-auto">
 

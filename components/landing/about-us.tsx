@@ -21,12 +21,12 @@ export default function AboutUs({ scrollY, viewportHeight }: AboutUsProps) {
   } = useViewportAnimation(scrollY, viewportHeight, {
     fadeInEnabled: true,
     fadeOutEnabled: true,
-    fadeInDistance: 250,
-    fadeOutStart: 0.15,
-    fadeOutEnd: 0.85,
+    fadeInDistance: 200,
+    fadeOutStart: 0.3,
+    fadeOutEnd: 0.8,
     imageScaleEnabled: true,
-    imageScaleMin: 0.88,
-    imageOpacityMin: 0.4,
+    imageScaleMin: 0.92,
+    imageOpacityMin: 0.5,
   });
 
   return (

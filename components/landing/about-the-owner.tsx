@@ -31,12 +31,12 @@ export default function AboutTheOwner({ scrollY, viewportHeight }: AboutTheOwner
     bgParallaxSpeed: 0.25,
     fadeInEnabled: true,
     fadeOutEnabled: true,
-    fadeInDistance: 300,
-    fadeOutStart: 0.15,
-    fadeOutEnd: 0.85,
+    fadeInDistance: 220,
+    fadeOutStart: 0.3,
+    fadeOutEnd: 0.8,
     imageScaleEnabled: true,
-    imageScaleMin: 0.85,
-    imageOpacityMin: 0.35,
+    imageScaleMin: 0.9,
+    imageOpacityMin: 0.45,
   });
 
   return (

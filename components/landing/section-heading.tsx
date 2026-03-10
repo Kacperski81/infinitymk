@@ -5,8 +5,8 @@ interface SectionHeadingProps {
   title: string;
   /** Optional subtitle/description text */
   subtitle?: string;
-  /** Use gradient style (matches hero) or simple style */
-  variant?: "gradient" | "simple";
+  /** Use gradient style (matches hero), simple style, or page style (subpage headings) */
+  variant?: "gradient" | "simple" | "page";
   /** Text alignment */
   align?: "left" | "center" | "right";
   /** Custom margin top class */
@@ -16,11 +16,12 @@ interface SectionHeadingProps {
 }
 
 /**
- * Standardized section heading component for consistent typography across landing sections.
- * 
- * Two variants:
+ * Unified section/page heading component for consistent typography.
+ *
+ * Three variants:
  * - "gradient": Decorative gradient text style (used in Hero, About sections)
  * - "simple": Clean uppercase tracking style (used in Services, Testimonials)
+ * - "page": Compact uppercase heading for subpages (Hair, Nail, Gallery, etc.)
  */
 export default function SectionHeading({
   title,
@@ -35,6 +36,30 @@ export default function SectionHeading({
     center: "text-center",
     right: "text-right",
   };
+
+  if (variant === "page") {
+    return (
+      <h2
+        className={`
+          ${marginTop || "mt-10 xl:mt-14"}
+          font-[family-name:var(--font-aboreto)]
+          self-center
+          pt-4
+          pb-2
+          px-10
+          text-2xl
+          font-semibold
+          text-[--main-10]
+          text-center
+          uppercase
+          tracking-widest
+        `}
+        style={style}
+      >
+        {title}
+      </h2>
+    );
+  }
 
   if (variant === "simple") {
     return (

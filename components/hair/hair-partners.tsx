@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { getHairPartners } from "@/lib/hair-partners";
-import PageHeading from "@/components/page-heading";
+import SectionHeading from "@/components/landing/section-heading";
 
 
 export default function HairPartners() {
@@ -33,7 +33,7 @@ export default function HairPartners() {
 
     return (
         <div>
-            <PageHeading title="Our Partners" />
+            <SectionHeading variant="page" title="Our Partners" />
 
             {/* Scroller */}
             <div

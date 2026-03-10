@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import type { CarouselItem } from "@/types";
-import PageHeading from "@/components/page-heading";
+import SectionHeading from "@/components/landing/section-heading";
 import DesktopGalleryImages from "@/components/gallery/desktop-gallery-images";
 
 export default function DesktopGallery({ pictures}: { pictures: CarouselItem[]}) {
@@ -29,7 +29,7 @@ export default function DesktopGallery({ pictures}: { pictures: CarouselItem[]})
     return (
         <div className="xl:snap-start min-h-dvh xl:min-h-screen grow-1 flex justify-start items-center lg:flex lg:flex-col lg:gap-4">
 
-            <PageHeading title="GALLERY" />
+            <SectionHeading variant="page" title="GALLERY" />
 
             {/* Gallery Carousel */}
             <div

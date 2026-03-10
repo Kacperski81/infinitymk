@@ -532,7 +532,7 @@ body {
   .product-row-reveal {
     animation: product-row-enter linear both;
     animation-timeline: view();
-    animation-range: entry 0% entry 100%;
+    animation-range: entry 0% entry 35%;
   }
 }
 

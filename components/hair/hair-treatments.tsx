@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getHairTreatments } from "@/lib/hair-treatments";
 import type { TreatmentsData } from "@/types/";
-import PageHeading from "../page-heading";
+import SectionHeading from "@/components/landing/section-heading";
 import { useParallax } from "@/hooks/use-parallax";
 
 export default function HairTreatment({ scrollY }: { scrollY: number }) {
@@ -29,7 +29,7 @@ export default function HairTreatment({ scrollY }: { scrollY: number }) {
                 className="pt-10 flex flex-col xl:col-span-5 xl:col-start-2"
                 style={{ transform: `translate3d(0, ${contentParallax}px, 0)` }}
             >
-                <PageHeading mT="mt-0" title="Hair Treatments" />
+                <SectionHeading variant="page" marginTop="mt-0" title="Hair Treatments" />
 
                 {/* wrapper */}
                 <div className="price-panel z-2 relative grow flex justify-center p-4 xl:pb-10">

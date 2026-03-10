@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-(--main-450)">
+    <html lang="en" className="bg-(--main-900)">
       <body
         className={`${aboreto.variable} ${lato.variable} ${redHatText.variable} antialiased`}
       >

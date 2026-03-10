@@ -28,7 +28,7 @@ export default function FamilyInformation({family, displayProducts, expandedFami
                     gridTemplateRows: expandedFamily === family.id ? "1fr" : "0fr",
                     transition: expandedFamily === family.id
                         ? "grid-template-rows 500ms ease-out"
-                        : "grid-template-rows 700ms ease-out",
+                        : "grid-template-rows 350ms ease-out",
                 }}
             >
                 <div
@@ -37,7 +37,7 @@ export default function FamilyInformation({family, displayProducts, expandedFami
                         opacity: expandedFamily === family.id ? 1 : 0,
                         transition: expandedFamily === family.id
                             ? "opacity 300ms ease-out 75ms"
-                            : "opacity 500ms ease-out",
+                            : "opacity 150ms ease-out",
                     }}
                 >
                     <div className="space-y-6 pt-6">
