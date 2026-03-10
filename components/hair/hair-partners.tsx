@@ -3,12 +3,26 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { getHairPartners } from "@/lib/hair-partners";
+import { useTheme } from "@/components/theme/theme-provider";
 import SectionHeading from "@/components/landing/section-heading";
 
 
 export default function HairPartners() {
     const scrollerRef = useRef<HTMLDivElement>(null);
     const scrollerLogos = getHairPartners();
+    const { theme } = useTheme();
+
+    const getImagePath = (basePath: string) => {
+        if (theme === "dark") {
+            // Replace file extension with -dark version
+            // e.g., "public/hair/partners/salon.jpg" → "public/hair/partners/salon-dark.jpg"
+            const lastDot = basePath.lastIndexOf('.');
+            const nameWithoutExt = basePath.substring(0, lastDot -1);
+            const extension = basePath.substring(lastDot);
+            return `${nameWithoutExt}3${extension}`;
+        }
+        return basePath;
+    };
 
     useEffect(() => {
         const scroller = scrollerRef.current;
@@ -29,7 +43,7 @@ export default function HairPartners() {
             duplicate.setAttribute("aria-hidden", "true");
             scrollerInner.appendChild(duplicate);
         });
-    }, [])
+    }, []);
 
     return (
         <div>
@@ -56,11 +70,17 @@ export default function HairPartners() {
                 >
                     {scrollerLogos.map((logo) => {
                         return (
-                            <li key={logo.name} className="hair-partner-logo
+                            <li key={`${logo.name}-${theme}`} className="hair-partner-logo
                             backdrop-blur-[2px]
                             rounded-md p-2 md:p-4 shadow-md hover:shadow-lg transition-shadow w-[150px] md:w-[200px] lg:w-[250px] flex items-center justify-center">
-                                {/* <img src={logo.imagePath} alt={logo.altText} className="w-full h-auto object-contain" /> */}
-                                <Image src={logo.imagePath} alt={logo.altText} width={250} height={100} quality={75} className="w-full h-auto object-contain" />
+                                <Image 
+                                    src={getImagePath(logo.imagePath)} 
+                                    alt={logo.altText} 
+                                    width={250} 
+                                    height={100} 
+                                    quality={75} 
+                                    className="w-full h-auto object-contain" 
+                                />
                             </li>
                         )
                     })}

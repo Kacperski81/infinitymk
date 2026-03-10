@@ -40,14 +40,17 @@ export const metadata: Metadata = {
 };
 
 // Runs before hydration to restore a saved theme without FOUC.
-// Amber is the default — no localStorage entry means no class is added,
-// so the :root CSS variables (amber) apply automatically.
+// Manual choice in localStorage wins, then OS preference, then amber.
 const themeInitScript = `
 (function(){
   try{
     var t=localStorage.getItem('theme');
-    if(t==='dark'){document.documentElement.classList.add(t);}
+    if(t==='dark'){document.documentElement.classList.add('dark');return;}
+    if(t==='amber'){return;}
   }catch(e){}
+  if(window.matchMedia('(prefers-color-scheme:dark)').matches){
+    document.documentElement.classList.add('dark');
+  }
 })();
 `;
 

@@ -18,16 +18,18 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
-// Amber is always the default for first-time visitors.
-// We only restore a previously saved manual override from localStorage.
+// Manual choice in localStorage always wins.
+// Otherwise respect the OS dark-mode preference.
+// Amber is the fallback when neither is set.
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "amber";
   try {
     const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored === "dark") return stored;
+    if (stored === "amber" || stored === "dark") return stored;
   } catch {
     // localStorage unavailable (private browsing, etc.)
   }
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
   return "amber";
 }
 
@@ -51,11 +53,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setThemeState(next);
     applyTheme(next);
     try {
-      if (next === "amber") {
-        localStorage.removeItem("theme");
-      } else {
-        localStorage.setItem("theme", next);
-      }
+      localStorage.setItem("theme", next);
     } catch {
       // ignore
     }

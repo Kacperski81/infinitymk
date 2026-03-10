@@ -156,7 +156,7 @@ export default function OurServices({ scrollY, viewportHeight }: OurServicesProp
                     }
                     alt={`${service.name} service image`}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 1023px) (100vw - 1rem), 512px"
                     className={`
                       -z-1 
                       object-cover 

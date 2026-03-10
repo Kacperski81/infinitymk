@@ -98,7 +98,7 @@
   }
 }
 
-/* ─── Dark mode ─────────────────────────────────────────────── */
+/* Dark mode */
 .dark {
   --background: var(--main-900);
   --foreground: var(--main-100);
@@ -167,9 +167,9 @@
 
 }
 
-/* Amber is the brand default (:root). Theme switching is handled
-   entirely by JS (ThemeProvider) which adds .dark to <html>.
-   No prefers-color-scheme override — amber is always the first-visit default. */
+/* Amber is the brand default (:root). Dark activates when the user
+   has prefers-color-scheme: dark OR manually picks dark via the toggle.
+   A manual choice (stored in localStorage) always wins over the OS preference. */
 
 /* Collapse all durations for users who prefer reduced motion.
    The JS hooks also return neutral values, but this CSS layer
@@ -194,7 +194,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  /* style={{ scrollbarWidth: "none"}} */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -457,8 +456,6 @@ body {
 
 .scroller::after {
   right: 0;
-  /* background: linear-gradient(to left, var(--main-400), transparent); */
-
 }
 
 .hair-partner-logo::before {
