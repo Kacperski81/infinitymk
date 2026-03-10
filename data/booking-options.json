@@ -3,18 +3,18 @@
         "id": "hair",
         "serviceName": "Hair Services",
         "providerName": "Magda",
-        "phoneNumber": "+44 20 1234 5678"
+        "phoneNumber": "+44 789 474 8167"
     },
     {
         "id": "nails",
         "serviceName": "Nail Services",
         "providerName": "Ela",
-        "phoneNumber": "+44 20 1234 5679"
+        "phoneNumber": "+44 749 626 5696"
     },
     {
         "id": "beauty",
         "serviceName": "Beauty Treatments",
         "providerName": "Anna",
-        "phoneNumber": "+44 20 1234 5680"
+        "phoneNumber": "+44 741 177 3883"
     }
 ]

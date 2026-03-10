@@ -116,16 +116,22 @@ export default function BookNowFab() {
                                         </p>
                                     </div>
 
-                                    {/* Call to Book link */}
+                                    {/* Mobile: Call to Book link | Desktop: Phone number only */}
+                                    {/* Mobile call button */}
                                     <a
                                         href={`tel:${option.phoneNumber.replace(/\s/g, "")}`}
-                                        className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[var(--main-800)] text-[var(--main-50)] text-xs sm:text-sm font-medium hover:bg-[var(--main-700)] transition-colors whitespace-nowrap shadow-md"
+                                        className="sm:hidden flex items-center gap-1.5 px-3 py-2 rounded-full bg-[var(--main-800)] text-[var(--main-50)] text-xs font-medium hover:bg-[var(--main-700)] transition-colors whitespace-nowrap shadow-md"
                                         aria-label={`Call to book ${option.serviceName}`}
                                     >
                                         <IconPhone />
-                                        <span className="hidden sm:inline">Call to Book</span>
-                                        <span className="sm:hidden">Call</span>
+                                        <span>Call</span>
                                     </a>
+
+                                    {/* Desktop: Phone number display only */}
+                                    <div className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-sm text-(--main-10) bg-(--main-900)/70 rounded-full">
+                                        <IconPhone />
+                                        <span className="font-medium">{option.phoneNumber}</span>
+                                    </div>
                                 </div>
                             </li>
                         ))}
