@@ -17,7 +17,9 @@ export default function FamilyInformation({family, displayProducts, expandedFami
                     <span className="w-5 h-5 transition-transform duration-200 ease-out hover:rotate-12">
                         <IconInformation />
                     </span>
-                    <span className="whitespace-nowrap hover:underline">{expandedFamily === family.id ? "Hide Details" : "Learn More"}</span>
+                    <span className="whitespace-nowrap hover:underline">
+                        {expandedFamily === family.id ? "Hide Details" : "Learn More"}
+                    </span>
                 </button>
             </div>
             <div
