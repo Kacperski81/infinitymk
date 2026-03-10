@@ -73,7 +73,7 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
             <div className="md:hidden px-4">
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="w-full flex items-center justify-between px-4 py-3 bg-(--main-450) border border-(--main-300) rounded-lg text-(--main-100) font-medium text-sm shadow-sm hover:bg-(--main-400) active:scale-95 transition-all"
+                    className="w-full flex items-center justify-between px-4 py-3 bg-(--secondary) border border-(--border) rounded-lg text-(--secondary-foreground) font-medium text-sm shadow-sm hover:bg-(--muted) active:scale-95 transition-all"
                     aria-expanded={isMobileMenuOpen}
                     aria-haspopup="listbox"
                 >
@@ -90,7 +90,7 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                     }`}
                 >
                     <div
-                        className="mt-2 bg-(--main-450) border border-(--main-300) rounded-lg shadow-md overflow-hidden"
+                        className="mt-2 bg-(--secondary) border border-(--border) rounded-lg shadow-md overflow-y-auto max-h-60"
                         role="listbox"
                         aria-label="Hair Type Filters"
                     >
@@ -100,10 +100,10 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                                 <button
                                     key={tag.id}
                                     onClick={() => handleTagClick(tag.id)}
-                                    className={`w-full px-4 py-3 text-left text-sm font-medium border-b border-(--main-300) last:border-b-0 transition-colors ${
+                                    className={`w-full px-4 py-3 text-left text-sm font-medium border-b border-(--border) last:border-b-0 transition-colors ${
                                         isSelected
-                                            ? "bg-(--main-100) text-(--main-800)"
-                                            : "text-(--main-100) hover:bg-(--main-400)"
+                                            ? "bg-(--primary) text-(--primary-foreground)"
+                                            : "text-(--secondary-foreground) hover:bg-(--muted)"
                                     }`}
                                 >
                                     {tag.label}
@@ -125,8 +125,8 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                                 onClick={() => handleTagClick(tag.id)}
                                 className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium border shadow-sm transition-all ${
                                     isSelected
-                                        ? "bg-(--main-100) text-(--main-800) border-(--main-100)"
-                                        : "bg-(--main-450) text-(--main-200) border-(--main-300) hover:border-(--main-200) hover:text-(--main-100)"
+                                        ? "bg-(--primary) text-(--primary-foreground) border-(--primary)"
+                                        : "bg-(--secondary) text-(--secondary-foreground) border-(--border) hover:border-(--muted-foreground) hover:text-(--foreground)"
                                 }`}
                             >
                                 {tag.label}
@@ -147,8 +147,8 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
                                     onClick={() => handleTagClick(tag.id)}
                                     className={`px-4 py-2 text-sm rounded-full border shadow-sm transition-all ${
                                         isSelected
-                                            ? "bg-(--main-100) text-(--main-800) border-(--main-100) font-semibold"
-                                            : "bg-(--main-450) text-(--main-200) border-(--main-300) hover:border-(--main-200) hover:text-(--main-100)"
+                                            ? "bg-(--primary) text-(--primary-foreground) border-(--primary) font-semibold"
+                                            : "bg-(--secondary) text-(--secondary-foreground) border-(--border) hover:border-(--muted-foreground) hover:text-(--foreground)"
                                     }`}
                                 >
                                     {tag.label}

@@ -131,7 +131,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
                 {isScrollable && (
                     <button
                         onClick={() => scroll("right")}
-                        className={`absolute right-1 top-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-(--main-400)/80 text-(--main-100) backdrop-blur-sm border border-(--main-300)/50 transition-opacity duration-200 active:scale-95 ${
+                        className={`absolute right-6 top-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-(--main-400)/80 text-(--main-100) backdrop-blur-sm border border-(--main-300)/50 transition-opacity duration-200 active:scale-95 ${
                             canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
                         }`}
                         style={{ transform: "translateY(-50%)" }}
@@ -146,7 +146,7 @@ export default function DavinesHairCareFamilyRow({ family }: DavinesHairCareFami
 
             {/* Horizontal scroll indicator */}
             {isScrollable && (
-                <div className="product-row-scroll-track">
+                <div className="product-row-scroll-track max-w-[90%] mx-auto lg:max-w-[100%]">
                     <div
                         className="product-row-scroll-thumb"
                         style={{ transform: `translateX(${scrollProgress * (70 / 30) * 100}%)` }}

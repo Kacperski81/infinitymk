@@ -32,7 +32,7 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
             </div>
 
             {/* Filter buttons */}
-            <div id="filter-section" className="pb-2 bg-[--main-500]/95 sticky top-0 z-20">
+            <div id="filter-section" className="pb-2 bg-(--background)/95 sticky top-0 z-20">
                 {/* CSS-controlled spacer: height transitions smoothly when .is-stuck is applied */}
                 <div
                     className="filter-sticky-spacer"
