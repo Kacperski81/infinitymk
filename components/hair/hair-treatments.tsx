@@ -57,7 +57,7 @@ export default function HairTreatment({ scrollY }: { scrollY: number }) {
                                         <button
                                             aria-controls={`${treatment.name}-content`}
                                             aria-expanded={treatment.name === expandedPanel}
-                                            className={`w-full py-(--panel-padding) z-10 
+                                            className={`w-full py-(--panel-padding) z-10 transition-all duration-300 ease-in-out 
                                                 ${expandedPanel === treatment.name ?
                                                     "" :
                                                     "py-1 md:py-5 cursor-pointer flex justify-center items-center"}`}>

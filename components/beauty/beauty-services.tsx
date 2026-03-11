@@ -41,7 +41,7 @@ export default function BeautyServices({scrollY}: {scrollY: number}) {
                                     <h3 id={`${service.name}-heading`}>
                                         <button aria-controls={`${service.name}-content`}
                                             aria-expanded={service.id === expandedPanel}
-                                            className={`w-full py-(--panel-padding) z-10 
+                                            className={`w-full py-(--panel-padding) z-10 transition-all duration-300 ease-in-out 
                                                 ${expandedPanel === service.id ?
                                                     "" :
                                                     "py-1 md:py-5 cursor-pointer flex justify-center items-center"}`}
