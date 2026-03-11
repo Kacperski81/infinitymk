@@ -1,15 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import type { HairTypeFiltersProps } from "@/types";
 import IconTune from "@/components/svgs/icon-tune";
 import IconCheveronDown from "@/components/svgs/icon-cheveron-down";
 
-export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const selectedTag = searchParams.get('tag') || 'all-products';
+export default function HairTypeFilters({ tags, selectedTag, onTagChange }: HairTypeFiltersProps) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
 
@@ -47,22 +43,8 @@ export default function HairTypeFilters({ tags }: HairTypeFiltersProps) {
     }, []);
 
     const handleTagClick = (tagId: string) => {
-        if (tagId === 'all-products') {
-            router.push('/products', { scroll: false });
-        } else {
-            router.push(`/products?tag=${tagId}`, { scroll: false });
-        }
+        onTagChange?.(tagId);
         setIsMobileMenuOpen(false);
-
-        setTimeout(() => {
-            const productsResults = document.getElementById('products-results');
-            const filterSection = document.getElementById('filter-section');
-            if (productsResults && filterSection) {
-                const filterHeight = filterSection.offsetHeight;
-                const targetPosition = productsResults.getBoundingClientRect().top + window.scrollY - filterHeight;
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-            }
-        }, 100);
     };
 
     const selectedTagLabel = tags.find((tag) => tag.id === selectedTag)?.label || "All Products";

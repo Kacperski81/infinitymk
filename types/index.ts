@@ -147,6 +147,8 @@ export type Tag = {
 
 export type HairTypeFiltersProps = {
     tags: Tag[];
+    selectedTag: string;
+    onTagChange?: (tagId: string) => void;
 };
 
 export type BrowseTags = {

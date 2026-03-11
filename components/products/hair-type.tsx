@@ -6,9 +6,10 @@ import ProductFamilyRow from "@/components/products/product-family-row";
 
 type HairTypeProps = {
     selectedTag?: string;
+    onTagChange?: (tagId: string) => void;
 };
 
-export default function HairType({ selectedTag = '', }: HairTypeProps) {
+export default function HairType({ selectedTag = '', onTagChange }: HairTypeProps) {
     const tags = getBrowseTags();
     const families = getAllFamilies();
 
@@ -38,7 +39,7 @@ export default function HairType({ selectedTag = '', }: HairTypeProps) {
                     className="filter-sticky-spacer"
                     aria-hidden="true"
                 />
-                <HairTypeFilters tags={tags} />
+                <HairTypeFilters tags={tags} selectedTag={effectiveTag} onTagChange={onTagChange} />
             </div>
 
             {/* Results count */}
