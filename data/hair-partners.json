@@ -2,41 +2,41 @@
     {
         "name": "Davines", 
         "altText": "Davines Logo", 
-        "imagePath": "/hair/partners/davines2.png"
+        "imagePath": "/hair/partners/davines3.png"
     },
     {
         "name": "Kérastase", 
         "altText": "Kérastase Logo", 
-        "imagePath": "/hair/partners/kerastase2.png"
+        "imagePath": "/hair/partners/kerastase3.png"
     },
     {
         "name": "Loreal", 
         "altText": "L'Oreal Logo",
-        "imagePath": "/hair/partners/loreal2.png"
+        "imagePath": "/hair/partners/loreal3.png"
     },
     {
         "name": "Fusiodose",
         "altText": "Fusio Dose Logo",
-        "imagePath": "/hair/partners/fusioDose2.png"
+        "imagePath": "/hair/partners/fusioDose3.png"
     },
         {
         "name": "Davines2", 
         "altText": "Davines Logo", 
-        "imagePath": "/hair/partners/davines2.png"
+        "imagePath": "/hair/partners/davines3.png"
     },
     {
         "name": "Kérastase2", 
         "altText": "Kérastase Logo", 
-        "imagePath": "/hair/partners/kerastase2.png"
+        "imagePath": "/hair/partners/kerastase3.png"
     },
     {
         "name": "Loreal2", 
         "altText": "L'Oreal Logo",
-        "imagePath": "/hair/partners/loreal2.png"
+        "imagePath": "/hair/partners/loreal3.png"
     },
     {
         "name": "Fusiodose2",
         "altText": "Fusio Dose Logo",
-        "imagePath": "/hair/partners/fusioDose2.png"
+        "imagePath": "/hair/partners/fusioDose3.png"
     }
 ]

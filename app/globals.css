@@ -231,6 +231,19 @@ body {
   fill: var(--main-900)
 }
 
+.partner-icon {
+  width: 4rem;
+  height: 4rem;
+
+  .primary {
+    fill: var(--main-300);
+  }
+
+  .secondary {
+    fill: var(--main-10)
+  }
+}
+
 .icon-cheveron-left-circle,
 .icon-cheveron-right-circle {
   width: 2rem;

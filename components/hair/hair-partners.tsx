@@ -74,7 +74,7 @@ export default function HairPartners() {
                             backdrop-blur-[2px]
                             rounded-md p-2 md:p-4 shadow-md hover:shadow-lg transition-shadow w-[150px] md:w-[200px] lg:w-[250px] flex items-center justify-center">
                                 <Image 
-                                    src={getImagePath(logo.imagePath)} 
+                                    src={logo.imagePath} 
                                     alt={logo.altText} 
                                     width={250} 
                                     height={100} 

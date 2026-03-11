@@ -36,11 +36,9 @@ export default function HairPage() {
                         <DesktopGallery pictures={hairImages} />
                     </section>
 
-                    <section
-                        className="flex flex-col gap-4">
+                    <section className="flex flex-col gap-4">
                         <HairPartners />
                         <HairOffers />
-
                     </section>
 
                     <Footer />
