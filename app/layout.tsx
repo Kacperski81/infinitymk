@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { Aboreto, Lato, Red_Hat_Text } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
-
 import AnimatedMenu from "@/components/frame/animated-menu";
 import Frame from "@/components/frame/frame";
-import Logo from "@/components/frame/logo";
-import Footer from "@/components/footer";
 import BookNowFab from "@/components/fab/book-now-fab";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
@@ -70,13 +67,11 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="min-h-screen flex justify-center">
             <div className="relative w-full max-w-[2000px]">
-              {/* <Logo /> */}
               <Frame />
               <Suspense fallback={null}>
                 <AnimatedMenu />
               </Suspense>
               {children}
-              {/* <Footer /> */}
             </div>
           </div>
           <BookNowFab />

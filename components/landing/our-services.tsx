@@ -53,7 +53,7 @@ export default function OurServices({ scrollY, viewportHeight }: OurServicesProp
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="min-h-screen flex flex-col"
+      className="min-h-screen flex flex-col px-1 lg:px-0"
     >
       <main
         className="grow flex flex-col lg:justify-center gap-3 xl:pb-20 will-change-transform"

@@ -523,6 +523,13 @@ body {
   border-radius: 1px;
 }
 
+/* Mobile: move to far right edge for better UX */
+@media (max-width: 768px) {
+  .scroll-indicator-track {
+    right: 0.3rem;
+  }
+}
+
 .scroll-indicator-thumb {
   position: absolute;
   top: 0;
@@ -531,7 +538,6 @@ body {
   background: var(--foreground);
   border-radius: 1px;
   transform-origin: top;
-  transition: height 0.2s ease-out;
 }
 
 /* Scroll-driven reveal for product rows */
