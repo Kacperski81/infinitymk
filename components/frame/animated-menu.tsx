@@ -19,7 +19,8 @@ export default function AnimatedMenu() {
   }
 
   const isLinkActive = (href: string) => {
-    return pathname == href
+    const normalize = (p: string) => p === "/" ? p : p.replace(/\/+$/, "");
+    return normalize(pathname) === normalize(href);
   }
 
   return (

@@ -8,13 +8,14 @@ export default function Footer() {
     const pathname = usePathname();
 
     const isFooterLinkActive = (href: string) => {
-        return pathname == href
+        const normalize = (p: string) => p === "/" ? p : p.replace(/\/+$/, "");
+        return normalize(pathname) === normalize(href);
     }
 
 
     return (
         // <footer id="footer" className="snap-center sticky top-0 bg-(--main-800) min-h-screen py-2 sm:py-10 flex items-center z-50">
-        <footer id="footer" className={`${pathname === "/hair" ? "mt-5" : "min-h-screen sm:py-10 md:py-2"} text-center flex items-center isolate xl:mt-8`}>
+        <footer id="footer" className={`${pathname === "/hair" || pathname === "/hair/" ? "mt-5" : "min-h-screen sm:py-10 md:py-2"} text-center flex items-center isolate xl:mt-8`}>
             {/* container */}
             <div className="container mx-auto py-2 px-4 w-full xl:max-w-7xl">
                 <div className="space-y-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
@@ -99,7 +100,7 @@ export default function Footer() {
                     </div>
                 </div>
                 {/* Bottom bar */}
-                <div className={`mt-2 border-t border-(--main-100) ${pathname === "/hair" ? "sm:pt-2 my-5" : "sm:mt-8 sm:pt-8 "} flex flex-col md:flex-row justify-center items-center gap-4`}>
+                <div className={`mt-2 border-t border-(--main-100) ${pathname === "/hair" || pathname === "/hair/" ? "sm:pt-2 my-5" : "sm:mt-8 sm:pt-8 "} flex flex-col md:flex-row justify-center items-center gap-4`}>
                     <p className="mt-2 text-sm text-center text-(--main-50)">
                         &copy; 2025 Infinity MK. All rights reserved.
                     </p>

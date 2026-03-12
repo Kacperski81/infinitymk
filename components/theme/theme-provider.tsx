@@ -7,11 +7,13 @@ export type Theme = "amber" | "dark";
 interface ThemeContextValue {
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  mounted: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
   theme: "amber",
   setTheme: () => {},
+  mounted: false,
 });
 
 export function useTheme() {
@@ -42,11 +44,13 @@ function applyTheme(theme: Theme) {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("amber");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const initial = getInitialTheme();
     setThemeState(initial);
     applyTheme(initial);
+    setMounted(true);
   }, []);
 
   function setTheme(next: Theme) {
@@ -60,7 +64,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, mounted }}>
       {children}
     </ThemeContext.Provider>
   );
