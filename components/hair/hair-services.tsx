@@ -103,7 +103,7 @@ export default function HairServices({ scrollY }: { scrollY: number }) {
                                                             className="
                                                                     group 
                                                                     border-b 
-                                                                    border-b-(--main-300) 
+                                                                    border-b-(--main-300)/70 
                                                                     last:border-b-0 
                                                                     p-2  
                                                                     text-sm 

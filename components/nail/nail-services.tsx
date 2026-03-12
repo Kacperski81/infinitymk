@@ -62,8 +62,8 @@ export default function NailServices({ scrollY }: { scrollY: number }) {
                                                     return (
                                                         <li key={item.service} className="group border-b border-b-(--main-300)/70 last:border-b-0 p-2 text-sm md:text-base xl:text-lg xl:px-4">
                                                             <div className="flex justify-between">
-                                                                <p className="text-(--main-100) lg:text-(--main-50)">{item.service}</p>
-                                                                <p className="text-(--main-100) lg:text-(--main-50)">{item.price}</p>
+                                                                <p className="text-(--main-100)">{item.service}</p>
+                                                                <p className="text-(--main-50)">{item.price}</p>
                                                             </div>
                                                         </li>
                                                     )

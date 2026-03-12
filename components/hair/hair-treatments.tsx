@@ -97,11 +97,11 @@ export default function HairTreatment({ scrollY }: { scrollY: number }) {
                                             style={{ scrollbarWidth: 'thin', scrollbarColor: 'var(--main-300) var(--main-300)' }}
                                         >
                                             <div className="space-y-4">
-                                                <div className="flex justify-between items-baseline border-b border-white/10 pb-2 text-sm md:text-base xl:text-lg">
+                                                <div className="flex justify-between items-baseline border-b border-b-(--main-300)/70 pb-2 text-sm md:text-base xl:text-lg">
                                                     <h4 className="text-(--main-100)">{treatment.name}</h4>
-                                                    <p className="font-semibold text-white">{treatment.price}</p>
+                                                    <p className="font-semibold text-(--main-50)">{treatment.price}</p>
                                                 </div>
-                                                <p className="mx-auto text-sm md:text-base text-(--main-50) md:text-(--main-100) leading-relaxed max-w-[70ch]">{treatment.description}</p>
+                                                <p className="mx-auto text-sm md:text-base text-(--main-200) leading-relaxed max-w-[70ch]">{treatment.description}</p>
                                             </div>
 
                                         </div>
