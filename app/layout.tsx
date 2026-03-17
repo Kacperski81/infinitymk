@@ -40,14 +40,16 @@ export const metadata: Metadata = {
 // Manual choice in localStorage wins, then OS preference, then amber.
 const themeInitScript = `
 (function(){
+  var theme='amber';
   try{
     var t=localStorage.getItem('theme');
-    if(t==='dark'){document.documentElement.classList.add('dark');return;}
-    if(t==='amber'){return;}
-  }catch(e){}
-  if(window.matchMedia('(prefers-color-scheme:dark)').matches){
-    document.documentElement.classList.add('dark');
+    if(t==='dark'||t==='amber'){theme=t;}
+    else if(window.matchMedia('(prefers-color-scheme:dark)').matches){theme='dark';}
+  }catch(e){
+    if(window.matchMedia('(prefers-color-scheme:dark)').matches){theme='dark';}
   }
+  if(theme==='dark'){document.documentElement.classList.add('dark');}
+  document.documentElement.dataset.theme=theme;
 })();
 `;
 

@@ -25,6 +25,9 @@ export function useTheme() {
 // Amber is the fallback when neither is set.
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") return "amber";
+  // Read from the data-attribute set by the inline <head> script first
+  const fromAttr = document.documentElement.dataset.theme as Theme | undefined;
+  if (fromAttr === "amber" || fromAttr === "dark") return fromAttr;
   try {
     const stored = localStorage.getItem("theme") as Theme | null;
     if (stored === "amber" || stored === "dark") return stored;
@@ -39,11 +42,11 @@ function applyTheme(theme: Theme) {
   const root = document.documentElement;
   root.classList.remove("dark");
   if (theme === "dark") root.classList.add(theme);
-  // "amber" = no class, :root CSS variables are the amber defaults
+  root.dataset.theme = theme;
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("amber");
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
