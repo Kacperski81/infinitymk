@@ -31,7 +31,7 @@ export default function Hero({ scrollY, onImageLoad }: { scrollY: number, onImag
                     {/* Feel<br />Good,<br /> Look<br />Amazing. */}
                     Feel Good,<br />Look Amazing.
                 </h1>
-                <p className="font-sans text-sm sm:text-base md:text-lg font-light text-(--main-50) drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] dark:text-gray-200 text-pretty mx-4 sm:mx-2 max-w-[28ch] sm:max-w-none tracking-wide leading-relaxed">
+                <p className="font-sans text-sm sm:text-base md:text-lg font-light text-(--main-50) drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] dark:text-gray-200 text-pretty mx-4 sm:mx-2 max-w-[43ch] sm:max-w-none tracking-wide leading-relaxed">
                     Step into a world of beauty and relaxation.<br className="sm:hidden" /> We're here to make you shine.
                 </p>
             </div>
