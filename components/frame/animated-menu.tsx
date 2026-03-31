@@ -77,7 +77,7 @@ export default function AnimatedMenu() {
               }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-8 pt-10 md:pt-20 xl:pl-20 overflow-y-auto max-h-screen pb-20">
+            <div className="p-8 pt-10 md:pt-20 xl:pl-20 overflow-y-auto max-h-screen pb-28 sm:pb-20">
 
               {/* Links */}
               <nav className="space-y-6">

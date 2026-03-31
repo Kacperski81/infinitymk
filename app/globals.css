@@ -200,6 +200,12 @@ body {
 
 /* Theme toggle – CSS-only highlight so the active button is styled
    immediately via the inline <head> script, before React hydrates. */
+.theme-toggle-btn {
+  color: var(--main-200);
+}
+.theme-toggle-btn:hover {
+  color: var(--main-100);
+}
 [data-theme="amber"] .theme-toggle-btn[data-theme-value="amber"],
 [data-theme="dark"] .theme-toggle-btn[data-theme-value="dark"] {
   color: var(--main-10);

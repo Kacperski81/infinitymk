@@ -23,7 +23,7 @@ export function ThemeToggle() {
             data-theme-value={key}
             aria-pressed={theme === key}
             aria-label={`${label} theme`}
-            className="theme-toggle-btn px-2 py-0.5 text-sm tracking-wide transition-all duration-200 cursor-pointer text-(--main-200) hover:text-(--main-100)"
+            className="theme-toggle-btn px-2 py-0.5 text-sm tracking-wide transition-all duration-200 cursor-pointer"
           >
             {label}
           </button>
