@@ -27,11 +27,11 @@ export default function Hero({ scrollY, onImageLoad }: { scrollY: number, onImag
 
             {/* Hero Content */}
             <div className="relative px-4 py-2 lg:p-2 h-full z-20 flex flex-col gap-5 lg:gap-20 md:w-full sm:text-center" style={{ opacity, transform: `translate3d(0, ${parallax * 0.4}px, 0)` }}>
-                <h1 className="font-(family-name:--font-aboreto) font-semibold text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight tracking-wider hero-background-gradient drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+                <h1 className="font-(family-name:--font-aboreto) font-semibold text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight tracking-wider hero-background-gradient drop-shadow-[0_4px_24px_rgba(0,0,0,0.3)] px-2">
                     {/* Feel<br />Good,<br /> Look<br />Amazing. */}
                     Feel Good,<br />Look Amazing.
                 </h1>
-                <p className="font-sans text-base md:text-lg font-light text-(--main-50) drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] dark:text-gray-200 text-pretty">
+                <p className="font-sans text-base md:text-lg font-light text-(--main-50) drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] dark:text-gray-200 text-pretty px-2">
                     Step into a world of beauty and relaxation. We're here to make you shine.
                 </p>
             </div>
