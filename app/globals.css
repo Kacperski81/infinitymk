@@ -198,6 +198,17 @@ body {
   -ms-overflow-style: none;
 }
 
+/* Theme toggle – CSS-only highlight so the active button is styled
+   immediately via the inline <head> script, before React hydrates. */
+[data-theme="amber"] .theme-toggle-btn[data-theme-value="amber"],
+[data-theme="dark"] .theme-toggle-btn[data-theme-value="dark"] {
+  color: var(--main-10);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--main-200);
+}
+
 
 
 /* Logo */
